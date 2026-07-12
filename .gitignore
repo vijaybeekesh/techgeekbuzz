@@ -11,7 +11,7 @@ db.sqlite3
 db.sqlite3-journal
 media/
 staticfiles/
-migrations/
+# migrations/
 __pycache__/
 localserver.txt
 backup.json
