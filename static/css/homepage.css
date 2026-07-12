@@ -1,0 +1,277 @@
+/* 
+typogrophy Roboto
+spacing system (px)
+2/4/8/12/16/24/32/48/64/80/96/128
+
+font size(px)
+10/12/14/16/18/20/24/32/36/44/52/62/74/96/98
+
+font weight:
+
+font height: 
+
+colors: #2875DD #39cc1c;
+tint
+shades
+greys
+gap: 10rem hero/ 
+*/
+
+
+
+main {
+  margin-top: 0.5rem;
+}
+
+/* hero start */
+.hero {
+  position: relative;
+}
+#hero-heading {
+  color: #2875dd;
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 6rem;
+}
+#hero-heading span {
+  color: #39cc1c;
+  font-weight: 700;
+}
+
+.hero-description {
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #000000;
+  letter-spacing: -0.5px;
+}
+
+/* Subscribe Section */
+
+.subscribe {
+  background-color: #e6f0ff;
+  background-image: url("../images/Vector3.svg"), url("../images/Vector4.svg"),
+    url("../images/Vector5.svg"), url("../images/Vector6.svg"),
+    url("../images/Vector7.svg");
+  background-position: -52rem 1rem, -52rem 3rem, -51rem 5rem, -52rem 7rem,
+    -52rem 9rem;
+  background-repeat: no-repeat;
+  padding: 3rem 0;
+}
+
+.subscribe-title {
+  color: #003174;
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.subscribe-form input {
+  height: 5rem;
+  border-radius: 1rem;
+  border: 2px solid #d1d1d1;
+  font-size: 2.2rem;
+  padding: 0.6rem 1.2rem;
+  outline: #d1d1d1;
+}
+
+.subscribe-form input[type="email"]:focus {
+  outline: none;
+  border-color: #719ece;
+  box-shadow: 0 0 10px #719ece;
+  font-size: 2.2rem;
+}
+.subscribe-form button {
+  font-size: 2.2rem;
+  padding: 1rem 1.3rem;
+  font-weight: 500;
+  color: white;
+  border-radius: 3px;
+  background-color: #006cff;
+  border: 2px solid #006cff;
+  border-radius: 1rem;
+  cursor: pointer;
+  margin: 0px;
+}
+
+/* learn section */
+.learn {
+  color: white;
+  background-color: #006cff;
+  padding: 4rem 0px;
+}
+
+.learn-heading {
+  font-weight: 700;
+  font-size: 3.5rem;
+  line-height: 1.5;
+}
+
+.learn-heading-description {
+  font-size: 2.2rem;
+  font-weight: normal;
+}
+.card-container {
+  padding: 0px 2rem;
+}
+.card {
+  border-radius: 2rem;
+  max-width: 23rem;
+  margin: 0px auto;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.tutorial-logo-container{
+  overflow: hidden;
+  
+  margin: 0px;
+}
+.tutorial-logo:hover{
+  transform: rotate(90deg) scale(2);
+}
+.card img {
+  width: 6rem;
+  height: 6rem;
+  background-color: #006cff;
+  border-radius: 50%;
+  padding: 1rem;
+  margin-top: 4rem;
+  transition: 2s;
+}
+
+.card-head {
+  color: #003174;
+  font-size: 2rem;
+  line-height: 1.5;
+  margin-top: 2rem;
+}
+.learn-more {
+  color: #006cff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+/* Interview Section */
+.interview-heading {
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #003d8f;
+}
+
+.interview-description {
+  font-size: 2.5rem;
+  color: #000000;
+  font-weight: bold;
+  margin-top: 2rem;
+  line-height: 1.2;
+}
+
+.interview-description2 {
+  font-size: 2rem;
+  color: #000000;
+  line-height: 1.2;
+  margin-top: 2rem;
+}
+.interview-text .button {
+  border: none;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #539cff;
+  border-radius: 1.2rem;
+  margin-top: 2rem;
+  font-weight: bolder;
+  font-size: 2.2rem;
+  color: white;
+  padding: 2rem 6rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: ease-in all 0.5s;
+}
+.interview-text button:hover {
+  background-color: #003d8f;
+}
+
+/* Need Section Start */
+.need-heading{
+  font-size: 4.2rem;
+  color: #003174;
+  font-weight: normal;
+  line-height: 1.1;
+  text-align: center;
+}
+.need-heading span{
+  font-weight: bolder;
+}
+
+
+.features{
+  margin: 5rem 0px;
+}
+.need-image img{
+  display: block;
+  width: 50%;
+  height: auto;
+  margin: 0px auto;
+}
+.need-description .shadow-number{
+  font-size: 9rem;
+  color: rgba(0, 49, 116, 0.2);
+  font-weight: bolder;
+  line-height: 1;
+}
+.need-description h2{
+  font-size: 5rem;
+  color: rgba(0, 49, 116, 1);
+  font-weight: bold;
+}
+.need-description p{
+  color: rgba(13, 12, 75, 1);
+  font-size: 2.2rem;
+  line-height: 1.2;
+}
+/* need section Ends */
+
+/* Homepage Blog section */
+.popular-blogs-card {
+  max-width: 38rem;
+}
+.homepage-popular-blogs{
+  background-color: #F7F9FF;
+  padding: 5rem 0rem;
+  }
+  .blogs-list{
+    margin-top: 3rem;
+  }
+  .blog-card{
+    padding: 1.5rem 0px;
+    border-radius: 1rem;
+  }
+  .homepage-blog-heading
+  {
+    color: #003174;
+    font-size: 3.5rem;
+    font-weight: bolder;
+    text-align: center;
+  }
+  
+  .blog-card a:link, a:active{
+    text-decoration: none;
+  }
+  .blog-card span{
+    display: block;
+    color: #003fff;
+    margin: 2rem 0px 0.5rem 0px;
+  }
+  .blog-card h3 a{
+    color: black;
+  }
+  .blog-card p{
+    color:  #444;
+    font-size: 1.2rem;
+    line-height: 1.7;
+  }
+  /* Home Page blog section ends */

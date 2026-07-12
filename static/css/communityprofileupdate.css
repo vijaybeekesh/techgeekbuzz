@@ -1,0 +1,42 @@
+.form-items, .form-items-image{
+    font-size: 1.2rem;
+    /* line-height: 1.4; */
+    font-weight: bold;
+    margin: 2rem 0px;
+}
+
+.form-subheading{
+    font-weight: bolder;
+    font-size: 2rem;
+    color: #003174;
+}
+
+.form-items label{
+    display: block;
+    margin: 1.5rem 0px 3px ;
+    color: #003174;
+}
+
+
+.form-items>input{
+    font-size: 1.5rem;
+    width: 100%;
+    padding: 6px 5px;
+}
+
+.form-items>textarea{
+    font-size: 1.3rem;
+    width: 100%;
+    padding: 5px;
+    line-height: 1.2;
+}
+
+
+.form-items>input:focus, .form-items>textarea:focus{
+    outline: #003174;
+}
+
+.save-profile{
+    width: 100%;
+    font-size: 1.7rem;
+}

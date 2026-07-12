@@ -1,0 +1,125 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+<link rel="alternate" type="application/rss+xml" href="{%url 'blogfeed'%}" />
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="https://www.techgeekbuzz.com/">
+<meta name="keywords" content="{{keywords}}">
+
+<meta property="og:site_name" content="techgeekbuzz.com">
+<meta property="og:locale" content="en_GB" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{title}}" />
+<meta property="og:description" content="{{description}}" />
+<meta property="og:url" content="https://www.techgeekbuzz.com/{{page_link}}">
+<meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+<meta property="og:image:width" content="800" />
+<meta property="og:image:height" content="400" />
+<meta property="og:image:type" content="image/png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{title}}">
+<meta name="twitter:description" content="{{description}}">
+<meta name="twitter:url" content="https://www.techgeekbuzz.com/">
+<meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/blog.css'%}">
+{%endblock%}
+
+{%block title%}
+<title>Techgeekbuzz Blogs</title>
+{%endblock%}
+{%block headjs%}
+{% comment %} <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6202674638312019",
+    enable_page_level_ads: true
+  });
+	</script> {% endcomment %}
+{%endblock%}
+
+
+
+{%block main%}
+<main style="margin-top: 0rem;">
+    <section class="popular-blog-section">
+        <div class="container">
+            <div class="row pt-30 justify-content-between blog-main-row">
+                {%for post in popularblogs%}
+                <div class="col-lg-4 col-12 shadow py-3 d-flex flex-column justify-content-between blog-main">
+                    <div class="blog-card">
+                        {%if post.featured_image%}
+                              <a href="{%url 'postdetail' post.slug%}"> 
+                                   <img src="{{post.featured_image.url}}" class="img-fluid" alt="{{post.title}}">
+                                </a>
+                        {%endif%}
+                        <div class="d-flex mt-3">
+                            {%for category in post.category.all%}
+                                   <a href="{%url 'postbycategory' category|slugify%}" class="post-category">
+                                    <span>{{category.category_name|upper}}</span>
+                                    </a>
+                                    {%if not forloop.last%}
+                                    / &nbsp; 
+                                    {%endif%}
+                            {%endfor%}
+                          </div>
+                        <h3><a class="text-dark top-blog" href="{%url 'postdetail' post.slug%}">{{post.title | truncatechars:40}} </a></h3>
+                        <p class="top-blog-desc">
+                            {% autoescape off %}
+                            {{post.content|striptags|truncatechars:95}}
+                            {% endautoescape %}
+                        </p>
+                    </div>
+                    <div onclick="window.location='{%url 'postdetail' post.slug%}';" class="blog-card-footer d-flex align-items-center justify-content-between ">
+                        <div class="author-detail-blog d-flex align-items-center ">
+                            {% comment %} {%if post.author.profile.profile_picture%}
+                                <img src="{{post.author.profile.profile_picture.url}}"
+                                    class="img-fluid" alt="{{post.author.username}}">
+                            {%else%}
+                                <img src="{% static 'images/cropped-Techgeekbuzz-Final-Logo-e1611249305805.png'%}"
+                                        class="img-fluid"  alt="{{post.author.username}}"">
+                            {%endif%} {% endcomment %}
+                            <h4>BY <a href="{%url 'byuser' post.author%}">{{post.author.first_name}} {{post.author.last_name}}</a> &#x2022 <date>{{post.post_updated|date:"j F, Y"}}</date></h4>
+                        </div>
+                    </div>
+                </div>
+                {%endfor%}
+               
+            </div>
+        </div>
+    </section>
+    <section class="container">
+    {% for blog in blogs %}
+        <div class="row pb-4 blog-img">
+            <div class="col-lg-4" onclick="window.location='{%url 'postdetail' blog.slug%}';" style="cursor: pointer;">
+                <img src="{{blog.featured_image.url}}" class="img-fluid" alt="{{blog.title}}"/>
+            </div>
+            <div class="col-lg-8" onclick="window.location='{%url 'postdetail' blog.slug%}';" style="cursor: pointer;">
+                <div class="row pl-3 pr-4 pt-2">
+                    <h2 class="text-dark">{{ blog.title | truncatechars:100 }}</h2>
+                </div>
+                <div>
+                 {%for category in blog.category.all%}
+                        <a href="{%url 'postbycategory' category|slugify%}" class="post-category">
+                            <span>{{category.category_name|upper}}</span>
+                        </a>
+                        {%if not forloop.last%}
+                        / &nbsp;
+                        {%endif%}
+                {%endfor%}
+                </div>
+                <div class="row mt-3 pl-3 pr-4 blog-div">
+                    <p>{{blog.content|striptags|truncatechars:350 | safe}}</p>
+                </div>
+                <span>BY {{blog.author.first_name | capfirst}} {{blog.author.last_name | capfirst}}</a> &#x2022 <date>{{blog.post_updated|date:"j F, Y"}}</date></span>
+            </div>
+        </div>
+    {% endfor %}
+    </section>
+</main>
+
+{%endblock%}

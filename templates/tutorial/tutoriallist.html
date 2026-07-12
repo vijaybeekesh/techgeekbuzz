@@ -1,0 +1,238 @@
+{%extends 'index.html'%}
+{% load custom_tag %}
+
+
+{%load static%}
+
+{%block metadata%}
+    <link rel="canonical" href="https://www.techgeekbuzz.com/tutorial/{{main_tutorial|modify_tutorial}}/">
+
+    <meta property="og:locale" content="en_GB" />
+    <meta name="description" content="{{tutorial.description|truncatechars:107}} Read More>>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{tutorial}} Tutorial a complete guide">
+    <meta property="og:description" content="{{tutorial.description|truncatechars:107}} Read More>>" />
+    <meta property="og:site_name" content="TechGeekBuzz" />
+    {%if tutorial.image%}
+    <meta property="og:image" content="https://techgeekbuzz.com{{tutorial.image.url}}" />
+    {%endif%}
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:type" content="image/jpeg/png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@techgeekbuzz" />
+    <meta property="og:url" content="https://www.techgeekbuzz.com/tutorial/{{tutorial|slugify}}" />
+    <meta property="og:title" content="{{tutorial}} Tutorial a complete guide" />
+    <meta property="og:description" content="{{tutorial.description|truncatechars:107}} Read More>>" />
+    {%if tutorial.image%}
+    <meta property="og:image" content="https://techgeekbuzz.com{{tutorial.image.url}}" />
+    {%endif%}
+{%endblock%}
+
+
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/tutoriallist.css'%}" />
+    <style>
+        @media only screen and (max-width: 400px) {
+            .tutorial-intro-heading >h1 {
+                            font-size: 2rem;
+                            font-weight: bold;
+                            color: #003174;
+                        }
+                        .tutorial-head-image
+                         {
+                        width: 4rem;
+                    padding: 1rem;
+                    background-color: #0d6efd;
+                    border-radius: 2rem;
+                }
+        }
+
+    </style>
+    <style>
+        .tutorial-example-toggles{
+            display: flex;
+            gap: 2rem;
+            padding: 0px 0px 5px 0px;
+            flex-wrap: wrap;
+        }
+        .tutorial-button, .examples-button{
+            background: transparent;
+            border: none;
+            font-size: 2rem;
+            padding: 0px 0rem;
+        }
+
+        .active-toggle{
+            color: #003174;
+            border-bottom: 1px solid;
+        }
+
+        #example-lists{
+            display: none;
+        }
+    </style>
+{%endblock%}
+
+{%block title%}
+<title>{{tutorial}} Tutorial -Techkeekbuzz</title>
+{%endblock%}
+
+{%block headjs%}
+{% comment %} <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6202674638312019",
+    enable_page_level_ads: true
+  });
+	</script> {% endcomment %}
+{%endblock%}
+
+{%block main%}
+
+
+    <!-- Main Section Started -->
+    <main style="margin-top: 2rem;">
+        <section class="tutorial-head">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-12">
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="tutorial-heading d-flex align-items-center ">
+                            {%if tutorial.image%}
+                                <img src="{{tutorial.image.url}}" class="tutorial-head-image shadow img-fluid" alt="{{tutorial}}">
+                            {%endif%}
+                            <div class="tutorial-intro-heading d-flex flex-column">
+                                <h1>Learn {{tutorial}}</h1>
+                                <!-- <div class="d-flex tutorial-subcategories shadow">
+                                    <a href="#" class="active">Tutorial</a>
+                                    <a href="#">Examples</a>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="tutorial-intro-para">
+                            <p>
+                                {{tutorial.description|safe}}
+                            </p>
+                        </div>
+                        <div class="tutorial-example-toggles">
+                            <button class="tutorial-button active-toggle">Tutorial</button>
+                            {%if tutorial.tutorialExamples.all%}
+                            <button class="examples-button">Examples</button>
+                            {%endif%}
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 col-12">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-12"></div>
+                    <div class="col-lg-6 col-12">
+                        <div class="accordion" id="tutorial-categories-list">
+                            {%for category in categories%}
+                                <div class="accordion-item tutorial-accordion-item  mb-5">
+                                    <h2 class="accordion-header" id="panelsStayOpen-heading{{forloop.counter}}">
+                                    <button class="accordion-button tutorial-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{forloop.counter}}" aria-expanded="true" aria-controls="panelsStayOpen-collapse{{forloop.counter}}">
+                                        {{category}}
+                                    </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapse{{forloop.counter}}" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading{{forloop.counter}}">
+                           
+                            
+                                    {%if category.tutorialarticle.all %}
+                                        <div class="accordion-body tutorial-accordion-body d-flex flex-column">
+                                            {%for article in category.tutorialarticle.all reversed %}
+                                                {%if article.status == "publish"%}
+                                                <a href="{%url 'tutorialdetail' main_tutorial|modify_tutorial article.slug%}" class="d-flex align-items-center tutorial-article-link">
+                                                    <svg
+                                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-check-circle-fill"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                                        </svg> 
+                                                    <span> {{article}}  </span>
+                                                </a>
+                                                {%endif%}
+                                          {%endfor%}
+                                        </div>
+                                    {%endif%} 
+                                    </div>
+                                </div>
+                            {%endfor%}
+                        </div>
+                        <!-- example -->
+                        <div class="accordion" id="example-lists">
+                            <div class="accordion-item tutorial-accordion-item  mb-5">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingExample">
+                                <button class="accordion-button tutorial-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseExample" aria-expanded="true" aria-controls="panelsStayOpen-collapseExample">
+                                    {{tutorial}} Examples
+                                </button>
+                                </h2>
+                                {%if tutorial.tutorialExamples%}
+                                <div id="panelsStayOpen-collapseExample" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingExample">                        
+                                    <div class="accordion-body tutorial-accordion-body d-flex flex-column">
+                                        {%for example in tutorial.tutorialExamples.all%}
+                                            <a href="{{example.examplelink}}" class="d-flex align-items-center tutorial-article-link">
+                                                <svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-check-circle-fill"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                                    </svg> 
+                                                <span> {{example.exampletitle}} </span>
+                                            </a>
+                                        {%endfor%}
+                                    </div>
+                                </div>
+                                {%endif%}
+                            </div>
+                        </div> 
+                        <!-- examples -->
+                    </div>
+                    <div class="col-lg-3 col-12"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+   {%endblock%}
+
+<!-- prism -->
+{%block js%}
+<script>
+    function toggleExamplesTutorial()
+    {
+        allButtons.forEach(button=>{
+            button.classList.remove('active-toggle')
+        })
+        this.classList.add('active-toggle')
+        
+        if(this.textContent==="Tutorial")
+        {
+            document.querySelector('#tutorial-categories-list').style.display ="block";
+            document.querySelector('#example-lists').style.display ="none";
+        }
+        if(this.textContent==="Examples")
+        {
+            document.querySelector('#tutorial-categories-list').style.display ="none";
+            document.querySelector('#example-lists').style.display ="block";
+        }
+
+    }
+    let togglesButtons = document.querySelector('.tutorial-example-toggles');
+    let  allButtons = togglesButtons.querySelectorAll('button') 
+    allButtons.forEach(button => {
+        button.addEventListener('click', toggleExamplesTutorial)        
+    });
+</script>
+{%endblock%}

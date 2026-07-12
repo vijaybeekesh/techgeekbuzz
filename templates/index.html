@@ -1,0 +1,595 @@
+{%load static%}
+{% load custom_tag %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {%if bycategory%}
+  <meta name="robots" content="index" />
+  {%else%}
+  <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+  {%endif%}
+  
+  {%block metadata%}
+  <link rel="alternate" type="application/rss+xml" href="{%url 'blogfeed'%}" />
+  <meta name="description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.">
+  <link rel="canonical" href="https://www.techgeekbuzz.com/">
+  <meta name="keywords" content="Learn, Technology, Tutorial, Blog, Programming">
+  <meta name="google-site-verification" content="-Mm_fZbCn_Qa3RCm5-I6ErAKe_SOSZop0mtAYEdCL8A" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132423771-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-132423771-1');
+  </script>
+  <meta property="og:site_name" content="techgeekbuzz.com">
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="TechgeekBuzz: Let The Geek in You Always Stay In Buzz" />
+  <meta property="og:description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more." />
+  <meta property="og:url" content="https://www.techgeekbuzz.com/">
+  <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="400" />
+  <meta property="og:image:type" content="image/png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TechgeekBuzz: Let The Geek in You Always Stay In Buzz">
+  <meta name="twitter:description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.">
+  <meta name="twitter:url" content="https://www.techgeekbuzz.com/">
+  <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+  {%endblock%}
+  <meta name="twitter:site" content="@techgeekbuzz" />
+  <link rel="shortcut icon" href="{% static 'images/cropped-Techgeekbuzz-Final-Logo-e1611249305805.png'%}" type="image/x-icon">  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;500;700&family=Rubik:wght@400;500;700&display=swap">
+  
+  <!--BOOTSTRAP  -->
+  <link rel="stylesheet" href="{% static 'thirdparty/css/bootstrap.min.css'%}"/>
+
+  <!-- Style.css -->
+  {%include 'googlecred.html'%}
+  <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+  <link rel="stylesheet" href="{% static 'css/quries.css'%}">
+  {%block css%}
+    <link rel="stylesheet" href="{% static 'css/homepage.css'%}" />
+  {%endblock%}
+
+  {%block title%}<title>Techgeekbuzz: Let The Geek in You Always Stay In Buzz</title>{%endblock%}
+  
+  {%block headjs%}
+  {%endblock%}
+  {%if global_header%}
+    {{ global_header.0.script | safe }}
+  {%endif%}
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar pt-0 shadow-sm navbar-expand-lg navbar-light  flex-column">
+      <!-- hello bar -->
+      <!-- <div class="hello-bar">
+        <p class="hello-bar-message">Help Us Revolutionize the Tech World! <a href="https://www.paypal.com/paypalme/techatompvtltd" target="_blank">Donate Here</a>
+        </p>
+        <button class="hello-bar-button btn-close" aria-label="Close"></button>
+      </div> -->
+      <!-- Hello Bar ends -->
+
+      <div class="container">
+        <a class="navbar-brand d-inline-flex align-items-center" href="{%url 'index'%}">
+          <img src="{% static 'images/cropped-Techgeekbuzz-Final-Logo-e1611249305805.png'%}" alt="logo" class="d-inline-block align-text-top logo-img" />
+          <div class="d-flex flex-column ms-3">
+            <p class="logo-heading">TechGeekBuzz</p>
+            <p class="logo-text">Techies World for Tech Geeks</p>
+          </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+          aria-controls="offcanvasRight">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- nav bar for mobile view -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+          <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel"></h5>
+            <button type="button" class="btn-close text-reset btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" style="opacity: 1;"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="mobile-nav-list d-flex flex-column">
+              <li class="mobile-nav-item">
+                <a href="#" class="tutorial-dropdown d-flex w-100 justify-content-between align-items-center">
+                  <span>Tutorials</span>
+                  <button type="button" class="btn-close btn-close-white mobile-toggle-btn rotate-btn"></button>
+                </a>
+                <ul class="tutorial-dropdown-list">
+                    {% for tutorial in tutoriallist %}
+                    <li>
+                      <a class="dropdown-item" href="{%url 'tutorialintro' tutorial.name|modify_tutorial%}">
+                        <span>{{tutorial.name}}</span>
+                      </a>
+                      <hr class="dropdown-divider">
+                    </li>
+                  {%endfor%}
+                </ul>
+              </li>
+              <li class="mobile-nav-item"><a href="{%url 'posts'%}"> Blog</a></li>
+              <li class="mobile-nav-item"><a href="{%url 'about'%}">About Us</a></li>
+              <li class="mobile-nav-item"><a href="{%url 'about'%}#contact-us">Contact Us</a></li>
+              <li class="mobile-nav-item"><a href="{%url 'tools'%}">Tools</a></li>
+              <li class="mobile-nav-item"><a href="{%url 'roadmaps'%}"> Roadmaps </a></li>
+              <li class="mobile-nav-item">
+                <form class="d-flex w-100 justify-content-center nav-link align-item-center p-0" method="GET"
+                 action="{%url 'search'%}">
+                <input class="form-control me-2" type="text" placeholder="Search for tutorials and examples"
+                  name="search" {%if query%}value="{{query}}" {%endif%} required=true />
+                <input class="form-control me-2" type="hidden" name="next" value="{{request.path}}" />
+              </form>
+            </li>
+          </ul>           
+          </div>
+        </div>
+        <!-- Nav bar for mobile view ends -->
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center align-items-md-center ">
+            <li class="nav-item dropdown me-lg-3">
+              <a class="nav-link dropdown-toggle" href="#" id="tutorialdropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Tutorials
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="tutorialdropdown">
+                {% for tutorial in tutoriallist %}
+
+                <li>
+                  <a class="dropdown-item" href="{%url 'tutorialintro' tutorial.name|modify_tutorial%}">
+                    {% if tutorial.image%}
+                    <img src="{{tutorial.image.url}}" alt="{{tutorial.name}}">
+                    {%endif%}
+                    <span>{{tutorial.name}}</span>
+                  </a>
+                  <hr class="dropdown-divider">
+                </li>
+
+                {%endfor%}
+              </ul>
+            </li>
+
+            <li class="nav-item me-lg-3">
+              <a class="nav-link" href="{%url 'posts'%}">Blog</a>
+            </li>
+            <li class="nav-item me-lg-3">
+              <a class="nav-link" href="{%url 'tools'%}">Tools</a>
+            </li>
+            <li class="nav-item me-lg-3">
+              <a class="nav-link" href="{%url 'roadmaps'%}"> Roadmaps </a>
+            </li>
+ 
+            <li class="nav-item me-lg-3">
+              <form class="d-flex w-100 justify-content-center nav-link align-item-center" method="GET"
+                action="{%url 'search'%}">
+                <input class="form-control me-2" type="text" placeholder="Search for tutorials and examples"
+                  name="search" {%if query%}value="{{query}}" {%endif%} required=true />
+                <input class="form-control me-2" type="hidden" name="next" value="{{request.path}}" />
+              </form>
+            </li>
+            <!-- <li class="nav-item align-self-center">
+              <button data-bs-toggle="modal" data-bs-target="#signup" id="signup-btn">Log in/Sign
+                up</button>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  {%block main%}
+  <!-- Main Section Started -->
+  <main style="margin-top: 2rem;">
+    <!-- hero section started -->
+    <section class="hero container">
+      <div class="background-image-hero"></div>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 col-12">
+
+            <div class="hero-circle"></div>
+            <h1 class="primary-heading" id="hero-heading">
+              Become a Tech Professional for <span>Free</span>
+            </h1>
+            <p class="hero-description">
+              Ready to begin your journey in the world of tech? We are here to help you throughout the path of becoming a tech professional and explore the various possibilities of innovation and success.
+            </p>
+            <p class="hero-description">
+              Read tutorials, go through detailed examples, and try the code yourself. Take the lead in the world of tech with TechGeekBuzz.
+            </p>
+
+          </div>
+          <div class="col-lg-6 col-12">
+            <div>
+              <img src="{% static 'images/hero.png'%}" class="img-fluid" alt="Techgeekbuzz Hero Image" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- End Hero Section -->
+
+    <!-- Start Subscribe section -->
+    <section class="subscribe container-fluid d-flex flex-column  mt-5 ">
+      <h3 class=" subscribe-title text-center">Get the latest tutorials and updates</h3>
+      <form class="subscribe-form text-center" method="POST" action="{%url 'subscribe'%}">
+        {%csrf_token%}
+        <input type="email" placeholder="Enter email address" class="w-50" name="email" required>
+        <input type="hidden" value="{{request.path}}" name="next">
+        <button> Subscribe</button>
+      </form>
+    </section>
+    <!-- End Subscribe Section -->
+
+    <!-- Start Learn Program Section -->
+    <section class="learn">
+      <div class="container">
+        <h2 class="text-center learn-heading">Choose what to learn </h2>
+        <p class="text-center learn-heading-description">Start learning popular programming languages</p>
+        <div class="container mt-5 py-5">
+          <div class="row g-5 card-container justify-content-center">
+            {% for tutorial in tutoriallist %}
+            <div class="col-lg-3 col-12">
+                <div class="card d-flex flex-column align-items-center">
+                    {% if tutorial.image%}
+                    <figure class="tutorial-logo-container">
+                      <img src="{{tutorial.image.url}}" class="tutorial-logo" alt="{{tutorial.name}}">
+                    </figure>
+                    {%endif%}
+                    <a href="{%url 'tutorialintro' tutorial.name|modify_tutorial%}" style="text-decoration: none;">
+                      <h3 class="text-center card-head"> {{tutorial.name}} </h3>
+                    </a>
+                    <a href="{%url 'tutorialintro' tutorial.name|modify_tutorial%}" class="learn-more">Learn More &rarr;
+                    </a>   
+                </div>
+            </div>
+            {%endfor%}
+          </div>
+        </div>
+    </section>
+    <!-- End learn Program Section -->
+    <!-- Start Interview Section -->
+    <section class="mt-5">
+      <div class="container">
+        <div class="row align-items-center gx-sm-3">
+          <div class="col-lg-7 col-12">
+            <img src="{% static 'images/Interview.png'%}" class="img-fluid" alt="interview image">
+          </div>
+          <div class="interview-block col-lg-5 col-12">
+            <div class="interview-text">
+              <h2 class="interview-heading">
+                Trending Interview Questions
+              </h2>
+              <p class="interview-description">
+                Are you job-ready? Check here for free!
+              </p>
+              <p class="interview-description2">
+                Are you an aspirant starting from scratch or a professional looking for a job change? Strengthen your job preparation with our collection of frequently asked interview questions.
+              </p>
+              <a href="/query/?search=interview" class="button">Prepare for Interviews</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Interview Section -->
+
+    <!-- Need Section Start -->
+    <section class="my-5">
+      <div class="container">
+        <h2 class="need-heading">How does <span>Techgeekbuzz</span> help you?</h2>
+        <hr class="horizontal-row" />
+        <div class="container features">
+          <div class="row my-3 g-0">
+            <!-- first feature -->
+            <div class="col-lg-6 col-12  my-lg-5  order-lg-1 order-1 need-image">
+              <img src="{% static 'images/Learn from advance-feature.png'%}" alt="learn from basic to advance"
+                class="img-fluid">
+            </div>
+            <div class="col-lg-6 col-12  my-lg-5 mb-5 order-lg-2 order-2 need-description d-flex flex-column">
+              <h2 class="shadow-number"> 01</h2>
+              <h2>
+                Start from the Basics and Work Your Way to the Top
+              </h2>
+              <p>
+                Our tutorials are designed for learners of all levels. Concepts and the code are described in an easy-to-comprehend manner.
+              </p>
+            </div>
+            <!-- first feature ends -->
+            <br>
+
+            <!-- Second feature starts -->
+            <div
+              class="col-lg-6 col-12 my-lg-5 mb-5 order-lg-3 order-4 need-description d-flex flex-column even-features">
+              <h2 class="shadow-number"> 02</h2>
+              <h2>
+                Elaborate Examples
+              </h2>
+              <p>Interactive examples are embedded within
+                the content to keep the reader engaged
+                and to provide practical learning.</p>
+            </div>
+            <div class="col-lg-6 col-12 my-lg-5 mt-5 order-lg-4 order-3 need-image">
+              <img src="{% static 'images/interactive-examples.png'%}" alt="interactive-examples" class="img-fluid">
+            </div>
+            <!-- second feature  ends-->
+            <br>
+
+            <!-- third feature -->
+            <div class="col-lg-6 col-12 my-lg-5 mt-5 order-lg-5 order-5 need-image">
+              <img src="{% static 'images/trusty-worthy-content.png'%}" alt="learn from basic to advance"
+                class="img-fluid">
+            </div>
+            <div class="col-lg-6 col-12 my-lg-5 mb-5 order-lg-6 order-6 need-description d-flex flex-column">
+              <h2 class="shadow-number"> 03</h2>
+              <h2>Quality, Genuine Content</h2>
+              <p>
+                Our content is backed by extensive research and study by our writers and editorial teams. We strive to be accurate and up to date!
+              </p>
+            </div>
+            <!-- third feature ends -->
+            <br>
+
+            <!-- 4th  feature starts -->
+            <div
+              class="col-lg-6 col-12 my-lg-5 mb-5 order-lg-7 order-8 need-description d-flex flex-column even-features">
+              <h2 class="shadow-number"> 04</h2>
+              <h2>Interactive Examples</h2>
+              <p>Interactive examples are embedded within
+                the content to keep the reader engaged
+                and to provide practical learning.</p>
+            </div>
+            <div class="col-lg-6 col-12 my-lg-5  mt-5 order-lg-8 order-7 need-image">
+              <img src="{% static 'images/coding practice.png'%}" alt="coding practice" class="img-fluid">
+            </div>
+            <!-- 4th feature  ends-->
+            <br>
+
+            <!-- 5th feature -->
+            <div class="col-lg-6 col-12 my-lg-5 mt-5 order-lg-9 order-9 need-image">
+              <img src="{% static 'images/code-cater.png'%}" alt="code cater" class="img-fluid">
+            </div>
+            <div class="col-lg-6 col-12 my-lg-5 mb-5 order-lg-10 order-10 need-description d-flex flex-column">
+              <h2 class="shadow-number"> 05</h2>
+              <h2>Comprehensive </h2>
+              <p>
+                Comprehensiveness is our forte. All our content is complete with basics, advanced, and everything in between.
+              </p>
+            </div>
+            <!-- 5th feature ends -->
+            <br>
+
+            <!-- 4th  feature starts -->
+            <div
+              class="col-lg-6 col-12 my-lg-5 mb-5 order-lg-11 order-12 need-description d-flex flex-column even-features">
+              <h2 class="shadow-number"> 06</h2>
+              <h2>
+                Code Complete
+              </h2>
+              <p>
+                To learn to code you have to do it. Our coding articles feature code snippets that let you understand the code while tinkering with it to learn better.
+              </p>
+            </div>
+            <div class="col-lg-6 col-12 my-lg-5 mt-5 order-lg-12 order-11 need-image">
+              <img src="{% static 'images/comprehension.png'%}" alt="comprehension" class="img-fluid">
+            </div>
+            <!-- 4th feature  ends-->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Need Section Ends -->
+    <!-- Homepage Blog section -->
+    <section class="mt-5 homepage-popular-blogs">
+      <div class="container-fluid">
+        <h2 class="homepage-blog-heading">Popular Blogs</h2>
+        <hr class="horizontal-row" />
+      </div>
+      <div class="container">
+        <div class="row blogs-list justify-content-between">
+          {%for popular_post in popular%}
+          <!-- Blog {{forloop.counter}} Start -->
+          <div
+            class="col-lg-4 col-12 mx-auto mb-3 popular-blogs-card d-flex flex-column justify-content-between pb-3 shadow">
+            <!-- <div class="shadow container"> -->
+            <div class="blog-card d-flex flex-column">
+              {%if popular_post.featured_image%}
+               <a href="{%url 'postdetail' popular_post.slug %}"> 
+                 <img src="{{popular_post.featured_image.url}}" class="img-fluid" alt="{{popular_post.title}}">
+                </a> 
+              {%endif%}
+              <div class="d-flex">
+                {%for category in popular_post.category.all%}
+                <a href="{%url 'postbycategory' category.category_name|slugify%}">
+                   <span>{{category.category_name|upper}}
+                    {%if not forloop.last%}
+                    / &nbsp; 
+                   {%endif%}
+                   </span>
+                  
+                  </a>
+                {%endfor%}
+              </div>
+              <h3><a href="{%url 'postdetail' popular_post.slug %}">{{popular_post.title}}</a></h3>
+              <p>
+                {% autoescape off %}
+                  {{popular_post.content|striptags|truncatechars:100}}
+                {% endautoescape %}
+              </p>
+            </div>
+            <div class="d-flex align-items-center justify-content-between">
+              <date> {{popular_post.date_posted|date:"j F, Y"}}</date>
+            </div>
+            <!-- </div>      -->
+          </div>
+          <!-- Blog {{forloop.counter}}  ends -->
+          {%endfor%}
+        </div>
+      </div>
+
+    </section>
+    <!-- Homepage Blog section ends -->
+  </main>
+  {%endblock%}
+  <!-- Main section ended -->
+
+  <footer>
+    <div class="container footer-section pb-5">
+      <div class="upper-footer mb-5">
+        <div class="row justify-content-evenly">
+          <div class="col-lg-2 col-6 mb-3">
+            <h3> Tutorials</h3>
+            <ul class="footer-list d-flex flex-column">
+              {% for tutorial in tutoriallist %}
+              <li><a href="{%url 'tutorialintro' tutorial.name|modify_tutorial%}">{{tutorial.name}} Tutorial</a></li>
+              {%endfor%}
+            </ul>
+          </div>
+          
+          <div class="col-lg-2 col-6 mb-3">
+            <h3> Top Books</h3>
+            <ul class="footer-list d-flex flex-column">
+              <li><a href="/blog/best-python-books/">Python Books</a></li>
+              <li><a href="/blog/best-cpp-books/">C++ Books</a></li>
+              <li><a href="/blog/best-c-books/">C Books</a></li>
+              <li><a href="/blog/best-java-books/">Java Books</a></li>
+              <li><a href="/blog/best-php-books-for-programmers/">PHP Books</a></li>
+              <li><a href="/blog/data-science-books/">Data Science Books</a></li>
+              <li><a href="/blog/best-r-books/">R Books</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-6 mb-3">
+            <h3> Top Interview Questions</h3>
+            <ul class="footer-list d-flex flex-column">
+              <li><a href="/blog/python-interview-questions/">Python Interview Questions</a></li>
+              <li><a href="/blog/top-cpp-interview-questions/">C++ Interview Questions</a></li>
+              <li><a href="/blog/c-interview-questions/">C Interview Questions</a></li>
+              <li><a href="/blog/core-java-interview-questions/">Java Interview Questions</a></li>
+              <li><a href="/blog/php-interview-questions/">PHP Interview Questions</a></li>
+              <li><a href="/blog/top-jquery-interview-questions/">jquery Interview Questions</a></li>
+              <li><a href="/blog/data-science-interview-questions/">Data Science Interview Questions</a></li>
+              <li><a href="/blog/programming-interview-questions/">Programming Interview Questions</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-6 mb-3">
+            <h3> Top Projects</h3>
+            <ul class="footer-list d-flex flex-column">
+              <li><a href="/blog/python-projects/">Python Projects</a></li>
+              <li><a href="/blog/cpp-projects/">C++ Projects</a></li>
+              <li><a href="/blog/html-projects/">HTML Projects</a></li>
+              <li><a href="/blog/java-projects/">Java Projects</a></li>
+              <li><a href="/blog/php-projects/">PHP Projects</a></li>
+              <li><a href="/blog/android-projects/">Android Projects</a></li>
+              <li><a href="/blog/best-javascript-projects/">JavaScript Projects</a></li>
+              <li><a href="/blog/top-data-science-project-ideas/">Data Science Projects</a></li>
+              <li><a href="/blog/artificial-intelligence-projects/">AI Projects</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+      <div class="row footer-up pb-3">
+        <div class="col-lg-4 col-12">
+          <div class="d-flex align-items-center">
+            <a href="{%url 'index'%}"><img
+                src="{% static 'images/cropped-Techgeekbuzz-Final-Logo-e1611249305805.png'%}" alt="techgeekbuzz logo"></a>
+            <div class="footer-logo-heading ms-3 d-flex flex-column">
+              <h3><a href="{%url 'index'%}">TechGeekBuzz</a></h3>
+              <a href="{%url 'index'%}">
+                <p>Techies World for Tech Geeks</p>
+              </a>
+            </div>
+          </div>
+          <h2 class="mt-5 mb-3">Get the latest tutorials and updates</h2>
+          <form method="POST" action="{%url 'subscribe'%}" class="d-flex align-items-center">
+            {%csrf_token%}
+            <input type="email" placeholder="Enter email address" name="email" required>
+            <input type="hidden" value="{{request.path}}" name="next">
+            <input type="submit" value="Subscribe"></input>
+          </form>
+        </div>
+        <div class="col-lg-8 col-12 d-flex justify-content-evenly p-3 flex-wrap footer-nav">
+          <a href="{%url 'about'%}"> About Us </a>
+          <a href="{%url 'advertise'%}"> Advertising </a>
+          <a href="{%url 'privacy'%}"> Privacy Policy </a>
+          <a href="{%url 'term-and-condition'%}"> Term and Condition </a>
+          <a href="{%url 'posts'%}"> Blog </a>
+          <a href="{%url 'writeforus'%}"> Write for us </a>
+          <a href="{%url 'roadmaps'%}"> Roadmaps </a>
+          <a href="{%url 'allstories'%}"> Web Stories </a>
+
+        </div>
+      </div>
+      <div class="footer-down mt-3 d-flex align-item-center justify-content-between">
+        <p> &copy; TechGeekbuzz All rights reserved.</p>
+        <ul class="d-flex">
+          <li class="ms-3"><a href="https://www.facebook.com/techgeekbuzz" aria-label="Techgeekbuzz Facebook" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path
+                  d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+              </svg></a></li>
+          <li class="ms-3"><a href="https://www.instagram.com/techgeek.buzz/" aria-label="Techgeekbuzz Instagram" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                <path
+                  d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+              </svg></a></li>
+          <li class="ms-3"><a href="https://twitter.com/techgeekbuzz" aria-label="Techgeekbuzz Twitter" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                <path
+                  d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+              </svg></a></li>
+          <!-- <li class="ms-3"><a href="https://www.linkedin.com/company/techatom-pvt-ltd/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                <path
+                  d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+              </svg></a></li> -->
+        </ul>
+
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'thirdparty/js/bootstrap.min.js'%}"></script>
+  <script src="{%static 'js/script.js'%}"></script>
+  {%block js%}
+  {%endblock%}
+</body>
+{%if messages%}
+<!-- Modal -->
+<div class="modal fade" id="message" tabindex="-1" aria-labelledby="messageLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {% for message in messages %} {{message}} {%endfor%}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var myModal = new bootstrap.Modal(document.getElementById('message'), {
+    keyboard: false
+  })
+  myModal.show()
+</script>
+{%endif%}
+
+</html>

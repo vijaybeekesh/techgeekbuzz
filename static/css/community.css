@@ -1,0 +1,28 @@
+.blog-section{
+    position: relative;
+}
+
+.sidebar-nav{
+    margin-top: 2rem;
+    position: sticky;
+    top: 8rem;
+}
+
+.sidebar-items:link, .sidebar-items:visited{
+    display: block;
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+.sidebar-items>i{
+    margin-right: 2rem;
+}
+
+.sidebar-items:hover, .sidebar-items.active{
+    background: #E1EEFF;
+    border-radius: 10px;
+    color: #003174;
+}

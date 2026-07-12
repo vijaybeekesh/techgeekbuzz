@@ -1,0 +1,223 @@
+
+.main-heading{
+    font-size: 4rem;
+    text-align: center;
+    color: #000;
+}
+
+.about-hero-section{
+    margin-top: 2rem;
+}
+
+.hero-description{
+    font-size: 4.5rem;
+    line-height: 1.2;
+    color: #003174;
+    font-weight: bold;
+    max-width: 39rem;
+    margin-left: auto;
+    text-align: center;
+}
+.about-us-horizontal-row{
+    margin-left: auto;
+    width: 68%;
+    color:#8406E8;
+    border: 0.7px solid #8406E8;
+    opacity: 1;
+}
+
+.about-hero-img{
+    height: auto;
+    display: block;
+    margin: 0px auto;
+}
+
+.hero-sub-description{
+    font-size: 1.8rem;
+    text-align: center;
+    line-height: 1.3;
+    color: #003174;
+    margin: 2rem;
+    font-weight: bold;
+}
+
+.company-name{
+   background-color:  #5624D0;
+   margin-top: 5rem;
+}
+.company-name > p
+{
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1.5rem 0px;
+ }
+
+ .our-approach{
+     text-align: center;
+     margin-top: 6rem;
+ }
+
+ .our-approach > h2
+ {
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: bold;
+    color: #003174;
+ }
+ 
+ .our-approach > p
+ {
+     font-size: 1.8rem;
+     max-width: 100rem;
+     margin: 3rem auto 4rem auto;
+     font-weight: bold;
+     line-height: 1.3;
+     color: #003174;
+ }
+
+ .our-story{
+     padding: 5rem 0px;
+     margin-top: 2rem;
+     text-align: center;
+     background-color: #A435F0;
+ }
+.our-story  >h2{
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: bold;
+    color: white;
+ }
+
+ .our-story > p{
+    font-size: 1.8rem;
+    max-width: 100rem;
+    margin: 3rem auto 4rem auto;
+    font-weight: 400;
+    line-height: 1.3;
+    color: white;
+ }
+ .our-story > a{
+     background-color: wheat;
+     font-size: 1.5rem;
+     line-height: 1.4;
+     padding: 0.9rem 3rem;
+     border-radius: 1rem;
+     font-weight: bold;
+     transition:  1s ;
+ }
+
+ .our-story > a:hover{
+    background-color: black;
+    color: wheat;
+}
+
+
+ .about-us-features{
+    /* padding: 5rem 0px; */
+    background: rgba(70, 137, 255, 0.05);
+ }
+ .about-us-card{
+     text-align: center;
+     color: white;
+     padding: 4rem;
+     border-radius: 5rem;
+ }
+ .about-us-card h2{
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+.about-us-card p{
+    font-size: 1.3rem;
+    line-height: 1.2;
+    margin-bottom: 5rem;
+}
+.about-us-card a{
+    font-size: 1.4rem;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    width: 14rem;
+    text-align: center;
+    padding: 1rem 1.3rem;
+    font-weight: bold;
+    border-radius: 10rem;
+    transition: 1s;
+}
+.about-us-card a:hover{
+    background-color: black;
+    color: white;
+}
+ .card-1{
+     background-color: #E1AA1C;
+ }
+
+ .card-2{
+    background-color: #3596F0;
+}
+.card-3{
+    background-color:#F08F35;
+}
+
+.card-container{
+    margin-bottom: 2rem;
+}
+/* Our Team */
+.our-team{
+    padding: 5rem 0px;
+}
+
+.our-team>h2{
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+.team-card {
+    padding: 3rem;
+    background-color: #F5F9FF;
+    border-radius: 4rem;
+}
+
+.team-card img {
+    border-radius: 50%;
+    max-width: 18rem;
+}
+.team-card>h5 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1.5rem 0px 1.2rem 0px;
+}
+.team-card >p{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Contact us */
+.contact-us>h2{
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: bold;
+    text-align: center;
+}
+.contact-subscript{
+    max-width: 63rem;
+}
+.subscript{
+    text-align: center;
+    font-size: 1.3rem;
+    color: #999;
+    font-weight: bold;
+}
+.subscript>a:link{
+    text-decoration: none;
+}
+.subscript>a:hover{
+    color:#3596F0;
+}
+.social-media-contacts{
+    list-style: none;
+}
+/* Contact us ends */

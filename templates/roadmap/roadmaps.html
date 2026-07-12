@@ -1,0 +1,81 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+        <meta name="description" content="Wish to become an engineer/developer/designer but don’t know where to kick start? Accomplish you goals with our roadmaps!" />
+
+        <meta name="keywords" content="Learn, Technology, Tutorial, Blog, Programming">
+
+        <meta property="og:site_name" content="techgeekbuzz.com">
+        <meta property="og:locale" content="en_GB" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Roadmap For Developers" />
+        <meta property="og:description" content="Wish to become an engineer/developer/designer but don’t know where to kick start? Accomplish you goals with our roadmaps!" />
+        <meta property="og:url" content="https://www.techgeekbuzz.com/roadmap/">
+        <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="400" />
+        <meta property="og:image:type" content="image/png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Roadmap For Developers">
+        <meta name="twitter:description" content="Wish to become an engineer/developer/designer but don’t know where to kick start? Accomplish you goals with our roadmaps!">
+        <meta name="twitter:url" content="https://www.techgeekbuzz.com/roadmap/">
+        <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+ {%endblock%}
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/homepage.css'%}"/>
+    <link rel="stylesheet" href="{% static 'css/roadmaps.css'%}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+{%endblock%}
+
+{%block title%}
+<title>Roadmaps for the Developers-Techgeekbuzz</title>
+{%endblock%}
+{%block headjs%}
+
+{%endblock%}
+
+
+{%block main%}
+    <main style="margin-top:0rem;">
+        <section class="roadmaps">
+            <div class="roadmaps-header">
+                <h1>Popular Roadmaps</h1>
+                <p>
+                    Wish to become an engineer/developer/designer but don’t know where to kick start? 
+                </p>
+                <p>    
+                    Accomplish you goals with our roadmaps!
+                </p>
+                <p>
+                    Our roadmaps will guide you in your learning journey and help you achieve your dream job.
+                </p>
+            </div>
+            <div class="roadmaps-list d-flex flex-wrap justify-content-center gap-4 py-5">
+                {%if all_roadmaps%}
+                    {%for roadmap in all_roadmaps%}
+                    <!-- roadmap {{forloop.counter}} start-->
+                    <a href="{%url 'roadmap_detail' roadmap.roadmap_url%}" class="roadmap-card d-block shadow">
+                        <figure>
+                            {%if roadmap.image%}
+                            <img src="{{roadmap.image.url}}" class="img-fluid">
+                            {%else%}
+                            <img src="{%static 'images/ds.png'%}" class="img-fluid">
+                            {%endif%}
+                        </figure>
+                        <h2>{{roadmap.name}}</h2>
+                        <p>{{roadmap.description}}</p>
+                    </a>
+                    <!-- roadmap {{forloop.counter}} ends -->
+                    {%endfor%}
+                {%endif%}
+            </div>
+        </section>
+    </main>
+{%endblock%}
+
+<!-- prism -->
+{%block js%}
+{%endblock%}

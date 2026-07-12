@@ -1,0 +1,18 @@
+.contact-us >h2{
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+
+.subscript {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #999;
+    font-weight: bold;
+}
+.social-media-contacts {
+    list-style: none;
+}

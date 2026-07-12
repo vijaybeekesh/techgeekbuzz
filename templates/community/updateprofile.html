@@ -1,0 +1,103 @@
+{%extends 'community/base.html'%}
+{%load static%}
+{% load custom_tag %}
+
+
+
+  {%block metadata%}
+  <link rel="alternate" type="application/rss+xml" href="{%url 'blogfeed'%}" />
+  <meta name="description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.">
+  <meta name="keywords" content="Learn, Technology, Tutorial, Blog, Programming">
+  <meta property="og:site_name" content="techgeekbuzz.com">
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="TechgeekBuzz: Let The Geek in You Always Stay In Buzz" />
+  <meta property="og:description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more." />
+  <meta property="og:url" content="https://www.techgeekbuzz.com/">
+  <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="400" />
+  <meta property="og:image:type" content="image/png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TechgeekBuzz: Let The Geek in You Always Stay In Buzz">
+  <meta name="twitter:description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.">
+  <meta name="twitter:url" content="https://www.techgeekbuzz.com/">
+  <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+  {%endblock%}
+
+
+  {%block css%}
+  <link rel="stylesheet" href="{%static 'css/communityprofile.css'%}">
+  <link rel="stylesheet" href="{%static 'css/communityprofileupdate.css'%}">
+  
+  {%endblock%}
+
+  {%block title%}<title>User Profile</title>{%endblock%}
+  
+  {%block headjs%}
+  {%endblock%}
+
+  {%block main%}
+  <main style="margin-top:6rem;">
+    <section class="profile-section">
+        <!-- user profile -->
+        <div class="user-profile">
+            {%if profile.profile_picture%}
+                <img src="{{profile.profile_picture.url}}" class="img-fluid user-image" alt="{{user.username}} profile">
+            {%else%}
+                <img src="{%static 'images/default-user.png'%}" class="img-fluid user-image">
+            {%endif%}     
+            <form enctype="multipart/form-data" method="POST" class="form-floating">
+                {%csrf_token%}
+                <div class="form-items-image">
+                    {{form.profile_picture}}
+                </div>
+                <div class="form-items">
+                    <hr>
+                    <h3 class="form-subheading">Person Information:</h3>
+                    <label for="id_display_name">Display Name:</label>
+                    {{form.display_name}}
+                    <label for="id_bio">Bio:</label>
+                    {{form.bio}}
+                    <div class="d-flex align-item-center mt-4 gap-3">
+                        <label for="id_show_email" class="m-0">Show Email on the Profile</label>
+                        {{form.show_email}}
+                    </div>
+                </div>
+
+                <div class="form-items">
+                    <hr>
+                    <h3 class="form-subheading">Social:</h3>
+                    <label for="id_linkdin">LinkdIn:</label>
+                    {{form.linkedin}}
+                    <label for="id_github">Github:</label>
+                    {{form.github}}
+                    <label for="id_stackoverflow">Stackoverflow:</label>
+                    {{form.stackoverflow}}
+                    <label for="id_instagram">Instagram:</label>
+                    {{form.instagram}}
+                    <label for="id_twitter">Twitter:</label>
+                    {{form.twitter}}
+                    <label for="id_facebook">Facebook:</label>
+                    {{form.facebook}}
+                    <label for="id_website">Website:</label>
+                    {{form.website}}
+                </div>
+
+                <div class="form-items">
+                    <hr>
+                    <h3 class="form-subheading">Work:</h3>
+                    <label for="id_skills">Skills:</label>
+                    {{form.skills}}
+                    <label for="id_work">Work:</label>
+                    {{form.work}}
+                    <label for="id_location">Location:</label>
+                    {{form.location}}
+                </div>
+                <button type="submit" class="btn btn-outline-primary save-profile">Update Profile</button>
+            </form>   
+        </div>
+        <!-- user profile ends -->
+    </section>
+  </main>
+  {%endblock%}

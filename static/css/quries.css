@@ -1,0 +1,178 @@
+/* rem and em do not depend on html font-size media query */
+/* 1em=1rem = 16px = 1354/16 = 84 */
+
+
+
+  /* for big screens */
+@media screen and (min-width: 576px) {
+
+    main{
+        margin-top: 15rem;
+      }
+     
+    .container, .container-lg {
+        max-width: 1200px;
+    }
+    .order-lg-6{
+      order:6;
+    }
+    
+    .order-lg-7{
+      order:7;
+    }
+    
+    .order-lg-8{
+      order:8;
+    }
+    
+    .order-lg-9{
+      order:9;
+    }
+    .order-lg-10{
+      order:10;
+    }
+    .order-lg-11{
+      order:11;
+    }
+    .order-lg-12{
+      order:12;
+    }
+
+    .hero-circle {
+        width: 27rem;
+        height: 27rem;
+        border-radius: 50%;
+        background: linear-gradient(
+          180deg,
+          rgba(224, 23, 255, 0.13) 50%,
+          rgba(14, 37, 242, 0) 100%
+        );
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+      }
+
+      
+    .even-features{
+      text-align: end;
+    }
+    .footer-section{
+        padding-top:5rem ;
+    }
+
+    .learn-btn{
+      font-size: 1.6rem;
+      font-weight: bold;
+      max-width: 27rem;
+      padding: 1rem 2rem;
+      margin-top: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0px 4px 10px rgba(0, 108, 255, 0.57);
+    }
+
+   
+}
+
+
+/* for mobiles */
+
+@media screen and (max-width: 576px) {
+
+      .order-6{
+        order:6;
+      }
+      
+      .order-7{
+        order:7;
+      }
+      
+      .order-8{
+        order:8;
+      }
+      
+      .order-9{
+        order:9;
+      }
+      .order-10{
+        order:10;
+      }
+      .order-11{
+        order:11;
+      }
+      .order-12{
+        order:12;
+      }
+
+
+    .hero-circle {
+        width: 27rem;
+        height: 27rem;
+        border-radius: 50%;
+        background: linear-gradient(
+          180deg,
+          rgba(224, 23, 255, 0.13) 50%,
+          rgba(14, 37, 242, 0) 100%
+        );
+        position: absolute;
+        top: -3rem;
+        left: 0rem;
+      }
+
+      .interview-block{
+          text-align: center;
+      }
+
+
+      .footer-section{
+        padding-top:5rem ;
+    } 
+    .hero-description{
+      text-align: center;
+    }
+    .about-us-horizontal-row{
+      width: 80%;
+      margin: 0px auto;
+    }
+    .about-hero-img
+    {
+      width: 100%;
+      margin: 2em 0px;
+    }
+  }
+
+  /* On screens that are 992px or less*/
+@media screen and (max-width: 982px) {
+  div#navbarSupportedContent {
+    min-height: 100vh;
+}
+a.nav-link{
+  font-size: 2rem;
+  line-height: 2;
+}
+.need-description{
+  text-align: center;
+}
+}
+@media screen and (max-width: 367px) {
+.need-description>h1{
+  font-size: 3rem !important;
+}
+.need-description>h2{
+  font-size: 2rem !important;
+}
+.need-description>p{
+  font-size: 1rem !important;
+}
+}
+
+
+@media screen and (min-width: 991px) {
+  .article-container{
+    position: relative;
+  }
+  .article-container>aside{
+    position: sticky;
+    top:62px;
+    max-height: 100rem;
+  }
+}

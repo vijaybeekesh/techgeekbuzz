@@ -1,0 +1,265 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+
+        <link rel="alternate" type="application/rss+xml" href="{%url 'blogfeed'%}" />
+        <link rel="canonical" href="https://www.techgeekbuzz.com/{{page_link}}{{category_name|slugify}}/" />
+
+        {%if bycategory%}
+        <meta name="description" content="{{category_name}} latest post by Techgeekbuzz">
+        {%endif%}
+        {%if by_user%}
+        <meta name="description" content="{{description|truncatechars:150}}">
+        {%endif%}
+        <meta name="keywords" content="{{keywords}}{{category_name}}">
+
+        <meta property="og:site_name" content="techgeekbuzz.com">
+        <meta property="og:locale" content="en_GB" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="{{title}}{{category_name}}" />
+        {%if by_user.profile.bio%}
+            <meta property="og:description" content="{{by_user.profile.bio}}" />
+        {%endif%}
+        
+        <meta property="og:url" content="https://www.techgeekbuzz.com/{{page_link}}{{category_name|slugify}}">
+        {%if by_user.profile.profile_picture%}
+        <meta property="og:image" content="https://www.techgeekbuzz.com{{by_user.profile.profile_picture.url}}" />
+        {%else%}
+        <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+        {%endif%}
+        <meta property="og:image:width" content="400" />
+        <meta property="og:image:height" content="400" />
+        <meta property="og:image:type" content="image/png/jpeg/jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        {%if bycategory%}
+            <meta name="twitter:title" content="{{category_name|title}} Category- Techgeekbuzz">
+            <meta name="twitter:description" content="{{category_name|title}} latest post- Techgeekbuzz">
+        {%endif%}
+        {%if by_user%}
+            <meta name="twitter:title" content="{{title}}">
+            <meta name="twitter:description" content="{{description|truncatechars:150}}">
+        {%endif%}
+        <meta name="twitter:url" content="https://www.techgeekbuzz.com/{{page_link}}{{category_name|slugify}}">
+        {%if by_user.profile.profile_picture%}
+        <meta name="twitter:image" content="https://www.techgeekbuzz.com{{by_user.profile.profile_picture.url}}">
+        {%else%}
+        <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+        {%endif%}
+
+{%endblock%}
+
+{%block css%}
+<link rel="stylesheet" href="{% static 'css/blog.css'%}">
+{%endblock%}
+
+{%block title%}
+<title>
+    {%if by_user%}
+    {{by_user|title}} -
+    {%endif%}
+    {%if query%}
+    {{query|title}}
+    {%endif%}
+    {%if bycategory%}
+    {{category_name|title}} -
+    {%endif%}
+
+    Techgeekbuzz Blogs
+</title>
+{%endblock%}
+
+
+{%block headjs%}
+{% comment %} <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6202674638312019",
+    enable_page_level_ads: true
+  });
+	</script> {% endcomment %}
+{%endblock%}
+
+
+{%block main%}
+<main style="margin-top: 2rem;">
+    {%if page_obj%}
+    {%if by_user%}
+    <section class="author-section">
+        <div class="author-card d-flex shadow align-items-center">
+            <figure class="authour-image">
+                {%if by_user.profile.profile_picture%}
+                <img class="author-detail-img" src="{{by_user.profile.profile_picture.url}}" alt="{{by_user.username}}" />
+                {%endif%}
+            </figure>
+            <div class="authour-detail d-flex flex-column">
+                <div class="author-heading d-flex align-items-center justify-content-between">
+                    <span class="author-name">{{by_user.first_name}} {{by_user.last_name}}</span> 
+                    <ul class="d-flex">
+                        {%if by_user.profile.facebook %}
+                        <li class="ms-3"><a href="{{by_user.profile.facebook}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                              <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
+                            </svg></a></li>
+                        {%endif%}
+                        {%if by_user.profile.instagram %}
+                        <li class="ms-3"><a href="{{by_user.profile.instagram}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                              <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                            </svg></a></li>
+                        {%endif%}
+                        {%if by_user.profile.twitter %}
+                        <li class="ms-3"><a href="{{by_user.profile.twitter}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                              <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
+                            </svg></a></li>
+                        {%endif%}
+                        {%if by_user.profile.linkedin%}
+                        <li class="ms-3"><a href="{{by_user.profile.linkedin}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                              <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
+                            </svg></a></li>
+                        {%endif%}
+                      </ul>
+                </div> 
+                <p class="author-detail-para">
+                    {%if by_user.profile.bio%}
+                        {{by_user.profile.bio}}
+                    {%endif%}
+                </p>
+            </div>
+        </div>
+    </section>
+    {%endif%}
+
+    <section class=" categories-blog" style="margin-top:9rem">
+        <div class="container my-5">
+            
+            <div class="row justify-content-evenly">
+                {%if bycategory%}
+                <div class="main-blog-heading d-flex align-items-center justify-content-center">
+                    <hr> 
+                        <h1>{{category_name|upper}}</h1>
+                    <hr>
+                </div>
+                {%endif%}
+                {%if page_obj%}
+                    {% for post in page_obj %}
+                        <!-- Item {{forloop.counter}}  -->
+                        <div class="col-lg-4 col-12 blog-card-container shadow  py-3 my-3 d-flex flex-column justify-content-between">
+                            <div class="blog-card p-2">
+                                {%if post.featured_image%}
+                                <a  href="{%url 'postdetail' post.slug%}">
+                                    <img src="{{post.featured_image.url}}" class="img-fluid" alt="{{post.title}}"/>
+                                </a>
+                                {%endif%}
+                                <div class="d-flex mt-3 flex-wrap">
+                                    {%for category in post.category.all%}
+                                    <h5>
+                                        <a href="{%url 'postbycategory' category|slugify %}" class="post-category">
+                                             <span>{{category.category_name|upper}}</span>
+                                            </a> 
+                                            {%if not forloop.last%}
+                                            / &nbsp; 
+                                            {%endif%}
+                                        </h5>
+                                    {%endfor%}
+                                </div>
+                                <h2><a href="{%url 'postdetail' post.slug%}">{{post.title}} </a></h2>
+                                <p>
+                                    {% autoescape off %}
+                                    {{post.content|striptags|truncatechars:100}}
+                                    {% endautoescape %}
+
+                                </p>
+                            </div>
+                            <div class="blog-card-footer d-flex align-items-center justify-content-between">
+                                <div class="author-detail-blog d-flex align-items-center ">
+                                    {%if post.author.profile.profile_picture%}
+                                        <img src="{{post.author.profile.profile_picture.url}}" alt="{{post.author.username}}"/>
+                                    {%else%}
+                                        <img src="{%static 'images/default.png'%}" alt="{{post.author.username}}"/>
+                                    {%endif%}
+                                    <h4><a href="{%url 'byuser' post.author%}">{{post.author.first_name}} {{post.author.last_name}}</a> <br> <date>{{post.post_updated|date:"j F, Y"}}</date></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Items {{forloop.counter}} ends -->
+                    {%endfor%}
+                {%endif%}
+            </div>
+        </div>
+    </section>
+    <!-- Pagination start -->
+    {%if page_obj.has_previous or page_obj.has_next  %}
+    <section class="my-3">
+        <div class="container d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex align-items-center justify-content-center flex-wrap">
+                {% if page_obj.has_previous %}
+                <a href="?page={{page_obj.previous_page_number}}{%if query%}&search={{query}}{%endif%}" class="pag-list">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+                    </svg>
+                </a>
+                {%endif %}
+                
+                {% if page_obj.number|add:'-4' > 1 %}
+                    <a href="?page={{page_obj.number|add:'-5'}}{%if query%}&search={{query}}{%endif%}" class="pag-list">
+                        ....
+                    </a>
+                {%endif%}
+
+                {% for i in page_obj.paginator.page_range%}
+                    {% if page_obj.number == i %}
+                        <a href="#" class="pag-list pagactive">
+                            {{i}}
+                        </a>
+                    {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
+                        <a href="?page={{ i }}{%if query%}&search={{query}}{%endif%}" class="pag-list">
+                            {{i}}
+                        </a>
+                    {%endif%}
+                {%endfor%}
+
+                {% if page_obj.paginator.num_pages > page_obj.number|add:'4' %}
+                    {%if not page_obj.number == page_obj.paginator.num_pages %}
+                    <a href="?page={{page_obj.paginator.num_pages}}{%if query%}&search={{query}}{%endif%}" class="pag-list">
+                        ...{{page_obj.paginator.num_pages}}
+                    </a>
+                    {%endif%}
+                {%endif%}
+
+                <!-- <a href="#" class="pag-list pagactive">{{ page_obj.number }}</a> -->
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number}}{%if query%}&search={{query}}{%endif%}" class="pag-list">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+                         </svg>
+                </a>
+                {%endif%}
+            </div>
+            <form method="GET" class="mt-3 d-flex align-items-center">
+                <label style="
+                 font-size: 1.3rem;
+                font-weight: bold;">Jump to:</label>
+                <input type="number" name="page" max="{{page_obj.paginator.num_pages}}" placeholder="<{{page_obj.number }} of {{page_obj.paginator.num_pages}}>"
+                class="mx-2"
+                style="outline: 1px solid #0d6efd;
+                border: none;
+                height: 2.3rem;
+                text-indent: 1rem;
+                border-radius: 6px;">
+                {%if query%}
+                <input type="hidden" name="search" value="{{query}}" />
+                {%endif%}
+
+                <button type="submit" class="btn btn-outline-primary">Goto</button>
+            </form>
+        </div>
+    </section>
+    {%endif%}
+    <!-- pagination ends -->
+    {%else%}
+    <section style="margin-top: 10rem; margin-bottom: auto;">
+        <h1 class="text-center"> No Result Found!</h1>
+    </section>
+    {%endif%}
+</main>
+{%endblock%}

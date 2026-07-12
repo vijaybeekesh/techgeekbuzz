@@ -1,0 +1,163 @@
+.create-post:link, .create-post:visited{
+    color: #307AFB;
+    padding: 0.5rem 2rem;
+    outline: 1px solid #307AFB;
+    border-radius: 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.create-post:hover{
+    background-color: #307AFB;
+    color:white;
+}
+
+
+.user-logo-nav{
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: #2875dd 1.95px 1.95px 13.6px;
+  }
+
+  .user-logo-nav:hover{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  
+  .remove-dropbar::after {
+  content: none;
+  }
+  .profile-dd.show {
+    min-width: 24rem !important;
+  }
+
+
+/* blog card */
+
+.users-posts{
+    padding: 2rem 1rem;
+    border-radius: 10px;
+    margin: 2rem 0px 3rem;
+    box-shadow: 0px 6px 10px rgba(0, 49, 116, 0.25);
+}
+
+.post-card-img-date{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post-card-img-date>a:link, .post-card-img-date>a:visited{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #222;
+}
+
+.post-card-img-date>a:hover{
+    color: #307AFB;
+}
+
+.post-card-img-date>a>img{
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.post-card-img-date>a>span{
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.post-card-img-date>a>span>time{
+    font-size: 1.2rem;
+    font-weight: 100;
+}
+
+.post-card-img-date>p{
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.2rem;
+}
+
+.community-post-title-img{
+    padding: 2rem 0px;
+    display: flex;
+    align-items: center;  
+}
+
+.community-post-title-img>img{
+    width: 10rem;
+    max-height: 6rem;
+    object-fit: contain;
+}
+
+.title-tags{
+    padding: 0rem 1rem;
+}
+.title-tags>h3{
+    font-size: 1.8rem;
+    line-height: 1.2;
+}
+
+.title-tags>h3>a:link, .title-tags>h3>a:visited{
+    text-decoration: none;
+    color: #222;
+    font-weight: 600;
+}
+.title-tags>h3>a:hover{
+    color: #307AFB;
+}
+
+.tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tags>a:link, .tags>a:visited{
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #333;
+}
+
+.tags>a:hover{
+    color: #307AFB;
+}
+
+.reaction-container{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+.reaction-container>a>i{
+    font-size: 2rem;
+}
+
+.reaction-container>a:link, .reaction-container>a:visited{
+    font-size: 1.3rem;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #444;
+}
+
+a.react-love:hover, a.react-love>i{
+    color: red;
+
+}
+a.comment-post:hover, a.comment-post>i{
+    color: green;
+}
+a.save-post:hover, a.save-post>i
+{
+    color: #307AFB;
+}
+/* blog card ends */

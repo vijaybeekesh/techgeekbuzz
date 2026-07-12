@@ -1,0 +1,99 @@
+.tutorial-head{
+    background-color: rgba(0, 108, 255, 0.1);
+    padding-bottom: 1.5rem;
+}
+
+.tutorial-heading
+{
+    padding: 3rem 0px 1.7rem;
+}
+
+.tutorial-head-image{
+    padding: 2rem;
+    background-color: #0d6efd;
+    border-radius: 2rem;
+}
+
+.tutorial-intro-heading{
+    margin-left: 1rem;
+}
+
+.tutorial-intro-heading >h1{
+    font-size: 4rem;
+    font-weight: bold;
+    color:#003174;
+}
+
+.tutorial-subcategories{
+    padding:  2rem 5px 0px;
+    background-color: white;
+}
+
+.tutorial-subcategories a:link{
+    text-decoration: none;
+    font-size: 1.9rem;
+    padding-bottom: 2rem;
+    font-weight: bold;
+}
+.tutorial-subcategories .active{
+    border-bottom: 2px solid #0d6efd;
+}
+
+.tutorial-intro-para >p{
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+
+/* tutorial accordion */
+.accordion-item:not(:first-of-type) {
+    border-top: 1px solid #006CFF;
+}
+.tutorial-accordion-item
+{
+    border:  1px solid #006CFF;
+    border-radius:  1rem 1rem 0px 0px !important;
+}
+
+.tutorial-accordion-button{
+    background-color: white !important;
+    border-radius:  1rem 1rem 0px 0px !important;
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    color: black !important;
+}
+
+.tutorial-accordion-body{
+    background-color: #F1F6FF;
+}
+.tutorial-article-link{
+    text-decoration: none;
+    margin-bottom: 2rem;
+}
+.tutorial-article-link:link>svg{
+    fill: rgb(146 145 145);
+}
+.tutorial-article-link:link>span{
+    display: inline-block;
+    margin-left: 1rem;
+    padding: 1rem;
+    color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(196, 196, 196, 1);
+    border-radius:0.5rem ;
+    font-size: 1.4rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.tutorial-article-link:visited>svg{
+    fill: rgba(67, 207, 115, 1) ;
+}
+
+.tutorial-article-link:hover>svg{
+    fill: rgba(67, 207, 115, 1) ;
+}
+
+.tutorial-article-link:hover>span{
+    background-color: rgba(26, 94, 235, 1);
+    color: white;
+}

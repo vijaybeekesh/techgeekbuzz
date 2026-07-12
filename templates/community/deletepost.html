@@ -1,0 +1,110 @@
+{%extends 'community/base.html'%}
+{%load static%}
+{% load crispy_forms_tags %}
+
+{% load custom_tag %}
+
+
+
+{%block metadata%}
+<link rel="alternate" type="application/rss+xml" href="{%url 'blogfeed'%}" />
+<meta name="description"
+    content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.">
+<link rel="canonical" href="https://www.techgeekbuzz.com/">
+<meta name="keywords" content="Learn, Technology, Tutorial, Blog, Programming">
+
+<meta property="og:site_name" content="techgeekbuzz.com">
+<meta property="og:locale" content="en_GB" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="TechgeekBuzz: Let The Geek in You Always Stay In Buzz" />
+<meta property="og:description"
+    content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more." />
+<meta property="og:url" content="https://www.techgeekbuzz.com/">
+<meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+<meta property="og:image:width" content="800" />
+<meta property="og:image:height" content="400" />
+<meta property="og:image:type" content="image/png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="TechgeekBuzz: Let The Geek in You Always Stay In Buzz">
+<meta name="twitter:description"
+    content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.">
+<meta name="twitter:url" content="https://www.techgeekbuzz.com/">
+<meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+
+{%block css%}
+<link rel="stylesheet" href="{%static 'css/communitypostdetail.css'%}">
+<link rel="stylesheet" href="{% static 'css/prism.css'%}" />
+
+<style>
+    label{
+        font-size: 1.5rem;
+        font-weight: bolder;
+        color: #003174;
+        display: block;
+    }
+    .comment-delete-heading{
+        text-align: center;
+        font-size: 2rem;
+        margin: 9rem 0px 1rem;
+    }
+
+    .comment-delete-btn{
+        display: block;
+        color: white;
+        background: #dc3545;
+        border: none;
+        padding: 1rem;
+        font-size: 17px;
+        margin-bottom: 1rem;
+    }
+    .comment-content{
+        max-width: 40rem;
+        margin: 0px auto;
+        padding: 1rem 1rem;
+        background: #ff000040;
+        margin-bottom: 1rem;
+    }
+
+    .cancel-btn:link, .cancel-btn:visited{
+        text-decoration: none;
+        color: white;
+        background: #0d6efd;
+        border: none;
+        padding: 1rem;
+        font-size: 17px;
+        margin-bottom: 1rem;
+    }
+
+    .btn-group{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+</style>
+
+{%endblock%}
+
+{%block title%}<title>User Profile</title>{%endblock%}
+
+{%block headjs%}
+{%endblock%}
+
+{%block main%}
+<main style="margin-top:6rem;">
+    <h3 class="comment-delete-heading">Do you want to delete your post?</h3>
+    <div class="comment-content">
+       <h3>{{post.title|safe}}</h3> 
+    </div>
+    <form method ="post">
+        {%csrf_token%}
+        <div class="btn-group"><button type="submit" class="comment-delete-btn shadow">Delete</button>
+            <a href="{%url 'postview' post.slug%}"class="cancel-btn"> Cancel</a></div>
+    </form>
+</main>
+
+{%endblock%}

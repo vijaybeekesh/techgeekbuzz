@@ -1,0 +1,95 @@
+{%extends 'community/base.html'%}
+{%load static%}
+{% load crispy_forms_tags %}
+
+{% load custom_tag %}
+
+
+
+  {%block metadata%}
+  <link rel="alternate" type="application/rss+xml" href="{%url 'blogfeed'%}" />
+  <meta name="description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.">
+  <link rel="canonical" href="https://www.techgeekbuzz.com/">
+  <meta name="keywords" content="Learn, Technology, Tutorial, Blog, Programming">
+
+  <meta property="og:site_name" content="techgeekbuzz.com">
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="TechgeekBuzz: Let The Geek in You Always Stay In Buzz" />
+  <meta property="og:description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more." />
+  <meta property="og:url" content="https://www.techgeekbuzz.com/">
+  <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="400" />
+  <meta property="og:image:type" content="image/png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TechgeekBuzz: Let The Geek in You Always Stay In Buzz">
+  <meta name="twitter:description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.">
+  <meta name="twitter:url" content="https://www.techgeekbuzz.com/">
+  <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+  {%endblock%}
+
+
+  {%block css%}
+  <link rel="stylesheet" href="{%static 'css/multiselect.css'%}">
+
+  <style>
+    .create-post-form{
+        max-width: 70rem;
+        margin: 8rem auto 0px;
+    }
+
+    label{
+        font-size: 1.5rem;
+        font-weight: bolder;
+        color: #003174;
+    }
+
+    .textinput{
+        font-size: 2rem !important;
+        font-weight: 500 !important;
+    }
+    .create-post-button{
+        width: 100%;
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .invalid-feedback{
+      display:block;
+      font-size: 1.2rem;
+    }
+    [title="Browse Server"],[title="Advanced"],[title="Target"] {
+          display: none !important; 
+        }
+
+
+  </style>
+  
+  {%endblock%}
+
+  {%block title%}<title>User Profile</title>{%endblock%}
+  
+  {%block headjs%}
+  <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+  
+  {%endblock%}
+
+  {%block main%}
+  <main style="margin-top:6rem;">
+    <form method="post" class="create-post-form" enctype="multipart/form-data">
+        {%csrf_token%}
+        {{ myform.media|crispy }}
+        {{form|crispy}}
+        <button type="submit" class="btn btn-outline-primary create-post-button">Create Post</button>
+    </form>
+  </main>
+    
+    <script type="text/javascript" src="{% static 'js/multiselect.js' %}"></script>
+
+    <script>
+        new MultiSelectTag('id_tags')  // 
+
+    </script>
+  {%endblock%}

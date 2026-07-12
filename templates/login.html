@@ -1,0 +1,234 @@
+{%load static%}
+{% load custom_tag %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+  
+  <meta name="description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.">
+  <link rel="canonical" href="https://www.techgeekbuzz.com/">
+  <meta name="keywords" content="Learn, Technology, Tutorial, Blog, Programming">
+  <meta property="og:site_name" content="techgeekbuzz.com">
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="TechgeekBuzz: Let The Geek in You Always Stay In Buzz" />
+  <meta property="og:description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more." />
+  <meta property="og:url" content="https://www.techgeekbuzz.com/login/">
+  <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="400" />
+  <meta property="og:image:type" content="image/png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TechgeekBuzz: Let The Geek in You Always Stay In Buzz">
+  <meta name="twitter:description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.">
+  <meta name="twitter:url" content="https://www.techgeekbuzz.com/">
+  <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+  <meta name="twitter:site" content="@techgeekbuzz" />
+  <link rel="shortcut icon" href="{% static 'images/cropped-Techgeekbuzz-Final-Logo-e1611249305805.png'%}" type="image/x-icon">  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;500;700&family=Rubik:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+  <!--BOOTSTRAP  -->
+  <link href="{% static 'thirdparty/css/bootstrap.min.css'%}" rel="stylesheet" />
+
+  <!-- Style.css -->
+
+  {%include 'googlecred.html'%}
+  <style>
+    * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    }
+    
+    html {
+        font-size: 62.5%;
+        scroll-padding-top: 10rem;
+        /* overflow-x: hidden; */
+    }
+    
+    body {
+        font-family: "Roboto", sans-serif;
+        /* font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif; */
+        line-height: 1;
+        font-weight: 400;
+        color: #000000;
+        padding: 0px;
+        margin: 0px;
+        overflow-x: hidden;
+    }
+    .login-signup-hero{
+        background: #357CFA;
+    }
+    .logo-section
+    {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        padding: 6rem 0px;
+    }
+    .logo-homepage:link, .logo-homepage:visited{
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 1.1rem;
+        font-weight: bolder;
+        color: white;
+    }
+    small{
+        font-weight: 200;
+    }
+
+    h1{
+        font-size: 4.5rem;
+        color: white;
+        font-weight: 900;
+        padding: 2rem 1rem 1rem;
+        text-align: center;
+    }
+
+    .hero-login-img{
+        width: 31rem;
+    }
+
+    .login-signup-section{
+        padding: 11rem 1rem;
+        margin: 0px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    h2{
+        font-size: 4rem;
+        text-align: center;
+        font-weight: 900;
+        margin-bottom: 2rem;
+        word-break: break-word;
+    }
+
+    .join-community{
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 6rem;
+    }
+
+   
+
+    .login-to-continue{
+       text-align: center;
+    }
+
+    .google-login-btn:link, .google-login-btn:visited{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        text-decoration: none;
+        border: 1px solid;
+        font-size: 2rem;
+        font-weight: 600;
+        padding: 2rem 1rem;
+        color: white;
+        background: #de5246;
+        margin-bottom:2rem ;
+        border-radius: 5px;
+        
+    }
+    .google-login-btn:hover{
+        background-color: white;
+        color: #de5246;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
+
+    .github-login-btn:link, .github-login-btn:visited{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        text-decoration: none;
+        border: 1px solid;
+        font-size: 2rem;
+        font-weight: 600;
+        padding: 2rem 1rem;
+        color: white;
+        background-color: black;
+        margin-bottom:2rem;
+        border-radius: 5px;
+        
+    }
+    .github-login-btn:hover{
+        background: white;
+        color: black;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
+    .term-condition{
+        font-size: 1.2rem;
+        text-align: center;
+        color: #999;
+    }
+
+  </style>
+ 
+<title>Login Techgeekbuzz</title>
+
+   
+</head>
+    <body>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-5 col-12 p-0 order-lg-1 order-2">
+                <div class="login-signup-hero">
+                    <div class="logo-section">
+                        <a href="{%url 'index'%}" class="logo-homepage">
+                            <img  src="{%static 'images/cropped-Techgeekbuzz-Final-Logo-e1611249305805.png'%}" class="img-fluid">
+                            <span class="text-center">Techgeekbuzz<br>
+                            <small>Techies World for Tech Geeks</small></span>
+                        </a>
+                        <h1>
+                            Let’s do something amazing today.
+                        </h1>
+                        <img src="{%static 'images/login-signup-hero.png'%}" class="img-fluid hero-login-img">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-lg-7 col-12 order-lg-2 order-1">
+                {%if user.is_authenticated %}
+                <div class="login-signup-section">
+                    <h2> You are alredy Logged in!</h2>
+                </div>
+                {%else%}
+                <div class="login-signup-section">
+                    <h2> Welcome to TechgeekBuzz Community</h2>
+                    <p class="join-community">Become a part of developer across the World</p>
+                    <h3 class="login-to-continue"><hr> <span>Log in/Sign up</span> <hr></h3>
+                    {%if request.GET.next%}
+                    <a href="{%url 'social:begin' 'google-oauth2'%}?next={{request.GET.next}}" class="google-login-btn"> <i class="bi bi-google"></i><span> Continue with Google</span></a>
+                    <a href="{%url 'social:begin' 'github'%}?next={{request.GET.next}}" class="github-login-btn"> <i class="bi bi-github"></i>Continue with Github</a>
+                    {%else%}
+                    <a href="{%url 'social:begin' 'google-oauth2'%}" class="google-login-btn"> <i class="bi bi-google"></i><span> Continue with Google</span></a>
+                    <a href="{%url 'social:begin' 'github'%}?next={{request.GET.next}}" class="github-login-btn"> <i class="bi bi-github"></i>Continue with Github</a>
+                    {%endif%}
+                    <p class="term-condition">
+                        Click “Sign In” to agree to techgeekbuzz <a href="{%url 'term-and-condition'%}">Terms of Service</a> and acknowledge that techgeekbuzz's <a href="{%url 'privacy'%}">Privacy Policy</a> applies to you.
+                    </p>
+                </div>
+                {%endif%}
+            </div>
+        </div>
+    </body>
+</html>

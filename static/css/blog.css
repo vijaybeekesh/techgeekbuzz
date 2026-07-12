@@ -1,0 +1,226 @@
+.author-section{
+    background-color: rgba(0, 108, 255, 0.1);
+    padding: 4rem 0px;
+}
+
+.author-card {
+    max-width: 110rem;
+    margin: 0px auto;
+    background-color: white;
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+}
+.figure{
+    margin: 0px;
+}
+
+.author-card > figure > img{
+    max-width: 10rem;
+    border-radius: 50%;
+    border: 1px solid #A9C1FF;
+    width: 9rem;
+    height: 9rem;
+}
+
+.authour-detail{
+    margin-left: 1rem;
+}
+.author-heading{
+    margin-bottom: 1rem;
+}
+.authour-detail >.author-heading>h1{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #090069;
+    margin-bottom: 0px;
+}
+.authour-detail >.author-heading>ul{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+.authour-detail >p {
+    font-size: 1.2rem;
+}
+
+/* popular blog section start */
+.popular-blog-section{
+    margin: 0px 0px 2rem 0px;
+    background: linear-gradient(180deg,#2452fb 0,rgba(251,199,36,0));
+}
+.main-heading-blog{
+    margin: 2rem 0px;
+}
+.main-heading-blog h1{
+    font-size: 4rem;
+    text-align: center;
+    color: #003174;
+    font-weight: bold;
+}
+
+.blog-card-container 
+{
+    max-width: 39rem;
+    padding: 0px;
+} 
+
+.blog-card >h5 >a{
+    font-size: 1.3rem;
+    margin: 1rem 0px 0.5rem 0rem;
+    text-decoration: none;
+    transition: 0.5s;
+}
+.blog-card >h5 >a:hover{
+   text-decoration: underline;
+}
+.blog-card >h2 >a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.blog-card >h2 >a:hover{
+    text-decoration: underline;
+    color: #666;
+}
+
+
+.blog-card >p{
+    color: #333;
+    font-size: 1.6rem;
+}
+
+.author-detail-blog > img{
+    max-width: 3rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+    border: 1px solid #005DDB;
+    width: 3rem;
+    height: 3rem;
+}
+.author-detail-blog > h4{
+    line-height: 0.7;
+}
+.author-detail-blog > h4> a{
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: #000299;
+}
+.author-detail-blog > h4> a:hover{
+    text-decoration: none
+}
+.author-detail-blog > h4> date{
+    color: #000000;
+    font-size: 1.2rem;
+}
+.post-category
+{
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.main-blog-heading > hr:nth-child(1)
+{
+    margin-right:2rem;
+    width: 25%;
+    color: #003174;
+    opacity: 1;
+    height: 3px;
+}
+.main-blog-heading a{
+    text-decoration: none;
+    color:#000299;
+    font-size: 2.7rem;
+    font-weight: bolder;
+    transition: 0.5s;
+}
+.main-blog-heading a:hover{
+    color:white;
+    background-color: #000299;
+}
+.main-blog-heading > hr:nth-child(3){
+    width: 25%;
+    margin-left: 2rem;
+    color: #003174;
+    opacity: 1;
+    height: 3px;    
+}
+
+/*popular Blog section ends */
+
+
+/* Pagination list */
+.paglist{
+    list-style: none;
+    margin:0px;
+    padding: 0px;
+}
+
+a.pag-list {
+    border-radius: 18px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    margin: 0px 0.4rem;
+    border: 1px solid #007AFF;
+    padding: 1rem;
+}
+a.pag-list:hover ,.pagactive {
+    border: 1px solid white;
+    background-color: #007AFF;
+    color: white;
+}
+
+/* pagination list ends */
+
+
+/* Beekesh Singh CSS */
+.blog-main {
+    background-color: #ffffff;
+    border-radius: 4%;
+    width: 32%;
+}
+@media screen and (max-width: 600px){
+    .blog-main {
+        width: 100% !important;
+        margin-bottom: 10px;
+    }
+    .blog-card >p{
+        font-size: 1.4rem;
+    }
+}
+.blog-div {
+    line-height: 1.4;
+    font-size: 16px !important;
+    text-align: justify;
+}
+.blog-main-row {
+    padding: 22px;
+}
+.blog-author-footer {
+    position: relative;
+    bottom: -4px;
+}
+.top-blog {
+    text-decoration: none;
+}
+.top-blog-desc {
+    text-align: justify;
+}
+
+.author-name{
+    font-size: 2.6rem;
+    font-weight: bold;
+    color: #090069;
+    margin-bottom: 0px;
+}
+
+.author-detail-para {
+    text-align: justify;
+    font-size: 1.7rem !important;
+}
+.author-detail-img {
+    border-radius: 0% !important;
+    border: 1px solid #A9C1FF;
+    width: 9rem !important;
+    height: 9rem !important;
+}

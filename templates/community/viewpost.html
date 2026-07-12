@@ -1,0 +1,251 @@
+{%extends 'community/base.html'%}
+{%load static%}
+{% load crispy_forms_tags %}
+
+{% load custom_tag %}
+
+
+
+{%block metadata%}
+<link rel="alternate" type="application/rss+xml" href="{%url 'blogfeed'%}" />
+<meta name="description"
+    content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.">
+<link rel="canonical" href="https://www.techgeekbuzz.com/">
+<meta name="keywords" content="Learn, Technology, Tutorial, Blog, Programming">
+
+<meta property="og:site_name" content="techgeekbuzz.com">
+<meta property="og:locale" content="en_GB" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="TechgeekBuzz: Let The Geek in You Always Stay In Buzz" />
+<meta property="og:description"
+    content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more." />
+<meta property="og:url" content="https://www.techgeekbuzz.com/">
+<meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+<meta property="og:image:width" content="800" />
+<meta property="og:image:height" content="400" />
+<meta property="og:image:type" content="image/png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="TechgeekBuzz: Let The Geek in You Always Stay In Buzz">
+<meta name="twitter:description"
+    content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.">
+<meta name="twitter:url" content="https://www.techgeekbuzz.com/">
+<meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+
+{%block css%}
+<link rel="stylesheet" href="{%static 'css/communitypostdetail.css'%}">
+<link rel="stylesheet" href="{% static 'css/prism.css'%}" />
+
+<style>
+    label{
+        font-size: 1.5rem;
+        font-weight: bolder;
+        color: #003174;
+        display: block;
+    }
+
+    .textinput{
+        font-size: 2rem !important;
+        font-weight: 500 !important;
+    }
+    .create-post-button{
+        width: 100%;
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .invalid-feedback{
+      display:block;
+      font-size: 1.2rem;
+    }
+    [title="Browse Server"],[title="Advanced"],[title="Target"] {
+          display: none !important; 
+        }
+    .django-ckeditor-widget{
+        width: 100%;
+    }
+
+</style>
+
+{%endblock%}
+
+{%block title%}<title>User Profile</title>{%endblock%}
+
+{%block headjs%}
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+{%endblock%}
+
+{%block main%}
+<main style="margin-top:6rem;">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-1 col-md-2 col-12">
+            </div>
+            <div class="col-lg-8 col-md-10 col-12">
+                <div class="article-section">
+                    {%if post.status == "draft"%}
+                    <div class="message-draft">
+                        <h4>This Blog Post is under moderation! will be publish by the moderator</h4>
+                    </div>
+                    {%else%}
+                    <div class="reaction-container stick-bottom">
+                        <a href="#" class="react-love"><i class="bi bi-heart"></i> React</a>
+                        <a href="#comments" class="comment-post"><i class="bi bi-chat"></i> Comment</a>
+                        <a href="#" class="save-post"><i class="bi bi-bookmark"></i> Save for later Read</a>
+                    </div>
+                    {%endif%}
+                    {%if set_edit%}
+                    <a href="{%url 'editpost' post.slug%}" class="edit-button">Edit</a>
+                    {%endif%}
+                    <h1 class="post-main-title">{{post.title}}</h1>
+                    {%if post.featured_image%}
+                    <img src="{{post.featured_image.url}}" alt="{{post.title}}" class="img-fluid post-main-image">
+                    {%endif%}
+                    {%if post.author%}
+                    <time class="posted-on">Posted: {{post.date_posted|date:"m M, Y"}}</time>
+                    {%endif%}
+                    <article>
+                        {{post.content|safe}}
+                    </article>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12 col-12 position-relative">
+                {%if post.author%}
+                    {%if post.author.community_profile%}
+                    <div class="post-author-detail-box">
+                        {%if post.author.community_profile.profile_picture%}
+                        <img src="{{post.author.community_profile.profile_picture.url}}" class="img-fluid user-image"
+                            alt="{{post.author}} profile">
+                        {%else%}
+                        <img src="{%static 'images/default-user.png'%}" class="img-fluid user-image"
+                            alt="{{post.author}} profile">
+                        {%endif%}
+                        {%if post.author.community_profile.display_name%}
+                            <h1 class="community-username"> <a href="{%url 'communityuserprofile' post.author.username%}">{{post.author.community_profile.display_name}}</a></h1>
+                        {%else%}
+                                {%if post.author.first_name%}
+                                    <h1 class="community-username">{{post.author.first_name}} {{post.author.last_name}}</h1>
+                                {%else%}
+                                    <h1 class="community-username">{{post.author.username}}</h1>
+                                {%endif%}
+                        {%endif%}
+                        {%if post.author.community_profile.bio%}
+                            <p class="community-profile-bio">
+                                {{post.author.community_profile.bio}}
+                            </p>
+                        {%endif%}
+                        <div class="community-profile-social">
+                            {%if post.author.community_profile.location%}
+                                <a href="#"><i class="bi bi-pin-map"></i> {{post.author.community_profile.location}}</a>
+                            {%endif%}
+
+                            {%if post.author.community_profile.github%}
+                                <a href="{{post.author.community_profile.github}}"><i class="bi bi-github"></i></a>
+                            {%endif%}
+                            {%if post.author.community_profile.stackoverflow%}
+                                <a href="{{post.author.community_profile.stackoverflow}}"><i class="bi bi-stack-overflow"></i></a>
+                            {%endif%}
+                            {%if post.author.community_profile.website%}                                
+                            <a rel="nofollow" href="{{post.author.community_profile.website}}"><i class="bi bi-globe"></i></a>
+                            {%endif%}
+                            {%if post.author.community_profile.twitter%} 
+                                <a href="{{post.author.community_profile.twitter}}"><i class="bi bi-twitter"></i></a>
+                            {%endif%}
+                            {%if post.author.community_profile.instagram%} 
+                            <a href="{{post.author.community_profile.instagram}}"><i class="bi bi-instagram"></i></a>
+                            {%endif%}
+                            {%if post.author.community_profile.facebook%} 
+                                <a href="{{post.author.community_profile.facebook}}"><i class="bi bi-facebook"></i></a>
+                            {%endif%}
+                        </div>
+                    </div>
+                    {%endif%}
+                {%endif%}
+            </div>
+        </div>
+    </div>
+    {%if post.status == "publish"%}
+        <section class="comment-section">
+            <div class="comment-editor">
+                {%if user.is_authenticated%}
+                    <form method="post" class="create-post-form" enctype="multipart/form-data">
+                        {%csrf_token%}
+                        {{ myform.media|crispy }}
+                        {{form|crispy}}
+                        <button type="submit" class="btn btn-outline-primary create-post-button">Comment</button>
+                    </form>
+                {%else%}
+                    <a href="{%url 'login'%}?next=/community/post/{{post.slug}}/" class="login-signup"> Login To Join The Discussion</a>
+                {%endif%}
+            </div>
+            {%if post.comments%}
+            <h3 class="comment-main-heading" id="comments">Comments: {{post.comments.count}}</h3>
+                {%for comment in post.comments.all%}
+                <div class="comment-card">
+                        {%if comment.user.community_profile%}
+                            <a class="comment-profile-link"  href="{%url 'communityuserprofile' comment.user%}">
+                                {%if comment.user.community_profile.profile_picture%}
+                                    <img src="{{comment.user.community_profile.profile_picture.url}}" class="img-fluid comment-image">
+                                {%else%}
+                                    <img src="{%static 'images/default-user.png'%}" class="img-fluid comment-image">
+                                {%endif%}
+                                <p class="p-0 m-0"> 
+                                    {%if comment.user.community_profile.display_name%}
+                                        {{comment.user.community_profile.display_name}}
+                                    {%else%}
+                                            {%if comment.user.first_name%}
+                                                {{comment.user.first_name}} {{comment.user.last_name}}
+                                            {%else%}
+                                                {{comment.user.username}}
+                                            {%endif%}
+                                    {%endif%}
+                                    <br> 
+                                    <time>
+                                        {{comment.date_posted|date:"d M, Y P"}}
+                                    </time>
+                                </p>
+                            </a>
+                            <div class="comment-content">
+                                {{comment.comment|safe}}
+                            </div>
+                            {%if comment.user == user or post.author == user %}
+                                <a href="{%url 'deletecomment' comment.id%}" class="delete-comment">Delete</a>
+                            {%endif%}
+                        {%endif%}
+                </div>
+                <hr/>
+                {%endfor%}
+            {%endif%}
+        </section>
+    {%endif%}
+</main>
+
+<script>
+    function wrap(element) {
+        // create wrapper container
+        var wrapper = document.createElement('div');
+        wrapper.className = 'hscroll'
+        element.parentNode.insertBefore(wrapper, element);
+        wrapper.appendChild(element);
+
+    }
+    alltables = document.querySelectorAll('article table')
+    for (i = 0; i < alltables.length; i++) {
+        wrap(alltables[i]);
+    }
+
+    function responsiveImagesandanchor() {
+        allimages = document.querySelectorAll('article img');
+
+        for (image of allimages) {
+            image.classList.add('img-fluid');
+            image.classList.add('img-center');
+        }
+    }
+    responsiveImagesandanchor()
+</script>
+<script src="{% static 'js/prism.js'%}"></script>
+
+{%endblock%}

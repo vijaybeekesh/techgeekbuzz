@@ -1,0 +1,47 @@
+.web-stories{
+    padding: 2rem 0px;
+}
+.main-heading{
+    font-size: 4rem;
+    text-align: center;
+    color: #000;
+}
+
+.story-box{
+    max-width: 30rem;
+    display: block;
+    margin: 0px auto;
+    max-height: 60rem;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    filter: brightness(80%);
+    transition: 0.2s;
+}
+.story-box:hover{
+    box-shadow: none;
+    filter: brightness(100%);
+}
+
+
+.story:link, .story:visited{
+    color: white;
+    transition: 0.5s;
+    
+}
+
+
+.story-img{
+    object-fit: cover;
+    filter: brightness(0.5);
+}
+
+.story-detail{
+    position: absolute;
+    bottom: 0px;
+    color: white;
+    background: #003e93;
+    width: 100%;
+    padding: 2rem;
+    text-decoration: none;
+}
+

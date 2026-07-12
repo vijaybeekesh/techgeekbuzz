@@ -1,0 +1,381 @@
+
+/* edit */
+.edit-button
+{
+    position: fixed;
+    bottom: 2rem;
+    right: 3rem;
+    z-index: 99;
+    font-size: 1.8rem;
+    border: none;
+    outline: none;
+    background-color: #2471f7;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 6rem;
+    height: 6rem;
+    padding: 1.5rem;
+    transition: 0.3s;
+}
+.edit-button:hover
+{
+    outline: 1px solid #2471f7;
+    color: #2471f7;
+    background-color: white;
+}
+/* Buttion */
+/* header of the blog */
+.blog-post-header > h1{
+    font-size: 4rem;
+    font-weight: bolder;
+    line-height: 1.2;
+    color:#003174;
+}
+.blog-post-header > p{
+    color: #444;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    font-weight: bold;
+}
+.blog-post-header > p > a{
+    text-decoration: none;
+    color:#000000;
+}
+.blog-post-header > img{
+   width: 100%;
+   height: auto;
+   margin-bottom: 1.1rem;
+}
+
+.author-section > img{
+    display: block;
+    width: 6rem;
+    height: 6rem;
+    border: 1px solid #2471f7;
+    border-radius: 50%;
+    margin-right: 1rem;
+    padding: 1rem;
+}
+
+.author-section > p >a{
+    font-size: 1.7rem;
+    text-decoration: none;
+    color: #000299;
+    font-weight: bold;
+} 
+.author-section > p >span{
+    color: #000000;
+    font-size: 1.5rem;
+}
+
+.share-section > p{
+    font-size: 1.6rem;
+    font-weight: bold;
+    align-self: end;
+}
+.share-section > ul{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+.share-section > ul>li{
+    margin-left: 0.9rem;
+    font-size: 2rem;
+}
+
+/* aside{
+    background-color: lightblue;
+} */
+/* Header of the blog ends */
+
+/* Article section */
+.tbc{
+    margin-bottom: 2rem;
+}
+.accordion-header{
+    margin-top: 0px;
+}
+.accordion-header button{
+    font-size:2.1rem;
+    margin-top: 0px;
+    background-color: rgba(145, 179, 250, 0.5);
+    color:#000;
+}
+
+article{
+    font-size: 1.8rem;
+    color: #444;
+    line-height: 1.7;
+    padding-top: 2rem;
+    overflow-x: hidden;
+}
+
+.tbclist{
+    list-style: none;
+}
+
+.i-H3{
+    padding-left: 3rem;
+}
+.i-H4{
+    padding-left: 5rem;
+}
+.i-H5, .i-H6{
+    padding-left: 6rem;
+}
+
+/* article pre{
+    background-color: #09005D;
+    padding: 2rem;
+    color: #fff;
+} */
+
+article::target-text {
+    margin-bottom: 100rem;
+    color: white;
+}
+article li, article p{
+    font-size: 1.8rem;
+    line-height: 1.7;
+}
+article a{
+    text-decoration:  none;
+}
+article h1{
+    font-size:3rem;
+}
+article h2{
+    font-size:2.5rem;
+}
+article h3{
+    font-size:2.3rem;
+}
+article h4{
+    font-size:2.1rem;
+}
+article h5{
+    font-size:1.9rem;
+}
+article h6{
+    font-size:1.6rem;
+}
+article p{
+    margin-bottom: 1.7rem;
+}
+article h1,article h2,article h3,article h5,article h4,article h6{
+    font-weight: bold;
+    margin-top: 2.8rem;
+    margin-bottom: 1.3rem;
+}
+article img{
+    display: block;
+}
+article pre{
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+article table, tbody, td, tr{
+    border:  1px solid #444;
+}
+article table td{
+    padding: 0.3rem 0.6rem;
+}
+
+article ul{
+    padding-left: 4rem;
+    margin-bottom: 2rem;
+}
+
+.hscroll{
+    overflow-x:auto ;
+}
+/* Article section ends */
+
+
+/* faqs */
+.faq-headline
+{
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.faqbutton{
+    background-color: white !important;
+}
+.faqanswer{
+    font-size: 1.8rem;
+    line-height: 1.4;
+    color: #444;
+    letter-spacing: 0.6px;
+}
+/* faqs ends */
+
+
+/* Comment Section form */
+.comment-section{
+    margin: 1.4rem 0px;
+    padding: 2rem;
+}
+.comment-section h1{
+    color: #00347B;
+    font-size: 3.5rem;
+    font-weight: bolder;
+    margin-bottom: 2rem;
+}
+.comment-section form input, textarea, input:focus, textarea:focus{
+    width: 100%;
+    font-size: 1.5rem;
+    border:1px solid rgba(145, 179, 250, 0.5);
+    padding: 1.5rem 2rem;
+    margin-bottom: 1rem;
+    outline: rgba(145, 179, 250, 0.5);
+    color: #444;
+}
+
+.comment-section form button{
+    padding: 1.5rem 2rem;
+    font-size:1.5rem  ;
+    font-weight: bolder;
+}
+
+
+.reply-form  input, textarea, input:focus, textarea:focus{
+    width: 100%;
+    font-size: 1.5rem;
+    border:1px solid rgba(145, 179, 250, 0.5);
+    padding: 1.5rem 2rem;
+    margin-bottom: 1rem;
+    outline: rgba(145, 179, 250, 0.5);
+    color: #444;
+}
+
+.reply-form  button{
+    padding: 1.5rem 2rem;
+    font-size:1.5rem  ;
+    font-weight: bolder;
+}
+
+/* Comment Section Form ends */
+
+/* Comment Section Start */
+.comments-section{
+    margin: 2rem 0px;
+}
+.comment-list
+{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+.comment-list ul
+{
+    list-style: none;
+}
+.comment-item{
+    border : 1px solid rgb(226, 226, 226);
+    padding: 1.2rem;
+    margin: 1.2rem 0px;
+}
+.comment-image{
+    margin-right: 2rem;
+}
+.comment-image img{
+    width: 2.5rem;
+}
+.comment-detail > h5{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00347B;
+    line-height: 1.2;
+}
+.comment-detail h5 > a{
+    text-decoration: none;
+}
+.comment-detail > time{
+    color: #555;
+}
+.comment-detail .reply
+{
+    font-size: 1.5rem;
+    color: rgba(0, 51, 122,0.8);
+}
+.comment-detail >p{
+    font-size: 1.3rem;
+    color:#444;
+    margin: 1.2rem 0rem;
+    line-height: 1.2;
+    white-space: 1.2rem;
+    padding-right: 2rem;
+}
+/* Comment section ends */
+
+
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.reply-text
+{
+    text-decoration: none;
+    font-size: 1.6rem;
+}
+
+.reply-box{
+    background-color: #ddd;
+}
+
+a.badge{
+    display: inline-block;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #2471f7;
+    text-decoration: none;
+    margin: 0px 0.2rem;
+}
+.blog-detail-author-footer {
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 21px 12px;
+    /* background: linear-gradient(180deg,#c7e556 0,rgba(251,199,36,0)); */
+}
+.blog-author-img {
+    padding: 0.1rem !important;
+    width: 80px !important;
+    height: 76px !important;
+    border-radius: 0px !important;
+}
+.author-detail-para {
+    text-align: justify;
+    font-size: 1.7rem !important;
+}
+.author-detail-img {
+    border-radius: 0% !important;
+    border: 1px solid #A9C1FF;
+    width: 9rem !important;
+    height: 9rem !important;
+}
+
+.blog-share-section {
+    position: relative;
+    top: -33px;
+}
+.blog-detail-author-name > a{
+    font-size: 2.4rem !important;
+}
+
+.blog-detail-author-name > span {
+    text-align: justify;
+    font-size: 1.7rem !important;
+    color: #000000 !important;
+    line-height: 2.2rem;
+}
+
+.post-category span {
+    background-color: #d9d9d9!important;
+    padding: 2px 10px;
+    border-radius: 20%;
+}

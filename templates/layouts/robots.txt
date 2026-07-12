@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin-knows-the-url
+Disallow: /admin-knows-the-url/*
+
+Sitemap: https://www.techgeekbuzz.com/sitemap.xml

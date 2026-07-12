@@ -1,0 +1,231 @@
+{%extends 'community/base.html'%}
+{%load static%}
+{% load custom_tag %}
+
+
+
+  {%block metadata%}
+  <link rel="alternate" type="application/rss+xml" href="{%url 'blogfeed'%}" />
+  <meta name="description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.">
+  <link rel="canonical" href="https://www.techgeekbuzz.com/">
+  <meta name="keywords" content="Learn, Technology, Tutorial, Blog, Programming">
+
+  <meta property="og:site_name" content="techgeekbuzz.com">
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="TechgeekBuzz: Let The Geek in You Always Stay In Buzz" />
+  <meta property="og:description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more." />
+  <meta property="og:url" content="https://www.techgeekbuzz.com/">
+  <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="400" />
+  <meta property="og:image:type" content="image/png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TechgeekBuzz: Let The Geek in You Always Stay In Buzz">
+  <meta name="twitter:description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.">
+  <meta name="twitter:url" content="https://www.techgeekbuzz.com/">
+  <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+  {%endblock%}
+
+
+  {%block css%}
+    <link rel="stylesheet" href="{%static 'css/community.css'%}">
+  {%endblock%}
+
+  {%block title%}<title>Community List</title>{%endblock%}
+  
+  {%block headjs%}
+  {%endblock%}
+
+  {%block main%}
+  <main style="margin-top:6rem;">
+    <section class="blog-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-12">
+                    <div class="sidebar-nav">
+                        <a href="#" class="sidebar-items active"><i class="bi bi-people"></i>Community</a>
+                        <a href="#" class="sidebar-items"><i class="bi bi-book"></i>Blogs</a>
+                        <a href="#" class="sidebar-items"><i class="bi bi-card-checklist"></i>Roadmaps</a>
+                        <a href="#" class="sidebar-items"><i class="bi bi-tools"></i>Tools</a>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-8 col-12">
+                    <div class="users-posts">
+                        <div class="community-post-card">
+                            <div class="post-card-img-date">
+                                <a href="#">
+                                    <img src="{%static 'images/user.png'%}" class="img-fluid">
+                                    <span>Steve Harvy <br> <time> 25 Dec</time></span>
+                                </a>
+                                <p><i class="bi bi-eye"></i> 35</p>
+                            </div>
+                            <div class="community-post-title-img">
+                                <img src="{%static 'images/blog-image-1.png'%}" class="img-fluid">
+                                <div class="title-tags">
+                                    <h3>
+                                        <a href="#">I changed my mind. Angular needs a reactive primitive</a>
+                                    </h3>
+                                    <div class="tags">
+                                        <a href="#">#programming</a>
+                                        <a href="#">#python</a>
+                                        <a href="#">#beginner</a>
+                                        <a href="#">#join</a>
+                                        <a href="#">#kivi</a>
+                                    </div>
+                                </div>
+                                
+                    
+                            </div>
+                            <div class="reaction-container">
+                                <a href="#" class="react-love"><i class="bi bi-heart"></i> React</a>
+                                <a href="#" class="comment-post"><i class="bi bi-chat"></i> Comment</a>
+                                <a href="#" class="save-post"><i class="bi bi-bookmark"></i> Save for later Read</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="users-posts">
+                        <div class="community-post-card">
+                            <div class="post-card-img-date">
+                                <a href="#">
+                                    <img src="{%static 'images/user.png'%}" class="img-fluid">
+                                    <span>Steve Harvy <br> <time> 25 Dec</time></span>
+                                </a>
+                                <p><i class="bi bi-eye"></i> 35</p>
+                            </div>
+                            <div class="community-post-title-img">
+                                <img src="{%static 'images/blog-image-1.png'%}" class="img-fluid">
+                                <div class="title-tags">
+                                    <h3>
+                                        <a href="#">I changed my mind. Angular needs a reactive primitive</a>
+                                    </h3>
+                                    <div class="tags">
+                                        <a href="#">#programming</a>
+                                        <a href="#">#python</a>
+                                        <a href="#">#beginner</a>
+                                        <a href="#">#join</a>
+                                        <a href="#">#kivi</a>
+                                    </div>
+                                </div>
+                                
+                    
+                            </div>
+                            <div class="reaction-container">
+                                <a href="#" class="react-love"><i class="bi bi-heart"></i> React</a>
+                                <a href="#" class="comment-post"><i class="bi bi-chat"></i> Comment</a>
+                                <a href="#" class="save-post"><i class="bi bi-bookmark"></i> Save for later Read</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="users-posts">
+                        <div class="community-post-card">
+                            <div class="post-card-img-date">
+                                <a href="#">
+                                    <img src="{%static 'images/user.png'%}" class="img-fluid">
+                                    <span>Steve Harvy <br> <time> 25 Dec</time></span>
+                                </a>
+                                <p><i class="bi bi-eye"></i> 35</p>
+                            </div>
+                            <div class="community-post-title-img">
+                                <img src="{%static 'images/blog-image-1.png'%}" class="img-fluid">
+                                <div class="title-tags">
+                                    <h3>
+                                        <a href="#">I changed my mind. Angular needs a reactive primitive</a>
+                                    </h3>
+                                    <div class="tags">
+                                        <a href="#">#programming</a>
+                                        <a href="#">#python</a>
+                                        <a href="#">#beginner</a>
+                                        <a href="#">#join</a>
+                                        <a href="#">#kivi</a>
+                                    </div>
+                                </div>
+                                
+                    
+                            </div>
+                            <div class="reaction-container">
+                                <a href="#" class="react-love"><i class="bi bi-heart"></i> React</a>
+                                <a href="#" class="comment-post"><i class="bi bi-chat"></i> Comment</a>
+                                <a href="#" class="save-post"><i class="bi bi-bookmark"></i> Save for later Read</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="users-posts">
+                        <div class="community-post-card">
+                            <div class="post-card-img-date">
+                                <a href="#">
+                                    <img src="{%static 'images/user.png'%}" class="img-fluid">
+                                    <span>Steve Harvy <br> <time> 25 Dec</time></span>
+                                </a>
+                                <p><i class="bi bi-eye"></i> 35</p>
+                            </div>
+                            <div class="community-post-title-img">
+                                <img src="{%static 'images/blog-image-1.png'%}" class="img-fluid">
+                                <div class="title-tags">
+                                    <h3>
+                                        <a href="#">I changed my mind. Angular needs a reactive primitive</a>
+                                    </h3>
+                                    <div class="tags">
+                                        <a href="#">#programming</a>
+                                        <a href="#">#python</a>
+                                        <a href="#">#beginner</a>
+                                        <a href="#">#join</a>
+                                        <a href="#">#kivi</a>
+                                    </div>
+                                </div>
+                                
+                    
+                            </div>
+                            <div class="reaction-container">
+                                <a href="#" class="react-love"><i class="bi bi-heart"></i> React</a>
+                                <a href="#" class="comment-post"><i class="bi bi-chat"></i> Comment</a>
+                                <a href="#" class="save-post"><i class="bi bi-bookmark"></i> Save for later Read</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="users-posts">
+                        <div class="community-post-card">
+                            <div class="post-card-img-date">
+                                <a href="#">
+                                    <img src="{%static 'images/user.png'%}" class="img-fluid">
+                                    <span>Steve Harvy <br> <time> 25 Dec</time></span>
+                                </a>
+                                <p><i class="bi bi-eye"></i> 35</p>
+                            </div>
+                            <div class="community-post-title-img">
+                                <img src="{%static 'images/blog-image-1.png'%}" class="img-fluid">
+                                <div class="title-tags">
+                                    <h3>
+                                        <a href="#">I changed my mind. Angular needs a reactive primitive</a>
+                                    </h3>
+                                    <div class="tags">
+                                        <a href="#">#programming</a>
+                                        <a href="#">#python</a>
+                                        <a href="#">#beginner</a>
+                                        <a href="#">#join</a>
+                                        <a href="#">#kivi</a>
+                                    </div>
+                                </div>
+                                
+                    
+                            </div>
+                            <div class="reaction-container">
+                                <a href="#" class="react-love"><i class="bi bi-heart"></i> React</a>
+                                <a href="#" class="comment-post"><i class="bi bi-chat"></i> Comment</a>
+                                <a href="#" class="save-post"><i class="bi bi-bookmark"></i> Save for later Read</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-12 col-12"></div>
+            </div>
+        </div>
+    </section>
+  </main>
+  {%endblock%}
+
+
+ 

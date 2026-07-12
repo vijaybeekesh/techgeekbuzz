@@ -1,0 +1,67 @@
+
+.textbox-area{
+    width: 100%;
+    height: 95vh;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    word-spacing: 0.5rem;
+    line-height: 1.3;
+    letter-spacing: 0.1rem;
+}
+
+.textbox-area::-webkit-scrollbar {
+    display: none;
+  }
+
+
+.heading-main{
+    font-size: 2rem;
+    color: #003e93;
+    font-weight: bold;
+}
+
+.special-btn{
+    display: block;
+    margin: 0px auto 2rem;
+    width: 100%;
+    font-size: 2rem;
+}
+
+.about-tool h3{
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.4;
+    word-break: break-word;
+    color: #003e93;
+}
+
+.about-tool p{
+    font-size: 1.5rem;
+    line-height: 1.5;
+    word-break: break-word;
+    letter-spacing: 1.2px;
+    word-spacing: 2.2px;
+}
+/* faqs */
+.faq-headline
+{
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.faqbutton{
+    background-color: white !important;
+}
+.faqanswer{
+    font-size: 1.8rem;
+    line-height: 1.4;
+    color: #444;
+    letter-spacing: 0.6px;
+}
+
+.accordion-header button {
+    font-size: 2.1rem;
+    margin-top: 0;
+}
+/* faqs ends */

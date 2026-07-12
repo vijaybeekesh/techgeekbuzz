@@ -1,0 +1,122 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+
+        <link rel="alternate" type="application/rss+xml" href="{%url 'blogfeed'%}" />
+        <link rel="canonical" href="https://www.techgeekbuzz.com/webstories/" />
+
+
+        <meta name="description" content="The latest stories shared by techgeekbuzz for all the Geeks.">
+        <meta name="keywords" content="web stories techgeekbuzz">
+
+        <meta property="og:site_name" content="techgeekbuzz.com">
+        <meta property="og:locale" content="en_GB" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Techgeekbuzz Web Stories" />
+        <meta property="og:description" content="The latest stories shared by techgeekbuzz for all the Geeks." />
+      
+        
+        <meta property="og:url" content="https://www.techgeekbuzz.com/webstories/">
+
+        <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+        <meta property="og:image:width" content="400" />
+        <meta property="og:image:height" content="400" />
+        <meta property="og:image:type" content="image/png/jpeg/jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Techgeekbuzz Web Stories">
+        <meta name="twitter:description" content="The latest stories shared by techgeekbuzz for all the Geeks.">
+
+        <meta name="twitter:url" content="https://www.techgeekbuzz.com/webstories">
+        <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+
+{%endblock%}
+
+{%block css%}
+<link rel="stylesheet" href="{% static 'css/webstories.css'%}">
+{%endblock%}
+
+{%block title%}
+<title>
+    Techgeekbuzz Stories
+</title>
+{%endblock%}
+
+
+{%block headjs%}
+{% comment %} <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6202674638312019",
+    enable_page_level_ads: true
+  });
+	</script> {% endcomment %}
+{%endblock%}
+
+
+{%block main%}
+<main style="margin-top: 6rem;">
+    {%if page_obj%}
+    
+    <section class="web-stories mt-5">
+        <h1 class="main-heading">Web Stories</h1>
+        <hr class="horizontal-row mb-5">
+        <div class="container mt-5">
+            <div class="row align-items-center justify-content-center">
+                {%for story in page_obj%}
+                    <div class="col-lg-4 col-md-6 col-12 gy-5">
+                        <div class="story-box">
+                            <a href="{%url 'story' story.slug%}" target="_blank" class="story">
+                                {%if story.story%}
+                                <img src="{{story.story.first.coverimage.url}}" class="img-fluid story-img" alt="{{story.title}}"/>
+                                {%endif%}
+                                <div class="story-detail">
+                                    <h2 class="story-title">{{story.title}}</h2>
+                                    <p class="story-description">{{story.seoDescription}}</p>
+                                    <p>Posted: <time datetime="{{story.date_posted}}">{{story.date_posted|timesince}}</time> ago</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                {%endfor%}
+            </div>
+        </div>
+    </section>
+     {%for story in page_obj%}
+     {%endfor%}
+
+    <!-- Pagination start -->
+    {%if page_obj.has_previous or page_obj.has_next  %}
+    <section class="my-3">
+        <div class="container d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex align-items-center justify-content-center flex-wrap">
+                {% if page_obj.has_previous %}
+                <a href="?page={{page_obj.previous_page_number}}{%if query%}&search={{query}}{%endif%}" class="pag-list">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+                    </svg>
+                </a>
+                {%endif %}
+
+
+                <!-- <a href="#" class="pag-list pagactive">{{ page_obj.number }}</a> -->
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number}}{%if query%}&search={{query}}{%endif%}" class="pag-list">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+                         </svg>
+                </a>
+                {%endif%}
+            </div>
+        </div>
+    </section>
+    {%endif%}
+    <!-- pagination ends -->
+    {%else%}
+    <section style="margin-top: 10rem; margin-bottom: auto;">
+        <h1 class="text-center"> No Result Found!</h1>
+    </section>
+    {%endif%}
+</main>
+{%endblock%}

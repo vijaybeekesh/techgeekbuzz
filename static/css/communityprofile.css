@@ -1,0 +1,143 @@
+
+.profile-section{
+    background-image: linear-gradient(to bottom,white 8%, #ECF4FF 8%);
+    padding: 4rem 0px;
+}
+
+.user-profile{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 3rem auto 1.5rem;
+    align-items: center;
+    justify-content: center;
+    background-color: #ECF4FF;
+    max-width: 91rem;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    padding: 4rem 2rem;
+}
+
+
+.user-image{
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    padding: 2rem;
+    background: #D2E5FF;
+    margin-top: -10rem;
+}
+
+.edit-profile-btn:link, .edit-profile-btn:visited{
+    display: block;
+    text-decoration: none;
+    background: #006CFF;
+    color: wheat;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border-radius: 5px;
+}
+
+.edit-profile-btn:hover{
+    color: #006CFF;
+    background-color:transparent;
+    outline: 1px solid #006CFF;
+}
+
+.community-username{
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 2.5rem 0px 1rem;
+}
+
+.community-profile-bio{
+    text-align: center;
+    font-size: 1.8rem;
+    color: #444;
+    max-width: 60rem;
+    line-height: 1.5;
+}
+
+.community-profile-social{
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.community-profile-social > a:link, .community-profile-social>a:visited{
+    font-size: 1.5rem;
+    color: #222;
+    text-decoration: none;
+}
+
+.community-profile-social>a:hover{
+    color: #006CFF;
+}
+
+.extra-d-posts{
+    max-width: 93rem;
+    margin: 3rem auto;
+    overflow: hidden;
+}
+
+.extra-detail{
+    border-radius: 10px;
+    margin: 1rem;
+    padding: 2rem;
+}
+
+.extra-detail>h4{
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.extra-detail>hr{
+    color: white;
+    opacity: 1;
+}
+
+.extra-detail>p{
+    font-size: 1.4rem;
+    line-height: 1.4;
+}
+
+
+/* rem and em do not depend on html font-size media query */
+/* 1em=1rem = 16px = 1354/16 = 84 */
+
+  /* for big screens */
+  @media screen and (min-width: 576px) {      
+}
+
+
+/* for mobiles */
+@media screen and (max-width: 576px) {
+    .user-image{
+        position: absolute;
+        left: 0px;
+        padding: 1rem;
+        width: 8rem;
+        height: 8rem;
+        object-fit: contain;
+        top: 60px;
+    }
+
+  }
+
+  /* On screens that are 992px or less*/
+@media screen and (max-width: 982px) {
+
+}
+@media screen and (max-width: 367px) {
+
+}
+
+
+@media screen and (min-width: 991px) {
+ 
+}

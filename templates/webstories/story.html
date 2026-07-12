@@ -1,0 +1,255 @@
+{%load static%}
+<!DOCTYPE html>
+<html amp>
+  <head>
+    <meta charset="utf-8" />
+    <title>{{story.title|title}}</title>
+    <link rel="shortcut icon" href="{% static 'images/cropped-Techgeekbuzz-Final-Logo-e1611249305805.png'%}" type="image/x-icon">  
+    <meta
+      name="viewport"
+      content="width=device-width,minimum-scale=1,initial-scale=1"
+    />
+    <link rel="alternate" type="application/rss+xml" href="{%url 'blogfeed'%}" />
+    <meta name="description" content="{{story.seoDescription}}">
+    <link rel="canonical" href="https://www.techgeekbuzz.com/webstories/{{story.slug}}/">
+    <meta name="keywords" content="{{story.seoKeywords}}">
+
+    <meta property="og:site_name" content="techgeekbuzz.com">
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{story.title}}" />
+  <meta property="og:description" content="{{story.seoDescription}}" />
+  <meta property="og:url" content="https://www.techgeekbuzz.com/">
+  
+  <meta property="og:image" content="https://www.techgeekbuzz.com{{story.story.first.coverimage.url}}" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="400" />
+  <meta property="og:image:type" content="image/png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{story.title}}">
+  <meta name="twitter:description" content="{{story.seoDescription}}">
+  <meta name="twitter:url" content="https://www.techgeekbuzz.com/">
+  <meta name="twitter:image" content="https://techgeekbuzz.com{{story.story.first.coverimage.url}}">
+  <script async custom-element="amp-story-auto-analytics" src="https://cdn.ampproject.org/v0/amp-story-auto-analytics-0.1.js"></script>
+
+
+
+    <style amp-boilerplate>
+      body {
+        -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      }
+      @-webkit-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @-moz-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @-ms-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @-o-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+    </style>
+    <noscript
+      ><style amp-boilerplate>
+        body {
+          -webkit-animation: none;
+          -moz-animation: none;
+          -ms-animation: none;
+          animation: none;
+        }
+      </style></noscript
+    >
+    <script async  src="https://cdn.ampproject.org/v0.js" ></script>
+    <script
+      async
+      custom-element="amp-video"
+      src="https://cdn.ampproject.org/v0/amp-video-0.1.js"
+    ></script>
+    <script
+      async
+      custom-element="amp-story"
+      src="https://cdn.ampproject.org/v0/amp-story-1.0.js"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Oswald:200,300,400"
+      rel="stylesheet"
+    />
+    <style amp-custom>
+      amp-story {
+        font-family: "Oswald", sans-serif;
+        color: #fff;
+      }
+      amp-story-page {
+        background-color: #000;
+      }
+      h1 {
+        font-weight: bold;
+        font-size: 2.875em;
+        color: white;
+        line-height: 1.174;
+        background-color: #003e93;
+        max-width: 100%;
+        display: inline;
+      }
+      p {
+        font-weight: normal;
+        font-size: 1.3em;
+        line-height: 1.5em;
+        color: #fff;
+        padding: 2rem 1rem ;
+        background-color: #003e93;
+      }
+      q {
+        font-weight: 300;
+        font-size: 1.1em;
+      }
+      amp-story-grid-layer.bottom {
+        align-content: end;
+      }
+      amp-story-grid-layer.noedge {
+        padding: 0px;
+      }
+      amp-story-grid-layer.center-text {
+        align-content: center;
+      }
+      .wrapper {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+      }
+      .banner-text {
+        text-align: center;
+        background-color: #000;
+        line-height: 2em;
+      }
+    </style>
+  </head>
+  {%if story.story.all%}
+  <body>
+    <!-- Cover page -->
+    <amp-story
+      standalone
+      title="{{story.title}}"
+      publisher="techgeekbuzz"
+      publisher-logo-src="{%static 'images/cropped-Techgeekbuzz-Final-Logo-e1611249305805.png'%}"
+      {%if story.story%}
+      poster-portrait-src="{{story.story.first.coverimage.url}}"
+      {%endif%}
+    >
+      <amp-story-auto-analytics gtag-id="UA-132423771-1"></amp-story-auto-analytics>
+
+
+      {%for story in story.story.all%}
+      {%if forloop.first%}
+      <amp-story-page id="cover" auto-advance-after="8s">
+        <amp-story-grid-layer template="fill">
+          <amp-img
+            src="{{story.coverimage.url}}"
+            width="720"
+            height="1280"
+            layout="responsive"
+          >
+          </amp-img>
+        </amp-story-grid-layer>
+        {%if story.title%}
+        <amp-story-grid-layer template="vertical">
+          <h1>{{story.title}}</h1>
+        </amp-story-grid-layer>
+        {%endif%}
+        {%if story.description%}
+        <amp-story-grid-layer template="vertical" class="bottom">
+          <p animate-in="drop">{{story.description}}</p>
+        </amp-story-grid-layer>
+        {%endif%}
+      </amp-story-page>
+      {%else%}
+      <amp-story-page id="page{{forloop.counter0}}" auto-advance-after="8s">
+        <amp-story-grid-layer template="fill">
+          <amp-img
+            src="{{story.coverimage.url}}"
+            width="720"
+            height="1280"
+            layout="responsive"
+          >
+          </amp-img>
+        </amp-story-grid-layer>
+        {%if story.title%}
+        <amp-story-grid-layer template="vertical">
+          <h1>{{story.title}}</h1>
+        </amp-story-grid-layer>
+        {%endif%}
+        {%if story.description%}
+        <amp-story-grid-layer template="vertical" class="bottom">
+          <p animate-in="drop">{{story.description}}</p>
+        </amp-story-grid-layer>
+        {%endif%}
+      </amp-story-page>
+      {%endif%}
+      {%endfor%} 
+      {%if story.post_url%}
+      <!-- last page -->
+      <amp-story-page id="pagelast">
+        <amp-story-grid-layer template="vertical" class="noedge">
+          <div class="wrapper">
+            {%for story in story.story.all%}
+            <amp-img
+              src="{{story.coverimage.url}}"
+              width="720"
+              height="1280"
+              layout="responsive"
+              animate-in="fade-in"
+              animate-in-delay="0.4s"
+            >
+            </amp-img>
+            {%endfor%}
+          </div>
+        </amp-story-grid-layer>
+        <amp-story-grid-layer template="vertical" class="center-text">
+          <p class="banner-text" animate-in="whoosh-in-right">
+            Checkout the complete information on
+            <a href="{{story.post_url}}"> View More </a>
+          </p>
+        </amp-story-grid-layer>
+      </amp-story-page>
+      {%endif%}
+    </amp-story>
+  </body>
+  {%else%}
+  <body>
+    <h1 style="margin-top: 10rem;">No Story Found</h1>
+  </body>
+  {%endif%}
+</html>

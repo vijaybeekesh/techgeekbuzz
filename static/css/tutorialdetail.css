@@ -1,0 +1,241 @@
+main{
+    margin-top: 9rem !important;
+    
+}
+
+.edit-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 3rem;
+    z-index: 99;
+    font-size: 1.8rem;
+    border: none;
+    outline: none;
+    background-color: #2471f7;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 6rem;
+    height: 6rem;
+    padding: 1.5rem;
+    transition: 0.3s;
+}
+
+.edit-button:hover
+{
+    outline: 1px solid #2471f7;
+    color: #2471f7;
+    background-color: white;
+}
+
+/* header of the blog */
+.blog-post-header > h1{
+    font-size: 4rem;
+    font-weight: bolder;
+    line-height: 1.2;
+    color:#003174;
+}
+.blog-post-header > p{
+    color: #444;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    font-weight: bold;
+}
+.blog-post-header > p > a{
+    text-decoration: none;
+    color:#2471f7;
+}
+.blog-post-header > img{
+   width: 100%;
+   margin-bottom: 1.1rem;
+}
+
+.share-tutorial 
+{list-style: none;
+}
+.share-tutorial> li > h3{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+/* Header of the blog ends */
+
+
+/* Tutorial aside toc */
+#tutorialTable{
+    margin-top: 10vh;
+}
+
+#tutorialTable > .accordion-item
+{
+    margin-bottom: 2rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+#tutorialTable > .accordion-item button
+{
+    font-size: 1.8rem;
+    color: #444;
+    background-color: white;
+}
+
+.tutorial-list{
+    list-style: none;
+    padding: 0px;
+}
+.tutorial-items{
+    margin-bottom: 0.5rem;
+    font-size:1.5rem;
+}
+.tutorial-items > a:link, a:link>svg {
+    text-decoration: none;
+    color: #bdc0c3;
+    fill: #bdc0c3;
+}
+.tutorial-items > a:visited> svg{
+    fill:green;
+    color: #0d6efd;
+}
+.tutorial-items > a:hover{
+    color: #0d6efd;
+    text-decoration: underline;
+}
+.tutorial-items > a svg{
+    margin-right:1rem ;
+}
+.tutorial-items > a p{
+    font-size: 1.5rem;
+}
+/* Tutorial aside toc ends */
+
+/* Tutorial next prev */
+.next-prev{
+    background-color: #5092EC;
+    padding: 5rem 2rem;
+}
+.tutorial-controller a
+{
+    display: block;
+    width: 26rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 1.2;
+    font-size: 2rem;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 3rem;
+    margin-right:2rem ;
+}
+/* Tutorial next prev ends */
+
+
+
+
+/* Article section */
+.tbc{
+    margin-bottom: 2rem;
+}
+
+.tbclist{
+    list-style: none;
+}
+
+.i-H3{
+    padding-left: 3rem;
+}
+.i-H4{
+    padding-left: 5rem;
+}
+.i-H5, .i-H6{
+    padding-left: 6rem;
+}
+
+.accordion-header{
+    margin-top: 0px;
+}
+.accordion-header button{
+    font-size:2rem;
+    margin-top: 0px;
+    font-weight: bolder;
+    background-color: rgba(145, 179, 250, 0.5);
+}
+
+article{
+    font-size: 1.8rem;
+    color: #444;
+    line-height: 1.7;
+    padding-top: 2rem;
+    overflow-x: hidden;
+}
+
+
+article pre{
+    background-color: #09005D;
+    padding: 2rem;
+    color: #fff;
+}
+
+article::target-text {
+    margin-bottom: 100rem;
+    color: white;
+}
+article li, article p{
+    font-size: 1.8rem;
+    line-height: 1.7;
+}
+article a{
+    text-decoration:  none;
+}
+article h1{
+    font-size:3rem;
+}
+article h2{
+    font-size:2.5rem;
+}
+article h3{
+    font-size:2.3rem;
+}
+article h4{
+    font-size:2.1rem;
+}
+article h5{
+    font-size:1.9rem;
+}
+article h6{
+    font-size:1.6rem;
+}
+article p{
+    margin-bottom: 1.7rem;
+}
+article h1,article h2,article h3,article h3,article h4,article h6{
+    font-weight: bold;
+    margin-top: 2.8rem;
+    margin-bottom: 1.3rem;
+}
+article img{
+    display: block;
+}
+article pre{
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+article table, tbody, td, tr{
+    border:  1px solid #444;
+}
+article table td{
+    padding: 0.3rem 0.6rem;
+}
+
+article ul{
+    padding-left: 4rem;
+    margin-bottom: 2rem;
+}
+
+.hscroll{
+    overflow-x:auto ;
+}
+/* Article section ends */
+
+

@@ -1,0 +1,146 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+    <meta name="description" content="Check all the broken links on your web page with TechGeekBuzz Broken Links Tool">
+    <meta name="keywords" content="Free Broken Link Checker Tools by Techgeekbuzz">
+   
+    <meta property="article:publisher" content="https://www.facebook.com/techgeekbuzz/" />
+
+    <link rel="canonical" href="https://www.techgeekbuzz.com/tools/broken-links-checker">
+
+    <meta property="og:site_name" content="techgeekbuzz.com">
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Free Broken Link Checker Tools by Techgeekbuzz" />
+    <meta property="og:description" content="Check and Fix all of your's Broken Links on the web page" />
+    <meta property="og:url" content="https://www.techgeekbuzz.com/tools">
+    <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Free Broken Link Checker Tools by Techgeekbuzz">
+    <meta name="twitter:description" content="Check and Fix all of your's Broken Links on the web page">
+    <meta name="twitter:url" content="https://www.techgeekbuzz.com/tools/broken-links-checker">
+    <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/tools/tool.css'%}">
+{%endblock%}
+
+{%block title%}
+    <title>Free Broken Link Checker Tools by Techgeekbuzz</title>
+{%endblock%}
+{%block headjs%} {%endblock%}
+
+
+{%block main%}
+    <!-- Main Section Started -->
+    <main style="margin-top: 6rem;">
+        <section class="tool-heading">
+            <h1>Broken Links Checker</h1>
+            <p> Check all the Broken Links of a web page. Enter the webpage page url and start the test.</p>
+            <form class="d-flex tool-form flex-wrap align-items-center justify-content-center flex-column gap-3 px-3">
+                <input type="url" placeholder="Enter URL: https://www.example.com" class="form-input shadow"  required id="url-form">
+                <button class="btn btn-primary submit-btn shadow" type="submit">Test Page</button>
+            </form>
+        </section>
+        
+        <section class="test-result-section container" style="display:none;">
+            <div class="tested-urls d-flex justify-content-between">
+                <div>
+                    <p class="tested-url-title">
+                    Tested URL
+                    </p>
+                    <p id="tested-url-link"></p>
+                </div>
+
+                <div>
+                    <p id="total-links-found"></p>
+                    <p id="tested-time"></p>
+                </div>   
+            </div>
+
+            <!-- broken Links -->
+
+            <hr class="horizontal-row w-75">
+            
+
+            <h2 class="broken-links-title-heading mt-5"></h2>
+            <div class="table-responsive broken-links-table">
+                <table class="table text-center table-danger table-striped" id="broken-link-table" style="display:none;">
+                    <thead>
+                        <tr>
+                          <th scope="col">Status</th>
+                          <th scope="col">Type</th>
+                          <th scope="col">Link</th>
+                        </tr>
+                      </thead>
+                      <tbody class="broken-link-table">
+
+                      </tbody>
+                </table>
+            </div>
+            <!-- broken Links -->
+
+            <!-- Working Links -->
+
+            <h2 class="working-links-title-heading mt-5"></h2>
+            <div class="table-responsive working-links-table">
+                <table class="table text-center table-success table-striped" id="working-link-table" style="display:none;">
+                    <thead>
+                        <tr>
+                          <th scope="col">Status</th>
+                          <th scope="col">Type</th>
+                          <th scope="col">Link</th>
+                        </tr>
+                      </thead>
+                      <tbody class="working-link-table">
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- Working Links -->
+        </section>
+
+        <section class="about container">
+            <h2>About Broken Link Checker</h2>
+
+            <h4>What are Broken Links?</h4>
+            <p>
+                 Broken links are hyperlinks or links that are linked to external web pages that have no existence on the websites. Many times, we get directed to the 404 error message when we try to access a web page. This is nothing but a broken link. When the website owner makes modifications to the page that you requested or removes it from a website, broken links or dead links occur. 
+            </p>
+
+
+
+            
+            <h4>Why should check for broken links?</h4>
+            <p>
+                A fully-fledged website can have a lot of broken links in it. These links can either be internal or external. However, such broken links are not good for the website as well as the one who visits that website. As a result, there is a need to find out such broken links in the website and correct them. This is where the broken link tool comes in handy.
+            </p>
+
+            
+            <h4>How Broken Link tool helps?</h4>
+            <p>
+                TechGeekBuzz’s Broken Link Checker helps you find annoying broken or dead links on your website, whether it is external or internal. This tool can crawl up to 3000 links. You need to provide your website URL, and the Broken Link Check provides you with all the internal and external broken links.
+            </p>
+            
+            <h4>HTTP Status Code</h4>
+            <p style="padding-left: 2rem;">1. Informational responses (100–199)</p>
+            <p style="padding-left: 2rem;">2. Successful responses (200–299)</p>
+            <p style="padding-left: 2rem;">3. Redirection messages (300–399)</p>
+            <p style="padding-left: 2rem;">4. Client error responses (400–499)</p>
+            <p style="padding-left: 2rem;">5. Server error responses (500–599)</p>
+        </section>
+
+    </main>
+    <!-- Main section ended -->
+{%endblock%}
+
+{%block js%}
+<script src="{%static 'js/tools/js/broken-links-checker.js'%}"></script>
+{%endblock%}
+

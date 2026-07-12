@@ -1,0 +1,135 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+    <meta name="description" content="TechGeekBuzz offers you a set of free tools">
+    <meta name="keywords" content="TechGeekBuzz Tool">
+    
+
+    <link rel="canonical" href="https://www.techgeekbuzz.com/tools">
+    <meta property="og:site_name" content="techgeekbuzz.com">
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="TechGeekBuzz ToolBox" />
+    <meta property="og:description" content="Arsenal of all the online tools-Techgeekbuzz" />
+    <meta property="og:url" content="https://www.techgeekbuzz.com/tools">
+    <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TechGeekBuzz ToolBox">
+    <meta name="twitter:description" content="Arsenal of all the online tools -Techgeekbuzz">
+    <meta name="twitter:url" content="https://www.techgeekbuzz.com/tools">
+    <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/tools/tools.css'%}">
+{%endblock%}
+
+{%block title%}
+    <title>Tools-TechGeekBuzz</title>
+{%endblock%}
+{%block headjs%} {%endblock%}
+
+
+{%block main%}
+    <!-- Main Section Started -->
+    <main style="margin-top: 6rem;">
+        <section class="tool-heading-section">
+            <h1>Tools</h1>
+            <p> Select a tool to test</p>
+        </section>
+
+        <!-- tools section -->
+        <section class="tools-section">
+            <div class="container">
+                <div class="row">
+                    <!-- search form -->
+                    <div class="col-12 search-form">
+                        <form>
+                            <input type="text" class="search-form-input" placeholder="Search Tools">
+                        </form>
+                    </div>
+                    <!-- search forms ends -->
+
+                    <!-- categroeis and tool -->
+                    <div class="col-lg-4 col-12 tools-categories">
+                        <h4>Select Tool</h4>
+                        <ul class="d-flex flex-column tool-category">
+                            <li class="btn tool-category-item">All</li>
+                            <li class="btn tool-category-item">SEO</li>
+                            <li class="btn tool-category-item">Security</li>
+                            <li class="btn tool-category-item">Converter</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-8 col-12 tool-list">
+                        <div class="row">
+                            <!-- tool card -->
+                            <div class="col-lg-6 col-md-6 col-12 tool-item-container" data-parent="SEO">
+                                <a class="tool-card d-flex flex-column align-items-center justify-content-center text-center py-5" href="{%url 'broken-links-checker'%}">
+                                    
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07Z"/>
+                                      </svg>
+                        
+                                    <div class="tool-title-des mt-3">
+                                        <h3 class="tool-title">Broken Links Checker</h3>
+                                        <p>SEO Tool</p>
+                                        <p class="tool-subdescription mt-3">Test and Check if your web page contains any internal or external dead link.</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- tool card ends -->
+                            <!-- tool 2 card -->
+                            <div class="col-lg-6 col-md-6 col-12 tool-item-container" data-parent="Security">
+                                <a class="tool-card d-flex flex-column align-items-center justify-content-center text-center py-5" href="{%url 'password-generator'%}">
+                                    
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-lock" viewBox="0 0 16 16">
+                                        <path d="M8 5a1 1 0 0 1 1 1v1H7V6a1 1 0 0 1 1-1zm2 2.076V6a2 2 0 1 0-4 0v1.076c-.54.166-1 .597-1 1.224v2.4c0 .816.781 1.3 1.5 1.3h3c.719 0 1.5-.484 1.5-1.3V8.3c0-.627-.46-1.058-1-1.224zM6.105 8.125A.637.637 0 0 1 6.5 8h3a.64.64 0 0 1 .395.125c.085.068.105.133.105.175v2.4c0 .042-.02.107-.105.175A.637.637 0 0 1 9.5 11h-3a.637.637 0 0 1-.395-.125C6.02 10.807 6 10.742 6 10.7V8.3c0-.042.02-.107.105-.175z"/>
+                                        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                                    </svg>
+                        
+                                    <div class="tool-title-des mt-3">
+                                        <h3 class="tool-title">Password Generator</h3>
+                                        <p>Security</p>
+                                        <p class="tool-subdescription mt-3">Generate a Random and Secure Password.</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- tool 2 card ends -->
+                            <!-- tool 3 card -->
+                            <div class="col-lg-6 col-md-6 col-12 tool-item-container" data-parent="Converter">
+                                <a class="tool-card d-flex flex-column align-items-center justify-content-center text-center py-5" href="{%url 'xmltojson'%}">
+                                    
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filetype-xml" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2v-1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM3.527 11.85h-.893l-.823 1.439h-.036L.943 11.85H.012l1.227 1.983L0 15.85h.861l.853-1.415h.035l.85 1.415h.908l-1.254-1.992 1.274-2.007Zm.954 3.999v-2.66h.038l.952 2.159h.516l.946-2.16h.038v2.661h.715V11.85h-.8l-1.14 2.596h-.025L4.58 11.85h-.806v3.999h.706Zm4.71-.674h1.696v.674H8.4V11.85h.791v3.325Z"/>
+                                      </svg>
+                        
+                                    <div class="tool-title-des mt-3">
+                                        <h3 class="tool-title">XML to JSON Converter</h3>
+                                        <p>Converter</p>
+                                        <p class="tool-subdescription mt-3">Convert the XML data to JSON and download the JSON file</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- tool 3 card ends -->
+                        </div>
+                    </div>
+                    <!-- categories and tools ends -->
+                </div>
+            </div>
+        </section>
+        <!-- Tools section ends -->
+    </main>
+    <!-- Main section ended -->
+{%endblock%}
+
+{%block js%}
+<script src="{%static 'js/tools/tools.js'%}"></script>
+{%endblock%}
+
+

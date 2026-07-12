@@ -1,0 +1,252 @@
+.post-main-title{
+    font-size: 3rem;
+    font-weight: bold;
+    color: #003174;
+    word-break: break-word;
+    margin-top: 2rem;
+}
+
+.article-section{
+    position: relative;
+}
+
+.message-draft{
+    margin-top: 2rem;
+    background: #ffc107;
+    color: white;
+    padding: 2rem;
+    position: sticky;
+    top: 6rem;
+}
+
+.edit-button:link, .edit-button:visited{
+    display: block;
+    text-decoration: none;
+    font-size: 1.5rem;
+    border: 1px solid;
+    max-width: 14rem;
+    padding: 1rem 3rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.edit-button:hover{
+    background-color: #006CFF;
+    color: white;
+}
+
+
+.post-main-image{
+    display: block;
+    width: 100%;
+    max-height: 35rem;
+    object-fit: cover;
+}
+
+article{
+    font-size: 1.8rem;
+    color: #444;
+    line-height: 1.7;
+    padding-top: 2rem;
+    overflow-x: hidden;
+    padding-bottom: 4rem;
+}
+.posted-on{
+    margin: 1rem 0px 0px;
+    display: block;
+    font-size: 1.2rem;
+    color: #444;
+}
+/* article pre{
+    background-color: #09005D;
+    padding: 2rem;
+    color: #fff;
+} */
+
+article::target-text {
+    margin-bottom: 100rem;
+    color: white;
+}
+article li, article p{
+    font-size: 1.8rem;
+    line-height: 1.7;
+}
+article a{
+    text-decoration:  none;
+}
+article h1{
+    font-size:3rem;
+}
+article h2{
+    font-size:2.5rem;
+}
+article h3{
+    font-size:2.3rem;
+}
+article h4{
+    font-size:2.1rem;
+}
+article h5{
+    font-size:1.9rem;
+}
+article h6{
+    font-size:1.6rem;
+}
+article p{
+    margin-bottom: 1.7rem;
+}
+article h1,article h2,article h3,article h5,article h4,article h6{
+    font-weight: bold;
+    margin-top: 2.8rem;
+    margin-bottom: 1.3rem;
+}
+article img{
+    display: block;
+}
+article pre{
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+article table, tbody, td, tr{
+    border:  1px solid #444;
+}
+article table td{
+    padding: 0.3rem 0.6rem;
+}
+
+article ul{
+    padding-left: 4rem;
+    margin-bottom: 2rem;
+}
+
+.hscroll{
+    overflow-x:auto ;
+}
+
+/* user profile */
+.user-image{
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    padding: 2rem;
+    background: #D2E5FF;
+}
+
+
+.community-username{
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 1rem 0px 1rem;
+}
+
+.community-username a:link, .community-username a:visited{
+    color: #444;
+    text-decoration: none;
+}
+
+
+.community-profile-bio{
+    text-align: center;
+    font-size: 1.2rem;
+    color: #444;
+    max-width: 60rem;
+    line-height: 1.5;
+}
+
+.community-profile-social{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.community-profile-social > a:link, .community-profile-social>a:visited{
+    font-size: 1.5rem;
+    color: #222;
+    text-decoration: none;
+}
+
+.community-profile-social>a:hover{
+    color: #006CFF;
+}
+
+.post-author-detail-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: sticky;
+    top: 10rem;
+}
+
+.stick-bottom{
+    justify-content: center;
+    position: sticky;
+    top: 91vh;
+    background: #edf5ff;
+    padding: 2rem;
+    max-width: 55rem;
+    margin: 0px auto;
+    border-radius: 3px;
+    box-shadow: 0 0 5px 10px #edf5ff;
+}
+
+
+.comment-section{
+    max-width: 94rem;
+    margin: 7rem auto 2rem;
+}
+
+.comment-main-heading{
+    color: #003174;
+    font-weight: 600;
+    margin: 4rem 0px 2rem;
+}
+
+.comment-profile-link:link,.comment-profile-link:visited{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: #000;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.comment-profile-link:hover{
+    color: #003174;
+}
+
+.comment-image{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comment-profile-link time{
+    font-size: 1rem;
+    color: #999;
+}
+
+
+.comment-content{
+    font-size: 1.2rem;
+    line-height: 1.2;
+    margin: 0.3rem 0px 0.1rem;
+}
+
+.comment-card{
+    margin:  1rem 0px;
+    padding: 1rem;
+}
+
+.delete-comment:link,.delete-comment:visited{
+    text-decoration: none;
+    color: red;
+    font-weight: bold;
+    font-size: 1.1rem;
+}

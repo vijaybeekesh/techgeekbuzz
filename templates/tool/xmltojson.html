@@ -1,0 +1,220 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+    <meta name="description" content="Convert the xml data to json with techgeekbuzz">
+    <meta name="keywords" content="XML to json converter">
+   
+    <meta property="article:publisher" content="https://www.facebook.com/techgeekbuzz/" />
+
+    <link rel="canonical" href="https://www.techgeekbuzz.com/tools/xml-to-json">
+
+    <meta property="og:site_name" content="techgeekbuzz.com">
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="xml to json converter " />
+    <meta property="og:description" content="Convert all your XML data into JSON format with this free online XML to JSON converter." />
+    <meta property="og:url" content="https://www.techgeekbuzz.com/tools/xml-to-json">
+    <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="xml to json converter ">
+    <meta name="twitter:description" content="Convert all your XML data into JSON format with this free online XML to JSON converter.">
+    <meta name="twitter:url" content="https://www.techgeekbuzz.com/tools/xml-to-json">
+    <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/tools/tool.css'%}">
+    <link rel="stylesheet" href="{% static 'css/tools/xmltojson.css'%}">
+{%endblock%}
+
+{%block title%}
+    <title>XML to JSON converter</title>
+{%endblock%}
+{%block headjs%} {%endblock%}
+
+
+{%block main%}
+    <!-- Main Section Started -->
+    <main style="margin-top: 6rem;">
+        
+        <section class="tool-heading">
+            <h1>XML to JSON Converter </h1>
+            <p>Convert all your XML data into JSON format with this free online XML to JSON converter.  </p>
+        </section>
+
+        <section class="xmltojson-section">
+           <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-5 col-12">
+                    <h3 class="heading-main">XML Data</h3>
+                    <textarea name="xmldata" id="xmldata"  class="textbox-area"></textarea>
+                </div>
+                <div class="col-lg-2 col-12">
+                    <button class="btn btn-success special-btn convert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                        </svg> 
+                        Convert
+                    </button>
+                    <button class="btn btn-success special-btn downloadbtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                          </svg>
+                        Download
+                    </button>
+
+                </div>
+                <div class="col-lg-5 col-12">
+                    <h3 class="heading-main"> JSON Data</h3>
+                    <textarea name="jsondata" id="jsondata"  disabled class="textbox-area"></textarea>
+                </div>
+            </div>
+           </div>
+           </div>
+        </section>
+
+        <section class="about-tool container my-5">
+            <h3 class="text-center">What is XML to JSON Converter? </h3>
+            <p class="text-center">
+                An XML to JSON converter is a tool to transform XML data or files into JSON format within a fraction of a second. It converts XML elements into JSON keys and transforms the value of XML elements into equivalent JSON values. 
+            </p>
+
+            <h3 class="text-center">
+                What are XML and JSON? 
+            </h3 class="text-center">
+            <p class="text-center">
+                XML stands for Extensible Markup Language. It is a markup language and a file format to store, transmit, and reconstruct arbitrary data. Its design primarily emphasizes generality, simplicity, and usability on the internet. 
+                <br/>For two computer systems to exchange information between them, they need to settle upon in format one file format. XML standardizes and simplifies this process. It acts as a lingua franca (a bridge language) for representing information and facilitating data exchange between two disparate systems. 
+                <br/>JSON is an acronym for JavaScript Object Notation. It is a lightweight standard file format and data interchange format. It uses human-readable text to store and transmit data objects consisting of key-value pairs and arrays. 
+                <br/>Humans can read JSON data quickly, and machines can parse and generate it easily. JSON is widely used to read data directly from a web server and display it on a web page. 
+            </p class="text-center">
+            <h3>
+                How to Use TechGeekBuzz’s XML to JSON Converter? 
+            </h3>
+            <p>
+                To use TechGeekBuzz’s XML to JSON converter, follow the below steps: 
+                <br/>
+                1. Write or copy XML data in the left input box. 
+                <br/>
+                2. Click the ‘Convert’ button, and you will get the JSON data within a fraction of a second. 
+                <br/>
+                3. Copy the generated JSON data. 
+                <br/>
+                4. Hit ‘Download’ if you want to download the generated JSON data. You get the JSON file on your system. 
+            </p>
+            <h3>Why use TechGeekBuzz’s XML to JSON Converter?</h3>
+            <p>
+                TechGeekBuzz’s XML to JSON Converter is completely free and easy to use. It is extremely quick. Along with the conversion, it allows you to download the transformed data into a JSON file format. 
+            </p>
+        </section>
+
+
+        <section class="container">
+            <div class="faqs my-5">
+                <div class="accordion" id="faqaccordion">
+                    <h2 class="faq-headline">FAQs</h2>
+                    <hr class="horizontal-row mb-5">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="heading3">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                           1.What is the difference between JSON and XML? 
+                          </button>
+                        </h4>
+                        <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#faqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">
+                                JSON and XML are both data formats for storing and transferring data. JSON is more readable and easy to understand then XML but is less flexible. On the flip side, XML is flexible but more challenging to understand and write. JSON is used to transmit data between web applications and APIs, whereas XML is used for data exchange between two disparate systems. 
+                              </p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="heading1">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                           2. Why convert XML to JSON? 
+                          </button>
+                        </h4>
+                        <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1" data-bs-parent="#faqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">
+                                There are many reasons to convert XML to JSON – JSON is a better option for web applications, lightweight and easy to read, widely supported by programming languages and web browsers, for data exchange between web apps and APIs, and easily processed by modern web development tools and libraries. 
+                              </p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="heading2">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                           3. Is TechGeekBuzz’s XML to JSON converter safe to use? 
+                          </button>
+                        </h4>
+                        <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#faqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">
+                                Yes, TechGeekBuzz’s XML to JSON converter is completely safe to use. 
+                              </p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+    </main>
+    <!-- Main section ended -->
+{%endblock%}
+
+{%block js%}
+<script src="{%static 'js/vendor/xml2json.js'%}"></script>
+<script>
+    let xmljs = new X2JS();
+    function converttojson(e)
+    {
+        
+        let xmlarea = document.querySelector("#xmldata").value;
+        let jsonarea = document.querySelector("#jsondata");
+
+        let data = xmljs.xml_str2json(xmlarea);
+
+        if(data==null)
+        {
+            jsonarea.value = "XML Data is not valid!";
+        }
+        else
+        {
+            jsonarea.value = JSON.stringify(data, null, 4);
+        }
+
+        
+
+
+    }
+    let convertbtn = document.querySelector(".convert");
+
+    convertbtn.addEventListener('click', converttojson)
+
+
+    let downloadbtn = document.querySelector(".downloadbtn");
+
+    downloadbtn.addEventListener("click", (e)=>{
+        let jsondata = document.querySelector("#jsondata").value;
+        if(jsondata!="" && jsondata != "XML Data is not valid!")
+        { 
+            let jsondata_str = "data:text/json;charset=utf-8," + encodeURIComponent(jsondata);
+            let a = document.createElement('a');
+            a.setAttribute("href", jsondata_str);
+            a.setAttribute("download", "data.json");
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        }
+    })
+</script>
+{%endblock%}
+

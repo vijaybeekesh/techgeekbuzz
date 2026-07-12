@@ -1,0 +1,262 @@
+{%extends 'community/base.html'%}
+{%load static%}
+{% load custom_tag %}
+
+
+
+  {%block metadata%}
+  <link rel="alternate" type="application/rss+xml" href="{%url 'blogfeed'%}" />
+  <meta name="description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.">
+  <link rel="canonical" href="https://www.techgeekbuzz.com/">
+  <meta name="keywords" content="Learn, Technology, Tutorial, Blog, Programming">
+
+  <meta property="og:site_name" content="techgeekbuzz.com">
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="TechgeekBuzz: Let The Geek in You Always Stay In Buzz" />
+  <meta property="og:description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more." />
+  <meta property="og:url" content="https://www.techgeekbuzz.com/">
+  <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="400" />
+  <meta property="og:image:type" content="image/png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TechgeekBuzz: Let The Geek in You Always Stay In Buzz">
+  <meta name="twitter:description" content="Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.">
+  <meta name="twitter:url" content="https://www.techgeekbuzz.com/">
+  <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+  {%endblock%}
+
+
+  {%block css%}
+  <link rel="stylesheet" href="{%static 'css/communityprofile.css'%}">
+
+  {%endblock%}
+
+  {%block title%}<title>User Profile</title>{%endblock%}
+  
+  {%block headjs%}
+  {%endblock%}
+
+  {%block main%}
+  <main style="margin-top:6rem;">
+    <section class="profile-section">
+        <!-- user profile -->
+        <div class="user-profile">
+            {%if userprofile.profile_picture%}
+                <img src="{{userprofile.profile_picture.url}}" class="img-fluid user-image" alt="{{mainuser}} profile">
+            {%else%}
+                <img src="{%static 'images/default-user.png'%}" class="img-fluid user-image">
+            {%endif%}
+            {%if set_edit%}
+                <a href="{%url 'update-profile'%}" class="edit-profile-btn shadow">Edit Profile</a>
+            {%endif%}
+            {%if userprofile.display_name%}
+                <h1 class="community-username">{{userprofile.display_name}}</h1>
+            {%else%}
+                    {%if mainuser.first_name%}
+                        <h1 class="community-username">{{mainuser.first_name}} {{mainuser.last_name}}</h1>
+                    {%else%}
+                        <h1 class="community-username">{{mainuser.username}}</h1>
+                    {%endif%}
+            {%endif%}
+            <p class="community-profile-bio">
+                {%if userprofile.bio%}
+                    {{userprofile.bio}}
+                {%else%}
+                    Nothing.....
+                {%endif%}
+            </p>
+            <div class="community-profile-social">
+                {%if userprofile.location%}
+                    <a href="#"><i class="bi bi-pin-map"></i> {{userprofile.location}}</a>
+                {%endif%}
+                {%if userprofile.github%}
+                    <a href="{{userprofile.github}}"><i class="bi bi-github"></i></a>
+                {%endif%}
+                {%if userprofile.show_email%}
+                    <a href="mailto:{{mainuser.email}}"><i class="bi bi-envelope"></i></a>
+                {%endif%}
+                {%if userprofile.stackoverflow%}
+                    <a href="{{mainuser.stackoverflow}}"><i class="bi bi-stack-overflow"></i></a>
+                {%endif%}
+                {%if userprofile.website%}
+                    <a rel="nofollow" href="{{mainuser.website}}"><i class="bi bi-globe"></i></a>
+                {%endif%}
+                {%if userprofile.twitter%}
+                    <a href="{{mainuser.twitter}}"><i class="bi bi-twitter"></i></a>
+                {%endif%}
+                {%if userprofile.instagram%}
+                    <a href="{{mainuser.instagram}}"><i class="bi bi-instagram"></i></a>
+                {%endif%}
+                {%if userprofile.facebook%}
+                    <a href="{{mainuser.facebook}}"><i class="bi bi-facebook"></i></a>
+                {%endif%}
+                
+            </div>
+        </div>
+        <!-- user profile ends -->
+
+        <!-- user extra-detail  and posts-->
+        <div class="extra-d-posts">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-12">
+                    {%if userprofile.skills%}
+                    <div class="extra-detail shadow">
+                        <h4>Skills</h4>
+                        <hr>
+                        <p>{{userprofile.skills}}</p>
+                    </div>
+                    {%endif%}
+                    {%if userprofile.work%}
+                    <div class="extra-detail shadow">
+                        <h4>Work At</h4>
+                        <hr>
+                        <p>{{userprofile.work}}</p>
+                    </div>
+                    {%endif%}
+                </div>
+
+                <div class="col-lg-8 col-md-12 col-12">
+                    <div class="users-posts">
+                        <div class="community-post-card">
+                            <div class="post-card-img-date">
+                                <a href="#">
+                                    <img src="{%static 'images/user.png'%}" class="img-fluid">
+                                    <span>Steve Harvy <br> <time> 25 Dec</time></span>
+                                </a>
+                                <p><i class="bi bi-eye"></i> 35</p>
+                            </div>
+                            <div class="community-post-title-img">
+                                <img src="{%static 'images/blog-image-1.png'%}" class="img-fluid">
+                                <div class="title-tags">
+                                    <h3>
+                                        <a href="#">I changed my mind. Angular needs a reactive primitive</a>
+                                    </h3>
+                                    <div class="tags">
+                                        <a href="#">#programming</a>
+                                        <a href="#">#python</a>
+                                        <a href="#">#beginner</a>
+                                        <a href="#">#join</a>
+                                        <a href="#">#kivi</a>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                            <div class="reaction-container">
+                                <a href="#" class="react-love"><i class="bi bi-heart"></i> React</a>
+                                <a href="#" class="comment-post"><i class="bi bi-chat"></i> Comment</a>
+                                <a href="#" class="save-post"><i class="bi bi-bookmark"></i> Save for later Read</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="users-posts">
+                        <div class="community-post-card">
+                            <div class="post-card-img-date">
+                                <a href="#">
+                                    <img src="{%static 'images/user.png'%}" class="img-fluid">
+                                    <span>Steve Harvy <br> <time> 25 Dec</time></span>
+                                </a>
+                                <p><i class="bi bi-eye"></i> 35</p>
+                            </div>
+                            <div class="community-post-title-img">
+                                <img src="{%static 'images/blog-image-1.png'%}" class="img-fluid">
+                                <div class="title-tags">
+                                    <h3>
+                                        <a href="#">I changed my mind. Angular needs a reactive primitive</a>
+                                    </h3>
+                                    <div class="tags">
+                                        <a href="#">#programming</a>
+                                        <a href="#">#python</a>
+                                        <a href="#">#beginner</a>
+                                        <a href="#">#join</a>
+                                        <a href="#">#kivi</a>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                            <div class="reaction-container">
+                                <a href="#" class="react-love"><i class="bi bi-heart"></i> React</a>
+                                <a href="#" class="comment-post"><i class="bi bi-chat"></i> Comment</a>
+                                <a href="#" class="save-post"><i class="bi bi-bookmark"></i> Save for later Read</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="users-posts">
+                        <div class="community-post-card">
+                            <div class="post-card-img-date">
+                                <a href="#">
+                                    <img src="{%static 'images/user.png'%}" class="img-fluid">
+                                    <span>Steve Harvy <br> <time> 25 Dec</time></span>
+                                </a>
+                                <p><i class="bi bi-eye"></i> 35</p>
+                            </div>
+                            <div class="community-post-title-img">
+                                <img src="{%static 'images/blog-image-1.png'%}" class="img-fluid">
+                                <div class="title-tags">
+                                    <h3>
+                                        <a href="#">I changed my mind. Angular needs a reactive primitive</a>
+                                    </h3>
+                                    <div class="tags">
+                                        <a href="#">#programming</a>
+                                        <a href="#">#python</a>
+                                        <a href="#">#beginner</a>
+                                        <a href="#">#join</a>
+                                        <a href="#">#kivi</a>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                            <div class="reaction-container">
+                                <a href="#" class="react-love"><i class="bi bi-heart"></i> React</a>
+                                <a href="#" class="comment-post"><i class="bi bi-chat"></i> Comment</a>
+                                <a href="#" class="save-post"><i class="bi bi-bookmark"></i> Save for later Read</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="users-posts">
+                        <div class="community-post-card">
+                            <div class="post-card-img-date">
+                                <a href="#">
+                                    <img src="{%static 'images/user.png'%}" class="img-fluid">
+                                    <span>Steve Harvy <br> <time> 25 Dec</time></span>
+                                </a>
+                                <p><i class="bi bi-eye"></i> 35</p>
+                            </div>
+                            <div class="community-post-title-img">
+                                <img src="{%static 'images/blog-image-1.png'%}" class="img-fluid">
+                                <div class="title-tags">
+                                    <h3>
+                                        <a href="#">I changed my mind. Angular needs a reactive primitive</a>
+                                    </h3>
+                                    <div class="tags">
+                                        <a href="#">#programming</a>
+                                        <a href="#">#python</a>
+                                        <a href="#">#beginner</a>
+                                        <a href="#">#join</a>
+                                        <a href="#">#kivi</a>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                            <div class="reaction-container">
+                                <a href="#" class="react-love"><i class="bi bi-heart"></i> React</a>
+                                <a href="#" class="comment-post"><i class="bi bi-chat"></i> Comment</a>
+                                <a href="#" class="save-post"><i class="bi bi-bookmark"></i> Save for later Read</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- user extra-detail and posts -->
+    </section>
+  </main>
+  {%endblock%}
