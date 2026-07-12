@@ -14,10 +14,10 @@ django-js-asset==2.0.0
 django-taggit==2.1.0
 django-tinymce==3.4.0
 idna==3.3
-lxml==6.1.1
+lxml
 mysqlclient==2.1.0
 oauthlib==3.2.2
-Pillow==12.3.0
+Pillow==9.0.1
 pycparser==2.21
 PyJWT==2.6.0
 python3-openid==3.2.0
@@ -30,3 +30,4 @@ sqlparse==0.4.2
 tzdata==2022.1
 urllib3==1.26.9
 python-dotenv==1.2.2
+gunicorn==23.0.0
