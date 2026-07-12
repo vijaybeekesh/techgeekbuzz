@@ -14,7 +14,7 @@ django-js-asset==2.0.0
 django-taggit==2.1.0
 django-tinymce==3.4.0
 idna==3.3
-lxml
+lxml==6.1.1
 mysqlclient==2.1.0
 oauthlib==3.2.2
 Pillow==12.3.0
