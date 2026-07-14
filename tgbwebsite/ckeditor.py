@@ -1,0 +1,255 @@
+CKEDITOR_CONFIGS = {
+    'default': {
+        # 'skin': 'basic',
+        # 'skin': 'office2013',
+        'toolbar_YourCustomToolbarConfig': [
+            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
+            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+             
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-']},
+            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
+            {'name': 'insert',
+             'items': ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar',  'Iframe']},
+            
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+            {'name': 'tools', 'items': ['ShowBlocks']},
+            
+            '/',  # put this to force next toolbar on new line
+            {'name': 'yourcustomtools', 'items': [
+                # put the name of your editor.ui.addButton here
+                'Source',
+                'Maximize',
+                'CodeSnippet',
+                'Embed',
+            ]},
+        ],
+        'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
+        'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
+        'height': "100vh",
+        'width': '100%',
+        'filebrowserWindowHeight': 725,
+        'filebrowserWindowWidth': 940,
+         'codeSnippet_languages' : {'apache': 'Apache',
+						'bash': 'Bash',
+						'coffeescript': 'CoffeeScript',
+                        'c':'C',
+						'cpp': 'C++',
+						'cs': 'C#',
+						'css': 'CSS',
+						'diff': 'Diff',
+						'html': 'HTML',
+						'http': 'HTTP',
+						'ini': 'INI',
+						'java': 'Java',
+						'javascript': 'JavaScript',
+						'json': 'JSON',
+						'makefile': 'Makefile',
+						'markdown': 'Markdown',
+						'nginx': 'Nginx',
+						'objectivec': 'Objective-C',
+						'perl': 'Perl',
+						'php': 'PHP',
+						'python': 'Python',
+                        'r':'R',
+						'ruby': 'Ruby',
+                        'scala':'Scala',
+						'sql': 'SQL',
+						'vbscript': 'VBScript',
+						'xhtml': 'XHTML',
+						'xml': 'XML'
+					},
+                                 
+        # 'toolbarCanCollapse': True,
+        # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
+        'tabSpaces': 4,
+        'extraPlugins': ','.join([
+            # 'fixed',
+            'uploadimage', # the upload image feature
+            # your extra plugins here
+            'div',
+            'codesnippet',
+            'autolink',
+            'autoembed',
+            'embedsemantic',
+            'autogrow',
+            # 'devtools',  
+            'widget',
+            'lineutils',
+            'clipboard',
+            'dialog',
+            'dialogui',
+            'elementspath',
+        ]),
+    },
+    'special':{
+        'toolbar':'Special',
+        'height': "200",
+        'width': '100%',
+        'toolbar_Special':[
+            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
+            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+             
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-']},
+            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
+            {'name': 'insert',
+             'items': ['Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar',  'Iframe']},
+            
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+            {'name': 'tools', 'items': ['ShowBlocks']},
+        ]
+    },
+
+    'community_editor': {
+        # 'skin': 'basic',
+        # 'skin': 'office2013',
+      
+        'toolbar_communityConfig': [
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+             
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-']},
+            {'name': 'links', 'items': ['Link', 'Unlink']},
+            {'name': 'insert',
+             'items': ['Image', 'Table', 'HorizontalRule',]},
+            
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+            
+            '/',  # put this to force next toolbar on new line
+            {'name': 'communitytools', 'items': [
+                # put the name of your editor.ui.addButton here
+                'Maximize',
+                'CodeSnippet',
+            ]},
+        ],
+
+     
+        'toolbar': 'communityConfig',  # put selected toolbar config here
+        'height': "70vh",
+        'width': '100%',
+        'filebrowserWindowHeight': 725,
+        'filebrowserWindowWidth': 940,
+         'codeSnippet_languages' : {'apache': 'Apache',
+						'bash': 'Bash',
+						'coffeescript': 'CoffeeScript',
+                        'c':'C',
+						'cpp': 'C++',
+						'cs': 'C#',
+						'css': 'CSS',
+						'diff': 'Diff',
+						'html': 'HTML',
+						'http': 'HTTP',
+						'ini': 'INI',
+						'java': 'Java',
+						'javascript': 'JavaScript',
+						'json': 'JSON',
+						'makefile': 'Makefile',
+						'markdown': 'Markdown',
+						'nginx': 'Nginx',
+						'objectivec': 'Objective-C',
+						'perl': 'Perl',
+						'php': 'PHP',
+						'python': 'Python',
+                        'r':'R',
+						'ruby': 'Ruby',
+                        'scala':'Scala',
+						'sql': 'SQL',
+						'vbscript': 'VBScript',
+						'xhtml': 'XHTML',
+						'xml': 'XML'
+					},
+                                 
+        # 'toolbarCanCollapse': True,
+        # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
+        'tabSpaces': 4,
+        'extraPlugins': ','.join([
+            'uploadimage', # the upload image feature
+            'div',
+            'codesnippet',
+            'autolink',
+            'autoembed',
+            'embedsemantic',
+            'autogrow',
+            'widget',
+            'lineutils',
+            'elementspath',
+        ]),
+    },
+
+    'comment_editor': {
+        # 'skin': 'basic',
+        # 'skin': 'office2013',
+      
+        'toolbar_communityConfig': [
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},             
+            {'name': 'insert',
+             'items': [ 'CodeSnippet',]},            
+            '/',  # put this to force next toolbar on new line
+        ],
+
+     
+        'toolbar': 'communityConfig',  # put selected toolbar config here
+        'height': "250px",
+        'width': '100%',
+        'filebrowserWindowHeight': 725,
+        'filebrowserWindowWidth': 940,
+         'codeSnippet_languages' : {'apache': 'Apache',
+						'bash': 'Bash',
+						'coffeescript': 'CoffeeScript',
+                        'c':'C',
+						'cpp': 'C++',
+						'cs': 'C#',
+						'css': 'CSS',
+						'diff': 'Diff',
+						'html': 'HTML',
+						'http': 'HTTP',
+						'ini': 'INI',
+						'java': 'Java',
+						'javascript': 'JavaScript',
+						'json': 'JSON',
+						'makefile': 'Makefile',
+						'markdown': 'Markdown',
+						'nginx': 'Nginx',
+						'objectivec': 'Objective-C',
+						'perl': 'Perl',
+						'php': 'PHP',
+						'python': 'Python',
+                        'r':'R',
+						'ruby': 'Ruby',
+                        'scala':'Scala',
+						'sql': 'SQL',
+						'vbscript': 'VBScript',
+						'xhtml': 'XHTML',
+						'xml': 'XML'
+					},
+                                 
+        # 'toolbarCanCollapse': True,
+        # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
+        'tabSpaces': 4,
+        'extraPlugins': ','.join([
+            'uploadimage', # the upload image feature
+            'div',
+            'codesnippet',
+            'autolink',
+            'autoembed',
+            'embedsemantic',
+            'autogrow',
+            'widget',
+            'lineutils',
+            'elementspath',
+        ]),
+    },
+}
