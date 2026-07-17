@@ -225,14 +225,15 @@ AWS_DEFAULT_ACL = None
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_VERIFY = True
 
-STORAGES = {
-    "default": {
-        "BACKEND": "tgbwebsite.storages.MediaStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-    },
-}
+# STORAGES = {
+#     "default": {
+#         "BACKEND": "tgbwebsite.storages.MediaStorage",
+#     },
+#     "staticfiles": {
+#         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+#     },
+# }
+DEFAULT_FILE_STORAGE = "tgbwebsite.storages.MediaStorage"
 
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
