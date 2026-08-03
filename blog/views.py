@@ -21,7 +21,7 @@ def posts(request):
     context['blogs'] = popular_blogs_all
     context['title']= "Check out our latest blogs category wise"
     context['description']= "Techgeekbuzz be up-to-date with the latest computer science terrms and logics"
-    context['page_link'] = 'blog/'
+    context['page_link'] = 'blog'
     context['keywords'] = 'programming, java, python , data science, blog'
     return render(request, 'blog/posts.html', context=context)
 

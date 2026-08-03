@@ -96,7 +96,9 @@
     {% for blog in blogs %}
         <div class="row pb-4 blog-img">
             <div class="col-lg-4" onclick="window.location='{%url 'postdetail' blog.slug%}';" style="cursor: pointer;">
+                {%if blog.featured_image%}
                 <img src="{{blog.featured_image.url}}" class="img-fluid" alt="{{blog.title}}"/>
+                {%endif%}
             </div>
             <div class="col-lg-8" onclick="window.location='{%url 'postdetail' blog.slug%}';" style="cursor: pointer;">
                 <div class="row pl-3 pr-4 pt-2">

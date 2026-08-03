@@ -62,7 +62,7 @@ urlpatterns = [
     
 
     # blog 
-    path('blog/', include('blog.urls')),
+    path('blog', include('blog.urls')),
     #tutorials 
     path('tutorial/', include('tutorial.urls')),
     path('roadmap/',include('roadmap.urls')),
