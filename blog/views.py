@@ -11,14 +11,14 @@ from adsmanager.models import *
 
 # Create your views here.
 def posts(request):
-    popular_blogs= Post.objects.filter(status="publish").order_by("-date_posted")[:3]
-    popular_blogs_all= Post.objects.filter(status="publish").order_by("-date_posted")[3:15]
-    featured_categories = Category.objects.filter(featured=True).order_by('category_name')[:15]
-    context ={'context':list()}
-    for index, category in enumerate(featured_categories):
-        context['context'].append({'name':category.category_name, 'posts':popular_blogs_all })
-    context['popularblogs']= popular_blogs
-    context['blogs'] = popular_blogs_all
+    all_posts = Post.objects.filter(status="publish").order_by("-date_posted")
+    featured_post = all_posts.first()
+    paginator = Paginator(all_posts[1:], 12)  # Show 12 posts per page.
+    page_number = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_number)
+    context = dict()
+    context['featured_post'] = featured_post
+    context['page_obj'] = page_obj
     context['title']= "Check out our latest blogs category wise"
     context['description']= "Techgeekbuzz be up-to-date with the latest computer science terrms and logics"
     context['page_link'] = 'blog'

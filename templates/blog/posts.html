@@ -52,82 +52,144 @@
             <li class="breadcrumb-item active" aria-current="page">Blog</li>
         </ol>
     </nav>
-    <section class="popular-blog-section">
-        <div class="container">
-            <div class="row pt-30 justify-content-between blog-main-row">
-                {%for post in popularblogs%}
-                <div class="col-lg-4 col-12 shadow py-3 d-flex flex-column justify-content-between blog-main">
-                    <div class="blog-card">
-                        {%if post.featured_image%}
-                              <a href="{%url 'postdetail' post.slug%}"> 
-                                   <img src="{{post.featured_image.url}}" class="img-fluid" alt="{{post.title}}">
-                                </a>
-                        {%endif%}
-                        <div class="d-flex mt-3">
-                            {%for category in post.category.all%}
-                                   <a href="{%url 'postbycategory' category|slugify%}" class="post-category">
-                                    <span>{{category.category_name|upper}}</span>
-                                    </a>
-                                    {%if not forloop.last%}
-                                    / &nbsp; 
-                                    {%endif%}
+    {%if page_obj.number == 1 and featured_post%}
+    <section class="featured-blog-section">
+        <a href="{%url 'postdetail' featured_post.slug%}" class="featured-blog-link">
+            <div class="featured-blog-banner">
+                {%if featured_post.featured_image%}
+                <img src="{{featured_post.featured_image.url}}" class="featured-blog-img" alt="{{featured_post.title}}">
+                {%endif%}
+                <div class="featured-blog-overlay">
+                    <div class="container">
+                        <div class="d-flex flex-wrap mb-2">
+                            {%for category in featured_post.category.all%}
+                            <span class="post-category featured-category"><span>{{category.category_name|upper}}</span></span>
+                            {%if not forloop.last%}
+                            &nbsp;/&nbsp;
+                            {%endif%}
                             {%endfor%}
-                          </div>
-                        <h3><a class="text-dark top-blog" href="{%url 'postdetail' post.slug%}">{{post.title | truncatechars:40}} </a></h3>
-                        <p class="top-blog-desc">
+                        </div>
+                        <h1 class="featured-blog-title">{{featured_post.title|truncatechars:90}}</h1>
+                        <p class="featured-blog-desc d-none d-md-block">
                             {% autoescape off %}
-                            {{post.content|striptags|truncatechars:95}}
+                            {{featured_post.content|striptags|truncatechars:160}}
                             {% endautoescape %}
                         </p>
-                    </div>
-                    <div onclick="window.location='{%url 'postdetail' post.slug%}';" class="blog-card-footer d-flex align-items-center justify-content-between ">
-                        <div class="author-detail-blog d-flex align-items-center ">
-                            {% comment %} {%if post.author.profile.profile_picture%}
-                                <img src="{{post.author.profile.profile_picture.url}}"
-                                    class="img-fluid" alt="{{post.author.username}}">
-                            {%else%}
-                                <img src="{% static 'images/cropped-Techgeekbuzz-Final-Logo-e1611249305805.png'%}"
-                                        class="img-fluid"  alt="{{post.author.username}}"">
-                            {%endif%} {% endcomment %}
-                            <h4>BY <a href="{%url 'byuser' post.author%}">{{post.author.first_name}} {{post.author.last_name}}</a> &#x2022 <date>{{post.post_updated|date:"j F, Y"}}</date></h4>
+                        <div class="featured-blog-meta">
+                            BY {{featured_post.author.first_name}} {{featured_post.author.last_name}} &#x2022 <date>{{featured_post.post_updated|date:"j F, Y"}}</date>
                         </div>
                     </div>
                 </div>
-                {%endfor%}
-               
             </div>
+        </a>
+    </section>
+    {%endif%}
+    <section class="container">
+        <div class="row g-4">
+        {% for blog in page_obj %}
+            <div class="col-lg-4 col-md-6 col-12 d-flex">
+                <div class="blog-listing-card d-flex flex-column w-100">
+                    <div class="blog-listing-card-img-wrap">
+                        {%if blog.featured_image%}
+                        <a href="{%url 'postdetail' blog.slug%}">
+                            <img src="{{blog.featured_image.url}}" class="blog-listing-card-img" alt="{{blog.title}}"/>
+                        </a>
+                        {%endif%}
+                        {%with blog.category.first as first_category%}
+                        {%if first_category%}
+                        <a href="{%url 'postbycategory' first_category|slugify%}" class="blog-listing-card-badge">{{first_category.category_name|upper}}</a>
+                        {%endif%}
+                        {%endwith%}
+                    </div>
+                    <div class="blog-listing-card-body d-flex flex-column flex-grow-1">
+                        <h2 class="blog-listing-card-title"><a href="{%url 'postdetail' blog.slug%}">{{blog.title|truncatechars:70}}</a></h2>
+                        <p class="blog-listing-card-desc">
+                            {% autoescape off %}
+                            {{blog.content|striptags|truncatechars:100}}
+                            {% endautoescape %}
+                        </p>
+                        <div class="blog-listing-card-footer d-flex align-items-center mt-auto">
+                            {%if blog.author.profile.profile_picture%}
+                            <img src="{{blog.author.profile.profile_picture.url}}" class="blog-listing-card-avatar" alt="{{blog.author.username}}"/>
+                            {%else%}
+                            <span class="blog-listing-card-avatar blog-listing-card-avatar-fallback">{{blog.author.first_name|slice:":1"|upper}}</span>
+                            {%endif%}
+                            <div class="blog-listing-card-author">
+                                <a href="{%url 'byuser' blog.author%}">{{blog.author.first_name}} {{blog.author.last_name}}</a>
+                                <date>{{blog.post_updated|date:"j F, Y"}}</date>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
         </div>
     </section>
-    <section class="container">
-    {% for blog in blogs %}
-        <div class="row pb-4 blog-img">
-            <div class="col-lg-4" onclick="window.location='{%url 'postdetail' blog.slug%}';" style="cursor: pointer;">
-                {%if blog.featured_image%}
-                <img src="{{blog.featured_image.url}}" class="img-fluid" alt="{{blog.title}}"/>
+    <!-- Pagination start -->
+    {%if page_obj.has_previous or page_obj.has_next %}
+    <section class="my-3">
+        <div class="container d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex align-items-center justify-content-center flex-wrap">
+                {% if page_obj.has_previous %}
+                <a href="?page={{page_obj.previous_page_number}}" class="pag-list">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+                    </svg>
+                </a>
+                {%endif %}
+
+                {% if page_obj.number|add:'-4' > 1 %}
+                    <a href="?page={{page_obj.number|add:'-5'}}" class="pag-list">
+                        ....
+                    </a>
+                {%endif%}
+
+                {% for i in page_obj.paginator.page_range%}
+                    {% if page_obj.number == i %}
+                        <a href="#" class="pag-list pagactive">
+                            {{i}}
+                        </a>
+                    {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
+                        <a href="?page={{ i }}" class="pag-list">
+                            {{i}}
+                        </a>
+                    {%endif%}
+                {%endfor%}
+
+                {% if page_obj.paginator.num_pages > page_obj.number|add:'4' %}
+                    {%if not page_obj.number == page_obj.paginator.num_pages %}
+                    <a href="?page={{page_obj.paginator.num_pages}}" class="pag-list">
+                        ...{{page_obj.paginator.num_pages}}
+                    </a>
+                    {%endif%}
+                {%endif%}
+
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number}}" class="pag-list">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+                         </svg>
+                </a>
                 {%endif%}
             </div>
-            <div class="col-lg-8" onclick="window.location='{%url 'postdetail' blog.slug%}';" style="cursor: pointer;">
-                <div class="row pl-3 pr-4 pt-2">
-                    <h2 class="text-dark">{{ blog.title | truncatechars:100 }}</h2>
-                </div>
-                <div>
-                 {%for category in blog.category.all%}
-                        <a href="{%url 'postbycategory' category|slugify%}" class="post-category">
-                            <span>{{category.category_name|upper}}</span>
-                        </a>
-                        {%if not forloop.last%}
-                        / &nbsp;
-                        {%endif%}
-                {%endfor%}
-                </div>
-                <div class="row mt-3 pl-3 pr-4 blog-div">
-                    <p>{{blog.content|striptags|truncatechars:350 | safe}}</p>
-                </div>
-                <span>BY {{blog.author.first_name | capfirst}} {{blog.author.last_name | capfirst}}</a> &#x2022 <date>{{blog.post_updated|date:"j F, Y"}}</date></span>
-            </div>
+            <form method="GET" class="mt-3 d-flex align-items-center">
+                <label style="
+                 font-size: 1.3rem;
+                font-weight: bold;">Jump to:</label>
+                <input type="number" name="page" max="{{page_obj.paginator.num_pages}}" placeholder="<{{page_obj.number }} of {{page_obj.paginator.num_pages}}>"
+                class="mx-2"
+                style="outline: 1px solid #0d6efd;
+                border: none;
+                height: 2.3rem;
+                text-indent: 1rem;
+                border-radius: 6px;">
+
+                <button type="submit" class="btn btn-outline-primary">Goto</button>
+            </form>
         </div>
-    {% endfor %}
     </section>
+    {%endif%}
+    <!-- pagination ends -->
 </main>
 
 {%endblock%}
