@@ -65,6 +65,140 @@
   {%block title%}<title>Techgeekbuzz: Let The Geek in You Always Stay In Buzz</title>{%endblock%}
   
   {%block headjs%}
+  <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "https://www.techgeekbuzz.com/#webpage",
+                "url": "https://www.techgeekbuzz.com/",
+                "name": "Techgeekbuzz: Let The Geek in You Always Stay In Buzz",
+                "description": "Check out and learn latest technology. Learn and read about latest books, certifications, trending interview questions, frameworks and so much more.",
+                "inLanguage": "en-GB",
+                "isPartOf": { "@id": "https://www.techgeekbuzz.com/#website" },
+                "about": { "@id": "https://www.techgeekbuzz.com/#organization" },
+                "primaryImageOfPage": { "@id": "https://www.techgeekbuzz.com/#primaryimage" },
+                "image": { "@id": "https://www.techgeekbuzz.com/#primaryimage" },
+                "breadcrumb": { "@id": "https://www.techgeekbuzz.com/#breadcrumb" },
+                "mainEntity": [
+                    { "@id": "https://www.techgeekbuzz.com/#tutorials-list" },
+                    { "@id": "https://www.techgeekbuzz.com/#faq" }
+                ]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://www.techgeekbuzz.com/#website",
+                "url": "https://www.techgeekbuzz.com/",
+                "name": "TechGeekBuzz",
+                "inLanguage": "en-GB",
+                "publisher": { "@id": "https://www.techgeekbuzz.com/#organization" },
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://www.techgeekbuzz.com/query/?search={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                }
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://www.techgeekbuzz.com/#organization",
+                "name": "TechGeekBuzz",
+                "url": "https://www.techgeekbuzz.com/",
+                "logo": { "@id": "https://www.techgeekbuzz.com/#logo" },
+                "image": { "@id": "https://www.techgeekbuzz.com/#logo" },
+                "sameAs": [
+                    "https://www.facebook.com/techgeekbuzz",
+                    "https://www.instagram.com/techgeek.buzz/",
+                    "https://twitter.com/techgeekbuzz"
+                ]
+            },
+            {
+                "@type": "ImageObject",
+                "@id": "https://www.techgeekbuzz.com/#logo",
+                "url": "https://www.techgeekbuzz.com{% static 'images/cropped-Techgeekbuzz-Final-Logo-e1611249305805.png'%}",
+                "contentUrl": "https://www.techgeekbuzz.com{% static 'images/cropped-Techgeekbuzz-Final-Logo-e1611249305805.png'%}",
+                "caption": "TechGeekBuzz Logo"
+            },
+            {
+                "@type": "ImageObject",
+                "@id": "https://www.techgeekbuzz.com/#primaryimage",
+                "url": "https://www.techgeekbuzz.com{% static 'images/hero.png'%}",
+                "contentUrl": "https://www.techgeekbuzz.com{% static 'images/hero.png'%}",
+                "width": 800,
+                "height": 400,
+                "caption": "TechGeekBuzz Homepage Hero Image"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://www.techgeekbuzz.com/#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://www.techgeekbuzz.com/"
+                    }
+                ]
+            },
+            {
+                "@type": "ItemList",
+                "@id": "https://www.techgeekbuzz.com/#tutorials-list",
+                "name": "Programming Tutorials on TechGeekBuzz",
+                "itemListElement": [
+                    {%for tutorial in tutoriallist%}
+                    {
+                        "@type": "ListItem",
+                        "position": {{forloop.counter}},
+                        "name": "{{tutorial.name}}",
+                        "url": "https://www.techgeekbuzz.com{%url 'tutorialintro' tutorial.name|modify_tutorial%}"
+                    }{%if not forloop.last%},{%endif%}
+                    {%endfor%}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://www.techgeekbuzz.com/#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "How can I Become a Tech Professional for free?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "TechGeekBuzz lets you Become a Tech Professional for free with step-by-step tutorials, coding examples, and guides across languages like Python, Java, C, and C++ — no signup or payment required."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Which programming language should I learn first?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Python is a popular first choice thanks to its simple syntax, but our tutorials also cover Java, C, C++, and JavaScript so you can pick the language that fits your goals."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Do I need prior experience to start learning to code online?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No prior experience is required. Our tutorials go from the basics to advanced topics, so anyone can start learning programming online at their own pace."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is TechGeekBuzz completely free to use?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, every tutorial, blog post, and learning resource on TechGeekBuzz is completely free to access."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+  </script>
   {%endblock%}
   {%if global_header%}
     {{ global_header.0.script | safe }}
@@ -98,7 +232,7 @@
         <!-- nav bar for mobile view -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
           <div class="offcanvas-header">
-            <h5 id="offcanvasRightLabel"></h5>
+            <span id="offcanvasRightLabel"></span>
             <button type="button" class="btn-close text-reset btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" style="opacity: 1;"></button>
           </div>
           <div class="offcanvas-body">
