@@ -46,7 +46,8 @@
             "itemListElement": [
                 { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.techgeekbuzz.com/" },
                 { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.techgeekbuzz.com/tools" },
-                { "@type": "ListItem", "position": 3, "name": "GST Calculator", "item": "https://www.techgeekbuzz.com/tools/gst-calculator" }
+                { "@type": "ListItem", "position": 3, "name": "Finance", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 4, "name": "GST Calculator", "item": "https://www.techgeekbuzz.com/tools/gst-calculator" }
             ]
         },
         {
@@ -115,6 +116,15 @@
 {%block main%}
     <!-- Main Section Started -->
     <main style="margin-top: 2rem;" class="gst-app" id="gstApp">
+
+        <nav aria-label="breadcrumb" class="container pt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{%url 'index'%}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{%url 'tools'%}">Tools</a></li>
+                <li class="breadcrumb-item">Finance</li>
+                <li class="breadcrumb-item active" aria-current="page">GST Calculator</li>
+            </ol>
+        </nav>
 
         <section class="tool-heading">
             <h1>GST Calculator - Add &amp; Remove GST Online</h1>

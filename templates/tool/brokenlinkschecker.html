@@ -40,6 +40,14 @@
 {%block main%}
     <!-- Main Section Started -->
     <main style="margin-top: 2rem;">
+        <nav aria-label="breadcrumb" class="container pt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{%url 'index'%}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{%url 'tools'%}">Tools</a></li>
+                <li class="breadcrumb-item">SEO</li>
+                <li class="breadcrumb-item active" aria-current="page">Broken Links Checker</li>
+            </ol>
+        </nav>
         <section class="tool-heading">
             <h1>Broken Links Checker</h1>
             <p> Check all the Broken Links of a web page. Enter the webpage page url and start the test.</p>
