@@ -252,13 +252,13 @@
     </nav>
     {%if page_obj.number == 1 and featured_post%}
     <section class="featured-blog-section">
-        <a href="{%url 'postdetail' featured_post.slug%}" class="featured-blog-link">
-            <div class="featured-blog-banner">
-                {%if featured_post.featured_image%}
-                <img src="{{featured_post.featured_image.url}}" class="featured-blog-img" alt="{{featured_post.title}}">
-                {%endif%}
-                <div class="featured-blog-overlay">
-                    <div class="container">
+        <div class="container">
+            <a href="{%url 'postdetail' featured_post.slug%}" class="featured-blog-link">
+                <div class="featured-blog-banner">
+                    {%if featured_post.featured_image%}
+                    <img src="{{featured_post.featured_image.url}}" class="featured-blog-img" alt="{{featured_post.title}}">
+                    {%endif%}
+                    <div class="featured-blog-overlay">
                         <div class="d-flex flex-wrap mb-2">
                             {%for category in featured_post.category.all%}
                             <span class="post-category featured-category"><span>{{category.category_name|upper}}</span></span>
@@ -278,8 +278,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        </div>
     </section>
     {%endif%}
     <section class="container">
