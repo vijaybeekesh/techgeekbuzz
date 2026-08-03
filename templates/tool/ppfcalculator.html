@@ -1,0 +1,471 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+    <meta name="description" content="Free online PPF Calculator to estimate your Public Provident Fund maturity amount, yearly interest, total investment, and wealth gained. Accurate calculations based on current PPF rules.">
+    <meta name="keywords" content="PPF Calculator, Public Provident Fund Calculator, PPF Maturity Calculator, PPF Interest Rate">
+
+    <meta property="article:publisher" content="https://www.facebook.com/techgeekbuzz/" />
+
+    <link rel="canonical" href="https://www.techgeekbuzz.com/tools/ppf-calculator">
+
+    <meta property="og:site_name" content="techgeekbuzz.com">
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="PPF Calculator – Calculate Public Provident Fund Returns Online" />
+    <meta property="og:description" content="Free online PPF Calculator to estimate your Public Provident Fund maturity amount, yearly interest, total investment, and wealth gained. Accurate calculations based on current PPF rules." />
+    <meta property="og:url" content="https://www.techgeekbuzz.com/tools/ppf-calculator">
+    <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PPF Calculator – Calculate Public Provident Fund Returns Online">
+    <meta name="twitter:description" content="Free online PPF Calculator to estimate your Public Provident Fund maturity amount, yearly interest, total investment, and wealth gained. Accurate calculations based on current PPF rules.">
+    <meta name="twitter:url" content="https://www.techgeekbuzz.com/tools/ppf-calculator">
+    <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/tools/tool.css'%}">
+    <link rel="stylesheet" href="{% static 'css/tools/ppfcalculator.css'%}">
+{%endblock%}
+
+{%block title%}
+    <title>PPF Calculator – Calculate Public Provident Fund Returns Online</title>
+{%endblock%}
+
+{%block headjs%}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.techgeekbuzz.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 3, "name": "Finance", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 4, "name": "PPF Calculator", "item": "https://www.techgeekbuzz.com/tools/ppf-calculator" }
+            ]
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "PPF Calculator",
+            "url": "https://www.techgeekbuzz.com/tools/ppf-calculator",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "Any",
+            "description": "Free online PPF Calculator to estimate your Public Provident Fund maturity amount, yearly interest, total investment, and wealth gained. Accurate calculations based on current PPF rules.",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is a PPF Calculator?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "A PPF Calculator is a tool that estimates the maturity amount, total interest earned, and year-wise balance growth of a Public Provident Fund account, based on your yearly investment, interest rate, and investment duration." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How is PPF interest calculated?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Interest is compounded annually on the balance in your account. This calculator uses the standard model of applying interest once a year to your opening balance plus that year's contribution, which is how most public PPF calculators estimate returns." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is the current PPF interest rate?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "The PPF interest rate is set by the Government of India and reviewed quarterly. This calculator defaults to 7.1% but you can edit the rate field to match the current or any assumed rate." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is the maximum investment limit?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "You can invest a minimum of ₹500 and a maximum of ₹1,50,000 in a PPF account in a single financial year." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I extend my PPF account?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. After the initial 15-year lock-in period, a PPF account can be extended indefinitely in blocks of 5 years, with or without making further contributions." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is PPF tax-free?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "PPF has EEE (Exempt-Exempt-Exempt) tax status in India — the amount invested, the interest earned, and the maturity amount are all exempt from income tax, subject to the prevailing tax rules." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How does compound interest work in PPF?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Each year, interest is calculated on your account balance and added to it. In the following year, interest is earned on this new, larger balance too — so your returns compound and grow faster over time." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I withdraw money before maturity?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Partial withdrawals are allowed from the 7th financial year onward, subject to government rules and limits. Full withdrawal is available at maturity after 15 years (or after any 5-year extension block)." }
+                }
+            ]
+        }
+    ]
+}
+</script>
+{%endblock%}
+
+{%block main%}
+    <!-- Main Section Started -->
+    <main style="margin-top: 2rem;" class="ppf-app" id="ppfApp">
+
+        <nav aria-label="breadcrumb" class="container pt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{%url 'index'%}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{%url 'tools'%}">Tools</a></li>
+                <li class="breadcrumb-item">Finance</li>
+                <li class="breadcrumb-item active" aria-current="page">PPF Calculator</li>
+            </ol>
+        </nav>
+
+        <section class="tool-heading">
+            <h1>PPF Calculator</h1>
+            <p>Estimate your Public Provident Fund maturity amount, total interest earned, and year-wise growth based on current PPF rules.</p>
+        </section>
+
+        <div class="ppf-container">
+
+            <!-- Result dashboard -->
+            <div class="ppf-dashboard">
+                <div class="ppf-stat-card highlight">
+                    <span>Maturity Amount</span>
+                    <strong id="resMaturity">₹0</strong>
+                </div>
+                <div class="ppf-stat-card">
+                    <span>Total Investment</span>
+                    <strong id="resTotalInvestment">₹0</strong>
+                </div>
+                <div class="ppf-stat-card">
+                    <span>Total Interest Earned</span>
+                    <strong id="resTotalInterest">₹0</strong>
+                </div>
+                <div class="ppf-stat-card">
+                    <span>Wealth Gained</span>
+                    <strong id="resWealthGained">₹0</strong>
+                </div>
+                <div class="ppf-stat-card">
+                    <span>Investment Duration</span>
+                    <strong id="resDuration">—</strong>
+                </div>
+                <div class="ppf-stat-card">
+                    <span>Interest Rate</span>
+                    <strong id="resRate">—</strong>
+                </div>
+            </div>
+
+            <!-- Input form -->
+            <form class="ppf-form-card" id="ppfForm" novalidate>
+                <div class="ppf-form-grid">
+                    <div class="ppf-field">
+                        <span class="ppf-field-label" id="freqLabel">Investment Frequency</span>
+                        <div class="ppf-radio-group" role="radiogroup" aria-labelledby="freqLabel">
+                            <label><input type="radio" name="frequency" id="freqYearly" checked> Yearly</label>
+                            <label><input type="radio" name="frequency" id="freqMonthly"> Monthly</label>
+                        </div>
+                    </div>
+
+                    <div class="ppf-field" id="yearlyField">
+                        <label for="yearlyInvestment">Yearly Investment (₹500 – ₹1,50,000)</label>
+                        <input type="number" id="yearlyInvestment" min="500" max="150000" step="500" value="150000" aria-describedby="errorYearly">
+                    </div>
+
+                    <div class="ppf-field" id="monthlyField" hidden>
+                        <label for="monthlyInvestment">Monthly Investment</label>
+                        <input type="number" id="monthlyInvestment" min="42" max="12500" step="100" value="12500" aria-describedby="errorYearly">
+                    </div>
+
+                    <div class="ppf-field">
+                        <label for="ppfRate">Current PPF Interest Rate (%)</label>
+                        <input type="number" id="ppfRate" min="0.1" max="15" step="0.1" value="7.1" aria-describedby="errorRate">
+                    </div>
+
+                    <div class="ppf-field">
+                        <label for="ppfDuration">Investment Duration (15-year lock-in + 5-year extensions)</label>
+                        <select id="ppfDuration">
+                            <option value="15" selected>15 years</option>
+                            <option value="20">20 years (+1 extension)</option>
+                            <option value="25">25 years (+2 extensions)</option>
+                            <option value="30">30 years (+3 extensions)</option>
+                            <option value="35">35 years (+4 extensions)</option>
+                            <option value="40">40 years (+5 extensions)</option>
+                            <option value="45">45 years (+6 extensions)</option>
+                            <option value="50">50 years (+7 extensions)</option>
+                        </select>
+                    </div>
+
+                    <div class="ppf-field">
+                        <label for="existingBalance">Existing PPF Balance (optional)</label>
+                        <input type="number" id="existingBalance" min="0" step="500" placeholder="0" aria-describedby="errorExisting">
+                    </div>
+                </div>
+
+                <span class="ppf-error" id="errorYearly" role="alert"></span>
+                <span class="ppf-error" id="errorRate" role="alert"></span>
+                <span class="ppf-error" id="errorExisting" role="alert"></span>
+
+                <div class="ppf-actions">
+                    <button type="submit" class="ppf-btn ppf-btn-primary" id="btnCalculate">Calculate</button>
+                    <button type="button" class="ppf-btn" id="btnExample">Example Values</button>
+                    <button type="button" class="ppf-btn" id="btnReset">Reset</button>
+                    <button type="button" class="ppf-btn" id="btnCopyResults">Copy Results</button>
+                    <button type="button" class="ppf-btn" id="btnPrintResults">Print Results</button>
+                    <button type="button" class="ppf-btn" id="btnDownloadPdf" title="Opens the print dialog — choose &quot;Save as PDF&quot; as the destination">Download PDF</button>
+                    <button type="button" class="ppf-btn" id="btnShareResults">Share</button>
+                </div>
+            </form>
+
+            <!-- Charts -->
+            <div class="ppf-charts-card">
+                <div class="ppf-card-head"><h2>Interactive Charts</h2></div>
+                <div class="ppf-charts-grid">
+                    <div class="ppf-chart-card">
+                        <h3>Investment vs Interest</h3>
+                        <canvas id="chartPie" role="img" aria-label="Pie chart comparing total investment to total interest earned"></canvas>
+                    </div>
+                    <div class="ppf-chart-card">
+                        <h3>Year-wise Balance Growth</h3>
+                        <canvas id="chartLine" role="img" aria-label="Line chart of year-wise closing balance"></canvas>
+                    </div>
+                    <div class="ppf-chart-card">
+                        <h3>Annual Interest</h3>
+                        <canvas id="chartBar" role="img" aria-label="Bar chart of interest earned each year"></canvas>
+                    </div>
+                    <div class="ppf-chart-card">
+                        <h3>Portfolio Growth</h3>
+                        <canvas id="chartArea" role="img" aria-label="Area chart of cumulative investment versus balance"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investment schedule -->
+            <div class="ppf-schedule-card">
+                <div class="ppf-card-head"><h2>Year-wise Investment Schedule</h2></div>
+                <div class="ppf-table-toolbar">
+                    <input type="search" class="ppf-search-input" id="scheduleSearch" placeholder="Search by year" aria-label="Search schedule by year">
+                    <div class="ppf-actions" style="margin-top:0;">
+                        <button type="button" class="ppf-btn" id="btnExportCsv">Export CSV</button>
+                        <button type="button" class="ppf-btn" id="btnExportExcel">Export Excel</button>
+                        <button type="button" class="ppf-btn" id="btnPrintTable">Print Table</button>
+                    </div>
+                </div>
+                <div class="ppf-table-wrap">
+                    <table class="ppf-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Year</th>
+                                <th scope="col">Opening Balance</th>
+                                <th scope="col">Investment</th>
+                                <th scope="col">Interest Earned</th>
+                                <th scope="col">Closing Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scheduleBody"></tbody>
+                    </table>
+                </div>
+                <p class="ppf-table-empty" id="scheduleEmpty">Calculate to see your year-wise investment schedule.</p>
+            </div>
+
+            <!-- Comparison mode -->
+            <div class="ppf-comparison-card">
+                <div class="ppf-card-head"><h2>Compare PPF With Other Investments</h2></div>
+                <div class="ppf-compare-options">
+                    <div class="ppf-compare-option">
+                        <label><input type="checkbox" id="compareFD"> PPF vs Fixed Deposit</label>
+                        <div class="ppf-rate-row"><label for="fdRate">Assumed FD rate</label><input type="number" id="fdRate" value="6.5" step="0.1">%</div>
+                    </div>
+                    <div class="ppf-compare-option">
+                        <label><input type="checkbox" id="compareSIP"> PPF vs SIP (Mutual Fund)</label>
+                        <div class="ppf-rate-row"><label for="sipRate">Assumed return</label><input type="number" id="sipRate" value="12" step="0.1">%</div>
+                    </div>
+                    <div class="ppf-compare-option">
+                        <label><input type="checkbox" id="compareNPS"> PPF vs NPS</label>
+                        <div class="ppf-rate-row"><label for="npsRate">Assumed return</label><input type="number" id="npsRate" value="10" step="0.1">%</div>
+                    </div>
+                    <div class="ppf-compare-option">
+                        <label><input type="checkbox" id="compareEPF"> PPF vs EPF</label>
+                        <div class="ppf-rate-row"><label for="epfRate">Assumed EPF rate</label><input type="number" id="epfRate" value="8.25" step="0.1">%</div>
+                    </div>
+                </div>
+                <div class="ppf-table-wrap">
+                    <table class="ppf-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Scheme</th>
+                                <th scope="col">Assumed Rate</th>
+                                <th scope="col">Maturity Amount</th>
+                                <th scope="col">Total Interest</th>
+                            </tr>
+                        </thead>
+                        <tbody id="comparisonBody"></tbody>
+                    </table>
+                </div>
+                <p class="ppf-table-empty" id="comparisonEmpty">Select a scheme above to compare it with your PPF projection.</p>
+                <div class="ppf-chart-card" style="margin-top:1.6rem;">
+                    <canvas id="chartComparison" role="img" aria-label="Bar chart comparing maturity amounts across schemes"></canvas>
+                </div>
+                <p style="font-size:1.2rem;color:var(--ppf-muted);margin-top:1rem;">
+                    Comparison figures are indicative estimates using standard compound-interest formulas and the assumed rates above — actual returns for market-linked options like SIP and NPS are not guaranteed and will vary.
+                </p>
+            </div>
+
+            <!-- History -->
+            <div class="ppf-history-card">
+                <div class="ppf-card-head">
+                    <h2>Recent Calculations</h2>
+                    <button type="button" class="ppf-btn" id="btnClearHistory">Clear</button>
+                </div>
+                <p class="ppf-history-empty" id="historyEmpty">No calculations yet — your last 10 are saved on this device.</p>
+                <ul class="ppf-history-list" id="historyList"></ul>
+            </div>
+
+        </div>
+
+        <div class="ppf-toast" id="ppfToast" role="status" aria-live="polite"></div>
+
+        <section class="what-is-pg">
+            <h3>What is PPF?</h3>
+            <p>
+                The Public Provident Fund (PPF) is a long-term, government-backed savings scheme in India offering guaranteed, tax-free returns. It has a minimum lock-in period of 15 years, which can be extended indefinitely in blocks of 5 years.
+                <br>
+                Interest is compounded annually, and both the interest earned and maturity amount are exempt from income tax under the current EEE (Exempt-Exempt-Exempt) tax treatment.
+            </p>
+        </section>
+
+        <section class="strong-password-section">
+            <h3>How This Calculator Works</h3>
+            <div class="strong-password-point">
+                <h4>Annual Compounding Model</h4>
+                <p>
+                    This calculator applies the standard model used by most public PPF calculators: your yearly contribution is treated as a lump sum, and interest is credited once a year on your opening balance plus that year's contribution.
+                </p>
+            </div>
+            <div class="strong-password-point">
+                <h4>Why Results May Differ Slightly</h4>
+                <p>
+                    The official PPF scheme technically calculates interest monthly on the lowest balance between the 5th and last day of each month. If you deposit in monthly instalments rather than as a lump sum, your actual maturity amount may differ slightly from this estimate.
+                </p>
+            </div>
+            <div class="strong-password-point">
+                <h4>Extensions</h4>
+                <p>
+                    After the initial 15-year term, you can extend your account in 5-year blocks — with or without further contributions — up to a total duration of 50 years, as modeled by the duration options above.
+                </p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="faqs my-5">
+                <div class="accordion" id="ppffaqaccordion">
+                    <h2 class="faq-headline">FAQs</h2>
+                    <hr class="horizontal-row mb-5">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ppfheading1">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ppfcollapse1" aria-expanded="false" aria-controls="ppfcollapse1">
+                           1. What is a PPF Calculator?
+                          </button>
+                        </h4>
+                        <div id="ppfcollapse1" class="accordion-collapse collapse" aria-labelledby="ppfheading1" data-bs-parent="#ppffaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">A PPF Calculator is a tool that estimates the maturity amount, total interest earned, and year-wise balance growth of a Public Provident Fund account, based on your yearly investment, interest rate, and investment duration.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ppfheading2">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ppfcollapse2" aria-expanded="false" aria-controls="ppfcollapse2">
+                           2. How is PPF interest calculated?
+                          </button>
+                        </h4>
+                        <div id="ppfcollapse2" class="accordion-collapse collapse" aria-labelledby="ppfheading2" data-bs-parent="#ppffaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Interest is compounded annually on the balance in your account. This calculator uses the standard model of applying interest once a year to your opening balance plus that year's contribution, which is how most public PPF calculators estimate returns.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ppfheading3">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ppfcollapse3" aria-expanded="false" aria-controls="ppfcollapse3">
+                           3. What is the current PPF interest rate?
+                          </button>
+                        </h4>
+                        <div id="ppfcollapse3" class="accordion-collapse collapse" aria-labelledby="ppfheading3" data-bs-parent="#ppffaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">The PPF interest rate is set by the Government of India and reviewed quarterly. This calculator defaults to 7.1% but you can edit the rate field to match the current or any assumed rate.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ppfheading4">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ppfcollapse4" aria-expanded="false" aria-controls="ppfcollapse4">
+                           4. What is the maximum investment limit?
+                          </button>
+                        </h4>
+                        <div id="ppfcollapse4" class="accordion-collapse collapse" aria-labelledby="ppfheading4" data-bs-parent="#ppffaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">You can invest a minimum of ₹500 and a maximum of ₹1,50,000 in a PPF account in a single financial year.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ppfheading5">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ppfcollapse5" aria-expanded="false" aria-controls="ppfcollapse5">
+                           5. Can I extend my PPF account?
+                          </button>
+                        </h4>
+                        <div id="ppfcollapse5" class="accordion-collapse collapse" aria-labelledby="ppfheading5" data-bs-parent="#ppffaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes. After the initial 15-year lock-in period, a PPF account can be extended indefinitely in blocks of 5 years, with or without making further contributions.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ppfheading6">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ppfcollapse6" aria-expanded="false" aria-controls="ppfcollapse6">
+                           6. Is PPF tax-free?
+                          </button>
+                        </h4>
+                        <div id="ppfcollapse6" class="accordion-collapse collapse" aria-labelledby="ppfheading6" data-bs-parent="#ppffaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">PPF has EEE (Exempt-Exempt-Exempt) tax status in India — the amount invested, the interest earned, and the maturity amount are all exempt from income tax, subject to the prevailing tax rules.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ppfheading7">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ppfcollapse7" aria-expanded="false" aria-controls="ppfcollapse7">
+                           7. How does compound interest work in PPF?
+                          </button>
+                        </h4>
+                        <div id="ppfcollapse7" class="accordion-collapse collapse" aria-labelledby="ppfheading7" data-bs-parent="#ppffaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Each year, interest is calculated on your account balance and added to it. In the following year, interest is earned on this new, larger balance too — so your returns compound and grow faster over time.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ppfheading8">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ppfcollapse8" aria-expanded="false" aria-controls="ppfcollapse8">
+                           8. Can I withdraw money before maturity?
+                          </button>
+                        </h4>
+                        <div id="ppfcollapse8" class="accordion-collapse collapse" aria-labelledby="ppfheading8" data-bs-parent="#ppffaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Partial withdrawals are allowed from the 7th financial year onward, subject to government rules and limits. Full withdrawal is available at maturity after 15 years (or after any 5-year extension block).</p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Main section ended -->
+{%endblock%}
+
+{%block js%}
+<script src="{%static 'js/vendor/chart.min.js'%}"></script>
+<script src="{%static 'js/tools/js/ppfcalculator.js'%}"></script>
+{%endblock%}

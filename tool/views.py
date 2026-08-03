@@ -21,3 +21,6 @@ def gstcalculator(request):
 
 def markdowntohtml(request):
     return render(request, 'tool/markdowntohtml.html')
+
+def ppfcalculator(request):
+    return render(request, 'tool/ppfcalculator.html')
