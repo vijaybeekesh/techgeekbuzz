@@ -27,6 +27,7 @@
 
 {%block css%}
     <link rel="stylesheet" href="{% static 'css/blog.css'%}">
+    <link rel="stylesheet" href="{% static 'css/blogdetail.css'%}">
 {%endblock%}
 
 {%block title%}
@@ -40,6 +41,203 @@
     enable_page_level_ads: true
   });
 	</script> {% endcomment %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "CollectionPage",
+            "@id": "https://www.techgeekbuzz.com/blog#webpage",
+            "url": "https://www.techgeekbuzz.com/blog",
+            "name": "Techgeekbuzz Blogs",
+            "description": "{{description}}",
+            "inLanguage": "en-GB",
+            "isPartOf": { "@id": "https://www.techgeekbuzz.com/#website" },
+            "about": { "@id": "https://www.techgeekbuzz.com/#organization" },
+            "primaryImageOfPage": { "@id": "https://www.techgeekbuzz.com/blog#primaryimage" },
+            "image": { "@id": "https://www.techgeekbuzz.com/blog#primaryimage" },
+            "breadcrumb": { "@id": "https://www.techgeekbuzz.com/blog#breadcrumb" },
+            "mainEntity": [
+                { "@id": "https://www.techgeekbuzz.com/blog#blog-list" },
+                { "@id": "https://www.techgeekbuzz.com/blog#faq" }
+            ]
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://www.techgeekbuzz.com/#website",
+            "url": "https://www.techgeekbuzz.com/",
+            "name": "TechGeekBuzz",
+            "inLanguage": "en-GB",
+            "publisher": { "@id": "https://www.techgeekbuzz.com/#organization" },
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://www.techgeekbuzz.com/query/?search={search_term_string}"
+                },
+                "query-input": "required name=search_term_string"
+            }
+        },
+        {
+            "@type": "Organization",
+            "@id": "https://www.techgeekbuzz.com/#organization",
+            "name": "TechGeekBuzz",
+            "url": "https://www.techgeekbuzz.com/",
+            "logo": { "@id": "https://www.techgeekbuzz.com/#logo" },
+            "image": { "@id": "https://www.techgeekbuzz.com/#logo" },
+            "sameAs": [
+                "https://www.facebook.com/techgeekbuzz",
+                "https://www.instagram.com/techgeek.buzz/",
+                "https://twitter.com/techgeekbuzz"
+            ]
+        },
+        {
+            "@type": "ImageObject",
+            "@id": "https://www.techgeekbuzz.com/#logo",
+            "url": "https://www.techgeekbuzz.com{% static 'images/cropped-Techgeekbuzz-Final-Logo-e1611249305805.png'%}",
+            "contentUrl": "https://www.techgeekbuzz.com{% static 'images/cropped-Techgeekbuzz-Final-Logo-e1611249305805.png'%}",
+            "caption": "TechGeekBuzz Logo"
+        },
+        {
+            "@type": "ImageObject",
+            "@id": "https://www.techgeekbuzz.com/blog#primaryimage",
+            {%if page_obj.number == 1 and featured_post.featured_image%}
+            "url": "{{featured_post.featured_image.url}}",
+            "contentUrl": "{{featured_post.featured_image.url}}",
+            {%else%}
+            "url": "https://www.techgeekbuzz.com{% static 'images/hero.png'%}",
+            "contentUrl": "https://www.techgeekbuzz.com{% static 'images/hero.png'%}",
+            {%endif%}
+            "width": 800,
+            "height": 400,
+            "caption": "TechGeekBuzz Blog"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.techgeekbuzz.com/blog#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://www.techgeekbuzz.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://www.techgeekbuzz.com/blog"
+                }
+            ]
+        },
+        {
+            "@type": "Blog",
+            "@id": "https://www.techgeekbuzz.com/blog#blog",
+            "name": "TechGeekBuzz Blog",
+            "url": "https://www.techgeekbuzz.com/blog",
+            "description": "{{description}}",
+            "publisher": { "@id": "https://www.techgeekbuzz.com/#organization" },
+            "blogPost": [
+                {%if page_obj.number == 1 and featured_post%}
+                {
+                    "@type": "BlogPosting",
+                    "headline": "{{featured_post.title}}",
+                    "url": "https://www.techgeekbuzz.com{%url 'postdetail' featured_post.slug%}",
+                    {%if featured_post.featured_image%}
+                    "image": "{{featured_post.featured_image.url}}",
+                    {%endif%}
+                    "datePublished": "{{featured_post.date_posted|date:'c'}}",
+                    "dateModified": "{{featured_post.post_updated|date:'c'}}",
+                    "author": {
+                        "@type": "Person",
+                        "name": "{{featured_post.author.first_name}} {{featured_post.author.last_name}}"
+                    }
+                }
+                {%endif%}
+                {%for blog in page_obj%}
+                {%if forloop.first%}{%if page_obj.number == 1 and featured_post%},{%endif%}{%else%},{%endif%}
+                {
+                    "@type": "BlogPosting",
+                    "headline": "{{blog.title}}",
+                    "url": "https://www.techgeekbuzz.com{%url 'postdetail' blog.slug%}",
+                    {%if blog.featured_image%}
+                    "image": "{{blog.featured_image.url}}",
+                    {%endif%}
+                    "datePublished": "{{blog.date_posted|date:'c'}}",
+                    "dateModified": "{{blog.post_updated|date:'c'}}",
+                    "author": {
+                        "@type": "Person",
+                        "name": "{{blog.author.first_name}} {{blog.author.last_name}}"
+                    }
+                }
+                {%endfor%}
+            ]
+        },
+        {
+            "@type": "ItemList",
+            "@id": "https://www.techgeekbuzz.com/blog#blog-list",
+            "name": "Latest Blog Posts on TechGeekBuzz",
+            "itemListElement": [
+                {%if page_obj.number == 1 and featured_post%}
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "{{featured_post.title}}",
+                    "url": "https://www.techgeekbuzz.com{%url 'postdetail' featured_post.slug%}"
+                }
+                {%endif%}
+                {%for blog in page_obj%}
+                {%if forloop.first%}{%if page_obj.number == 1 and featured_post%},{%endif%}{%else%},{%endif%}
+                {
+                    "@type": "ListItem",
+                    "position": {%if page_obj.number == 1 and featured_post%}{{forloop.counter|add:1}}{%else%}{{forloop.counter}}{%endif%},
+                    "name": "{{blog.title}}",
+                    "url": "https://www.techgeekbuzz.com{%url 'postdetail' blog.slug%}"
+                }
+                {%endfor%}
+            ]
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://www.techgeekbuzz.com/blog#faq",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What kind of content will I find on the TechGeekBuzz blog?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "The TechGeekBuzz blog publishes articles on programming languages like Python and Java, data science, coding tutorials, and other computer science topics to help you stay up to date with the latest tech trends."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How often are new blog posts published?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "New articles are added regularly. Subscribe to our RSS feed or check back on this page to see the latest posts as soon as they go live."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How can I find blog posts written by a specific author?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Click on an author's name below any post to open their author page, which lists every article they have written for TechGeekBuzz."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do I search for a specific blog topic?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Use the search bar on the site to look up any keyword, and TechGeekBuzz will show you every matching blog post."
+                    }
+                }
+            ]
+        }
+    ]
+}
+</script>
 {%endblock%}
 
 
@@ -190,6 +388,64 @@
     </section>
     {%endif%}
     <!-- pagination ends -->
+    {%if page_obj.number == 1%}
+    <section class="container">
+        <div class="faqs my-5">
+            <div class="accordion" id="blogfaqaccordion">
+                <h2 class="faq-headline">FAQs</h2>
+                <hr class="horizontal-row mb-5">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="blogfaqheading1">
+                        <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#blogfaqcollapse1" aria-expanded="false" aria-controls="blogfaqcollapse1">
+                            What kind of content will I find on the TechGeekBuzz blog?
+                        </button>
+                    </h4>
+                    <div id="blogfaqcollapse1" class="accordion-collapse collapse" aria-labelledby="blogfaqheading1" data-bs-parent="#blogfaqaccordion">
+                        <div class="accordion-body">
+                            <p class="faqanswer">The TechGeekBuzz blog publishes articles on programming languages like Python and Java, data science, coding tutorials, and other computer science topics to help you stay up to date with the latest tech trends.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="blogfaqheading2">
+                        <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#blogfaqcollapse2" aria-expanded="false" aria-controls="blogfaqcollapse2">
+                            How often are new blog posts published?
+                        </button>
+                    </h4>
+                    <div id="blogfaqcollapse2" class="accordion-collapse collapse" aria-labelledby="blogfaqheading2" data-bs-parent="#blogfaqaccordion">
+                        <div class="accordion-body">
+                            <p class="faqanswer">New articles are added regularly. Subscribe to our RSS feed or check back on this page to see the latest posts as soon as they go live.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="blogfaqheading3">
+                        <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#blogfaqcollapse3" aria-expanded="false" aria-controls="blogfaqcollapse3">
+                            How can I find blog posts written by a specific author?
+                        </button>
+                    </h4>
+                    <div id="blogfaqcollapse3" class="accordion-collapse collapse" aria-labelledby="blogfaqheading3" data-bs-parent="#blogfaqaccordion">
+                        <div class="accordion-body">
+                            <p class="faqanswer">Click on an author's name below any post to open their author page, which lists every article they have written for TechGeekBuzz.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="blogfaqheading4">
+                        <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#blogfaqcollapse4" aria-expanded="false" aria-controls="blogfaqcollapse4">
+                            How do I search for a specific blog topic?
+                        </button>
+                    </h4>
+                    <div id="blogfaqcollapse4" class="accordion-collapse collapse" aria-labelledby="blogfaqheading4" data-bs-parent="#blogfaqaccordion">
+                        <div class="accordion-body">
+                            <p class="faqanswer">Use the search bar on the site to look up any keyword, and TechGeekBuzz will show you every matching blog post.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {%endif%}
 </main>
 
 {%endblock%}
