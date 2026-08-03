@@ -84,6 +84,23 @@
 
 {%block main%}
 <main style="margin-top: 2rem;">
+    <nav aria-label="breadcrumb" class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{%url 'index'%}">Home</a></li>
+            {%if by_user or query or category_name%}
+            <li class="breadcrumb-item"><a href="{%url 'posts'%}">Blog</a></li>
+            {%if by_user%}
+            <li class="breadcrumb-item active" aria-current="page">{{by_user.first_name}} {{by_user.last_name}}</li>
+            {%elif query%}
+            <li class="breadcrumb-item active" aria-current="page">Search: {{query}}</li>
+            {%elif category_name%}
+            <li class="breadcrumb-item active" aria-current="page">{{category_name|title}}</li>
+            {%endif%}
+            {%else%}
+            <li class="breadcrumb-item active" aria-current="page">Blog</li>
+            {%endif%}
+        </ol>
+    </nav>
     {%if page_obj%}
     {%if by_user%}
     <section class="author-section">

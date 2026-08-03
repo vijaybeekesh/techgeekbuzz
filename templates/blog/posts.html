@@ -46,6 +46,12 @@
 
 {%block main%}
 <main style="margin-top: 0rem;">
+    <nav aria-label="breadcrumb" class="container pt-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{%url 'index'%}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Blog</li>
+        </ol>
+    </nav>
     <section class="popular-blog-section">
         <div class="container">
             <div class="row pt-30 justify-content-between blog-main-row">
