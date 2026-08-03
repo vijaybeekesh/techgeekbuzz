@@ -18,3 +18,6 @@ def xmltojson(request):
 
 def gstcalculator(request):
     return render(request, 'tool/gstcalculator.html')
+
+def markdowntohtml(request):
+    return render(request, 'tool/markdowntohtml.html')

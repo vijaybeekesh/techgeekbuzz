@@ -1,0 +1,366 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+    <meta name="description" content="Convert Markdown to clean HTML instantly with our free online Markdown to HTML Converter. Supports GitHub Flavored Markdown, live preview, syntax highlighting, and HTML export.">
+    <meta name="keywords" content="Markdown to HTML, Markdown Converter, GFM, Markdown Editor, HTML Export">
+
+    <meta property="article:publisher" content="https://www.facebook.com/techgeekbuzz/" />
+
+    <link rel="canonical" href="https://www.techgeekbuzz.com/tools/markdown-to-html">
+
+    <meta property="og:site_name" content="techgeekbuzz.com">
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Markdown to HTML Converter – Free Online Tool" />
+    <meta property="og:description" content="Convert Markdown to clean HTML instantly with our free online Markdown to HTML Converter. Supports GitHub Flavored Markdown, live preview, syntax highlighting, and HTML export." />
+    <meta property="og:url" content="https://www.techgeekbuzz.com/tools/markdown-to-html">
+    <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Markdown to HTML Converter – Free Online Tool">
+    <meta name="twitter:description" content="Convert Markdown to clean HTML instantly with our free online Markdown to HTML Converter. Supports GitHub Flavored Markdown, live preview, syntax highlighting, and HTML export.">
+    <meta name="twitter:url" content="https://www.techgeekbuzz.com/tools/markdown-to-html">
+    <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/tools/tool.css'%}">
+    <link rel="stylesheet" href="{% static 'css/tools/markdowntohtml.css'%}">
+{%endblock%}
+
+{%block title%}
+    <title>Markdown to HTML Converter – Free Online Tool</title>
+{%endblock%}
+
+{%block headjs%}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.techgeekbuzz.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 3, "name": "Converter", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 4, "name": "Markdown to HTML Converter", "item": "https://www.techgeekbuzz.com/tools/markdown-to-html" }
+            ]
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "Markdown to HTML Converter",
+            "url": "https://www.techgeekbuzz.com/tools/markdown-to-html",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Any",
+            "description": "Convert Markdown to clean HTML instantly with our free online Markdown to HTML Converter. Supports GitHub Flavored Markdown, live preview, syntax highlighting, and HTML export.",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            }
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What Markdown syntax does this converter support?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "It supports GitHub Flavored Markdown (GFM), including headings, bold and italic text, strikethrough, blockquotes, inline code and code blocks, tables, ordered and unordered lists, task lists, links, images, and horizontal rules."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is the generated HTML safe to use?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. The output is sanitized before it's rendered or exported, stripping scripts and other unsafe markup, so the HTML you copy or download is safe to paste into your own pages."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I beautify or minify the HTML output?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. Use the Beautify button for cleanly indented, readable HTML, or the Minify button to collapse it into a compact single-line version for production use."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does this tool work offline or store my Markdown anywhere?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Conversion happens entirely in your browser — nothing is uploaded to a server. Your recent conversions are only saved locally on your device so you can revisit them later."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is this Markdown to HTML Converter free to use?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes, the TechGeekBuzz Markdown to HTML Converter is completely free, works instantly in your browser, and does not require any signup."
+                    }
+                }
+            ]
+        }
+    ]
+}
+</script>
+{%endblock%}
+
+{%block main%}
+    <!-- Main Section Started -->
+    <main style="margin-top: 2rem;" class="md-app" id="mdApp">
+
+        <nav aria-label="breadcrumb" class="container pt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{%url 'index'%}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{%url 'tools'%}">Tools</a></li>
+                <li class="breadcrumb-item">Converter</li>
+                <li class="breadcrumb-item active" aria-current="page">Markdown to HTML Converter</li>
+            </ol>
+        </nav>
+
+        <section class="tool-heading">
+            <h1>Markdown to HTML Converter</h1>
+            <p>Convert Markdown to clean, semantic HTML instantly with a live preview, syntax highlighting, and HTML export.</p>
+        </section>
+
+        <!-- sticky toolbar -->
+        <div class="md-toolbar" role="toolbar" aria-label="Markdown converter actions">
+            <div class="md-toolbar-group">
+                <button type="button" class="md-btn md-btn-primary" id="btnConvert">Convert</button>
+                <button type="button" class="md-btn" id="btnSample">Sample</button>
+                <button type="button" class="md-btn" id="btnClear">Clear</button>
+                <button type="button" class="md-btn" id="btnPaste">Paste</button>
+                <button type="button" class="md-btn" id="btnUpload">Upload .md</button>
+                <input type="file" id="fileInput" accept=".md,.markdown,.txt" hidden>
+            </div>
+            <div class="md-toolbar-group">
+                <button type="button" class="md-btn" id="btnBeautify" aria-pressed="true">Beautify HTML</button>
+                <button type="button" class="md-btn" id="btnMinify" aria-pressed="false">Minify HTML</button>
+                <button type="button" class="md-btn" id="btnLineNumbers" aria-pressed="true">Line Numbers</button>
+            </div>
+            <div class="md-toolbar-group">
+                <button type="button" class="md-btn" id="btnCopyHtml">Copy HTML</button>
+                <button type="button" class="md-btn" id="btnDownloadHtml">Download HTML</button>
+                <button type="button" class="md-btn" id="btnDownloadMd">Download Markdown</button>
+                <button type="button" class="md-btn" id="btnPrint">Print</button>
+                <button type="button" class="md-btn" id="btnShare">Share</button>
+            </div>
+            <div class="md-toolbar-group">
+                <button type="button" class="md-btn" id="btnFullscreen" aria-pressed="false">Fullscreen</button>
+                <button type="button" class="md-btn" data-bs-toggle="modal" data-bs-target="#mdCheatSheetModal">Cheat Sheet</button>
+            </div>
+        </div>
+
+        <!-- mobile tabs -->
+        <div class="md-tabs container" role="tablist" aria-label="Switch panel">
+            <button type="button" class="md-tab active" data-tab="markdown" role="tab" aria-selected="true">Markdown</button>
+            <button type="button" class="md-tab" data-tab="preview" role="tab" aria-selected="false">Preview</button>
+            <button type="button" class="md-tab" data-tab="html" role="tab" aria-selected="false">HTML Output</button>
+        </div>
+
+        <div class="md-workspace" id="mdWorkspace">
+
+            <section class="md-pane md-pane-markdown active-tab" data-pane="markdown">
+                <div class="md-pane-head">
+                    <h2>Markdown</h2>
+                    <span class="md-count" id="mdCount" aria-live="polite">0 words · 0 chars · 1 min read</span>
+                </div>
+                <div class="md-editor-wrap" id="mdEditorWrap">
+                    <div class="md-line-numbers" id="mdLineNumbers" aria-hidden="true">1</div>
+                    <textarea id="mdInput" class="md-editor" placeholder="Type or paste GitHub Flavored Markdown here — headings, **bold**, *italics*, `code`, lists, tables, [links](https://example.com) and more. Drag & drop a .md file or an image to insert it." spellcheck="false" aria-label="Markdown input"></textarea>
+                </div>
+                <p class="md-error" id="mdError" role="alert"></p>
+            </section>
+
+            <div class="md-resizer" id="mdResizer" aria-hidden="true"></div>
+
+            <section class="md-pane md-pane-preview" data-pane="preview">
+                <div class="md-pane-head">
+                    <h2>Live Preview</h2>
+                </div>
+                <div class="md-toc" id="mdToc" hidden></div>
+                <div class="md-preview" id="mdPreview" aria-live="polite"></div>
+            </section>
+
+        </div>
+
+        <section class="md-pane md-pane-htmlout" data-pane="html">
+            <div class="md-pane-head">
+                <h2>HTML Output</h2>
+            </div>
+            <pre class="md-html-output" id="mdHtmlOutput" tabindex="0" aria-label="Generated HTML output (read-only)"></pre>
+        </section>
+
+        <div class="md-toast" id="mdToast" role="status" aria-live="polite"></div>
+
+        <!-- recent history -->
+        <section class="md-history-card">
+            <div class="md-history-inner">
+                <div class="md-history-head">
+                    <h2>Recent Conversions</h2>
+                    <button type="button" class="md-mini-btn" id="btnClearHistory">Clear</button>
+                </div>
+                <p class="md-history-empty" id="mdHistoryEmpty">No conversions yet — your last 10 are saved on this device.</p>
+                <ul class="md-history-list" id="mdHistoryList"></ul>
+            </div>
+        </section>
+
+        <section class="what-is-pg">
+            <h3>What is Markdown?</h3>
+            <p>
+                Markdown is a lightweight markup language that lets you format plain text using simple, readable syntax — asterisks for emphasis, hashes for headings, dashes for lists — instead of writing HTML tags by hand.
+                <br>
+                This tool converts Markdown, including GitHub Flavored Markdown extensions like tables and task lists, into clean, semantic HTML you can drop straight into a web page.
+            </p>
+        </section>
+
+        <section class="strong-password-section">
+            <h3>How to Use This Converter</h3>
+            <div class="strong-password-point">
+                <h4>1. Write or import Markdown</h4>
+                <p>
+                    Type directly into the editor, paste from your clipboard, drag and drop a .md/.markdown/.txt file, or click "Sample" to see supported syntax in action.
+                </p>
+            </div>
+            <div class="strong-password-point">
+                <h4>2. Preview instantly</h4>
+                <p>
+                    The live preview updates automatically as you type, rendering headings, tables, task lists, code blocks, and more exactly as they'll appear.
+                </p>
+            </div>
+            <div class="strong-password-point">
+                <h4>3. Export the HTML</h4>
+                <p>
+                    Copy the generated HTML, download it as a standalone .html file, print it, or share it — beautified for readability or minified for production.
+                </p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="faqs my-5">
+                <div class="accordion" id="mdfaqaccordion">
+                    <h2 class="faq-headline">FAQs</h2>
+                    <hr class="horizontal-row mb-5">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="mdheading1">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#mdcollapse1" aria-expanded="false" aria-controls="mdcollapse1">
+                           1. What Markdown syntax does this converter support?
+                          </button>
+                        </h4>
+                        <div id="mdcollapse1" class="accordion-collapse collapse" aria-labelledby="mdheading1" data-bs-parent="#mdfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">
+                                It supports GitHub Flavored Markdown (GFM), including headings, bold and italic text, strikethrough, blockquotes, inline code and code blocks, tables, ordered and unordered lists, task lists, links, images, and horizontal rules.
+                              </p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="mdheading2">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#mdcollapse2" aria-expanded="false" aria-controls="mdcollapse2">
+                           2. Is the generated HTML safe to use?
+                          </button>
+                        </h4>
+                        <div id="mdcollapse2" class="accordion-collapse collapse" aria-labelledby="mdheading2" data-bs-parent="#mdfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">
+                                Yes. The output is sanitized before it's rendered or exported, stripping scripts and other unsafe markup, so the HTML you copy or download is safe to paste into your own pages.
+                              </p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="mdheading3">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#mdcollapse3" aria-expanded="false" aria-controls="mdcollapse3">
+                           3. Can I beautify or minify the HTML output?
+                          </button>
+                        </h4>
+                        <div id="mdcollapse3" class="accordion-collapse collapse" aria-labelledby="mdheading3" data-bs-parent="#mdfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">
+                                Yes. Use the Beautify button for cleanly indented, readable HTML, or the Minify button to collapse it into a compact single-line version for production use.
+                              </p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="mdheading4">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#mdcollapse4" aria-expanded="false" aria-controls="mdcollapse4">
+                           4. Does this tool work offline or store my Markdown anywhere?
+                          </button>
+                        </h4>
+                        <div id="mdcollapse4" class="accordion-collapse collapse" aria-labelledby="mdheading4" data-bs-parent="#mdfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">
+                                Conversion happens entirely in your browser — nothing is uploaded to a server. Your recent conversions are only saved locally on your device so you can revisit them later.
+                              </p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="mdheading5">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#mdcollapse5" aria-expanded="false" aria-controls="mdcollapse5">
+                           5. Is this Markdown to HTML Converter free to use?
+                          </button>
+                        </h4>
+                        <div id="mdcollapse5" class="accordion-collapse collapse" aria-labelledby="mdheading5" data-bs-parent="#mdfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">
+                                Yes, the TechGeekBuzz Markdown to HTML Converter is completely free, works instantly in your browser, and does not require any signup.
+                              </p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Markdown cheat sheet modal -->
+        <div class="modal fade" id="mdCheatSheetModal" tabindex="-1" aria-labelledby="mdCheatSheetLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="mdCheatSheetLabel" style="font-size:1.9rem;">Markdown Cheat Sheet</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="md-cheatsheet-table">
+                            <tbody>
+                                <tr><td>Heading</td><td><code># H1 / ## H2 / ### H3</code></td></tr>
+                                <tr><td>Bold</td><td><code>**bold text**</code></td></tr>
+                                <tr><td>Italic</td><td><code>*italic text*</code></td></tr>
+                                <tr><td>Strikethrough</td><td><code>~~strikethrough~~</code></td></tr>
+                                <tr><td>Blockquote</td><td><code>&gt; quoted text</code></td></tr>
+                                <tr><td>Inline code</td><td><code>`code`</code></td></tr>
+                                <tr><td>Code block</td><td><code>```js ... ```</code></td></tr>
+                                <tr><td>Unordered list</td><td><code>- item</code></td></tr>
+                                <tr><td>Ordered list</td><td><code>1. item</code></td></tr>
+                                <tr><td>Task list</td><td><code>- [ ] todo</code> / <code>- [x] done</code></td></tr>
+                                <tr><td>Link</td><td><code>[text](https://example.com)</code></td></tr>
+                                <tr><td>Image</td><td><code>![alt text](image.jpg)</code></td></tr>
+                                <tr><td>Table</td><td><code>| A | B |</code> then <code>|---|---|</code></td></tr>
+                                <tr><td>Horizontal rule</td><td><code>---</code></td></tr>
+                                <tr><td>Emoji</td><td><code>:tada:</code>, <code>:rocket:</code>, <code>:fire:</code></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Main section ended -->
+{%endblock%}
+
+{%block js%}
+<script src="{%static 'js/vendor/marked.min.js'%}"></script>
+<script src="{%static 'js/vendor/purify.min.js'%}"></script>
+<script src="{%static 'js/tools/js/markdowntohtml.js'%}"></script>
+{%endblock%}
