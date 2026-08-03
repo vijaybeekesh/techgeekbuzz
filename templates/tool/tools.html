@@ -3,24 +3,23 @@
 {%load static%}
 
 {%block metadata%}
-    <meta name="description" content="TechGeekBuzz offers you a set of free tools">
-    <meta name="keywords" content="TechGeekBuzz Tool">
-    
+    <meta name="description" content="Free online tools from TechGeekBuzz — GST and PPF calculators, a Markdown to HTML converter, password generator, broken link checker, and XML to JSON converter. No signup, runs instantly in your browser.">
+    <meta name="keywords" content="Free Online Tools, GST Calculator, PPF Calculator, Markdown to HTML, Password Generator, Broken Links Checker, XML to JSON">
 
     <link rel="canonical" href="https://www.techgeekbuzz.com/tools">
     <meta property="og:site_name" content="techgeekbuzz.com">
     <meta property="og:locale" content="en_GB" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="TechGeekBuzz ToolBox" />
-    <meta property="og:description" content="Arsenal of all the online tools-Techgeekbuzz" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Free Online Tools – TechGeekBuzz" />
+    <meta property="og:description" content="Free online tools from TechGeekBuzz — GST and PPF calculators, a Markdown to HTML converter, password generator, broken link checker, and XML to JSON converter." />
     <meta property="og:url" content="https://www.techgeekbuzz.com/tools">
     <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
     <meta property="og:image:width" content="800" />
     <meta property="og:image:height" content="400" />
     <meta property="og:image:type" content="image/png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="TechGeekBuzz ToolBox">
-    <meta name="twitter:description" content="Arsenal of all the online tools -Techgeekbuzz">
+    <meta name="twitter:title" content="Free Online Tools – TechGeekBuzz">
+    <meta name="twitter:description" content="Free online tools from TechGeekBuzz — GST and PPF calculators, a Markdown to HTML converter, password generator, broken link checker, and XML to JSON converter.">
     <meta name="twitter:url" content="https://www.techgeekbuzz.com/tools">
     <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
 {%endblock%}
@@ -30,156 +29,377 @@
 {%endblock%}
 
 {%block title%}
-    <title>Tools-TechGeekBuzz</title>
+    <title>Free Online Tools – TechGeekBuzz</title>
 {%endblock%}
-{%block headjs%} {%endblock%}
 
+{%block headjs%}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "CollectionPage",
+            "@id": "https://www.techgeekbuzz.com/tools#webpage",
+            "url": "https://www.techgeekbuzz.com/tools",
+            "name": "Free Online Tools – TechGeekBuzz",
+            "description": "Free online tools from TechGeekBuzz — GST and PPF calculators, a Markdown to HTML converter, password generator, broken link checker, and XML to JSON converter.",
+            "inLanguage": "en-GB",
+            "isPartOf": { "@id": "https://www.techgeekbuzz.com/#website" },
+            "about": { "@id": "https://www.techgeekbuzz.com/#organization" },
+            "breadcrumb": { "@id": "https://www.techgeekbuzz.com/tools#breadcrumb" },
+            "mainEntity": [
+                { "@id": "https://www.techgeekbuzz.com/tools#tool-list" },
+                { "@id": "https://www.techgeekbuzz.com/tools#faq" }
+            ]
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.techgeekbuzz.com/tools#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.techgeekbuzz.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.techgeekbuzz.com/tools" }
+            ]
+        },
+        {
+            "@type": "ItemList",
+            "@id": "https://www.techgeekbuzz.com/tools#tool-list",
+            "name": "TechGeekBuzz Free Online Tools",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Broken Links Checker", "url": "https://www.techgeekbuzz.com{%url 'broken-links-checker'%}" },
+                { "@type": "ListItem", "position": 2, "name": "Password Generator", "url": "https://www.techgeekbuzz.com{%url 'password-generator'%}" },
+                { "@type": "ListItem", "position": 3, "name": "XML to JSON Converter", "url": "https://www.techgeekbuzz.com{%url 'xmltojson'%}" },
+                { "@type": "ListItem", "position": 4, "name": "GST Calculator", "url": "https://www.techgeekbuzz.com{%url 'gst-calculator'%}" },
+                { "@type": "ListItem", "position": 5, "name": "Markdown to HTML Converter", "url": "https://www.techgeekbuzz.com{%url 'markdown-to-html'%}" },
+                { "@type": "ListItem", "position": 6, "name": "PPF Calculator", "url": "https://www.techgeekbuzz.com{%url 'ppf-calculator'%}" }
+            ]
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://www.techgeekbuzz.com/tools#faq",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Are TechGeekBuzz tools free to use?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every tool on this page is completely free, works instantly in your browser, and doesn't require an account or signup." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Do I need to install anything to use these tools?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "No installation is needed. Each tool runs directly in your web browser on any device — desktop, tablet, or mobile." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is my data safe when I use these tools?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Most calculations and conversions run entirely on your device. Where a tool needs to check an external resource, such as the broken links checker, only the information required to perform that check is used." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How often are new tools added?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "We regularly add new calculators and converters based on what developers and readers ask for. Check back on this page or explore the category filters above to see what's new." }
+                }
+            ]
+        }
+    ]
+}
+</script>
+{%endblock%}
 
 {%block main%}
     <!-- Main Section Started -->
-    <main style="margin-top: 2rem;">
+    <main class="tools-page" id="toolsPage" style="margin-top: 1rem;">
+
         <nav aria-label="breadcrumb" class="container pt-3">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{%url 'index'%}">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Tools</li>
             </ol>
         </nav>
-        <section class="tool-heading-section">
-            <h1>Tools</h1>
-            <p> Select a tool to test</p>
-        </section>
 
-        <!-- tools section -->
-        <section class="tools-section">
-            <div class="container">
-                <div class="row">
-                    <!-- search form -->
-                    <div class="col-12 search-form">
+        <!-- Hero -->
+        <section class="tools-hero">
+            <div class="tools-hero-orb tools-hero-orb-1" aria-hidden="true"></div>
+            <div class="tools-hero-orb tools-hero-orb-2" aria-hidden="true"></div>
+
+            <div class="tools-hero-inner">
+                <h1>Free Online Tools</h1>
+                <p>Fast, free calculators and converters that run right in your browser — no signup, no installs.</p>
+
+                <div class="tools-hero-badges">
+                    <span class="tools-badge">⚡ Instant results</span>
+                    <span class="tools-badge">🔒 No signup required</span>
+                    <span class="tools-badge">📱 Works on any device</span>
+                </div>
+
+                <div class="tools-hero-search">
+                    <div class="tools-hero-search-wrap">
+                        <span class="tools-hero-search-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg>
+                        </span>
+                        <label for="toolsSearchInput" class="tl-visually-hidden">Search tools</label>
                         <form>
-                            <input type="text" class="search-form-input" placeholder="Search Tools">
+                            <input type="text" id="toolsSearchInput" class="search-form-input" placeholder="Search tools… (e.g. GST, password, markdown)">
                         </form>
+                        <span class="tools-hero-search-kbd" aria-hidden="true">/</span>
                     </div>
-                    <!-- search forms ends -->
-
-                    <!-- categroeis and tool -->
-                    <div class="col-lg-4 col-12 tools-categories">
-                        <h4>Select Tool</h4>
-                        <ul class="d-flex flex-column tool-category">
-                            <li class="btn tool-category-item">All</li>
-                            <li class="btn tool-category-item">SEO</li>
-                            <li class="btn tool-category-item">Security</li>
-                            <li class="btn tool-category-item">Converter</li>
-                            <li class="btn tool-category-item">Finance</li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-8 col-12 tool-list">
-                        <div class="row">
-                            <!-- tool card -->
-                            <div class="col-lg-6 col-md-6 col-12 tool-item-container" data-parent="SEO">
-                                <a class="tool-card d-flex flex-column align-items-center justify-content-center text-center py-5" href="{%url 'broken-links-checker'%}">
-                                    
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07Z"/>
-                                      </svg>
-                        
-                                    <div class="tool-title-des mt-3">
-                                        <h3 class="tool-title">Broken Links Checker</h3>
-                                        <p>SEO Tool</p>
-                                        <p class="tool-subdescription mt-3">Test and Check if your web page contains any internal or external dead link.</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- tool card ends -->
-                            <!-- tool 2 card -->
-                            <div class="col-lg-6 col-md-6 col-12 tool-item-container" data-parent="Security">
-                                <a class="tool-card d-flex flex-column align-items-center justify-content-center text-center py-5" href="{%url 'password-generator'%}">
-                                    
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-lock" viewBox="0 0 16 16">
-                                        <path d="M8 5a1 1 0 0 1 1 1v1H7V6a1 1 0 0 1 1-1zm2 2.076V6a2 2 0 1 0-4 0v1.076c-.54.166-1 .597-1 1.224v2.4c0 .816.781 1.3 1.5 1.3h3c.719 0 1.5-.484 1.5-1.3V8.3c0-.627-.46-1.058-1-1.224zM6.105 8.125A.637.637 0 0 1 6.5 8h3a.64.64 0 0 1 .395.125c.085.068.105.133.105.175v2.4c0 .042-.02.107-.105.175A.637.637 0 0 1 9.5 11h-3a.637.637 0 0 1-.395-.125C6.02 10.807 6 10.742 6 10.7V8.3c0-.042.02-.107.105-.175z"/>
-                                        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
-                                    </svg>
-                        
-                                    <div class="tool-title-des mt-3">
-                                        <h3 class="tool-title">Password Generator</h3>
-                                        <p>Security</p>
-                                        <p class="tool-subdescription mt-3">Generate a Random and Secure Password.</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- tool 2 card ends -->
-                            <!-- tool 3 card -->
-                            <div class="col-lg-6 col-md-6 col-12 tool-item-container" data-parent="Converter">
-                                <a class="tool-card d-flex flex-column align-items-center justify-content-center text-center py-5" href="{%url 'xmltojson'%}">
-                                    
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filetype-xml" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2v-1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM3.527 11.85h-.893l-.823 1.439h-.036L.943 11.85H.012l1.227 1.983L0 15.85h.861l.853-1.415h.035l.85 1.415h.908l-1.254-1.992 1.274-2.007Zm.954 3.999v-2.66h.038l.952 2.159h.516l.946-2.16h.038v2.661h.715V11.85h-.8l-1.14 2.596h-.025L4.58 11.85h-.806v3.999h.706Zm4.71-.674h1.696v.674H8.4V11.85h.791v3.325Z"/>
-                                      </svg>
-                        
-                                    <div class="tool-title-des mt-3">
-                                        <h3 class="tool-title">XML to JSON Converter</h3>
-                                        <p>Converter</p>
-                                        <p class="tool-subdescription mt-3">Convert the XML data to JSON and download the JSON file</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- tool 3 card ends -->
-                            <!-- tool 4 card -->
-                            <div class="col-lg-6 col-md-6 col-12 tool-item-container" data-parent="Finance">
-                                <a class="tool-card d-flex flex-column align-items-center justify-content-center text-center py-5" href="{%url 'gst-calculator'%}">
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" class="bi">
-                                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
-                                        <text x="8" y="11.2" text-anchor="middle" font-size="8" fill="currentColor">%</text>
-                                    </svg>
-
-                                    <div class="tool-title-des mt-3">
-                                        <h3 class="tool-title">GST Calculator</h3>
-                                        <p>Finance</p>
-                                        <p class="tool-subdescription mt-3">Add or remove GST instantly and split the amount into CGST, SGST and IGST.</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- tool 4 card ends -->
-                            <!-- tool 5 card -->
-                            <div class="col-lg-6 col-md-6 col-12 tool-item-container" data-parent="Converter">
-                                <a class="tool-card d-flex flex-column align-items-center justify-content-center text-center py-5" href="{%url 'markdown-to-html'%}">
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-markdown" viewBox="0 0 16 16">
-                                        <path d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.7C0 12.48.52 13 1.15 13h13.7c.63 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"/>
-                                    </svg>
-
-                                    <div class="tool-title-des mt-3">
-                                        <h3 class="tool-title">Markdown to HTML Converter</h3>
-                                        <p>Converter</p>
-                                        <p class="tool-subdescription mt-3">Convert Markdown to clean HTML instantly with a live preview and syntax highlighting.</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- tool 5 card ends -->
-                            <!-- tool 6 card -->
-                            <div class="col-lg-6 col-md-6 col-12 tool-item-container" data-parent="Finance">
-                                <a class="tool-card d-flex flex-column align-items-center justify-content-center text-center py-5" href="{%url 'ppf-calculator'%}">
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/>
-                                    </svg>
-
-                                    <div class="tool-title-des mt-3">
-                                        <h3 class="tool-title">PPF Calculator</h3>
-                                        <p>Finance</p>
-                                        <p class="tool-subdescription mt-3">Estimate your PPF maturity amount, interest earned, and year-wise growth.</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- tool 6 card ends -->
-                        </div>
-                    </div>
-                    <!-- categories and tools ends -->
                 </div>
             </div>
         </section>
-        <!-- Tools section ends -->
+
+        <!-- Sticky category chip bar -->
+        <div class="tools-chip-bar">
+            <div class="container">
+                <div class="tools-chip-scroll">
+                    <ul class="tool-category" role="group" aria-label="Filter tools by category">
+                        <li class="tool-category-item active" tabindex="0" role="button" aria-pressed="true">All</li>
+                        <li class="tool-category-item" tabindex="0" role="button" aria-pressed="false">SEO</li>
+                        <li class="tool-category-item" tabindex="0" role="button" aria-pressed="false">Security</li>
+                        <li class="tool-category-item" tabindex="0" role="button" aria-pressed="false">Converter</li>
+                        <li class="tool-category-item" tabindex="0" role="button" aria-pressed="false">Finance</li>
+                        <li class="tool-category-item" tabindex="0" role="button" aria-pressed="false" id="favoritesChip">★ Favorites</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <!-- Recently used -->
+            <div class="tools-recent" id="toolsRecent" hidden>
+                <h2>Recently Used</h2>
+                <div class="tools-recent-list" id="toolsRecentList"></div>
+            </div>
+
+            <!-- Tool grid -->
+            <div class="tools-grid" id="toolsGrid">
+                <!-- tool card -->
+                <div class="tool-item-container" data-parent="SEO" data-tool="broken-links-checker">
+                    <button type="button" class="tools-card-favorite" aria-label="Add Broken Links Checker to favorites" aria-pressed="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path d="M8 1.5l2.02 4.09 4.51.66-3.27 3.19.77 4.49L8 11.77l-4.03 2.16.77-4.49-3.27-3.19 4.51-.66L8 1.5z"/>
+                            </svg>
+                    </button>
+                    <a class="tool-card" href="{%url 'broken-links-checker'%}">
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07Z"/>
+                        </svg>
+                        <div class="tool-title-des">
+                            <h3 class="tool-title">Broken Links Checker</h3>
+                            <span class="tools-card-badge">SEO</span>
+                            <p class="tool-subdescription">Test and check if your web page contains any internal or external dead links.</p>
+                            <span class="tools-card-cta">Open tool
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L11.293 9H1.5a.5.5 0 0 1 0-1h9.793L8.146 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <!-- tool card ends -->
+                <!-- tool 2 card -->
+                <div class="tool-item-container" data-parent="Security" data-tool="password-generator">
+                    <button type="button" class="tools-card-favorite" aria-label="Add Password Generator to favorites" aria-pressed="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path d="M8 1.5l2.02 4.09 4.51.66-3.27 3.19.77 4.49L8 11.77l-4.03 2.16.77-4.49-3.27-3.19 4.51-.66L8 1.5z"/>
+                            </svg>
+                    </button>
+                    <a class="tool-card" href="{%url 'password-generator'%}">
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 5a1 1 0 0 1 1 1v1H7V6a1 1 0 0 1 1-1zm2 2.076V6a2 2 0 1 0-4 0v1.076c-.54.166-1 .597-1 1.224v2.4c0 .816.781 1.3 1.5 1.3h3c.719 0 1.5-.484 1.5-1.3V8.3c0-.627-.46-1.058-1-1.224zM6.105 8.125A.637.637 0 0 1 6.5 8h3a.64.64 0 0 1 .395.125c.085.068.105.133.105.175v2.4c0 .042-.02.107-.105.175A.637.637 0 0 1 9.5 11h-3a.637.637 0 0 1-.395-.125C6.02 10.807 6 10.742 6 10.7V8.3c0-.042.02-.107.105-.175z"/>
+                            <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                        </svg>
+                        <div class="tool-title-des">
+                            <h3 class="tool-title">Password Generator</h3>
+                            <span class="tools-card-badge">Security</span>
+                            <p class="tool-subdescription">Generate a random and secure password with customizable length and character sets.</p>
+                            <span class="tools-card-cta">Open tool
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L11.293 9H1.5a.5.5 0 0 1 0-1h9.793L8.146 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <!-- tool 2 card ends -->
+                <!-- tool 3 card -->
+                <div class="tool-item-container" data-parent="Converter" data-tool="xmltojson">
+                    <button type="button" class="tools-card-favorite" aria-label="Add XML to JSON Converter to favorites" aria-pressed="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path d="M8 1.5l2.02 4.09 4.51.66-3.27 3.19.77 4.49L8 11.77l-4.03 2.16.77-4.49-3.27-3.19 4.51-.66L8 1.5z"/>
+                            </svg>
+                    </button>
+                    <a class="tool-card" href="{%url 'xmltojson'%}">
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2v-1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM3.527 11.85h-.893l-.823 1.439h-.036L.943 11.85H.012l1.227 1.983L0 15.85h.861l.853-1.415h.035l.85 1.415h.908l-1.254-1.992 1.274-2.007Zm.954 3.999v-2.66h.038l.952 2.159h.516l.946-2.16h.038v2.661h.715V11.85h-.8l-1.14 2.596h-.025L4.58 11.85h-.806v3.999h.706Zm4.71-.674h1.696v.674H8.4V11.85h.791v3.325Z"/>
+                        </svg>
+                        <div class="tool-title-des">
+                            <h3 class="tool-title">XML to JSON Converter</h3>
+                            <span class="tools-card-badge">Converter</span>
+                            <p class="tool-subdescription">Convert XML data to JSON instantly and download the result.</p>
+                            <span class="tools-card-cta">Open tool
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L11.293 9H1.5a.5.5 0 0 1 0-1h9.793L8.146 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <!-- tool 3 card ends -->
+                <!-- tool 4 card -->
+                <div class="tool-item-container" data-parent="Finance" data-tool="gst-calculator">
+                    <button type="button" class="tools-card-favorite" aria-label="Add GST Calculator to favorites" aria-pressed="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path d="M8 1.5l2.02 4.09 4.51.66-3.27 3.19.77 4.49L8 11.77l-4.03 2.16.77-4.49-3.27-3.19 4.51-.66L8 1.5z"/>
+                            </svg>
+                    </button>
+                    <a class="tool-card" href="{%url 'gst-calculator'%}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+                            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
+                            <text x="8" y="11.2" text-anchor="middle" font-size="8" fill="currentColor">%</text>
+                        </svg>
+                        <div class="tool-title-des">
+                            <h3 class="tool-title">GST Calculator</h3>
+                            <span class="tools-card-badge">Finance</span>
+                            <p class="tool-subdescription">Add or remove GST instantly and split the amount into CGST, SGST and IGST.</p>
+                            <span class="tools-card-cta">Open tool
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L11.293 9H1.5a.5.5 0 0 1 0-1h9.793L8.146 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <!-- tool 4 card ends -->
+                <!-- tool 5 card -->
+                <div class="tool-item-container" data-parent="Converter" data-tool="markdown-to-html">
+                    <button type="button" class="tools-card-favorite" aria-label="Add Markdown to HTML Converter to favorites" aria-pressed="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path d="M8 1.5l2.02 4.09 4.51.66-3.27 3.19.77 4.49L8 11.77l-4.03 2.16.77-4.49-3.27-3.19 4.51-.66L8 1.5z"/>
+                            </svg>
+                    </button>
+                    <a class="tool-card" href="{%url 'markdown-to-html'%}">
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.7C0 12.48.52 13 1.15 13h13.7c.63 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"/>
+                        </svg>
+                        <div class="tool-title-des">
+                            <h3 class="tool-title">Markdown to HTML Converter</h3>
+                            <span class="tools-card-badge">Converter</span>
+                            <p class="tool-subdescription">Convert Markdown to clean HTML instantly with a live preview and syntax highlighting.</p>
+                            <span class="tools-card-cta">Open tool
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L11.293 9H1.5a.5.5 0 0 1 0-1h9.793L8.146 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <!-- tool 5 card ends -->
+                <!-- tool 6 card -->
+                <div class="tool-item-container" data-parent="Finance" data-tool="ppf-calculator">
+                    <button type="button" class="tools-card-favorite" aria-label="Add PPF Calculator to favorites" aria-pressed="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path d="M8 1.5l2.02 4.09 4.51.66-3.27 3.19.77 4.49L8 11.77l-4.03 2.16.77-4.49-3.27-3.19 4.51-.66L8 1.5z"/>
+                            </svg>
+                    </button>
+                    <a class="tool-card" href="{%url 'ppf-calculator'%}">
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/>
+                        </svg>
+                        <div class="tool-title-des">
+                            <h3 class="tool-title">PPF Calculator</h3>
+                            <span class="tools-card-badge">Finance</span>
+                            <p class="tool-subdescription">Estimate your PPF maturity amount, interest earned, and year-wise growth.</p>
+                            <span class="tools-card-cta">Open tool
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L11.293 9H1.5a.5.5 0 0 1 0-1h9.793L8.146 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <!-- tool 6 card ends -->
+
+                <div class="tools-empty-state" id="toolsEmptyState" hidden>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                    <p>No tools match your search. Try a different keyword or clear the filter.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info section -->
+        <section class="tools-info-section">
+            <h2>Why Use TechGeekBuzz Tools?</h2>
+            <p>Every tool here is built to be fast, private, and genuinely useful — no clutter, no paywalls, no accounts.</p>
+            <div class="tools-benefits-grid">
+                <div class="tools-benefit-card">
+                    <h3>Completely Free</h3>
+                    <p>Every calculator and converter is free to use, with no hidden limits or premium tiers.</p>
+                </div>
+                <div class="tools-benefit-card">
+                    <h3>Runs In Your Browser</h3>
+                    <p>Most tools calculate and convert entirely on your device — nothing to install, nothing to wait for.</p>
+                </div>
+                <div class="tools-benefit-card">
+                    <h3>Fast &amp; Lightweight</h3>
+                    <p>Built with lightweight, modern web tech so results appear instantly, even on slower connections.</p>
+                </div>
+                <div class="tools-benefit-card">
+                    <h3>Mobile Friendly</h3>
+                    <p>Every tool is designed mobile-first, so it works just as well on your phone as on your desktop.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tools-faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="tl-faq-item" data-open="false">
+                <button type="button" class="tl-faq-question" aria-expanded="false">
+                    Are TechGeekBuzz tools free to use?
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>
+                </button>
+                <div class="tl-faq-answer">
+                    <p>Yes. Every tool on this page is completely free, works instantly in your browser, and doesn't require an account or signup.</p>
+                </div>
+            </div>
+
+            <div class="tl-faq-item" data-open="false">
+                <button type="button" class="tl-faq-question" aria-expanded="false">
+                    Do I need to install anything to use these tools?
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>
+                </button>
+                <div class="tl-faq-answer">
+                    <p>No installation is needed. Each tool runs directly in your web browser on any device — desktop, tablet, or mobile.</p>
+                </div>
+            </div>
+
+            <div class="tl-faq-item" data-open="false">
+                <button type="button" class="tl-faq-question" aria-expanded="false">
+                    Is my data safe when I use these tools?
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>
+                </button>
+                <div class="tl-faq-answer">
+                    <p>Most calculations and conversions run entirely on your device. Where a tool needs to check an external resource, such as the broken links checker, only the information required to perform that check is used.</p>
+                </div>
+            </div>
+
+            <div class="tl-faq-item" data-open="false">
+                <button type="button" class="tl-faq-question" aria-expanded="false">
+                    How often are new tools added?
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>
+                </button>
+                <div class="tl-faq-answer">
+                    <p>We regularly add new calculators and converters based on what developers and readers ask for. Check back on this page or explore the category filters above to see what's new.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer CTA -->
+        <section class="container">
+            <div class="tools-footer-cta">
+                <h2>Have an idea for a new tool?</h2>
+                <p>Tell us what calculator or converter would save you time, and we'll consider building it next.</p>
+                <a class="tools-footer-cta-btn" href="{%url 'writeforus'%}">Suggest a Tool</a>
+            </div>
+        </section>
+
+        <button type="button" class="tools-back-to-top" id="btnBackToTop" aria-label="Back to top">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/></svg>
+        </button>
+
+        <div class="tools-toast" id="toolsToast" role="status" aria-live="polite"></div>
     </main>
     <!-- Main section ended -->
 {%endblock%}
@@ -187,5 +407,3 @@
 {%block js%}
 <script src="{%static 'js/tools/tools.js'%}"></script>
 {%endblock%}
-
-
