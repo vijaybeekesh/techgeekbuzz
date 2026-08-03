@@ -6,6 +6,7 @@ urlpatterns = [
     path("/broken-links-checker", brokenlinkschecker, name="broken-links-checker"),
     path('/password-generator', passwordgenerator, name ="password-generator"),
     path('/xml-to-json', xmltojson, name ="xmltojson"),
+    path('/gst-calculator', gstcalculator, name ="gst-calculator"),
 
     # apis urls
     path("/api/broken-links-checker/",brokenlinkschecker_api, name="broken-links-checker-api"),

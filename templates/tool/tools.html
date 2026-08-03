@@ -37,7 +37,7 @@
 
 {%block main%}
     <!-- Main Section Started -->
-    <main style="margin-top: 6rem;">
+    <main style="margin-top: 2rem;">
         <section class="tool-heading-section">
             <h1>Tools</h1>
             <p> Select a tool to test</p>
@@ -63,6 +63,7 @@
                             <li class="btn tool-category-item">SEO</li>
                             <li class="btn tool-category-item">Security</li>
                             <li class="btn tool-category-item">Converter</li>
+                            <li class="btn tool-category-item">Finance</li>
                         </ul>
                     </div>
 
@@ -117,6 +118,23 @@
                                 </a>
                             </div>
                             <!-- tool 3 card ends -->
+                            <!-- tool 4 card -->
+                            <div class="col-lg-6 col-md-6 col-12 tool-item-container" data-parent="Finance">
+                                <a class="tool-card d-flex flex-column align-items-center justify-content-center text-center py-5" href="{%url 'gst-calculator'%}">
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" class="bi">
+                                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
+                                        <text x="8" y="11.2" text-anchor="middle" font-size="8" fill="currentColor">%</text>
+                                    </svg>
+
+                                    <div class="tool-title-des mt-3">
+                                        <h3 class="tool-title">GST Calculator</h3>
+                                        <p>Finance</p>
+                                        <p class="tool-subdescription mt-3">Add or remove GST instantly and split the amount into CGST, SGST and IGST.</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- tool 4 card ends -->
                         </div>
                     </div>
                     <!-- categories and tools ends -->

@@ -1,0 +1,519 @@
+/* ===== GST Calculator — scoped theme tokens ===== */
+.gst-app {
+    --gst-bg: #f5f9ff;
+    --gst-card-bg: #ffffff;
+    --gst-text: #1a1a2e;
+    --gst-muted: #6b7280;
+    --gst-border: #dbe4f3;
+    --gst-primary: #003d93;
+    --gst-primary-dark: #002a68;
+    --gst-accent: #0d6efd;
+    --gst-success: #17803d;
+    --gst-danger: #d92d20;
+    --gst-highlight-bg: linear-gradient(135deg, #003d93 0%, #0d6efd 100%);
+    --gst-shadow: rgba(16, 24, 40, 0.08);
+    color: var(--gst-text);
+    transition: background-color .3s ease, color .3s ease;
+}
+
+/* ===== Layout ===== */
+.gst-calculator-section {
+    padding: 0rem 0 1rem 0;
+}
+
+.gst-card {
+    background: var(--gst-card-bg);
+    border: 1px solid var(--gst-border);
+    border-radius: 1.4rem;
+    box-shadow: 0 10px 30px var(--gst-shadow);
+    padding: 2.5rem;
+    max-width: 90rem;
+    margin: 0 auto 3rem auto;
+}
+
+.gst-card-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+/* ===== Mode toggle (Add / Remove) ===== */
+.gst-mode-toggle {
+    display: inline-flex;
+    background: var(--gst-bg);
+    border: 1px solid var(--gst-border);
+    border-radius: 999px;
+    padding: 0.4rem;
+    gap: 0.4rem;
+}
+
+.gst-mode-btn {
+    border: 0;
+    background: transparent;
+    color: var(--gst-muted);
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 0.9rem 2rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color .2s ease, color .2s ease;
+}
+
+.gst-mode-btn.active {
+    background: var(--gst-primary);
+    color: #fff;
+}
+
+.gst-mode-btn:focus-visible,
+.gst-rate-btn:focus-visible,
+.gst-action-btn:focus-visible,
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--gst-accent);
+    outline-offset: 2px;
+}
+
+/* ===== Form fields ===== */
+.gst-field {
+    margin-bottom: 1rem;
+}
+
+.gst-field > label,
+.gst-field > .gst-field-label {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--gst-text);
+    margin-bottom: 0.8rem;
+}
+
+/* .gst-switch is also a direct <label> child of .gst-field, but it needs to
+   stay a flex row (track + text side by side) instead of the block layout above. */
+.gst-field > label.gst-switch {
+    display: flex;
+    margin-bottom: 0;
+}
+
+.gst-amount-row {
+    display: flex;
+    gap: 1rem;
+    align-items: stretch;
+}
+
+#gstCurrency {
+    border: 1px solid var(--gst-border);
+    border-radius: 0.8rem;
+    background: var(--gst-card-bg);
+    color: var(--gst-text);
+    font-size: 1.8rem;
+    padding: 0 1rem;
+}
+
+.gst-amount-input {
+    flex: 1;
+    width: 100%;
+    border: 1px solid var(--gst-border);
+    border-radius: 0.8rem;
+    background: var(--gst-card-bg);
+    color: var(--gst-text);
+    font-size: 3rem;
+    font-weight: 600;
+    padding: 1.4rem 1.6rem;
+}
+
+.gst-amount-input:focus {
+    outline: 2px solid var(--gst-accent);
+    border-color: var(--gst-accent);
+}
+
+.gst-error {
+    display: block;
+    min-height: 1.8rem;
+    color: var(--gst-danger);
+    font-size: 1.3rem;
+    margin-top: 0.6rem;
+}
+
+/* ===== GST rate buttons ===== */
+.gst-rate-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.gst-rate-btn {
+    border: 1.5px solid var(--gst-border);
+    background: var(--gst-card-bg);
+    color: var(--gst-text);
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 1rem 1.8rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.gst-rate-btn:hover { border-color: var(--gst-primary); }
+
+.gst-rate-btn.active {
+    background: var(--gst-primary);
+    border-color: var(--gst-primary);
+    color: #fff;
+}
+
+.gst-custom-rate {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.2rem;
+}
+
+.gst-custom-rate label {
+    font-size: 1.4rem;
+    color: var(--gst-muted);
+    white-space: nowrap;
+}
+
+.gst-custom-rate input {
+    width: 14rem;
+    border: 1px solid var(--gst-border);
+    border-radius: 0.8rem;
+    background: var(--gst-card-bg);
+    color: var(--gst-text);
+    font-size: 1.6rem;
+    padding: 0.9rem 1.2rem;
+}
+
+/* ===== Interstate switch ===== */
+.gst-switch {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    cursor: pointer;
+    font-size: 1.4rem;
+    color: var(--gst-text);
+}
+
+.gst-switch-label {
+    flex: 1 1 auto;
+    min-width: 20rem;
+}
+
+.gst-switch input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.gst-switch-track {
+    position: relative;
+    width: 4.6rem;
+    height: 2.6rem;
+    background: #9aa3b5;
+    border-radius: 999px;
+    flex-shrink: 0;
+    transition: background-color .2s ease;
+}
+
+.gst-switch-track::before {
+    content: "";
+    position: absolute;
+    top: 0.3rem;
+    left: 0.3rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: transform .2s ease;
+}
+
+.gst-switch input:checked + .gst-switch-track {
+    background: var(--gst-primary);
+}
+.gst-switch input:checked + .gst-switch-track::before {
+    transform: translateX(2rem);
+}
+
+/* ===== Actions ===== */
+.gst-actions {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    margin-top: 2.4rem;
+}
+
+.gst-calculate-btn { font-size: 1.7rem; padding: 1.1rem 3rem; }
+
+.gst-reset-btn {
+    font-size: 1.7rem;
+    padding: 1.1rem 3rem;
+    border-radius: 1rem;
+    border: 1.5px solid var(--gst-border);
+    background: transparent;
+    color: var(--gst-text);
+    font-weight: 500;
+}
+.gst-reset-btn:hover { border-color: var(--gst-primary); color: var(--gst-primary); }
+
+/* ===== Result card ===== */
+.gst-result-card {
+    margin-top: 2.8rem;
+    padding-top: 2.6rem;
+    border-top: 1px dashed var(--gst-border);
+    animation: gstFadeIn .35s ease;
+}
+
+@keyframes gstFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.gst-result-heading {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 1.4rem;
+    color: var(--gst-primary);
+}
+
+.gst-result-grid { margin: 0; }
+
+.gst-result-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--gst-border);
+    font-size: 1.5rem;
+}
+
+.gst-result-row dt { color: var(--gst-muted); margin: 0; font-weight: 500; }
+.gst-result-row dd { margin: 0; font-weight: 700; }
+
+.gst-total-highlight {
+    margin-top: 2rem;
+    background: var(--gst-highlight-bg);
+    color: #fff;
+    border-radius: 1rem;
+    padding: 1.8rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 8px 20px var(--gst-shadow);
+}
+
+.gst-total-highlight span { font-size: 1.5rem; font-weight: 500; opacity: 0.9; }
+.gst-total-highlight strong { font-size: 2.6rem; font-weight: 800; }
+
+.gst-result-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.gst-action-btn {
+    border: 1.5px solid var(--gst-border);
+    background: var(--gst-card-bg);
+    color: var(--gst-text);
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding: 0.9rem 1.6rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
+}
+.gst-action-btn:hover { border-color: var(--gst-primary); color: var(--gst-primary); }
+
+/* ===== History ===== */
+.gst-history-card {
+    background: var(--gst-card-bg);
+    border: 1px solid var(--gst-border);
+    border-radius: 1.4rem;
+    box-shadow: 0 10px 30px var(--gst-shadow);
+    padding: 2.5rem;
+    max-width: 90rem;
+    margin: 0 auto 3rem auto;
+}
+
+.gst-history-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.6rem;
+}
+
+.gst-history-head h2 { font-size: 1.9rem; font-weight: 700; color: var(--gst-primary); margin: 0; }
+
+.gst-history-actions { display: flex; gap: 1rem; }
+
+.gst-history-empty { color: var(--gst-muted); font-size: 1.4rem; }
+
+.gst-history-list { list-style: none; margin: 0; padding: 0; }
+
+.gst-history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--gst-border);
+    font-size: 1.4rem;
+}
+.gst-history-item:last-child { border-bottom: 0; }
+
+.gst-history-meta { color: var(--gst-muted); font-size: 1.2rem; }
+
+.gst-history-remove {
+    border: 0;
+    background: transparent;
+    color: var(--gst-danger);
+    font-size: 1.3rem;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* ===== Toast ===== */
+.gst-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 3rem;
+    transform: translate(-50%, 1.5rem);
+    background: #1a1a2e;
+    color: #fff;
+    font-size: 1.4rem;
+    padding: 1.2rem 2.2rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease;
+    z-index: 2000;
+}
+
+.gst-toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* ===== Informational sections (align with the site's centered container width) ===== */
+.what-is-pg,
+.strong-password-section,
+.password-generator-work {
+    max-width: 95rem;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    text-align: center;
+}
+
+.what-is-pg h3,
+.strong-password-section h3,
+.password-generator-work h3 {
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.4;
+    word-break: break-word;
+    color: #003e93;
+}
+
+.what-is-pg p,
+.password-generator-work p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    word-break: break-word;
+    letter-spacing: 1.2px;
+    word-spacing: 2.2px;
+}
+
+.strong-password-point {
+    margin: 2rem 0px;
+    text-align: left;
+}
+
+.strong-password-point h4 {
+    font-size: 1.8rem;
+    color: #003e93;
+    line-height: 1.4;
+}
+
+.strong-password-point p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+/* ===== FAQ accordion (matches the styling used on other tool/blog pages) ===== */
+.faq-headline {
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.faqbutton {
+    background-color: var(--gst-card-bg) !important;
+    color: var(--gst-text) !important;
+}
+
+.faqanswer {
+    font-size: 1.8rem;
+    line-height: 1.4;
+    color: var(--gst-muted);
+    letter-spacing: 0.6px;
+}
+
+.accordion-header button {
+    font-size: 2.1rem;
+    margin-top: 0;
+}
+
+/* ===== Rate slab table (info section) ===== */
+.gst-rate-table-wrap { overflow-x: auto; margin-top: 1.5rem; }
+.gst-rate-table { width: 100%; border-collapse: collapse; min-width: 40rem; }
+.gst-rate-table th, .gst-rate-table td {
+    text-align: left;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid #e3e9f5;
+    font-size: 1.5rem;
+}
+.gst-rate-table th { color: #003e93; }
+
+/* ===== Responsive ===== */
+@media only screen and (max-width: 767px) {
+    .gst-card, .gst-history-card { padding: 1.8rem; border-radius: 1rem; }
+    .gst-amount-input { font-size: 2.2rem; }
+    .gst-total-highlight strong { font-size: 2rem; }
+    .gst-card-topbar { flex-direction: row; }
+    .gst-mode-btn { padding: 0.8rem 1.4rem; font-size: 1.3rem; }
+}
+
+/* ===== Print ===== */
+@media print {
+    body > header,
+    body > footer,
+    .header,
+    footer,
+    .navbar,
+    .gst-mode-toggle,
+    #gstForm,
+    .gst-result-actions,
+    .gst-history-card,
+    .what-is-pg,
+    .strong-password-section,
+    .password-generator-work,
+    .faqs,
+    .gst-toast {
+        display: none !important;
+    }
+    .gst-result-card { border-top: 0; margin-top: 0; }
+    .gst-card { box-shadow: none; border: 0; }
+}

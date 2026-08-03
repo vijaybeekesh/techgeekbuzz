@@ -1,0 +1,374 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+    <meta name="description" content="Free online GST Calculator for India. Calculate GST amount, GST-inclusive price, CGST, SGST, IGST, and total amount instantly.">
+    <meta name="keywords" content="GST Calculator, GST Calculator India, Add GST, Remove GST, CGST SGST IGST Calculator">
+
+    <meta property="article:publisher" content="https://www.facebook.com/techgeekbuzz/" />
+
+    <link rel="canonical" href="https://www.techgeekbuzz.com/tools/gst-calculator">
+
+    <meta property="og:site_name" content="techgeekbuzz.com">
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="GST Calculator - Add & Remove GST Online" />
+    <meta property="og:description" content="Free online GST Calculator for India. Calculate GST amount, GST-inclusive price, CGST, SGST, IGST, and total amount instantly." />
+    <meta property="og:url" content="https://www.techgeekbuzz.com/tools/gst-calculator">
+    <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GST Calculator - Add & Remove GST Online">
+    <meta name="twitter:description" content="Free online GST Calculator for India. Calculate GST amount, GST-inclusive price, CGST, SGST, IGST, and total amount instantly.">
+    <meta name="twitter:url" content="https://www.techgeekbuzz.com/tools/gst-calculator">
+    <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/tools/tool.css'%}">
+    <link rel="stylesheet" href="{% static 'css/tools/gstcalculator.css'%}">
+{%endblock%}
+
+{%block title%}
+    <title>GST Calculator - Add & Remove GST Online</title>
+{%endblock%}
+
+{%block headjs%}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.techgeekbuzz.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 3, "name": "GST Calculator", "item": "https://www.techgeekbuzz.com/tools/gst-calculator" }
+            ]
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "GST Calculator",
+            "url": "https://www.techgeekbuzz.com/tools/gst-calculator",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "Any",
+            "description": "Free online GST Calculator for India. Calculate GST amount, GST-inclusive price, CGST, SGST, IGST, and total amount instantly.",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "INR"
+            }
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What are the standard GST rates in India?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "India follows a multi-tier GST structure with slabs of 3%, 5%, 12%, 18%, and 28%, depending on the type of goods or services. This calculator also lets you enter any custom GST rate."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is the difference between CGST, SGST, and IGST?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "For intra-state transactions, GST is split equally into CGST (Central GST) and SGST (State GST) — for example, 18% GST becomes 9% CGST and 9% SGST. For inter-state transactions, the full amount is charged as IGST (Integrated GST) instead."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do I calculate GST on an amount?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "To add GST, multiply the original amount by the GST rate and divide by 100 to get the GST amount, then add it to the original amount to get the total. This calculator does that automatically."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do I remove GST from a GST-inclusive price?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Divide the GST-inclusive amount by (100 + GST rate) and multiply by 100 to get the original amount. Subtract the original amount from the inclusive amount to get the GST amount."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is this GST calculator free to use?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes, the TechGeekBuzz GST Calculator is completely free, works instantly in your browser, and does not require any signup."
+                    }
+                }
+            ]
+        }
+    ]
+}
+</script>
+{%endblock%}
+
+{%block main%}
+    <!-- Main Section Started -->
+    <main style="margin-top: 2rem;" class="gst-app" id="gstApp">
+
+        <section class="tool-heading">
+            <h1>GST Calculator - Add &amp; Remove GST Online</h1>
+            <p>Calculate GST amount, GST-inclusive price, CGST, SGST, IGST, and total amount instantly.</p>
+        </section>
+
+        <section class="gst-calculator-section">
+            <div class="container">
+
+                <div class="gst-card" role="region" aria-label="GST Calculator">
+                    <div class="gst-card-topbar">
+                        <div class="gst-mode-toggle" role="tablist" aria-label="GST calculation mode">
+                            <button type="button" class="gst-mode-btn active" id="modeAdd" role="tab" aria-selected="true">Add GST</button>
+                            <button type="button" class="gst-mode-btn" id="modeRemove" role="tab" aria-selected="false">Remove GST</button>
+                        </div>
+                    </div>
+
+                    <form id="gstForm" novalidate>
+                        <div class="gst-field">
+                            <label for="gstAmount" id="amountLabel">Original Amount</label>
+                            <div class="gst-amount-row">
+                                <select id="gstCurrency" aria-label="Currency">
+                                    <option value="₹" selected>₹ INR</option>
+                                    <option value="$">$ USD</option>
+                                    <option value="€">€ EUR</option>
+                                    <option value="£">£ GBP</option>
+                                </select>
+                                <input type="text" inputmode="decimal" id="gstAmount" name="gstAmount" class="gst-amount-input" placeholder="0.00" aria-describedby="amountError" autocomplete="off">
+                            </div>
+                            <span class="gst-error" id="amountError" role="alert"></span>
+                        </div>
+
+                        <div class="gst-field">
+                            <span class="gst-field-label" id="rateLabel">GST Rate (%)</span>
+                            <div class="gst-rate-buttons" role="group" aria-labelledby="rateLabel">
+                                <button type="button" class="gst-rate-btn" data-rate="3" aria-pressed="false">3%</button>
+                                <button type="button" class="gst-rate-btn" data-rate="5" aria-pressed="false">5%</button>
+                                <button type="button" class="gst-rate-btn" data-rate="12" aria-pressed="false">12%</button>
+                                <button type="button" class="gst-rate-btn active" data-rate="18" aria-pressed="true">18%</button>
+                                <button type="button" class="gst-rate-btn" data-rate="28" aria-pressed="false">28%</button>
+                            </div>
+                            <div class="gst-custom-rate">
+                                <label for="customRate">Custom Rate</label>
+                                <input type="text" inputmode="decimal" id="customRate" name="customRate" placeholder="e.g. 8.5" autocomplete="off">
+                            </div>
+                            <span class="gst-error" id="rateError" role="alert"></span>
+                        </div>
+
+                        <div class="gst-field gst-interstate-field">
+                            <label class="gst-switch" for="interstateToggle">
+                                <input type="checkbox" id="interstateToggle" name="interstateToggle">
+                                <span class="gst-switch-track" aria-hidden="true"></span>
+                                <span class="gst-switch-label">Interstate transaction — show IGST instead of CGST + SGST</span>
+                            </label>
+                        </div>
+
+                        <div class="gst-actions">
+                            <button type="submit" class="btn btn-primary submit-btn gst-calculate-btn">Calculate</button>
+                            <button type="button" class="gst-reset-btn" id="resetBtn">Reset</button>
+                        </div>
+                    </form>
+
+                    <div class="gst-result-card" id="resultCard" aria-live="polite" hidden>
+                        <h2 class="gst-result-heading">Result</h2>
+                        <dl class="gst-result-grid">
+                            <div class="gst-result-row">
+                                <dt>Original Amount</dt>
+                                <dd id="resOriginal">—</dd>
+                            </div>
+                            <div class="gst-result-row">
+                                <dt>GST Percentage</dt>
+                                <dd id="resRate">—</dd>
+                            </div>
+                            <div class="gst-result-row">
+                                <dt>GST Amount</dt>
+                                <dd id="resGst">—</dd>
+                            </div>
+                            <div class="gst-result-row gst-split-row" id="rowCgst">
+                                <dt>CGST</dt>
+                                <dd id="resCgst">—</dd>
+                            </div>
+                            <div class="gst-result-row gst-split-row" id="rowSgst">
+                                <dt>SGST</dt>
+                                <dd id="resSgst">—</dd>
+                            </div>
+                            <div class="gst-result-row gst-split-row" id="rowIgst" hidden>
+                                <dt>IGST</dt>
+                                <dd id="resIgst">—</dd>
+                            </div>
+                        </dl>
+                        <div class="gst-total-highlight">
+                            <span>Total Amount</span>
+                            <strong id="resTotal">—</strong>
+                        </div>
+                        <div class="gst-result-actions">
+                            <button type="button" class="gst-action-btn" id="copyBtn">Copy Results</button>
+                            <button type="button" class="gst-action-btn" id="shareBtn">Share</button>
+                            <button type="button" class="gst-action-btn" id="printBtn">Print</button>
+                            <button type="button" class="gst-action-btn" id="pdfBtn" title="Opens the print dialog — choose &quot;Save as PDF&quot; as the destination">Download PDF</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gst-history-card" id="historyCard">
+                    <div class="gst-history-head">
+                        <h2>Calculation History</h2>
+                        <div class="gst-history-actions">
+                            <button type="button" class="gst-action-btn" id="exportCsvBtn">Export CSV</button>
+                            <button type="button" class="gst-action-btn" id="clearHistoryBtn">Clear</button>
+                        </div>
+                    </div>
+                    <p class="gst-history-empty" id="historyEmpty">No calculations yet — your last 20 results are saved on this device.</p>
+                    <ul class="gst-history-list" id="historyList"></ul>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="gst-toast" id="gstToast" role="status" aria-live="polite"></div>
+
+        <section class="what-is-pg">
+            <h3>What is GST?</h3>
+            <p>
+                GST (Goods and Services Tax) is a single, unified indirect tax levied on the supply of goods and services in India, replacing multiple older taxes like VAT, service tax, and excise duty.
+                <br>
+                GST is charged at different rates depending on the category of goods or services — commonly 3%, 5%, 12%, 18%, or 28% — and is split between the Central and State governments for transactions within a state, or collected as a single Integrated GST for transactions between states.
+            </p>
+        </section>
+
+        <section class="strong-password-section">
+            <h3>How GST is Calculated</h3>
+            <div class="strong-password-point">
+                <h4>Adding GST</h4>
+                <p>
+                    GST Amount = Original Amount × GST Rate ÷ 100. Total Amount = Original Amount + GST Amount.
+                </p>
+            </div>
+            <div class="strong-password-point">
+                <h4>Removing GST</h4>
+                <p>
+                    Original Amount = Inclusive Amount × 100 ÷ (100 + GST Rate). GST Amount = Inclusive Amount − Original Amount.
+                </p>
+            </div>
+            <div class="strong-password-point">
+                <h4>CGST, SGST &amp; IGST</h4>
+                <p>
+                    For sales within the same state, the GST amount is split equally into CGST and SGST. For sales between two different states, the full GST amount is charged as IGST instead.
+                </p>
+            </div>
+        </section>
+
+        <section class="password-generator-work">
+            <h3>Common GST Rate Slabs in India</h3>
+            <div class="gst-rate-table-wrap">
+                <table class="gst-rate-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">GST Rate</th>
+                            <th scope="col">Typically applies to</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>3%</td><td>Gold, silver, and certain precious stones</td></tr>
+                        <tr><td>5%</td><td>Essential goods and select services</td></tr>
+                        <tr><td>12%</td><td>Standard-rated goods and services</td></tr>
+                        <tr><td>18%</td><td>Most goods and services (the most common slab)</td></tr>
+                        <tr><td>28%</td><td>Luxury and sin goods</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="faqs my-5">
+                <div class="accordion" id="gstfaqaccordion">
+                    <h2 class="faq-headline">FAQs</h2>
+                    <hr class="horizontal-row mb-5">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="gstheading1">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#gstcollapse1" aria-expanded="false" aria-controls="gstcollapse1">
+                           1. What are the standard GST rates in India?
+                          </button>
+                        </h4>
+                        <div id="gstcollapse1" class="accordion-collapse collapse" aria-labelledby="gstheading1" data-bs-parent="#gstfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">
+                                India follows a multi-tier GST structure with slabs of 3%, 5%, 12%, 18%, and 28%, depending on the type of goods or services. This calculator also lets you enter any custom GST rate.
+                              </p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="gstheading2">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#gstcollapse2" aria-expanded="false" aria-controls="gstcollapse2">
+                           2. What is the difference between CGST, SGST, and IGST?
+                          </button>
+                        </h4>
+                        <div id="gstcollapse2" class="accordion-collapse collapse" aria-labelledby="gstheading2" data-bs-parent="#gstfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">
+                                For intra-state transactions, GST is split equally into CGST (Central GST) and SGST (State GST) — for example, 18% GST becomes 9% CGST and 9% SGST. For inter-state transactions, the full amount is charged as IGST (Integrated GST) instead.
+                              </p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="gstheading3">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#gstcollapse3" aria-expanded="false" aria-controls="gstcollapse3">
+                           3. How do I calculate GST on an amount?
+                          </button>
+                        </h4>
+                        <div id="gstcollapse3" class="accordion-collapse collapse" aria-labelledby="gstheading3" data-bs-parent="#gstfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">
+                                To add GST, multiply the original amount by the GST rate and divide by 100 to get the GST amount, then add it to the original amount to get the total. This calculator does that automatically.
+                              </p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="gstheading4">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#gstcollapse4" aria-expanded="false" aria-controls="gstcollapse4">
+                           4. How do I remove GST from a GST-inclusive price?
+                          </button>
+                        </h4>
+                        <div id="gstcollapse4" class="accordion-collapse collapse" aria-labelledby="gstheading4" data-bs-parent="#gstfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">
+                                Divide the GST-inclusive amount by (100 + GST rate) and multiply by 100 to get the original amount. Subtract the original amount from the inclusive amount to get the GST amount.
+                              </p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="gstheading5">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#gstcollapse5" aria-expanded="false" aria-controls="gstcollapse5">
+                           5. Is this GST calculator free to use?
+                          </button>
+                        </h4>
+                        <div id="gstcollapse5" class="accordion-collapse collapse" aria-labelledby="gstheading5" data-bs-parent="#gstfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">
+                                Yes, the TechGeekBuzz GST Calculator is completely free, works instantly in your browser, and does not require any signup.
+                              </p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Main section ended -->
+{%endblock%}
+
+{%block js%}
+<script src="{%static 'js/tools/js/gstcalculator.js'%}"></script>
+{%endblock%}

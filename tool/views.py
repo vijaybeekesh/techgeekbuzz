@@ -15,3 +15,6 @@ def passwordgenerator(request):
 
 def xmltojson(request):
     return render(request, "tool/xmltojson.html")
+
+def gstcalculator(request):
+    return render(request, 'tool/gstcalculator.html')
