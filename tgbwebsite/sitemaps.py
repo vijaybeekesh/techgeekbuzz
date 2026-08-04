@@ -61,7 +61,7 @@ class RoadmapSitemap(Sitemap):
 # tools roadmap
 class StaticToolsSitemap(Sitemap):
     def items(self):
-        return ['broken-links-checker','password-generator','xmltojson','gst-calculator','markdown-to-html','ppf-calculator','seo-title-generator']
+        return ['broken-links-checker','password-generator','xmltojson','gst-calculator','markdown-to-html','ppf-calculator','seo-title-generator','invoice-generator']
     def location(self, item):
         return reverse(item)
 

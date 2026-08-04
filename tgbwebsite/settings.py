@@ -118,28 +118,19 @@ TEMPLATES = [
 # Database
 # ------------------------------------------------------------------------------
 
-if TECH_PROD:
-    DATABASES = {
-        "default": {
-            "ENGINE": get_env("DATABASE_ENGINE", required=True),
-            "NAME": get_env("DATABASE_NAME", required=True),
-            "USER": get_env("DATABASE_USER", required=True),
-            "PASSWORD": get_env("DATABASE_PASSWORD", required=True),
-            "HOST": get_env("DATABASE_HOST", required=True),
-            "PORT": get_env("DATABASE_PORT", "3306"),
-            "OPTIONS": {
-                "charset": "utf8mb4",
-            },
-        }
+DATABASES = {
+    "default": {
+        "ENGINE": get_env("DATABASE_ENGINE", required=True),
+        "NAME": get_env("DATABASE_NAME", required=True),
+        "USER": get_env("DATABASE_USER", required=True),
+        "PASSWORD": get_env("DATABASE_PASSWORD", required=True),
+        "HOST": get_env("DATABASE_HOST", required=True),
+        "PORT": get_env("DATABASE_PORT", "3306"),
+        "OPTIONS": {
+            "charset": "utf8mb4",
+        },
     }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
-    }
-
+}
 # ------------------------------------------------------------------------------
 # Password Validation
 # ------------------------------------------------------------------------------

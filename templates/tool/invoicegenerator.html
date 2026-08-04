@@ -1,0 +1,429 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+    <meta name="description" content="Create professional invoices online for free. Add business details, customer information, invoice items, taxes, discounts, and download invoices as PDF instantly.">
+    <meta name="keywords" content="Invoice Generator, Free Invoice Maker, Online Invoice Generator, Create Invoice PDF, Billing Tool">
+
+    <meta property="article:publisher" content="https://www.facebook.com/techgeekbuzz/" />
+
+    <link rel="canonical" href="https://www.techgeekbuzz.com/tools/invoice-generator">
+
+    <meta property="og:site_name" content="techgeekbuzz.com">
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Free Invoice Generator – Create Professional Invoices Online" />
+    <meta property="og:description" content="Create professional invoices online for free. Add business details, customer information, invoice items, taxes, discounts, and download invoices as PDF instantly." />
+    <meta property="og:url" content="https://www.techgeekbuzz.com/tools/invoice-generator">
+    <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Free Invoice Generator – Create Professional Invoices Online">
+    <meta name="twitter:description" content="Create professional invoices online for free. Add business details, customer information, invoice items, taxes, discounts, and download invoices as PDF instantly.">
+    <meta name="twitter:url" content="https://www.techgeekbuzz.com/tools/invoice-generator">
+    <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/tools/tool.css'%}">
+    <link rel="stylesheet" href="{% static 'css/tools/invoicegenerator.css'%}">
+{%endblock%}
+
+{%block title%}
+    <title>Free Invoice Generator – Create Professional Invoices Online</title>
+{%endblock%}
+
+{%block headjs%}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.techgeekbuzz.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 3, "name": "Finance", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 4, "name": "Invoice Generator", "item": "https://www.techgeekbuzz.com/tools/invoice-generator" }
+            ]
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "Invoice Generator",
+            "url": "https://www.techgeekbuzz.com/tools/invoice-generator",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "Any",
+            "description": "Create professional invoices online for free. Add business details, customer information, invoice items, taxes, discounts, and download invoices as PDF instantly.",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is an invoice?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "An invoice is a commercial document a seller issues to a buyer that lists the products or services provided, their quantities and prices, applicable taxes and discounts, and the total amount owed." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do I create an invoice?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Fill in your business and customer details, add invoice items with quantity, price, tax and discount, then click Preview Invoice to see the complete invoice in a pop-up preview." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I download my invoice as PDF?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. Click Download PDF to generate a print-ready A4 PDF of your invoice, including your logo and item table, directly in your browser." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I add my business logo?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. Upload a logo image in the Business Information section and it will appear at the top of your invoice preview and PDF." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is this invoice generator free?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes, completely free with no signup required. It runs in your browser and your data is never sent to a server." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I print the invoice?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. Click Print Invoice to open your browser's print dialog with a clean, print-friendly layout optimized for A4 paper." }
+                }
+            ]
+        }
+    ]
+}
+</script>
+{%endblock%}
+
+{%block main%}
+    <!-- Main Section Started -->
+    <main style="margin-top: 2rem;" class="inv-app" id="invApp">
+
+        <nav aria-label="breadcrumb" class="container pt-3 inv-hide-print">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{%url 'index'%}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{%url 'tools'%}">Tools</a></li>
+                <li class="breadcrumb-item">Finance</li>
+                <li class="breadcrumb-item active" aria-current="page">Invoice Generator</li>
+            </ol>
+        </nav>
+
+        <!-- Hero -->
+        <section class="tool-heading">
+            <h1>Invoice Generator</h1>
+            <p>Create a professional invoice in minutes — add your business and customer details, line items, tax and discounts, then preview, print, or download it as a PDF.</p>
+            <button type="button" class="inv-btn inv-btn-primary inv-btn-lg" id="btnHeroCta">Create Invoice</button>
+        </section>
+
+        <div class="inv-container">
+
+                <!-- Form -->
+                <form class="inv-form-col container" id="invForm" novalidate>
+
+                    <!-- Business Information + Customer Information -->
+                    <div class="inv-two-col">
+                        <div class="inv-card">
+                            <div class="inv-card-head"><h2>Business Information</h2></div>
+                            <div class="inv-form-grid">
+                                <div class="inv-field inv-field-full">
+                                    <label for="bizLogoInput">Company Logo</label>
+                                    <div class="inv-logo-upload" id="logoDropZone">
+                                        <img id="bizLogoPreview" alt="Business logo preview" hidden>
+                                        <span id="logoPlaceholder">Click to upload a logo (optional)</span>
+                                        <input type="file" id="bizLogoInput" accept="image/*" aria-label="Upload business logo">
+                                    </div>
+                                    <button type="button" class="inv-link-btn" id="btnRemoveLogo" hidden>Remove logo</button>
+                                </div>
+                                <div class="inv-field inv-field-full">
+                                    <label for="bizName">Business Name <span class="inv-req">*</span></label>
+                                    <input type="text" id="bizName" placeholder="Acme Studio" aria-describedby="errBizName">
+                                    <span class="inv-error" id="errBizName" role="alert"></span>
+                                </div>
+                                <div class="inv-field-row inv-field-full">
+                                    <div class="inv-field">
+                                        <label for="bizEmail">Email</label>
+                                        <input type="email" id="bizEmail" placeholder="hello@acmestudio.com" aria-describedby="errBizEmail">
+                                        <span class="inv-error" id="errBizEmail" role="alert"></span>
+                                    </div>
+                                    <div class="inv-field">
+                                        <label for="bizPhone">Phone Number</label>
+                                        <input type="tel" id="bizPhone" placeholder="+1 555 010 2020" aria-describedby="errBizPhone">
+                                        <span class="inv-error" id="errBizPhone" role="alert"></span>
+                                    </div>
+                                </div>
+                                <div class="inv-field-row inv-field-full">
+                                    <div class="inv-field">
+                                        <label for="bizWebsite">Website</label>
+                                        <input type="text" id="bizWebsite" placeholder="www.acmestudio.com">
+                                    </div>
+                                    <div class="inv-field">
+                                        <label for="bizGstin">Tax ID / GST Number</label>
+                                        <input type="text" id="bizGstin" placeholder="22AAAAA0000A1Z5">
+                                    </div>
+                                </div>
+                                <div class="inv-field inv-field-full inv-field-grow">
+                                    <label for="bizAddress">Address</label>
+                                    <textarea id="bizAddress" rows="2" placeholder="221B Baker Street, London, UK"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="inv-card">
+                            <div class="inv-card-head"><h2>Customer Information</h2></div>
+                            <div class="inv-form-grid">
+                                <div class="inv-field inv-field-full">
+                                    <label for="custName">Customer Name <span class="inv-req">*</span></label>
+                                    <input type="text" id="custName" placeholder="Jordan Lee" aria-describedby="errCustName">
+                                    <span class="inv-error" id="errCustName" role="alert"></span>
+                                </div>
+                                <div class="inv-field inv-field-full">
+                                    <label for="custCompany">Company Name</label>
+                                    <input type="text" id="custCompany" placeholder="Lee & Co.">
+                                </div>
+                                <div class="inv-field-row inv-field-full">
+                                    <div class="inv-field">
+                                        <label for="custEmail">Email</label>
+                                        <input type="email" id="custEmail" placeholder="jordan@leeandco.com" aria-describedby="errCustEmail">
+                                        <span class="inv-error" id="errCustEmail" role="alert"></span>
+                                    </div>
+                                    <div class="inv-field">
+                                        <label for="custPhone">Phone Number</label>
+                                        <input type="tel" id="custPhone" placeholder="+1 555 010 4040" aria-describedby="errCustPhone">
+                                        <span class="inv-error" id="errCustPhone" role="alert"></span>
+                                    </div>
+                                </div>
+                                <div class="inv-field inv-field-full inv-field-grow">
+                                    <label for="custBillingAddress">Billing Address</label>
+                                    <textarea id="custBillingAddress" rows="2" placeholder="12 Market Street, Austin, TX"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Invoice Information -->
+                    <div class="inv-card">
+                        <div class="inv-card-head"><h2>Invoice Information</h2></div>
+                        <div class="inv-form-grid">
+                            <div class="inv-field">
+                                <label for="invNumber">Invoice Number</label>
+                                <div class="inv-input-with-btn">
+                                    <input type="text" id="invNumber">
+                                    <button type="button" class="inv-btn inv-btn-icon" id="btnRegenNumber" title="Generate a new number" aria-label="Generate a new invoice number">↻</button>
+                                </div>
+                            </div>
+                            <div class="inv-field">
+                                <label for="invDate">Invoice Date</label>
+                                <input type="date" id="invDate">
+                            </div>
+                            <div class="inv-field">
+                                <label for="invDueDate">Due Date</label>
+                                <input type="date" id="invDueDate">
+                            </div>
+                            <div class="inv-field">
+                                <label for="invCurrency">Currency</label>
+                                <select id="invCurrency" aria-label="Invoice currency"></select>
+                            </div>
+                            <div class="inv-field">
+                                <label for="invStatus">Invoice Status</label>
+                                <select id="invStatus">
+                                    <option value="Draft" selected>Draft</option>
+                                    <option value="Sent">Sent</option>
+                                    <option value="Paid">Paid</option>
+                                    <option value="Overdue">Overdue</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Items -->
+                    <div class="inv-card">
+                        <div class="inv-card-head"><h2>Invoice Items</h2></div>
+                        <div class="inv-table-wrap">
+                            <table class="inv-items-table" id="itemsTable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="inv-col-item">Item</th>
+                                        <th scope="col" class="inv-col-qty">Qty</th>
+                                        <th scope="col" class="inv-col-price">Unit Price</th>
+                                        <th scope="col" class="inv-col-tax">Tax %</th>
+                                        <th scope="col" class="inv-col-discount">Discount %</th>
+                                        <th scope="col" class="inv-col-amount">Total</th>
+                                        <th scope="col" class="inv-col-actions">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="itemsBody"></tbody>
+                            </table>
+                        </div>
+                        <button type="button" class="inv-btn" id="btnAddRow">+ Add Item</button>
+                        <span class="inv-error" id="errItems" role="alert"></span>
+
+                        <div class="inv-mini-totals" id="miniTotals">
+                            <div class="inv-mini-row"><span>Subtotal</span><strong id="miniSubtotal">—</strong></div>
+                            <div class="inv-mini-row"><span>Discount</span><strong id="miniDiscount">—</strong></div>
+                            <div class="inv-mini-row"><span>Tax</span><strong id="miniTax">—</strong></div>
+                            <div class="inv-mini-row inv-mini-total"><span>Grand Total</span><strong id="miniGrandTotal">—</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- Notes -->
+                    <div class="inv-card">
+                        <div class="inv-card-head"><h2>Notes</h2></div>
+                        <div class="inv-form-grid">
+                            <div class="inv-field inv-field-full">
+                                <label for="invNotes">Notes</label>
+                                <textarea id="invNotes" rows="2" placeholder="Thank you for your business!"></textarea>
+                            </div>
+                            <div class="inv-field inv-field-full">
+                                <label for="invTerms">Terms &amp; Conditions</label>
+                                <textarea id="invTerms" rows="2" placeholder="Payment is due within the terms stated above."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            <!-- Action bar -->
+            <div class="inv-actionbar inv-hide-print" id="invActionBar">
+                <button type="button" class="inv-btn inv-btn-primary" id="btnPreview">Preview Invoice</button>
+                <button type="button" class="inv-btn" id="btnDownloadPdf">Download PDF</button>
+                <button type="button" class="inv-btn" id="btnPrint">Print Invoice</button>
+                <button type="button" class="inv-btn" id="btnCopyInvoice">Copy Invoice</button>
+                <button type="button" class="inv-btn inv-btn-danger" id="btnReset">Reset Form</button>
+            </div>
+        </div>
+
+        <!-- Preview modal -->
+        <div class="inv-modal-backdrop" id="previewModalBackdrop" hidden>
+            <div class="inv-modal inv-modal-preview" role="dialog" aria-modal="true" aria-labelledby="previewModalTitle">
+                <div class="inv-modal-head inv-hide-print">
+                    <h2 id="previewModalTitle">Invoice Preview</h2>
+                    <button type="button" class="inv-btn inv-btn-icon" id="btnClosePreview" aria-label="Close preview">✕</button>
+                </div>
+                <div class="inv-preview-surface" id="invoicePreview" aria-live="polite"></div>
+            </div>
+        </div>
+
+        <div class="inv-toast" id="invToast" role="status" aria-live="polite"></div>
+
+        <section class="inv-about inv-hide-print">
+            <h3>How Totals Are Calculated</h3>
+            <p>
+                Each item's total is quantity × unit price, plus that item's tax, minus that item's discount. These are summed into a subtotal, tax and discount are totaled separately below, and the result is your grand total — all rounded to two decimal places.
+            </p>
+        </section>
+        <section class="container inv-hide-print">
+            <div class="faqs my-5">
+                <div class="accordion" id="invfaqaccordion">
+                    <h2 class="faq-headline">FAQs</h2>
+                    <hr class="horizontal-row mb-5">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="invheading1">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#invcollapse1" aria-expanded="false" aria-controls="invcollapse1">
+                           1. What is an invoice?
+                          </button>
+                        </h4>
+                        <div id="invcollapse1" class="accordion-collapse collapse" aria-labelledby="invheading1" data-bs-parent="#invfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">An invoice is a commercial document a seller issues to a buyer that lists the products or services provided, their quantities and prices, applicable taxes and discounts, and the total amount owed.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="invheading2">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#invcollapse2" aria-expanded="false" aria-controls="invcollapse2">
+                           2. How do I create an invoice?
+                          </button>
+                        </h4>
+                        <div id="invcollapse2" class="accordion-collapse collapse" aria-labelledby="invheading2" data-bs-parent="#invfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Fill in your business and customer details, add invoice items with quantity, price, tax and discount, then click Preview Invoice to see the complete invoice in a pop-up preview.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="invheading3">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#invcollapse3" aria-expanded="false" aria-controls="invcollapse3">
+                           3. Can I download my invoice as PDF?
+                          </button>
+                        </h4>
+                        <div id="invcollapse3" class="accordion-collapse collapse" aria-labelledby="invheading3" data-bs-parent="#invfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes. Click Download PDF to generate a print-ready A4 PDF of your invoice, including your logo and item table, directly in your browser.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="invheading4">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#invcollapse4" aria-expanded="false" aria-controls="invcollapse4">
+                           4. Can I add my business logo?
+                          </button>
+                        </h4>
+                        <div id="invcollapse4" class="accordion-collapse collapse" aria-labelledby="invheading4" data-bs-parent="#invfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes. Upload a logo image in the Business Information section and it will appear at the top of your invoice preview and PDF.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="invheading5">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#invcollapse5" aria-expanded="false" aria-controls="invcollapse5">
+                           5. Is this invoice generator free?
+                          </button>
+                        </h4>
+                        <div id="invcollapse5" class="accordion-collapse collapse" aria-labelledby="invheading5" data-bs-parent="#invfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes, completely free with no signup required. It runs in your browser and your data is never sent to a server.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="invheading6">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#invcollapse6" aria-expanded="false" aria-controls="invcollapse6">
+                           6. Can I print the invoice?
+                          </button>
+                        </h4>
+                        <div id="invcollapse6" class="accordion-collapse collapse" aria-labelledby="invheading6" data-bs-parent="#invfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes. Click Print Invoice to open your browser's print dialog with a clean, print-friendly layout optimized for A4 paper.</p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related tools -->
+        <section class="inv-related inv-hide-print">
+            <h2>Related Tools</h2>
+            <div class="inv-related-grid">
+                <a class="inv-related-card" href="{%url 'gst-calculator'%}">
+                    <h3>GST Calculator</h3>
+                    <p>Add or remove GST instantly and split the amount into CGST, SGST and IGST.</p>
+                </a>
+                <a class="inv-related-card" href="{%url 'ppf-calculator'%}">
+                    <h3>PPF Calculator</h3>
+                    <p>Estimate your PPF maturity amount, interest earned, and year-wise growth.</p>
+                </a>
+                <a class="inv-related-card" href="{%url 'seo-title-generator'%}">
+                    <h3>SEO Title Generator</h3>
+                    <p>Generate click-worthy, SEO-scored titles for blogs, products, and videos.</p>
+                </a>
+                <a class="inv-related-card" href="{%url 'tools'%}">
+                    <h3>All Free Tools</h3>
+                    <p>Browse every free calculator and converter TechGeekBuzz has to offer.</p>
+                </a>
+            </div>
+        </section>
+
+    </main>
+    <!-- Main section ended -->
+{%endblock%}
+
+{%block js%}
+<script src="{%static 'js/vendor/html2canvas.min.js'%}"></script>
+<script src="{%static 'js/vendor/jspdf.umd.min.js'%}"></script>
+<script src="{%static 'js/tools/js/invoicegenerator.js'%}"></script>
+{%endblock%}

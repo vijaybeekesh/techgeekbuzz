@@ -27,3 +27,6 @@ def ppfcalculator(request):
 
 def seotitlegenerator(request):
     return render(request, 'tool/seotitlegenerator.html')
+
+def invoicegenerator(request):
+    return render(request, 'tool/invoicegenerator.html')

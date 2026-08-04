@@ -10,6 +10,7 @@ urlpatterns = [
     path('/markdown-to-html', markdowntohtml, name ="markdown-to-html"),
     path('/ppf-calculator', ppfcalculator, name ="ppf-calculator"),
     path('/seo-title-generator', seotitlegenerator, name ="seo-title-generator"),
+    path('/invoice-generator', invoicegenerator, name ="invoice-generator"),
 
     # apis urls
     path("/api/broken-links-checker/",brokenlinkschecker_api, name="broken-links-checker-api"),
