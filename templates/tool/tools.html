@@ -70,7 +70,8 @@
                 { "@type": "ListItem", "position": 3, "name": "XML to JSON Converter", "url": "https://www.techgeekbuzz.com{%url 'xmltojson'%}" },
                 { "@type": "ListItem", "position": 4, "name": "GST Calculator", "url": "https://www.techgeekbuzz.com{%url 'gst-calculator'%}" },
                 { "@type": "ListItem", "position": 5, "name": "Markdown to HTML Converter", "url": "https://www.techgeekbuzz.com{%url 'markdown-to-html'%}" },
-                { "@type": "ListItem", "position": 6, "name": "PPF Calculator", "url": "https://www.techgeekbuzz.com{%url 'ppf-calculator'%}" }
+                { "@type": "ListItem", "position": 6, "name": "PPF Calculator", "url": "https://www.techgeekbuzz.com{%url 'ppf-calculator'%}" },
+                { "@type": "ListItem", "position": 7, "name": "SEO Title Generator", "url": "https://www.techgeekbuzz.com{%url 'seo-title-generator'%}" }
             ]
         },
         {
@@ -116,7 +117,7 @@
         </nav>
 
         <!-- Hero -->
-        <section class="tools-hero">
+        <section class="tools-hero container">
             <div class="tools-hero-orb tools-hero-orb-1" aria-hidden="true"></div>
             <div class="tools-hero-orb tools-hero-orb-2" aria-hidden="true"></div>
 
@@ -148,7 +149,7 @@
         </section>
 
         <!-- Sticky category chip bar -->
-        <div class="tools-chip-bar">
+        <div class="tools-chip-bar container">
             <div class="container">
                 <div class="tools-chip-scroll">
                     <ul class="tool-category" role="group" aria-label="Filter tools by category">
@@ -163,7 +164,7 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" style="padding-top: 1rem;">
 
             <!-- Recently used -->
             <div class="tools-recent" id="toolsRecent" hidden>
@@ -307,6 +308,29 @@
                     </a>
                 </div>
                 <!-- tool 6 card ends -->
+                <!-- tool 7 card -->
+                <div class="tool-item-container" data-parent="SEO" data-tool="seo-title-generator">
+                    <button type="button" class="tools-card-favorite" aria-label="Add SEO Title Generator to favorites" aria-pressed="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path d="M8 1.5l2.02 4.09 4.51.66-3.27 3.19.77 4.49L8 11.77l-4.03 2.16.77-4.49-3.27-3.19 4.51-.66L8 1.5z"/>
+                            </svg>
+                    </button>
+                    <a class="tool-card" href="{%url 'seo-title-generator'%}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h11A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-11A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-11z"/>
+                            <path d="M2 9.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm10.5-3.5a2.5 2.5 0 1 0 1.415 4.56.5.5 0 0 1 .636.084l1.152 1.151a.5.5 0 0 1-.707.708l-1.152-1.152a.5.5 0 0 1-.084-.636A2.5 2.5 0 1 0 12.5 9z"/>
+                        </svg>
+                        <div class="tool-title-des">
+                            <h3 class="tool-title">SEO Title Generator</h3>
+                            <span class="tools-card-badge">SEO</span>
+                            <p class="tool-subdescription">Generate click-worthy, SEO-scored titles for blogs, products, and videos with a live Google preview.</p>
+                            <span class="tools-card-cta">Open tool
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L11.293 9H1.5a.5.5 0 0 1 0-1h9.793L8.146 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <!-- tool 7 card ends -->
 
                 <div class="tools-empty-state" id="toolsEmptyState" hidden>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">

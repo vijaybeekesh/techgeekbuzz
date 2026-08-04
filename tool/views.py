@@ -24,3 +24,6 @@ def markdowntohtml(request):
 
 def ppfcalculator(request):
     return render(request, 'tool/ppfcalculator.html')
+
+def seotitlegenerator(request):
+    return render(request, 'tool/seotitlegenerator.html')

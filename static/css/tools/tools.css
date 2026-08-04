@@ -21,7 +21,6 @@
     --tl-glass-border: rgba(255, 255, 255, 0.5);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--tl-text);
-    background-color: var(--tl-bg);
     transition: background-color .3s ease, color .3s ease;
 }
 
@@ -44,7 +43,7 @@
 .tools-hero {
     position: relative;
     overflow: hidden;
-    padding: 6rem 0 8rem 0;
+    padding: 2rem 0 8rem 0;
     background: linear-gradient(135deg, var(--tl-primary) 0%, var(--tl-accent) 100%);
     color: #fff;
     text-align: center;
@@ -90,7 +89,7 @@
     font-size: clamp(1.6rem, 2vw, 1.9rem);
     color: rgba(255, 255, 255, 0.9);
     max-width: 56rem;
-    margin: 0 auto 2.4rem auto;
+    margin: 0 auto 0.4rem auto;
     line-height: 1.5;
 }
 
@@ -99,7 +98,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 0rem;
+    margin-bottom: -3rem;
 }
 
 .tools-badge {
@@ -120,7 +119,7 @@
 /* Hero search — glass, floats over hero/card boundary */
 .tools-hero-search {
     position: relative;
-    max-width: 60rem;
+    max-width: 50rem;
     margin: 1rem auto;
     transform: translateY(3.2rem);
 }
@@ -184,7 +183,7 @@
     top: 0;
     z-index: 15;
     background: var(--tl-bg);
-    padding: 6.4rem 0 1.6rem 0;
+    padding: 0.4rem 0 0.6rem 0;
     margin-top: -4.8rem;
 }
 

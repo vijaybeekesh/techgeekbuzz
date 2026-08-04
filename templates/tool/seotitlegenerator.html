@@ -1,0 +1,432 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+    <meta name="description" content="Generate powerful SEO-friendly titles for blogs, products, landing pages, YouTube videos, and more. Improve rankings, increase click-through rates, and optimize your content with our free SEO Title Generator.">
+    <meta name="keywords" content="SEO Title Generator, Title Generator, Blog Title Generator, SEO Titles, Headline Generator, Click-Worthy Titles, SERP Preview">
+
+    <meta property="article:publisher" content="https://www.facebook.com/techgeekbuzz/" />
+
+    <link rel="canonical" href="https://www.techgeekbuzz.com/tools/seo-title-generator">
+
+    <meta property="og:site_name" content="techgeekbuzz.com">
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="SEO Title Generator – Create High-CTR SEO Titles Instantly" />
+    <meta property="og:description" content="Generate powerful SEO-friendly titles for blogs, products, landing pages, YouTube videos, and more. Improve rankings, increase click-through rates, and optimize your content with our free SEO Title Generator." />
+    <meta property="og:url" content="https://www.techgeekbuzz.com/tools/seo-title-generator">
+    <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SEO Title Generator – Create High-CTR SEO Titles Instantly">
+    <meta name="twitter:description" content="Generate powerful SEO-friendly titles for blogs, products, landing pages, YouTube videos, and more. Improve rankings, increase click-through rates, and optimize your content with our free SEO Title Generator.">
+    <meta name="twitter:url" content="https://www.techgeekbuzz.com/tools/seo-title-generator">
+    <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/tools/tool.css'%}">
+    <link rel="stylesheet" href="{% static 'css/tools/seotitlegenerator.css'%}">
+{%endblock%}
+
+{%block title%}
+    <title>SEO Title Generator – Create High-CTR SEO Titles Instantly</title>
+{%endblock%}
+
+{%block headjs%}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.techgeekbuzz.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 3, "name": "SEO", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 4, "name": "SEO Title Generator", "item": "https://www.techgeekbuzz.com/tools/seo-title-generator" }
+            ]
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "SEO Title Generator",
+            "url": "https://www.techgeekbuzz.com/tools/seo-title-generator",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Any",
+            "description": "Generate powerful SEO-friendly titles for blogs, products, landing pages, YouTube videos, and more. Improve rankings, increase click-through rates, and optimize your content.",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is an SEO title?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "An SEO title is the clickable headline shown in search engine results and browser tabs. It's set by your page's title tag and is one of the strongest on-page signals for both rankings and click-through rate." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Why is an SEO title important?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "It's usually the first thing a searcher sees. A clear, keyword-relevant, click-worthy title improves your click-through rate and helps search engines understand what your page is about." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How long should an SEO title be?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Most guidance recommends 50–60 characters, since Google typically truncates titles around 580 pixels wide on desktop. This tool lets you target 50, 55, 60, 65, 70, or a custom character limit." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is the ideal title length?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "There's no single perfect number, but staying at or under 60 characters keeps your title from being cut off in most Google search results and on mobile devices." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do SEO titles improve rankings?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Search engines use the title to understand relevance, and a higher click-through rate is itself a positive engagement signal. A well-written title supports both direct relevance and indirect ranking factors." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Should I include my keyword?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. Including your primary keyword naturally, ideally near the front of the title, helps both search engines and readers immediately understand what the page covers." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I use numbers in titles?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. Numbers (like \"7 Tips\" or \"2026 Guide\") tend to increase click-through rates because they signal a specific, scannable structure to readers." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What are power words?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Power words are persuasive words — like \"Proven,\" \"Ultimate,\" \"Essential,\" or \"Free\" — that add emotional or psychological appeal to a title and can improve click-through rate." }
+                }
+            ]
+        }
+    ]
+}
+</script>
+{%endblock%}
+
+{%block main%}
+    <!-- Main Section Started -->
+    <main style="margin-top: 2rem;" class="sg-app" id="sgApp">
+
+        <nav aria-label="breadcrumb" class="container pt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{%url 'index'%}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{%url 'tools'%}">Tools</a></li>
+                <li class="breadcrumb-item">SEO</li>
+                <li class="breadcrumb-item active" aria-current="page">SEO Title Generator</li>
+            </ol>
+        </nav>
+
+        <!-- Hero -->
+        <section class="tool-heading sg-tool-heading">
+            <div class="sg-hero-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M4 6h16M4 12h10M4 18h7" stroke-linecap="round"/>
+                    <circle cx="19" cy="17" r="3.2"/>
+                    <path d="M21.4 19.4 23 21" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h1>SEO Title Generator</h1>
+            <p>Generate click-worthy, search-optimized titles for blogs, products, landing pages, and videos — scored for SEO and CTR, instantly.</p>
+            <button type="button" class="sg-btn sg-btn-primary sg-btn-lg" id="btnHeroCta">Generate Titles Free →</button>
+        </section>
+
+        <div class="container" style="padding-top: 1rem;">
+
+            <!-- Generator card -->
+            <form class="sg-card sg-generator-card" id="sgForm" novalidate>
+                <div class="sg-card-head"><h2>Title Generator</h2></div>
+                <div class="sg-form-grid">
+                    <div class="sg-field sg-field-full">
+                        <label for="kwPrimary">Primary Keyword <span class="sg-req">*</span></label>
+                        <input type="text" id="kwPrimary" placeholder="e.g. content marketing" aria-describedby="errKwPrimary" required>
+                        <span class="sg-error" id="errKwPrimary" role="alert"></span>
+                    </div>
+                    <div class="sg-field">
+                        <label for="kwSecondary">Secondary Keyword</label>
+                        <input type="text" id="kwSecondary" placeholder="Optional">
+                    </div>
+                    <div class="sg-field">
+                        <label for="bizName">Business Name</label>
+                        <input type="text" id="bizName" placeholder="Optional">
+                    </div>
+                    <div class="sg-field">
+                        <label for="targetAudience">Target Audience</label>
+                        <input type="text" id="targetAudience" placeholder="e.g. small business owners">
+                    </div>
+                    <div class="sg-field">
+                        <label for="contentType">Content Type</label>
+                        <select id="contentType"></select>
+                    </div>
+                    <div class="sg-field">
+                        <label for="sgLanguage">Language</label>
+                        <select id="sgLanguage"></select>
+                    </div>
+                    <div class="sg-field">
+                        <label for="sgCountry">Country</label>
+                        <select id="sgCountry"></select>
+                    </div>
+                    <div class="sg-field">
+                        <label for="sgTone">Tone</label>
+                        <select id="sgTone"></select>
+                    </div>
+                    <div class="sg-field">
+                        <label for="searchIntent">Search Intent</label>
+                        <select id="searchIntent">
+                            <option value="informational" selected>Informational</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="transactional">Transactional</option>
+                            <option value="navigational">Navigational</option>
+                            <option value="local">Local</option>
+                        </select>
+                    </div>
+                    <div class="sg-field">
+                        <label for="maxLength">Maximum Title Length</label>
+                        <select id="maxLength">
+                            <option value="50">50 Characters</option>
+                            <option value="55">55 Characters</option>
+                            <option value="60" selected>60 Characters</option>
+                            <option value="65">65 Characters</option>
+                            <option value="70">70 Characters</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    <div class="sg-field" id="maxLengthCustomField" hidden>
+                        <label for="maxLengthCustom">Custom Length</label>
+                        <input type="number" id="maxLengthCustom" min="20" max="120" value="60">
+                    </div>
+                    <div class="sg-field">
+                        <label for="numSuggestions">Number of Suggestions</label>
+                        <select id="numSuggestions">
+                            <option value="5">5 Titles</option>
+                            <option value="10" selected>10 Titles</option>
+                            <option value="20">20 Titles</option>
+                            <option value="30">30 Titles</option>
+                            <option value="50">50 Titles</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="sg-actions">
+                    <button type="submit" class="sg-btn sg-btn-primary" id="btnGenerate">Generate Titles</button>
+                    <button type="button" class="sg-btn" id="btnClearForm">Clear Form</button>
+                </div>
+            </form>
+
+            <!-- Results -->
+            <div class="sg-card sg-results-card" id="resultsSection" hidden>
+                <div class="sg-card-head">
+                    <h2>Generated Titles</h2>
+                    <span class="sg-results-count" id="resultsCount"></span>
+                </div>
+
+                <div class="sg-bulk-actions">
+                    <button type="button" class="sg-btn" id="btnCopyAll">Copy All</button>
+                    <button type="button" class="sg-btn" id="btnDownloadTxt">Download TXT</button>
+                    <button type="button" class="sg-btn" id="btnDownloadCsv">Download CSV</button>
+                    <button type="button" class="sg-btn" id="btnDownloadPdf">Download PDF</button>
+                    <button type="button" class="sg-btn" id="btnPrintResults">Print</button>
+                    <button type="button" class="sg-btn" id="btnShareResults">Share</button>
+                    <button type="button" class="sg-btn" id="btnGenerateMore">Generate More</button>
+                    <button type="button" class="sg-btn sg-btn-danger" id="btnClearResults">Clear Results</button>
+                </div>
+
+                <!-- SERP preview -->
+                <div class="sg-serp-card sg-hide-print" id="serpCard">
+                    <h3>Google SERP Preview</h3>
+                    <div class="sg-serp" id="sgSerp">
+                        <div class="sg-serp-url" id="serpUrl"></div>
+                        <div class="sg-serp-title" id="serpTitle"></div>
+                        <div class="sg-serp-desc" id="serpDesc"></div>
+                    </div>
+                    <p class="sg-hint" id="serpHint">Previewing the first suggestion. Click "Preview" on any card below to see it here.</p>
+                </div>
+
+                <div class="sg-results-grid" id="resultsGrid"></div>
+            </div>
+
+            <!-- SEO Tips -->
+            <div class="sg-card sg-hide-print" id="seoTipsCard">
+                <div class="sg-card-head"><h2>SEO Title Tips</h2></div>
+                <ul class="sg-tips-list">
+                    <li><strong>Keep it under 60 characters</strong> — Google typically truncates longer titles in search results.</li>
+                    <li><strong>Front-load your keyword</strong> — placing it near the start helps both readers and search engines.</li>
+                    <li><strong>Use numbers and power words</strong> — "7 Tips" and words like "Proven" or "Essential" boost click-through rate.</li>
+                    <li><strong>Avoid keyword stuffing</strong> — one natural mention of your keyword is enough.</li>
+                    <li><strong>Make every title unique</strong> — duplicate titles across pages confuse both users and search engines.</li>
+                    <li><strong>Match search intent</strong> — a "Buy" page needs a different title style than a "Learn" page.</li>
+                </ul>
+            </div>
+
+            <!-- History -->
+            <div class="sg-card sg-hide-print" id="historyCard">
+                <div class="sg-card-head">
+                    <h2>History</h2>
+                    <div class="sg-bulk-actions" style="margin:0;">
+                        <button type="button" class="sg-btn" id="btnExportHistory">Export History</button>
+                        <button type="button" class="sg-btn sg-btn-danger" id="btnClearHistory">Clear History</button>
+                    </div>
+                </div>
+                <div class="sg-history-tabs" role="tablist" aria-label="History sections">
+                    <button type="button" class="sg-tab active" data-tab="recent" role="tab" aria-selected="true">Recent Searches</button>
+                    <button type="button" class="sg-tab" data-tab="favorites" role="tab" aria-selected="false">Favorites</button>
+                    <button type="button" class="sg-tab" data-tab="copied" role="tab" aria-selected="false">Recently Copied</button>
+                </div>
+                <ul class="sg-history-list" id="recentSearchesList" data-panel="recent"></ul>
+                <ul class="sg-history-list" id="favoritesList" data-panel="favorites" hidden></ul>
+                <ul class="sg-history-list" id="copiedList" data-panel="copied" hidden></ul>
+                <p class="sg-table-empty" id="historyEmpty">Nothing here yet.</p>
+            </div>
+
+            <div class="sg-toast" id="sgToast" role="status" aria-live="polite"></div>
+        </div>
+
+        <section class="container sg-hide-print">
+            <div class="faqs my-5">
+                <div class="accordion" id="sgfaqaccordion">
+                    <h2 class="faq-headline">FAQs</h2>
+                    <hr class="horizontal-row mb-5">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="sgheading1">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#sgcollapse1" aria-expanded="false" aria-controls="sgcollapse1">
+                           1. What is an SEO title?
+                          </button>
+                        </h4>
+                        <div id="sgcollapse1" class="accordion-collapse collapse" aria-labelledby="sgheading1" data-bs-parent="#sgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">An SEO title is the clickable headline shown in search engine results and browser tabs. It's set by your page's title tag and is one of the strongest on-page signals for both rankings and click-through rate.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="sgheading2">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#sgcollapse2" aria-expanded="false" aria-controls="sgcollapse2">
+                           2. Why is an SEO title important?
+                          </button>
+                        </h4>
+                        <div id="sgcollapse2" class="accordion-collapse collapse" aria-labelledby="sgheading2" data-bs-parent="#sgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">It's usually the first thing a searcher sees. A clear, keyword-relevant, click-worthy title improves your click-through rate and helps search engines understand what your page is about.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="sgheading3">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#sgcollapse3" aria-expanded="false" aria-controls="sgcollapse3">
+                           3. How long should an SEO title be?
+                          </button>
+                        </h4>
+                        <div id="sgcollapse3" class="accordion-collapse collapse" aria-labelledby="sgheading3" data-bs-parent="#sgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Most guidance recommends 50–60 characters, since Google typically truncates titles around 580 pixels wide on desktop. This tool lets you target 50, 55, 60, 65, 70, or a custom character limit.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="sgheading4">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#sgcollapse4" aria-expanded="false" aria-controls="sgcollapse4">
+                           4. What is the ideal title length?
+                          </button>
+                        </h4>
+                        <div id="sgcollapse4" class="accordion-collapse collapse" aria-labelledby="sgheading4" data-bs-parent="#sgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">There's no single perfect number, but staying at or under 60 characters keeps your title from being cut off in most Google search results and on mobile devices.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="sgheading5">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#sgcollapse5" aria-expanded="false" aria-controls="sgcollapse5">
+                           5. How do SEO titles improve rankings?
+                          </button>
+                        </h4>
+                        <div id="sgcollapse5" class="accordion-collapse collapse" aria-labelledby="sgheading5" data-bs-parent="#sgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Search engines use the title to understand relevance, and a higher click-through rate is itself a positive engagement signal. A well-written title supports both direct relevance and indirect ranking factors.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="sgheading6">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#sgcollapse6" aria-expanded="false" aria-controls="sgcollapse6">
+                           6. Should I include my keyword?
+                          </button>
+                        </h4>
+                        <div id="sgcollapse6" class="accordion-collapse collapse" aria-labelledby="sgheading6" data-bs-parent="#sgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes. Including your primary keyword naturally, ideally near the front of the title, helps both search engines and readers immediately understand what the page covers.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="sgheading7">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#sgcollapse7" aria-expanded="false" aria-controls="sgcollapse7">
+                           7. Can I use numbers in titles?
+                          </button>
+                        </h4>
+                        <div id="sgcollapse7" class="accordion-collapse collapse" aria-labelledby="sgheading7" data-bs-parent="#sgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes. Numbers (like "7 Tips" or "2026 Guide") tend to increase click-through rates because they signal a specific, scannable structure to readers.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="sgheading8">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#sgcollapse8" aria-expanded="false" aria-controls="sgcollapse8">
+                           8. What are power words?
+                          </button>
+                        </h4>
+                        <div id="sgcollapse8" class="accordion-collapse collapse" aria-labelledby="sgheading8" data-bs-parent="#sgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Power words are persuasive words — like "Proven," "Ultimate," "Essential," or "Free" — that add emotional or psychological appeal to a title and can improve click-through rate.</p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related tools -->
+        <section class="sg-related sg-hide-print">
+            <div class="container">
+                <h2>Related Tools</h2>
+                <div class="sg-related-grid">
+                    <a class="sg-related-card" href="{%url 'gst-calculator'%}">
+                        <h3>GST Calculator</h3>
+                        <p>Add or remove GST instantly and split the amount into CGST, SGST and IGST.</p>
+                    </a>
+                    <a class="sg-related-card" href="{%url 'markdown-to-html'%}">
+                        <h3>Markdown to HTML Converter</h3>
+                        <p>Convert Markdown to clean HTML instantly with a live preview.</p>
+                    </a>
+                    <a class="sg-related-card" href="{%url 'xmltojson'%}">
+                        <h3>XML to JSON Converter</h3>
+                        <p>Convert XML data to JSON instantly and download the result.</p>
+                    </a>
+                    <a class="sg-related-card" href="{%url 'password-generator'%}">
+                        <h3>Password Generator</h3>
+                        <p>Generate a random, secure password with customizable length and character sets.</p>
+                    </a>
+                    <a class="sg-related-card" href="{%url 'broken-links-checker'%}">
+                        <h3>Broken Links Checker</h3>
+                        <p>Test and check if your web page contains any internal or external dead links.</p>
+                    </a>
+                    <a class="sg-related-card" href="{%url 'tools'%}">
+                        <h3>All Free Tools</h3>
+                        <p>Browse every free calculator and converter TechGeekBuzz has to offer.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- Main section ended -->
+{%endblock%}
+
+{%block js%}
+<script src="{%static 'js/tools/js/seotitlegenerator.js'%}"></script>
+{%endblock%}
