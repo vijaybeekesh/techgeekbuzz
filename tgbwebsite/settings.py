@@ -80,7 +80,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "tgbwebsite.middleware.SpamQuery410Middleware",
+    "tgbwebsite.middleware.SpamQueryURLMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
