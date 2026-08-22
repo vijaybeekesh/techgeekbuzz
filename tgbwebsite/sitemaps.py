@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 
 # homepage sitemap
 class StaticSitemap(Sitemap):
+    protocol = "https"
     def items(self):
         return ['index','about','term-and-condition','privacy','advertise','tools']
     def location(self, item):
@@ -16,6 +17,7 @@ class StaticSitemap(Sitemap):
 
 # author profile sitemap
 class StaticAuthorSitemap(Sitemap):
+    protocol = "https"
     def items(self):
         all_user = UserProfile.objects.all()
         posts = Post.objects.filter(status='publish')
@@ -29,6 +31,7 @@ class StaticAuthorSitemap(Sitemap):
 
 # blog stitemaps
 class BlogsSitemap(Sitemap):
+    protocol = "https"
     changefreq = "always"
     priority = 1.0
     def items(self):
@@ -38,6 +41,7 @@ class BlogsSitemap(Sitemap):
 
 # Tutorial stitemaps
 class TutorialSitemap(Sitemap):
+    protocol = "https"
     def items(self):
         return Tutorial.objects.all()
     def lastmod(self, obj):
@@ -46,6 +50,7 @@ class TutorialSitemap(Sitemap):
 # Tutorial Article
 # blog stitemaps
 class TutorialArticleSitemap(Sitemap):
+    protocol = "https"
     def items(self):
         return TutorialArticle.objects.all().filter(status='publish')
     def lastmod(self, obj):
@@ -53,6 +58,7 @@ class TutorialArticleSitemap(Sitemap):
 
 # Roadmap stitemaps
 class RoadmapSitemap(Sitemap):
+    protocol = "https"
     def items(self):
         return RoadMap.objects.all()
     def lastmod(self, obj):
@@ -60,6 +66,7 @@ class RoadmapSitemap(Sitemap):
 
 # tools roadmap
 class StaticToolsSitemap(Sitemap):
+    protocol = "https"
     def items(self):
         return ['broken-links-checker','password-generator','xmltojson','gst-calculator','markdown-to-html','ppf-calculator','seo-title-generator','invoice-generator']
     def location(self, item):
@@ -67,18 +74,21 @@ class StaticToolsSitemap(Sitemap):
 
 # stories sitemap
 class StaticWebstoriesSitemap(Sitemap):
+    protocol = "https"
     def items(self):
         return ['allstories']
     def location(self, item):
         return reverse(item)
 
 class StaticSitemapForWebstories(Sitemap):
+    protocol = "https"
     def items(self):
         return ['webstories']
     def location(self, item):
         return reverse(item)
 
 class WebStoriesSitemap(Sitemap):
+    protocol = "https"
     changefreq = "always"
     priority = 1.0
 
