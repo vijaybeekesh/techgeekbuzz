@@ -6,8 +6,12 @@ from django.http import HttpResponse
 # e.g. spam-indexed URLs like /tutorial/javascript/javascript-sorting-arrays/?xyz=1
 # The app is served via gunicorn (no .htaccess/mod_rewrite), so this replaces
 # what would otherwise be an Apache RewriteRule with [G=410,L].
+#
+# `[^/]+` (not `.*`) matches exactly one path segment, so this covers every
+# tutorial *article* page (tutorial/<category>/<slug>/, any category/slug)
+# without also matching the one-segment category page tutorial/<category>/.
 SPAM_QUERY_410_PATHS = [
-    re.compile(r"^/tutorial/javascript/javascript-sorting-arrays/?$"),
+    re.compile(r"^/tutorial/[^/]+/[^/]+/?$"),
 ]
 
 
