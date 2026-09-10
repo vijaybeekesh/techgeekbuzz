@@ -205,17 +205,13 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Static / Media
 # ------------------------------------------------------------------------------
 
-AWS_ACCESS_KEY_ID = get_env("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = get_env("AWS_SECRET_ACCESS_KEY")
-AWS_STORAGE_BUCKET_NAME = get_env("AWS_STORAGE_BUCKET_NAME")
-AWS_S3_REGION_NAME = get_env("AWS_S3_REGION_NAME")
-
-
-AWS_S3_SIGNATURE_VERSION = "s3v4"
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-AWS_QUERYSTRING_AUTH = False
-AWS_S3_VERIFY = True
+GCS_HMAC_ACCESS_KEY_ID = get_env("GCS_HMAC_ACCESS_KEY_ID")
+GCS_HMAC_SECRET_ACCESS_KEY = get_env("GCS_HMAC_SECRET_ACCESS_KEY")
+GCS_BUCKET_NAME = get_env("GCS_BUCKET_NAME")
+GCS_S3_ENDPOINT_URL = get_env(
+    "GCS_S3_ENDPOINT_URL", default="https://storage.googleapis.com"
+)
+GCS_S3_REGION_NAME = get_env("GCS_S3_REGION_NAME", default="auto")
 
 # STORAGES = {
 #     "default": {
@@ -232,8 +228,4 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 # MEDIA_URL = "/media/"
 # MEDIA_ROOT = BASE_DIR / "media"
-# AWS_LOCATION = "media"
-AWS_S3_CUSTOM_DOMAIN = (
-    f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"
-)
-MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
+MEDIA_URL = f"https://storage.googleapis.com/{GCS_BUCKET_NAME}/media/"
