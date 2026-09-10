@@ -11,7 +11,7 @@ services:
       dockerfile: Dockerfile
     container_name: ki_tgb_service
     ports:
-      - "8000:8000"
+      - "8080:8080"
     env_file:
       - .env
     volumes:
@@ -20,4 +20,4 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     command: >
-      sh -c "gunicorn -b 0.0.0.0:8000 tgbwebsite.wsgi --workers=2 --timeout=300"
+      sh -c "gunicorn -b 0.0.0.0:8080 tgbwebsite.wsgi --workers=2 --timeout=300"
