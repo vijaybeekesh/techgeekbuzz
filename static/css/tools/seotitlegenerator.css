@@ -18,7 +18,7 @@
     --sg-shadow-lg: 0 20px 50px rgba(16, 24, 40, .10);
     --sg-radius: 1.8rem;
     --sg-radius-sm: 1rem;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     color: var(--sg-text);
     padding-bottom: 4rem;
 }
