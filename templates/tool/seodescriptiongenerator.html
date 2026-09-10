@@ -1,0 +1,347 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+    <meta name="description" content="Generate optimized SEO meta descriptions for blogs, product pages, service pages, and landing pages. Get keyword-focused, click-worthy descriptions scored for length and SEO quality - free.">
+    <meta name="keywords" content="SEO Description Generator, Meta Description Generator, SEO Meta Tags, Meta Description Length, SEO Snippet Generator">
+
+    <meta property="article:publisher" content="https://www.facebook.com/techgeekbuzz/" />
+
+    <link rel="canonical" href="https://www.techgeekbuzz.com/tools/seo-description-generator">
+
+    <meta property="og:site_name" content="techgeekbuzz.com">
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="SEO Description Generator – Create Optimized Meta Descriptions" />
+    <meta property="og:description" content="Generate optimized SEO meta descriptions for blogs, product pages, service pages, and landing pages. Get keyword-focused, click-worthy descriptions scored for length and SEO quality - free." />
+    <meta property="og:url" content="https://www.techgeekbuzz.com/tools/seo-description-generator">
+    <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SEO Description Generator – Create Optimized Meta Descriptions">
+    <meta name="twitter:description" content="Generate optimized SEO meta descriptions for blogs, product pages, service pages, and landing pages. Get keyword-focused, click-worthy descriptions scored for length and SEO quality - free.">
+    <meta name="twitter:url" content="https://www.techgeekbuzz.com/tools/seo-description-generator">
+    <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/tools/tool.css'%}">
+    <link rel="stylesheet" href="{% static 'css/tools/seodescriptiongenerator.css'%}">
+{%endblock%}
+
+{%block title%}
+    <title>SEO Description Generator – Create Optimized Meta Descriptions</title>
+{%endblock%}
+
+{%block headjs%}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.techgeekbuzz.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 3, "name": "SEO", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 4, "name": "SEO Description Generator", "item": "https://www.techgeekbuzz.com/tools/seo-description-generator" }
+            ]
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "SEO Description Generator",
+            "url": "https://www.techgeekbuzz.com/tools/seo-description-generator",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Any",
+            "description": "Generate optimized, keyword-focused SEO meta descriptions for blogs, products, services, and landing pages, scored for length and SEO quality.",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is a meta description?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "A meta description is the short summary shown under your page title in search results. It doesn't directly affect rankings, but a clear, relevant description improves click-through rate." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How long should a meta description be?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Most guidance recommends around 140–160 characters, since Google typically truncates longer descriptions on desktop. This tool lets you target a short, recommended, or long range." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does a meta description affect SEO rankings?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Not directly - it isn't a direct ranking factor. But a compelling, keyword-relevant description can improve click-through rate from search results, which is a positive engagement signal." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Should I include my keyword in the description?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. Including your primary keyword naturally, ideally near the start, helps searchers quickly see the description matches what they searched for - Google also often bolds matching terms." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I use the same meta description on multiple pages?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "No - duplicate meta descriptions across pages make it harder for search engines and users to tell pages apart. Generate a unique, page-specific description for every page." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is keyword stuffing and why should I avoid it?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Keyword stuffing is repeating the same keyword unnaturally many times. It reads poorly to searchers and can look manipulative to search engines - one natural mention is usually enough." }
+                }
+            ]
+        }
+    ]
+}
+</script>
+{%endblock%}
+
+{%block main%}
+    <!-- Main Section Started -->
+    <main style="margin-top: 2rem;" class="dg-app" id="dgApp">
+
+        <nav aria-label="breadcrumb" class="container pt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{%url 'index'%}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{%url 'tools'%}">Tools</a></li>
+                <li class="breadcrumb-item">SEO</li>
+                <li class="breadcrumb-item active" aria-current="page">SEO Description Generator</li>
+            </ol>
+        </nav>
+
+        <!-- Hero -->
+        <section class="tool-heading dg-tool-heading">
+            <div class="dg-hero-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M4 5.5h16M4 10.5h16M4 15.5h11" stroke-linecap="round"/>
+                    <path d="M4 20.5h7" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h1>SEO Description Generator</h1>
+            <p>Generate keyword-focused, click-worthy meta descriptions for blogs, products, services, and landing pages - scored for length and SEO quality, instantly.</p>
+            <button type="button" class="dg-btn dg-btn-primary dg-btn-lg" id="btnHeroCta">Generate Descriptions Free →</button>
+        </section>
+
+        <div class="container" style="padding-top: 1rem;">
+
+            <!-- Generator card -->
+            <form class="dg-card dg-generator-card" id="dgForm" novalidate>
+                <div class="dg-card-head"><h2>Description Generator</h2></div>
+                <div class="dg-form-grid">
+                    <div class="dg-field dg-field-full">
+                        <label for="dgPageTitle">Page Title</label>
+                        <input type="text" id="dgPageTitle" placeholder="e.g. Best Invoice Generator for Small Businesses">
+                    </div>
+                    <div class="dg-field">
+                        <label for="dgKwPrimary">Primary Keyword <span class="dg-req">*</span></label>
+                        <input type="text" id="dgKwPrimary" placeholder="e.g. invoice generator" aria-describedby="errKwPrimary" required>
+                        <span class="dg-error" id="errKwPrimary" role="alert"></span>
+                    </div>
+                    <div class="dg-field">
+                        <label for="dgKwSecondary">Secondary Keywords</label>
+                        <input type="text" id="dgKwSecondary" placeholder="e.g. free invoice, online invoice generator">
+                        <span class="dg-hint">Separate multiple keywords with commas.</span>
+                    </div>
+                    <div class="dg-field">
+                        <label for="dgContentType">Content Type</label>
+                        <select id="dgContentType"></select>
+                    </div>
+                    <div class="dg-field">
+                        <label for="dgAudience">Target Audience</label>
+                        <input type="text" id="dgAudience" placeholder="e.g. small business owners">
+                    </div>
+                    <div class="dg-field">
+                        <label for="dgBrand">Brand Name</label>
+                        <input type="text" id="dgBrand" placeholder="e.g. KwikInvoice">
+                    </div>
+                    <div class="dg-field">
+                        <label for="dgTone">Tone</label>
+                        <select id="dgTone"></select>
+                    </div>
+                    <div class="dg-field">
+                        <label for="dgLength">Description Length</label>
+                        <select id="dgLength">
+                            <option value="short">Short (120–140 characters)</option>
+                            <option value="recommended" selected>Recommended (140–160 characters)</option>
+                            <option value="long">Long (160–180 characters)</option>
+                        </select>
+                    </div>
+                    <div class="dg-field">
+                        <label for="dgNumSuggestions">Number of Suggestions</label>
+                        <select id="dgNumSuggestions">
+                            <option value="3">3 Descriptions</option>
+                            <option value="4">4 Descriptions</option>
+                            <option value="5" selected>5 Descriptions</option>
+                        </select>
+                    </div>
+                    <div class="dg-field dg-field-full">
+                        <label for="dgContext">Additional Context</label>
+                        <textarea id="dgContext" rows="3" placeholder="Optional - anything else worth mentioning: a key feature, offer, or detail about the page."></textarea>
+                    </div>
+                </div>
+                <div class="dg-actions">
+                    <button type="submit" class="dg-btn dg-btn-primary" id="btnGenerate">Generate SEO Description</button>
+                    <button type="button" class="dg-btn" id="btnClearForm">Clear Form</button>
+                </div>
+            </form>
+
+            <!-- Final selection -->
+            <div class="dg-card dg-final-card" id="finalSection" hidden>
+                <div class="dg-card-head"><h2>Final Selection</h2></div>
+                <div class="dg-final-text" id="finalText"></div>
+                <div class="dg-final-actions">
+                    <button type="button" class="dg-btn dg-btn-sm" id="btnCopyFinal">Copy</button>
+                    <button type="button" class="dg-btn dg-btn-sm dg-btn-danger" id="btnClearFinal">Clear Selection</button>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="dg-card dg-results-card" id="resultsSection" hidden>
+                <div class="dg-card-head">
+                    <h2>Generated Descriptions</h2>
+                    <span class="dg-results-count" id="resultsCount"></span>
+                </div>
+
+                <div class="dg-bulk-actions">
+                    <button type="button" class="dg-btn" id="btnCopyAll">Copy All</button>
+                    <button type="button" class="dg-btn" id="btnDownloadTxt">Download TXT</button>
+                    <button type="button" class="dg-btn" id="btnGenerateMore">Generate More</button>
+                    <button type="button" class="dg-btn dg-btn-danger" id="btnClearResults">Clear Results</button>
+                </div>
+
+                <div class="dg-results-grid" id="resultsGrid"></div>
+            </div>
+
+            <!-- SEO Tips -->
+            <div class="dg-card" id="seoTipsCard">
+                <div class="dg-card-head"><h2>Meta Description Tips</h2></div>
+                <ul class="dg-tips-list">
+                    <li><strong>Aim for 140–160 characters</strong> - Google typically truncates longer descriptions in search results.</li>
+                    <li><strong>Include your primary keyword naturally</strong> - ideally near the start, so it's clear the page matches the search.</li>
+                    <li><strong>Avoid keyword stuffing</strong> - one natural mention of your keyword is enough.</li>
+                    <li><strong>Lead with the benefit</strong> - tell searchers what they'll get, not just what the page is.</li>
+                    <li><strong>Use action-oriented language</strong> - words like "Discover," "Get," or "Learn" encourage clicks.</li>
+                    <li><strong>Make every description unique</strong> - duplicate descriptions across pages confuse both users and search engines.</li>
+                    <li><strong>Avoid generic filler</strong> - phrases like "Welcome to our website" waste valuable space.</li>
+                </ul>
+            </div>
+
+            <div class="dg-toast" id="dgToast" role="status" aria-live="polite"></div>
+        </div>
+
+        <section class="container">
+            <div class="faqs my-5">
+                <div class="accordion" id="dgfaqaccordion">
+                    <h2 class="faq-headline">FAQs</h2>
+                    <hr class="horizontal-row mb-5">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="dgheading1">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#dgcollapse1" aria-expanded="false" aria-controls="dgcollapse1">
+                           1. What is a meta description?
+                          </button>
+                        </h4>
+                        <div id="dgcollapse1" class="accordion-collapse collapse" aria-labelledby="dgheading1" data-bs-parent="#dgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">A meta description is the short summary shown under your page title in search results. It doesn't directly affect rankings, but a clear, relevant description improves click-through rate.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="dgheading2">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#dgcollapse2" aria-expanded="false" aria-controls="dgcollapse2">
+                           2. How long should a meta description be?
+                          </button>
+                        </h4>
+                        <div id="dgcollapse2" class="accordion-collapse collapse" aria-labelledby="dgheading2" data-bs-parent="#dgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Most guidance recommends around 140–160 characters, since Google typically truncates longer descriptions on desktop. This tool lets you target a short, recommended, or long range.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="dgheading3">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#dgcollapse3" aria-expanded="false" aria-controls="dgcollapse3">
+                           3. Does a meta description affect SEO rankings?
+                          </button>
+                        </h4>
+                        <div id="dgcollapse3" class="accordion-collapse collapse" aria-labelledby="dgheading3" data-bs-parent="#dgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Not directly - it isn't a direct ranking factor. But a compelling, keyword-relevant description can improve click-through rate from search results, which is a positive engagement signal.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="dgheading4">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#dgcollapse4" aria-expanded="false" aria-controls="dgcollapse4">
+                           4. Should I include my keyword in the description?
+                          </button>
+                        </h4>
+                        <div id="dgcollapse4" class="accordion-collapse collapse" aria-labelledby="dgheading4" data-bs-parent="#dgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes. Including your primary keyword naturally, ideally near the start, helps searchers quickly see the description matches what they searched for - Google also often bolds matching terms.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="dgheading5">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#dgcollapse5" aria-expanded="false" aria-controls="dgcollapse5">
+                           5. Can I use the same meta description on multiple pages?
+                          </button>
+                        </h4>
+                        <div id="dgcollapse5" class="accordion-collapse collapse" aria-labelledby="dgheading5" data-bs-parent="#dgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">No - duplicate meta descriptions across pages make it harder for search engines and users to tell pages apart. Generate a unique, page-specific description for every page.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="dgheading6">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#dgcollapse6" aria-expanded="false" aria-controls="dgcollapse6">
+                           6. What is keyword stuffing and why should I avoid it?
+                          </button>
+                        </h4>
+                        <div id="dgcollapse6" class="accordion-collapse collapse" aria-labelledby="dgheading6" data-bs-parent="#dgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Keyword stuffing is repeating the same keyword unnaturally many times. It reads poorly to searchers and can look manipulative to search engines - one natural mention is usually enough.</p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related tools -->
+        <section class="dg-related">
+            <div class="container">
+                <h2>Related Tools</h2>
+                <div class="dg-related-grid">
+                    <a class="dg-related-card" href="{%url 'seo-title-generator'%}">
+                        <h3>SEO Title Generator</h3>
+                        <p>Generate click-worthy, SEO-scored titles for blogs, products, and videos with a live Google preview.</p>
+                    </a>
+                    <a class="dg-related-card" href="{%url 'markdown-to-html'%}">
+                        <h3>Markdown to HTML Converter</h3>
+                        <p>Convert Markdown to clean HTML instantly with a live preview.</p>
+                    </a>
+                    <a class="dg-related-card" href="{%url 'broken-links-checker'%}">
+                        <h3>Broken Links Checker</h3>
+                        <p>Test and check if your web page contains any internal or external dead links.</p>
+                    </a>
+                    <a class="dg-related-card" href="{%url 'tools'%}">
+                        <h3>All Free Tools</h3>
+                        <p>Browse every free calculator and converter TechGeekBuzz has to offer.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- Main section ended -->
+{%endblock%}
+
+{%block js%}
+<script src="{%static 'js/tools/js/seodescriptiongenerator.js'%}"></script>
+{%endblock%}

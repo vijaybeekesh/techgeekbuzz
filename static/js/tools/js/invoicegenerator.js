@@ -1,4 +1,4 @@
-/* Invoice Generator — DOM-driven state, live calculation engine, print-ready
+/* Invoice Generator - DOM-driven state, live calculation engine, print-ready
    preview, and PDF export (jsPDF + html2canvas render the preview panel).
    No data ever leaves the browser: everything is read from/written to the
    form and localStorage directly. */
@@ -54,7 +54,7 @@
         return d.toISOString().slice(0, 10);
     }
     function formatDate(iso) {
-        if (!iso) return "—";
+        if (!iso) return "-";
         var d = new Date(iso + "T00:00:00");
         if (isNaN(d.getTime())) return iso;
         return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
@@ -379,7 +379,7 @@
             '<div class="inv-doc-biz-meta">' + esc(bizMetaLines.join("\n")) + "</div></div>" +
             '<div class="inv-doc-title-block">' +
             '<div class="inv-doc-title">Invoice</div>' +
-            '<div class="inv-doc-meta-row"><span>Invoice #:</span> <b>' + esc(info.number || "—") + "</b></div>" +
+            '<div class="inv-doc-meta-row"><span>Invoice #:</span> <b>' + esc(info.number || "-") + "</b></div>" +
             '<div class="inv-doc-meta-row"><span>Date:</span> <b>' + esc(formatDate(info.date)) + "</b></div>" +
             '<div class="inv-doc-meta-row"><span>Due Date:</span> <b>' + esc(formatDate(info.dueDate)) + "</b></div>" +
             '<span class="inv-doc-status">' + esc(info.status || "Draft") + "</span>" +
@@ -387,16 +387,16 @@
 
         var parties =
             '<div class="inv-doc-parties">' +
-            '<div class="inv-doc-party"><h4>Bill To</h4><div class="inv-doc-party-name">' + esc(cust.name || "—") + '</div><div class="inv-doc-cust-meta">' + esc(custMetaLines.join("\n")) + "</div></div>" +
+            '<div class="inv-doc-party"><h4>Bill To</h4><div class="inv-doc-party-name">' + esc(cust.name || "-") + '</div><div class="inv-doc-cust-meta">' + esc(custMetaLines.join("\n")) + "</div></div>" +
             "</div>";
 
         var rows = computed.items.map(function (it) {
             var descHtml = it.description ? '<div class="inv-doc-item-desc">' + esc(it.description) + "</div>" : "";
-            return "<tr><td>" + esc(it.name || "—") + descHtml + "</td>" +
+            return "<tr><td>" + esc(it.name || "-") + descHtml + "</td>" +
                 '<td class="num">' + it.qty + "</td>" +
                 '<td class="num">' + money(it.price) + "</td>" +
-                '<td class="num">' + (it.taxRate > 0 ? it.taxRate + "%" : "—") + "</td>" +
-                '<td class="num">' + (it.discountRate > 0 ? it.discountRate + "%" : "—") + "</td>" +
+                '<td class="num">' + (it.taxRate > 0 ? it.taxRate + "%" : "-") + "</td>" +
+                '<td class="num">' + (it.discountRate > 0 ? it.discountRate + "%" : "-") + "</td>" +
                 '<td class="num">' + money(it.total) + "</td></tr>";
         }).join("");
 
@@ -501,7 +501,7 @@
         CURRENCIES.forEach(function (c) {
             var opt = document.createElement("option");
             opt.value = c[0];
-            opt.textContent = c[0] + " — " + c[1];
+            opt.textContent = c[0] + " - " + c[1];
             sel.appendChild(opt);
         });
         sel.value = "USD";
@@ -575,7 +575,7 @@
         var text = lines.join("\n");
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(text).then(function () { showToast("Invoice summary copied to clipboard."); },
-                function () { showToast("Could not copy — please copy manually."); });
+                function () { showToast("Could not copy - please copy manually."); });
         } else {
             window.prompt("Copy this invoice summary:", text);
         }
@@ -587,7 +587,7 @@
         var btn = $("btnDownloadPdf");
         var el = $("invoicePreview");
         if (!window.html2canvas || !window.jspdf || !window.jspdf.jsPDF) {
-            showToast("PDF library failed to load — please try Print instead.");
+            showToast("PDF library failed to load - please try Print instead.");
             return;
         }
         var originalLabel = btn.textContent;
@@ -644,7 +644,7 @@
         }).catch(function () {
             btn.disabled = false;
             btn.textContent = originalLabel;
-            showToast("Could not generate the PDF — please try Print instead.");
+            showToast("Could not generate the PDF - please try Print instead.");
         });
     });
 

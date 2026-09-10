@@ -1,4 +1,4 @@
-/* PPF Calculator — computes PPF maturity/interest/schedule using the standard
+/* PPF Calculator - computes PPF maturity/interest/schedule using the standard
    annual-compounding model (yearly contribution compounded once a year),
    the same model used by most public PPF calculators. Charts via Chart.js. */
 
@@ -368,8 +368,8 @@
         resTotalInvestment.textContent = "₹0";
         resTotalInterest.textContent = "₹0";
         resWealthGained.textContent = "₹0";
-        resDuration.textContent = "—";
-        resRate.textContent = "—";
+        resDuration.textContent = "-";
+        resRate.textContent = "-";
         ["pie", "line", "bar", "area", "comparison"].forEach(destroyChart);
         showToast("Reset.");
     });
@@ -535,7 +535,7 @@
         if (navigator.share) {
             navigator.share({ title: "PPF Calculator Result", text: text }).catch(function () {});
         } else if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(function () { showToast("Sharing isn't supported here — results copied instead."); });
+            navigator.clipboard.writeText(text).then(function () { showToast("Sharing isn't supported here - results copied instead."); });
         } else {
             showToast("Sharing isn't supported in this browser.");
         }

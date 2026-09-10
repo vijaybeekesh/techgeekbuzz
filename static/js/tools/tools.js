@@ -1,4 +1,4 @@
-/* Tools listing page — category/search filtering, favorites, recently used,
+/* Tools listing page - category/search filtering, favorites, recently used,
    back-to-top, and the FAQ accordion. */
 
 (function () {

@@ -1,4 +1,4 @@
-/* ===== Markdown to HTML Converter — scoped theme tokens ===== */
+/* ===== Markdown to HTML Converter - scoped theme tokens ===== */
 .md-app {
     --md-bg: #f5f9ff;
     --md-card-bg: #ffffff;
@@ -270,7 +270,7 @@
 }
 
 .md-preview:empty::before {
-    content: "Nothing to preview yet — start typing Markdown on the left, or click \"Sample\".";
+    content: "Nothing to preview yet - start typing Markdown on the left, or click \"Sample\".";
     color: var(--md-muted);
     font-style: italic;
 }

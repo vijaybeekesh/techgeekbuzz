@@ -1,4 +1,4 @@
-/* SEO Title Generator — rule-based title engine with SEO/CTR scoring,
+/* SEO Title Generator - rule-based title engine with SEO/CTR scoring,
    a Google SERP preview, and local history. Everything runs client-side. */
 
 (function () {
@@ -72,9 +72,9 @@
     };
 
     var TONE_FLAVOR = {
-        friendly: [" — A Friendly Guide"], educational: [" Explained"], luxury: [" — The Premium Choice"],
-        exciting: [" — You Won't Want to Miss This"], humorous: [" (Yes, Really)"], urgent: [" — Don't Wait"],
-        confident: [" — Proven to Work"], persuasive: [" You Need to Try"], creative: [" (A Fresh Take)"]
+        friendly: [" - A Friendly Guide"], educational: [" Explained"], luxury: [" - The Premium Choice"],
+        exciting: [" - You Won't Want to Miss This"], humorous: [" (Yes, Really)"], urgent: [" - Don't Wait"],
+        confident: [" - Proven to Work"], persuasive: [" You Need to Try"], creative: [" (A Fresh Take)"]
     };
 
     var POWER_WORDS = ["proven", "ultimate", "essential", "free", "secret", "guaranteed", "powerful", "effortless",
@@ -97,7 +97,7 @@
             expert: ["{Kw}: Expert Tips You Need to Know", "Pro Secrets to Mastering {Kw}", "Advanced {Kw} Strategies From Experts", "What Experts Wish You Knew About {Kw}"],
             numberList: ["10 Best {Kw} Tips for {Year}", "7 Reasons {Kw} Matters", "15 {Kw} Ideas You'll Love", "9 {Kw} Strategies That Actually Work"],
             comparison: ["{Kw} vs {Kw2}: Which Is Better?", "{Kw} Compared: Pros and Cons", "{Kw} or {Kw2}? Here's How to Choose", "{Kw} vs {Kw2}: A Side-by-Side Comparison"],
-            review: ["{Kw} Review: Is It Worth Your Money?", "Honest {Kw} Review ({Year})", "{Kw} Review: Pros, Cons & Verdict", "We Tested {Kw} — Here's Our Review"],
+            review: ["{Kw} Review: Is It Worth Your Money?", "Honest {Kw} Review ({Year})", "{Kw} Review: Pros, Cons & Verdict", "We Tested {Kw} - Here's Our Review"],
             benefit: ["5 Benefits of {Kw} You Should Know", "Why {Kw} Can Transform Your Business", "How {Kw} Helps {Audience} Succeed", "The Real Benefits of {Kw} Explained"],
             mistake: ["7 {Kw} Mistakes to Avoid", "Common {Kw} Mistakes (and How to Fix Them)", "Stop Making These {Kw} Mistakes", "{Kw} Mistakes That Are Costing You"],
             checklist: ["The Ultimate {Kw} Checklist", "{Kw} Checklist: Everything You Need", "A Simple Checklist for {Kw} Success", "Your {Kw} Checklist for {Year}"],
@@ -106,7 +106,7 @@
             curiosity: ["What Nobody Tells You About {Kw}", "The {Kw} Secret Experts Won't Share", "You Won't Believe What {Kw} Can Do", "The Hidden Side of {Kw} Revealed"],
             trending: ["{Kw} Trends to Watch in {Year}", "What's New in {Kw} for {Year}", "The Future of {Kw} in {Year}", "{Kw} in {Year}: What's Changing"],
             localSeo: ["Best {Kw} in {Country}", "{Kw} Near You: A {Country} Guide", "Top-Rated {Kw} Services in {Country}", "Find the Best {Kw} in {Country} Today"],
-            product: ["{Biz} {Kw}: Features, Price & Details", "Meet {Kw} by {Biz}", "{Kw} — Built for {Audience}", "{Kw}: The Smarter Way to Get Results"],
+            product: ["{Biz} {Kw}: Features, Price & Details", "Meet {Kw} by {Biz}", "{Kw} - Built for {Audience}", "{Kw}: The Smarter Way to Get Results"],
             service: ["Professional {Kw} Services for {Audience}", "{Biz}: Trusted {Kw} Experts", "{Kw} Services That Deliver Results", "Reliable {Kw} Services You Can Trust"],
             evergreen: ["{Kw}: A Complete Overview", "Understanding {Kw}: A Practical Guide", "{Kw} Explained Simply", "{Kw}: What It Is and Why It Matters"],
             seasonal: ["Best {Kw} Deals This Season", "{Kw} Guide for {Year}", "Seasonal {Kw} Tips You Need Now", "{Kw}: Your {Year} Season Checklist"]
@@ -350,7 +350,7 @@
         var cut = text.slice(0, maxLen);
         var lastSpace = cut.lastIndexOf(" ");
         if (lastSpace > maxLen * 0.5) cut = cut.slice(0, lastSpace);
-        return cut.replace(/[\s,.;:\-–—]+$/, "").trim();
+        return cut.replace(/[\s,.;:\-–-]+$/, "").trim();
     }
 
     function weightedCategoryOrder(settings) {
@@ -462,8 +462,8 @@
         ctrScore = clamp(Math.round(ctrScore), 0, 100);
 
         var tips = [];
-        if (charCount > maxLen) tips.push("Title is too long for your selected limit — trim it down.");
-        else if (charCount < maxLen * 0.5) tips.push("Title is quite short — consider adding more detail.");
+        if (charCount > maxLen) tips.push("Title is too long for your selected limit - trim it down.");
+        else if (charCount < maxLen * 0.5) tips.push("Title is quite short - consider adding more detail.");
         if (!keywordPresent) tips.push("Primary keyword is missing from this title.");
         if (!hasNumber && item.category !== "evergreen") tips.push("Try adding a number to boost CTR.");
         if (emotionalWordCount === 0) tips.push("Add an emotional word to increase engagement.");
@@ -541,7 +541,7 @@
 
     function buildMetaSnippet(settings) {
         var kw = settings.kwPrimary || "this topic";
-        return "Learn everything about " + kw + ". Explore tips, guides, and expert insights to help you get the best results — updated for " + new Date().getFullYear() + ".";
+        return "Learn everything about " + kw + ". Explore tips, guides, and expert insights to help you get the best results - updated for " + new Date().getFullYear() + ".";
     }
 
     function showSerp(result) {
@@ -565,7 +565,7 @@
             showToast("Copied to clipboard.");
         }
         if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(done, function () { showToast("Could not copy — please copy manually."); });
+            navigator.clipboard.writeText(text).then(done, function () { showToast("Could not copy - please copy manually."); });
         } else {
             window.prompt("Copy this title:", text);
             done();
@@ -753,7 +753,7 @@
         renderAll();
         if (currentResults.length) showSerp(currentResults[0]);
         showToast(currentResults.length < settings.numSuggestions
-            ? ("Generated " + currentResults.length + " unique titles for this mix — try a secondary keyword for more variety.")
+            ? ("Generated " + currentResults.length + " unique titles for this mix - try a secondary keyword for more variety.")
             : (currentResults.length + " titles generated!"));
         saveRecentSearch(settings);
         persistLastSession();
@@ -798,7 +798,7 @@
                 persistLastSession();
                 showToast("Title regenerated.");
             } else {
-                showToast("Could not generate a new unique title — try different settings.");
+                showToast("Could not generate a new unique title - try different settings.");
             }
         }
     });
@@ -833,7 +833,7 @@
         if (!currentResults.length) { showToast("Nothing to share yet."); return; }
         var text = currentResults.slice(0, 10).map(function (r) { return r.item.text; }).join("\n");
         if (navigator.share) navigator.share({ title: "SEO Title Suggestions", text: text }).catch(function () { });
-        else if (navigator.clipboard) navigator.clipboard.writeText(text).then(function () { showToast("Sharing isn't supported here — titles copied instead."); });
+        else if (navigator.clipboard) navigator.clipboard.writeText(text).then(function () { showToast("Sharing isn't supported here - titles copied instead."); });
     });
     $("btnGenerateMore").addEventListener("click", function () {
         if (!currentSettings) { showToast("Generate titles first."); return; }
@@ -868,7 +868,7 @@
         });
     });
     $("btnClearHistory").addEventListener("click", function () {
-        if (!window.confirm("Clear all history — recent searches, favorites, and recently copied titles?")) return;
+        if (!window.confirm("Clear all history - recent searches, favorites, and recently copied titles?")) return;
         localStorage.removeItem("sgRecentSearches");
         localStorage.removeItem("sgFavorites");
         localStorage.removeItem("sgRecentlyCopied");

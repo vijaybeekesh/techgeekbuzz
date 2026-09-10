@@ -3,7 +3,7 @@ import re
 from django.http import HttpResponse, HttpResponsePermanentRedirect
 
 # Paths that should permanently redirect (301) to themselves with the query
-# string stripped, when requested with any query string — for spam-indexed
+# string stripped, when requested with any query string - for spam-indexed
 # URLs on pages worth preserving SEO value for, e.g.
 # /tutorial/python/python-data-types/?ultimate-guide-to-gambling-and-betting...
 # Checked before SPAM_QUERY_410_PATHS, so it takes priority over the general
@@ -19,7 +19,7 @@ SPAM_QUERY_REDIRECT_PATHS = [
 # Paths that should return 410 Gone when requested with any query string.
 # The app is served via gunicorn (no .htaccess/mod_rewrite), so this replaces
 # what would otherwise be an Apache RewriteRule with [G=410,L]. Empty for now
-# — every tutorial article currently redirects instead (see above) — kept
+# - every tutorial article currently redirects instead (see above) - kept
 # around for any future path that should be killed outright rather than
 # redirected.
 SPAM_QUERY_410_PATHS = [

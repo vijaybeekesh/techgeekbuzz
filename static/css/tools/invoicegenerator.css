@@ -1,4 +1,4 @@
-/* ===== Invoice Generator — scoped design tokens ===== */
+/* ===== Invoice Generator - scoped design tokens ===== */
 .inv-app {
     --inv-bg: #f6f7fb;
     --inv-card-bg: #ffffff;
@@ -262,7 +262,7 @@
 /* ===== Invoice preview surface (rendered inside the modal) =====
    Colors below are hardcoded (not var(--inv-*)) on purpose: this subtree is
    captured by html2canvas for the PDF export, which clones only this element
-   — custom properties defined up on .inv-app would not resolve in that clone. */
+   - custom properties defined up on .inv-app would not resolve in that clone. */
 .inv-preview-surface {
     position: relative;
     background-color: #fff;
@@ -270,12 +270,12 @@
 }
 .inv-doc-empty { color: #6b7280; font-size: 1.3rem; text-align: center; padding: 4rem 1rem; }
 
-/* TechGeekBuzz watermark — real DOM nodes (regenerated with the rest of the
+/* TechGeekBuzz watermark - real DOM nodes (regenerated with the rest of the
    preview HTML on every render, see invoicegenerator.js), each individually
    positioned with plain top/left percentages. Generated content (::before/
    ::after), SVG background-images, and negative-inset/flex-wrap tiling all
    render unreliably under html2canvas, which draws this surface into the
-   exported PDF — plain absolutely-positioned child elements are the one
+   exported PDF - plain absolutely-positioned child elements are the one
    technique that survives that capture intact. */
 .inv-watermark span {
     position: absolute; z-index: 5; pointer-events: none;

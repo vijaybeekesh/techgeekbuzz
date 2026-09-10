@@ -1,0 +1,184 @@
+/* ===== SEO Description Generator - scoped design tokens ===== */
+.dg-app {
+    --dg-bg: #f6f7fb;
+    --dg-card-bg: #ffffff;
+    --dg-soft: #f2f4f8;
+    --dg-text: #14181f;
+    --dg-muted: #6b7280;
+    --dg-border: #e3e7ee;
+    --dg-primary: #003d93;
+    --dg-accent: #0d6efd;
+    --dg-success: #17803d;
+    --dg-success-bg: #e8f6ee;
+    --dg-danger: #d92d20;
+    --dg-danger-bg: #fdeceb;
+    --dg-warn: #b54708;
+    --dg-warn-bg: #fff4e5;
+    --dg-shadow: 0 10px 30px rgba(16, 24, 40, .06);
+    --dg-shadow-lg: 0 20px 50px rgba(16, 24, 40, .10);
+    --dg-radius: 1.8rem;
+    --dg-radius-sm: 1rem;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: var(--dg-text);
+    padding-bottom: 4rem;
+}
+.dg-app :focus-visible { outline: 3px solid var(--dg-accent); outline-offset: 2px; border-radius: .4rem; }
+.dg-app h1, .dg-app h2, .dg-app h3, .dg-app h4 { font-family: inherit; }
+
+/* ===== Hero (shares the site-wide .tool-heading band/type scale used by every tool page) ===== */
+.dg-tool-heading { padding: 3rem 2rem 4rem; }
+.dg-hero-icon {
+    width: 6.4rem; height: 6.4rem; margin: 0 auto 1.6rem; border-radius: 1.6rem;
+    background: #fff; color: var(--dg-primary);
+    display: flex; align-items: center; justify-content: center;
+}
+.dg-hero-icon svg { width: 3.2rem; height: 3.2rem; }
+.dg-tool-heading .dg-btn-lg { margin-top: 1rem; }
+
+/* ===== Buttons ===== */
+.dg-btn {
+    display: inline-flex; align-items: center; gap: .6rem;
+    border: 1.5px solid var(--dg-border); background: #fff; color: var(--dg-text);
+    font-family: inherit; font-size: 1.4rem; font-weight: 600;
+    padding: 1.1rem 2rem; border-radius: 1.1rem; cursor: pointer;
+    white-space: nowrap; transition: transform .12s ease, border-color .15s ease, color .15s ease, box-shadow .15s ease;
+}
+.dg-btn:hover { border-color: var(--dg-primary); color: var(--dg-primary); box-shadow: var(--dg-shadow); }
+.dg-btn:active { transform: translateY(1px); }
+.dg-btn-primary { background: var(--dg-primary); border-color: var(--dg-primary); color: #fff; }
+.dg-btn-primary:hover { color: #fff; opacity: .92; box-shadow: var(--dg-shadow-lg); }
+.dg-btn-danger { color: var(--dg-danger); }
+.dg-btn-danger:hover { border-color: var(--dg-danger); color: var(--dg-danger); }
+.dg-btn-lg { font-size: 1.6rem; padding: 1.4rem 2.8rem; border-radius: 1.3rem; }
+.dg-btn-sm { font-size: 1.2rem; padding: .7rem 1.3rem; border-radius: .8rem; }
+.dg-btn[disabled] { opacity: .5; cursor: not-allowed; }
+
+/* ===== Cards ===== */
+.dg-card {
+    background: var(--dg-card-bg); border: 1px solid var(--dg-border); border-radius: var(--dg-radius);
+    box-shadow: var(--dg-shadow); padding: 2.6rem; margin-bottom: 2.4rem;
+}
+.dg-card-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.8rem; flex-wrap: wrap; }
+.dg-card-head h2 { font-size: 1.9rem; font-weight: 700; color: var(--dg-primary); margin: 0; }
+.dg-results-count { font-size: 1.3rem; color: var(--dg-muted); font-weight: 600; }
+
+/* ===== Fields ===== */
+.dg-form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr)); gap: 1.8rem 2rem; }
+.dg-field-full { grid-column: 1 / -1; }
+.dg-field label { display: block; font-size: 1.3rem; font-weight: 600; margin-bottom: .6rem; }
+.dg-req { color: var(--dg-danger); }
+.dg-field input, .dg-field select, .dg-field textarea {
+    width: 100%; border: 1.5px solid var(--dg-border); border-radius: var(--dg-radius-sm);
+    background: #fff; color: var(--dg-text); font-family: inherit; font-size: 1.5rem; padding: 1.1rem 1.3rem;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+.dg-field textarea { resize: vertical; }
+.dg-field input:hover, .dg-field select:hover, .dg-field textarea:hover { border-color: #c7cee0; }
+.dg-field input:focus, .dg-field select:focus, .dg-field textarea:focus {
+    outline: none; border-color: var(--dg-accent); box-shadow: 0 0 0 4px rgba(13, 110, 253, .12);
+}
+.dg-error { display: block; min-height: 1.6rem; color: var(--dg-danger); font-size: 1.2rem; margin-top: .5rem; }
+.dg-hint { display: block; font-size: 1.2rem; color: var(--dg-muted); margin-top: .5rem; }
+.dg-actions { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 2.2rem; }
+
+/* ===== Bulk actions ===== */
+.dg-bulk-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+
+/* ===== Final selection ===== */
+.dg-final-card { border-color: var(--dg-accent); }
+.dg-final-text {
+    font-size: 1.6rem; font-weight: 600; line-height: 1.5; color: var(--dg-text);
+    background: var(--dg-soft); border-radius: var(--dg-radius-sm); padding: 1.6rem 1.8rem; margin-bottom: 1.4rem;
+}
+.dg-final-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+/* ===== Results grid ===== */
+.dg-results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(34rem, 1fr)); gap: 1.6rem; }
+.dg-desc-card {
+    background: #fff; border: 1.5px solid var(--dg-border); border-radius: var(--dg-radius-sm);
+    padding: 1.8rem; transition: box-shadow .15s ease, border-color .15s ease, transform .15s ease;
+}
+.dg-desc-card:hover { box-shadow: var(--dg-shadow-lg); border-color: #c7cee0; transform: translateY(-2px); }
+.dg-desc-card.is-selected { border-color: var(--dg-accent); background: #f5f9ff; }
+.dg-desc-text {
+    font-size: 1.5rem; line-height: 1.55; margin-bottom: 1.2rem; color: var(--dg-text);
+}
+.dg-desc-text mark { background: #fff2ad; color: inherit; border-radius: .3rem; padding: 0 .1rem; }
+.dg-desc-text[contenteditable="true"] {
+    outline: none; border: 1.5px dashed var(--dg-accent); border-radius: .6rem; padding: .8rem 1rem;
+    background: #fbfcff;
+}
+.dg-desc-meta { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 1rem; }
+.dg-chip {
+    font-size: 1.1rem; font-weight: 700; padding: .4rem 1rem; border-radius: 99px;
+    background: var(--dg-soft); color: var(--dg-muted);
+}
+.dg-chip.good { background: var(--dg-success-bg); color: var(--dg-success); }
+.dg-chip.warn { background: var(--dg-warn-bg); color: var(--dg-warn); }
+.dg-chip.bad { background: var(--dg-danger-bg); color: var(--dg-danger); }
+
+.dg-score-row { display: flex; gap: 1.2rem; margin-bottom: 1rem; }
+.dg-score { flex: 1; text-align: center; background: var(--dg-soft); border-radius: .8rem; padding: .8rem .4rem; }
+.dg-score span { display: block; font-size: 1.05rem; color: var(--dg-muted); text-transform: uppercase; letter-spacing: .04em; }
+.dg-score strong { font-size: 1.5rem; font-weight: 800; color: var(--dg-primary); }
+.dg-score.low strong { color: var(--dg-danger); }
+.dg-score.mid strong { color: var(--dg-warn); }
+.dg-score.high strong { color: var(--dg-success); }
+
+.dg-desc-tip { font-size: 1.2rem; color: var(--dg-warn); background: var(--dg-warn-bg); border-radius: .7rem; padding: .7rem 1rem; margin-bottom: 1rem; }
+.dg-desc-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+.dg-desc-actions .dg-btn { flex: 1; justify-content: center; }
+.dg-select-btn.active { color: var(--dg-accent); border-color: var(--dg-accent); background: #eef4ff; }
+
+/* ===== Tips list ===== */
+.dg-tips-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr)); gap: 1.4rem; }
+.dg-tips-list li { font-size: 1.35rem; line-height: 1.5; color: #444; background: var(--dg-soft); border-radius: var(--dg-radius-sm); padding: 1.4rem 1.6rem; }
+.dg-tips-list strong { color: var(--dg-primary); }
+
+/* ===== Toast ===== */
+.dg-toast {
+    position: fixed; left: 50%; bottom: 2.4rem; transform: translate(-50%, 2rem);
+    background: #14181f; color: #fff; font-size: 1.3rem; font-weight: 600;
+    padding: 1.2rem 2rem; border-radius: 1rem; box-shadow: var(--dg-shadow-lg);
+    opacity: 0; pointer-events: none; transition: opacity .25s ease, transform .25s ease; z-index: 200;
+}
+.dg-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ===== FAQ accordion (matches the styling used on every other tool page) ===== */
+.faq-headline {
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+}
+.faqbutton {
+    background-color: var(--dg-card-bg) !important;
+    color: var(--dg-text) !important;
+}
+.faqanswer {
+    font-size: 1.8rem;
+    line-height: 1.4;
+    color: var(--dg-muted);
+    letter-spacing: 0.6px;
+}
+.accordion-header button {
+    font-size: 2.1rem;
+    margin-top: 0;
+}
+
+/* ===== Related tools ===== */
+.dg-related { max-width: 132rem; margin: 4rem auto 0; padding: 0 1.6rem 2rem; }
+.dg-related h2 { font-size: 2.4rem; font-weight: 800; color: var(--dg-primary); margin-bottom: 1.8rem; }
+.dg-related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr)); gap: 1.6rem; }
+.dg-related-card {
+    display: block; background: #fff; border: 1px solid var(--dg-border); border-radius: var(--dg-radius);
+    padding: 2rem; text-decoration: none; color: inherit; box-shadow: var(--dg-shadow); transition: transform .15s ease, box-shadow .15s ease;
+}
+.dg-related-card:hover { transform: translateY(-3px); box-shadow: var(--dg-shadow-lg); }
+.dg-related-card h3 { font-size: 1.6rem; color: var(--dg-primary); margin-bottom: .5rem; }
+.dg-related-card p { font-size: 1.25rem; color: var(--dg-muted); margin: 0; }
+
+/* ===== Responsive ===== */
+@media (max-width: 700px) {
+    .dg-card { padding: 1.8rem; }
+    .dg-desc-actions .dg-btn { flex: none; }
+}

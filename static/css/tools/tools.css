@@ -1,5 +1,5 @@
 /* =========================================================================
-   Tools Listing Page — premium, modern redesign
+   Tools Listing Page - premium, modern redesign
    Scoped design tokens live on .tools-page
    ========================================================================= */
 
@@ -116,7 +116,7 @@
     -webkit-backdrop-filter: blur(8px);
 }
 
-/* Hero search — glass, floats over hero/card boundary */
+/* Hero search - glass, floats over hero/card boundary */
 .tools-hero-search {
     position: relative;
     max-width: 50rem;

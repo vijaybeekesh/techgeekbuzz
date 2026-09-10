@@ -1,4 +1,4 @@
-/* Markdown to HTML Converter — parses with marked.js, sanitizes with DOMPurify,
+/* Markdown to HTML Converter - parses with marked.js, sanitizes with DOMPurify,
    renders a live preview, and produces a downloadable/copyable HTML output. */
 
 (function () {
@@ -506,7 +506,7 @@
             navigator.share({ title: "Converted HTML", text: text }).catch(function () {});
         } else if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(text).then(function () {
-                showToast("Sharing isn't supported here — HTML copied instead.");
+                showToast("Sharing isn't supported here - HTML copied instead.");
             });
         } else {
             showToast("Sharing isn't supported in this browser.");

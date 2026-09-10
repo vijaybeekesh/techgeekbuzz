@@ -1,4 +1,4 @@
-/* GST Calculator — add/remove GST, split CGST/SGST/IGST, history, share/print/CSV */
+/* GST Calculator - add/remove GST, split CGST/SGST/IGST, history, share/print/CSV */
 
 (function () {
     "use strict";
@@ -293,7 +293,7 @@
             navigator.share({ title: "GST Calculator Result", text: text, url: window.location.href }).catch(function () {});
         } else if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(text).then(function () {
-                showToast("Sharing isn't supported here — result copied instead.");
+                showToast("Sharing isn't supported here - result copied instead.");
             });
         } else {
             showToast("Sharing isn't supported in this browser.");
