@@ -75,17 +75,6 @@ allaccordance = document.querySelectorAll("#tutorialTable a")
 tutoriallistAccord(allaccordance)
 
 
-let featured_image=document.querySelector("article>img.featured-image")
-if(featured_image)
-{
-    first_p = document.querySelector("article>p")
-    first_p.appendChild(featured_image)
-    featured_image.style.display= "block"
-}
-
-
-
-
 function responsiveImages()
 {
     allimages = document.querySelectorAll('article img')
