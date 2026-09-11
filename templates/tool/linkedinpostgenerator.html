@@ -1,0 +1,484 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+    <meta name="description" content="Generate and format professional LinkedIn posts with AI-style templates. Create engaging hooks, add CTAs and hashtags, format existing posts for readability, and score your content - free.">
+    <meta name="keywords" content="LinkedIn Post Generator, LinkedIn Post Formatter, LinkedIn Content Creator, LinkedIn Hook Generator, LinkedIn Hashtag Generator">
+
+    <meta property="article:publisher" content="https://www.facebook.com/techgeekbuzz/" />
+
+    <link rel="canonical" href="https://www.techgeekbuzz.com/tools/linkedin-post-generator">
+
+    <meta property="og:site_name" content="techgeekbuzz.com">
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="LinkedIn Post Generator & Formatter - Create Engaging Posts" />
+    <meta property="og:description" content="Generate and format professional LinkedIn posts with AI-style templates. Create engaging hooks, add CTAs and hashtags, format existing posts for readability, and score your content - free." />
+    <meta property="og:url" content="https://www.techgeekbuzz.com/tools/linkedin-post-generator">
+    <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LinkedIn Post Generator & Formatter - Create Engaging Posts">
+    <meta name="twitter:description" content="Generate and format professional LinkedIn posts with AI-style templates. Create engaging hooks, add CTAs and hashtags, format existing posts for readability, and score your content - free.">
+    <meta name="twitter:url" content="https://www.techgeekbuzz.com/tools/linkedin-post-generator">
+    <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/tools/tool.css'%}">
+    <link rel="stylesheet" href="{% static 'css/tools/linkedinpostgenerator.css'%}">
+{%endblock%}
+
+{%block title%}
+    <title>LinkedIn Post Generator & Formatter - Create Engaging Posts</title>
+{%endblock%}
+
+{%block headjs%}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.techgeekbuzz.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 3, "name": "Marketing", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 4, "name": "LinkedIn Post Generator", "item": "https://www.techgeekbuzz.com/tools/linkedin-post-generator" }
+            ]
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "LinkedIn Post Generator & Formatter",
+            "url": "https://www.techgeekbuzz.com/tools/linkedin-post-generator",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Any",
+            "description": "Generate professional LinkedIn posts from a topic or idea, format existing posts for readability, generate hooks and hashtags, and score content for readability, engagement, and professionalism.",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Is this LinkedIn Post Generator really free?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every feature - post generation, formatting, hooks, hashtags, scoring, and saved drafts - is free and runs entirely in your browser." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is this tool affiliated with LinkedIn?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "No. The post preview is a visual mock-up to help you see how your content might look. This tool is not affiliated with, endorsed by, or an official representation of LinkedIn." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How does the LinkedIn Post Formatter work?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Paste an existing post and the formatter breaks long paragraphs into short, scannable sections, adds spacing, and can turn list-like sentences into bullet points - without changing your original meaning." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What do the Readability, Engagement, and Professional scores mean?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "These are heuristic estimates based on paragraph length, sentence clarity, hook strength, CTA presence, and tone - not a guaranteed prediction of how LinkedIn's algorithm or audience will respond." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Are my saved posts stored anywhere online?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "No. Saved posts, drafts, and folders are stored only in your browser's local storage on your own device - they are never uploaded to a server." }
+                }
+            ]
+        }
+    ]
+}
+</script>
+{%endblock%}
+
+{%block main%}
+    <!-- Main Section Started -->
+    <main style="margin-top: 2rem;" class="lpg-app" id="lpgApp">
+
+        <nav aria-label="breadcrumb" class="container pt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{%url 'index'%}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{%url 'tools'%}">Tools</a></li>
+                <li class="breadcrumb-item">Marketing</li>
+                <li class="breadcrumb-item active" aria-current="page">LinkedIn Post Generator</li>
+            </ol>
+        </nav>
+
+        <!-- Hero -->
+        <section class="tool-heading lpg-tool-heading">
+            <div class="lpg-hero-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <rect x="3.5" y="3.5" width="17" height="17" rx="3"/>
+                    <path d="M7.8 10.2v6" stroke-linecap="round"/>
+                    <circle cx="7.8" cy="7.3" r="0.9" fill="currentColor" stroke="none"/>
+                    <path d="M11.4 16.2v-3.6c0-1.4 1-2.4 2.3-2.4s2.1 1 2.1 2.4v3.6" stroke-linecap="round"/>
+                    <path d="M11.4 10.2v6" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h1>LinkedIn Post Generator & Formatter</h1>
+            <p>Turn a rough idea into a polished LinkedIn post, format content you already wrote, generate hooks and hashtags, and get a heuristic readability, engagement, and professionalism score - all free.</p>
+            <button type="button" class="lpg-btn lpg-btn-primary lpg-btn-lg" id="btnHeroCta">Generate a Post Free →</button>
+        </section>
+
+        <div class="container" style="padding-top: 1rem;">
+
+            <!-- Tabs -->
+            <div class="lpg-tabs" role="tablist" aria-label="LinkedIn tool sections">
+                <button type="button" class="lpg-tab active" id="tabBtnGenerate" role="tab" aria-selected="true" aria-controls="tabGenerate" data-tab="tabGenerate">Generate Post</button>
+                <button type="button" class="lpg-tab" id="tabBtnFormat" role="tab" aria-selected="false" aria-controls="tabFormat" data-tab="tabFormat">Format Post</button>
+                <button type="button" class="lpg-tab" id="tabBtnHooks" role="tab" aria-selected="false" aria-controls="tabHooks" data-tab="tabHooks">Hooks</button>
+                <button type="button" class="lpg-tab" id="tabBtnHashtags" role="tab" aria-selected="false" aria-controls="tabHashtags" data-tab="tabHashtags">Hashtags</button>
+                <button type="button" class="lpg-tab" id="tabBtnSaved" role="tab" aria-selected="false" aria-controls="tabSaved" data-tab="tabSaved">Saved Posts</button>
+            </div>
+
+            <!-- ================= GENERATE POST TAB ================= -->
+            <section id="tabGenerate" class="lpg-tabpanel" role="tabpanel" aria-labelledby="tabBtnGenerate">
+
+                <form class="lpg-card" id="lpgForm" novalidate>
+                    <div class="lpg-card-head"><h2>Post Generator</h2></div>
+                    <div class="lpg-form-grid">
+                        <div class="lpg-field lpg-field-full">
+                            <label for="lpgTopic">Post Topic / Idea <span class="lpg-req">*</span></label>
+                            <textarea id="lpgTopic" rows="3" aria-describedby="errTopic" required placeholder="Example: I launched a new free invoice generator tool for small businesses."></textarea>
+                            <span class="lpg-error" id="errTopic" role="alert"></span>
+                        </div>
+                        <div class="lpg-field">
+                            <label for="lpgGoal">Post Goal</label>
+                            <select id="lpgGoal"></select>
+                        </div>
+                        <div class="lpg-field">
+                            <label for="lpgAudience">Target Audience</label>
+                            <input type="text" id="lpgAudience" placeholder="e.g. Startup Founders, Developers">
+                        </div>
+                        <div class="lpg-field">
+                            <label for="lpgTone">Tone</label>
+                            <select id="lpgTone"></select>
+                        </div>
+                        <div class="lpg-field">
+                            <label for="lpgLength">Post Length</label>
+                            <select id="lpgLength">
+                                <option value="short">Short (50-100 words)</option>
+                                <option value="medium" selected>Medium (100-250 words)</option>
+                                <option value="long">Long (250-500 words)</option>
+                            </select>
+                        </div>
+                        <div class="lpg-field">
+                            <label for="lpgStyle">Writing Style</label>
+                            <select id="lpgStyle"></select>
+                        </div>
+                        <div class="lpg-field">
+                            <label for="lpgCta">Call to Action</label>
+                            <select id="lpgCta"></select>
+                        </div>
+                        <div class="lpg-field">
+                            <label for="lpgHashtagPref">Hashtag Preference</label>
+                            <select id="lpgHashtagPref">
+                                <option value="0">No Hashtags</option>
+                                <option value="3">3 Hashtags</option>
+                                <option value="5" selected>5 Hashtags</option>
+                                <option value="recommended">Recommended Hashtags</option>
+                            </select>
+                        </div>
+                        <div class="lpg-field lpg-field-full">
+                            <label for="lpgContext">Additional Context</label>
+                            <textarea id="lpgContext" rows="3" placeholder="Optional - product details, stats, achievements, links, or brand info worth including."></textarea>
+                        </div>
+                    </div>
+                    <div class="lpg-actions">
+                        <button type="submit" class="lpg-btn lpg-btn-primary" id="btnGeneratePost">Generate LinkedIn Post</button>
+                        <button type="button" class="lpg-btn" id="btnClearGenerateForm">Clear Form</button>
+                    </div>
+                </form>
+
+                <!-- Results -->
+                <div class="lpg-card" id="generateResultsSection" hidden>
+                    <div class="lpg-card-head">
+                        <h2>Generated Posts</h2>
+                        <span class="lpg-results-count" id="generateResultsCount"></span>
+                    </div>
+                    <p class="lpg-card-sub">Scores are heuristic estimates, not a guaranteed prediction of LinkedIn performance.</p>
+
+                    <div class="lpg-bulk-actions">
+                        <button type="button" class="lpg-btn" id="btnCopyAllPosts">Copy All</button>
+                        <button type="button" class="lpg-btn" id="btnDownloadAllPosts">Download TXT</button>
+                        <button type="button" class="lpg-btn" id="btnGenerateMorePosts">Generate More</button>
+                        <button type="button" class="lpg-btn lpg-btn-danger" id="btnClearGenerateResults">Clear Results</button>
+                    </div>
+
+                    <div class="lpg-results-grid" id="generatePostsGrid"></div>
+                </div>
+
+                <!-- Preview -->
+                <div class="lpg-card lpg-preview-wrap" id="previewSection" hidden>
+                    <div class="lpg-card-head"><h2>Post Preview</h2></div>
+                    <p class="lpg-preview-disclaimer">Visual preview only - a mock-up to help you see how the selected post might look. Not affiliated with or an official representation of LinkedIn.</p>
+                    <div class="lpg-form-grid" style="margin-bottom: 1.6rem;">
+                        <div class="lpg-field">
+                            <label for="lpgPreviewName">Your Name</label>
+                            <input type="text" id="lpgPreviewName" placeholder="Your Name" value="Your Name">
+                        </div>
+                        <div class="lpg-field">
+                            <label for="lpgPreviewHeadline">Your Headline</label>
+                            <input type="text" id="lpgPreviewHeadline" placeholder="Your professional headline" value="Your professional headline">
+                        </div>
+                    </div>
+                    <div class="lpg-preview-card">
+                        <div class="lpg-preview-header">
+                            <div class="lpg-preview-avatar" id="previewAvatar">YN</div>
+                            <div class="lpg-preview-who">
+                                <strong id="previewName">Your Name</strong>
+                                <span id="previewHeadline">Your professional headline</span>
+                                <span>Just now - 🌐</span>
+                            </div>
+                        </div>
+                        <div class="lpg-preview-body" id="previewBody">Generate a post to see it previewed here.</div>
+                        <div class="lpg-preview-footer">
+                            <span>👍 Like</span><span>💬 Comment</span><span>↻ Repost</span><span>➤ Send</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lpg-toast" id="lpgToast" role="status" aria-live="polite"></div>
+            </section>
+
+            <!-- ================= FORMAT POST TAB ================= -->
+            <section id="tabFormat" class="lpg-tabpanel" role="tabpanel" aria-labelledby="tabBtnFormat" hidden>
+                <div class="lpg-card">
+                    <div class="lpg-card-head"><h2>Format LinkedIn Post</h2></div>
+                    <div class="lpg-format-grid">
+                        <div class="lpg-format-col">
+                            <h3>Original Post</h3>
+                            <div class="lpg-field">
+                                <textarea id="lpgFormatInput" rows="12" placeholder="Paste your LinkedIn post here..."></textarea>
+                            </div>
+                            <div class="lpg-format-options">
+                                <div class="lpg-field">
+                                    <label for="lpgFormatStyle">Formatting Style</label>
+                                    <select id="lpgFormatStyle">
+                                        <option value="professional" selected>Professional</option>
+                                        <option value="clean">Clean</option>
+                                        <option value="engaging">Engaging</option>
+                                        <option value="storytelling">Storytelling</option>
+                                        <option value="minimal">Minimal</option>
+                                        <option value="bold">Bold</option>
+                                    </select>
+                                </div>
+                                <div class="lpg-field">
+                                    <label for="lpgFormatIntensity">Formatting Intensity</label>
+                                    <select id="lpgFormatIntensity">
+                                        <option value="light">Light Formatting</option>
+                                        <option value="moderate" selected>Moderate Formatting</option>
+                                        <option value="strong">Strong Formatting</option>
+                                    </select>
+                                </div>
+                                <div class="lpg-field lpg-toggle-field">
+                                    <label class="lpg-switch" for="lpgPreserveOriginal">
+                                        <input type="checkbox" id="lpgPreserveOriginal" checked>
+                                        <span class="lpg-switch-slider"></span>
+                                    </label>
+                                    <div class="lpg-toggle-text">
+                                        <strong>Preserve Original Content</strong>
+                                        <span>ON - only formatting changes. OFF - allow minor grammar/readability improvements.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lpg-actions">
+                                <button type="button" class="lpg-btn lpg-btn-primary" id="btnFormatPost">Format Post</button>
+                                <button type="button" class="lpg-btn" id="btnClearFormat">Clear</button>
+                            </div>
+                        </div>
+                        <div class="lpg-format-col">
+                            <h3>Formatted Result</h3>
+                            <div id="formatResultSection" hidden>
+                                <div class="lpg-post-card">
+                                    <div class="lpg-post-text" id="formatResultText" data-id="format"></div>
+                                    <div class="lpg-post-meta" id="formatResultMeta"></div>
+                                    <div class="lpg-score-row" id="formatResultScores"></div>
+                                    <div class="lpg-improve-row" id="formatImproveRow">
+                                        <button type="button" class="lpg-btn lpg-btn-sm" data-improve="hook">Improve Hook</button>
+                                        <button type="button" class="lpg-btn lpg-btn-sm" data-improve="engaging">Make More Engaging</button>
+                                        <button type="button" class="lpg-btn lpg-btn-sm" data-improve="professional">Make More Professional</button>
+                                        <button type="button" class="lpg-btn lpg-btn-sm" data-improve="shorter">Make Shorter</button>
+                                        <button type="button" class="lpg-btn lpg-btn-sm" data-improve="longer">Make Longer</button>
+                                        <button type="button" class="lpg-btn lpg-btn-sm" data-improve="cta">Add CTA</button>
+                                        <button type="button" class="lpg-btn lpg-btn-sm" data-improve="hashtags">Add Hashtags</button>
+                                        <button type="button" class="lpg-btn lpg-btn-sm" data-improve="grammar">Fix Grammar</button>
+                                        <button type="button" class="lpg-btn lpg-btn-sm" data-improve="rewrite">Rewrite</button>
+                                    </div>
+                                    <div class="lpg-post-actions">
+                                        <button type="button" class="lpg-btn lpg-btn-sm" id="btnCopyFormatted">Copy Formatted Post</button>
+                                        <button type="button" class="lpg-btn lpg-btn-sm" id="btnDownloadFormatted">Download TXT</button>
+                                        <button type="button" class="lpg-btn lpg-btn-sm" id="btnEditFormatted">Edit</button>
+                                        <button type="button" class="lpg-btn lpg-btn-sm" id="btnSaveFormatted">Save Draft</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="lpg-empty-state" id="formatEmptyState">Paste a post and click "Format Post" to see the improved version here.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= HOOKS TAB ================= -->
+            <section id="tabHooks" class="lpg-tabpanel" role="tabpanel" aria-labelledby="tabBtnHooks" hidden>
+                <div class="lpg-card">
+                    <div class="lpg-card-head"><h2>Hook Generator</h2></div>
+                    <div class="lpg-form-grid" style="margin-bottom: 1.8rem;">
+                        <div class="lpg-field lpg-field-full">
+                            <label for="lpgHookTopic">Topic <span class="lpg-req">*</span></label>
+                            <input type="text" id="lpgHookTopic" placeholder="e.g. Launching a new AI-powered invoice generator" aria-describedby="errHookTopic">
+                            <span class="lpg-error" id="errHookTopic" role="alert"></span>
+                        </div>
+                    </div>
+                    <div class="lpg-actions" style="margin-top: 0; margin-bottom: 2rem;">
+                        <button type="button" class="lpg-btn lpg-btn-primary" id="btnGenerateHooks">Generate Hooks</button>
+                    </div>
+                    <div class="lpg-hook-groups" id="hookGroupsGrid" hidden></div>
+                    <p class="lpg-empty-state" id="hooksEmptyState">Enter a topic and generate 5 hooks in each of 5 styles: Professional, Curiosity, Storytelling, Bold, and Question-Based.</p>
+                </div>
+            </section>
+
+            <!-- ================= HASHTAGS TAB ================= -->
+            <section id="tabHashtags" class="lpg-tabpanel" role="tabpanel" aria-labelledby="tabBtnHashtags" hidden>
+                <div class="lpg-card">
+                    <div class="lpg-card-head"><h2>Hashtag Generator</h2></div>
+                    <div class="lpg-field lpg-field-full" style="margin-bottom: 1.8rem;">
+                        <label for="lpgHashtagContent">Post Content or Topic <span class="lpg-req">*</span></label>
+                        <textarea id="lpgHashtagContent" rows="4" placeholder="Paste your post content or describe your topic to get relevant hashtag suggestions." aria-describedby="errHashtagContent"></textarea>
+                        <span class="lpg-error" id="errHashtagContent" role="alert"></span>
+                    </div>
+                    <div class="lpg-actions" style="margin-top: 0; margin-bottom: 2rem;">
+                        <button type="button" class="lpg-btn lpg-btn-primary" id="btnGenerateHashtags">Generate Hashtags</button>
+                    </div>
+                    <div id="hashtagResultsWrap" hidden>
+                        <div class="lpg-hashtag-groups" id="hashtagGroupsGrid"></div>
+                        <div class="lpg-bulk-actions">
+                            <span class="lpg-results-count" id="hashtagSelectedCount">0 selected</span>
+                            <button type="button" class="lpg-btn" id="btnCopySelectedHashtags">Copy Selected</button>
+                            <button type="button" class="lpg-btn" id="btnSelectAllHashtags">Select All</button>
+                            <button type="button" class="lpg-btn lpg-btn-danger" id="btnClearHashtagSelection">Clear Selection</button>
+                        </div>
+                    </div>
+                    <p class="lpg-empty-state" id="hashtagsEmptyState">Add content above and generate hashtags grouped by High-Relevance, Industry, Niche, and Broad.</p>
+                </div>
+            </section>
+
+            <!-- ================= SAVED POSTS TAB ================= -->
+            <section id="tabSaved" class="lpg-tabpanel" role="tabpanel" aria-labelledby="tabBtnSaved" hidden>
+                <div class="lpg-card">
+                    <div class="lpg-card-head">
+                        <h2>Saved Posts</h2>
+                        <span class="lpg-results-count" id="savedResultsCount"></span>
+                    </div>
+                    <div class="lpg-folder-bar" id="savedFolderBar"></div>
+                    <div class="lpg-saved-grid" id="savedGrid"></div>
+                    <p class="lpg-empty-state" id="savedEmptyState">Nothing saved yet. Use "Save Draft" on any generated, formatted, or improved post to add it here.</p>
+                </div>
+            </section>
+
+        </div>
+
+        <section class="container">
+            <div class="faqs my-5">
+                <div class="accordion" id="lpgfaqaccordion">
+                    <h2 class="faq-headline">FAQs</h2>
+                    <hr class="horizontal-row mb-5">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="lpgheading1">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#lpgcollapse1" aria-expanded="false" aria-controls="lpgcollapse1">
+                           1. Is this LinkedIn Post Generator really free?
+                          </button>
+                        </h4>
+                        <div id="lpgcollapse1" class="accordion-collapse collapse" aria-labelledby="lpgheading1" data-bs-parent="#lpgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes. Every feature - post generation, formatting, hooks, hashtags, scoring, and saved drafts - is free and runs entirely in your browser.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="lpgheading2">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#lpgcollapse2" aria-expanded="false" aria-controls="lpgcollapse2">
+                           2. Is this tool affiliated with LinkedIn?
+                          </button>
+                        </h4>
+                        <div id="lpgcollapse2" class="accordion-collapse collapse" aria-labelledby="lpgheading2" data-bs-parent="#lpgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">No. The post preview is a visual mock-up to help you see how your content might look. This tool is not affiliated with, endorsed by, or an official representation of LinkedIn.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="lpgheading3">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#lpgcollapse3" aria-expanded="false" aria-controls="lpgcollapse3">
+                           3. How does the LinkedIn Post Formatter work?
+                          </button>
+                        </h4>
+                        <div id="lpgcollapse3" class="accordion-collapse collapse" aria-labelledby="lpgheading3" data-bs-parent="#lpgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Paste an existing post and the formatter breaks long paragraphs into short, scannable sections, adds spacing, and can turn list-like sentences into bullet points - without changing your original meaning.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="lpgheading4">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#lpgcollapse4" aria-expanded="false" aria-controls="lpgcollapse4">
+                           4. What do the Readability, Engagement, and Professional scores mean?
+                          </button>
+                        </h4>
+                        <div id="lpgcollapse4" class="accordion-collapse collapse" aria-labelledby="lpgheading4" data-bs-parent="#lpgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">These are heuristic estimates based on paragraph length, sentence clarity, hook strength, CTA presence, and tone - not a guaranteed prediction of how LinkedIn's algorithm or audience will respond.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="lpgheading5">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#lpgcollapse5" aria-expanded="false" aria-controls="lpgcollapse5">
+                           5. Are my saved posts stored anywhere online?
+                          </button>
+                        </h4>
+                        <div id="lpgcollapse5" class="accordion-collapse collapse" aria-labelledby="lpgheading5" data-bs-parent="#lpgfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">No. Saved posts, drafts, and folders are stored only in your browser's local storage on your own device - they are never uploaded to a server.</p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related tools -->
+        <section class="lpg-related">
+            <div class="container">
+                <h2>Related Tools</h2>
+                <div class="lpg-related-grid">
+                    <a class="lpg-related-card" href="{%url 'seo-title-generator'%}">
+                        <h3>SEO Title Generator</h3>
+                        <p>Generate click-worthy, SEO-scored titles for blogs, products, and videos with a live Google preview.</p>
+                    </a>
+                    <a class="lpg-related-card" href="{%url 'seo-description-generator'%}">
+                        <h3>SEO Description Generator</h3>
+                        <p>Generate keyword-focused, click-worthy meta descriptions scored for length and SEO quality.</p>
+                    </a>
+                    <a class="lpg-related-card" href="{%url 'markdown-to-html'%}">
+                        <h3>Markdown to HTML Converter</h3>
+                        <p>Convert Markdown to clean HTML instantly with a live preview.</p>
+                    </a>
+                    <a class="lpg-related-card" href="{%url 'tools'%}">
+                        <h3>All Free Tools</h3>
+                        <p>Browse every free calculator and converter TechGeekBuzz has to offer.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- Main section ended -->
+{%endblock%}
+
+{%block js%}
+<script src="{%static 'js/tools/js/linkedinpostgenerator.js'%}"></script>
+{%endblock%}

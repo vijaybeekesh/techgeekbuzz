@@ -12,6 +12,7 @@ urlpatterns = [
     path('/seo-title-generator', seotitlegenerator, name ="seo-title-generator"),
     path('/seo-description-generator', seodescriptiongenerator, name ="seo-description-generator"),
     path('/invoice-generator', invoicegenerator, name ="invoice-generator"),
+    path('/linkedin-post-generator', linkedinpostgenerator, name ="linkedin-post-generator"),
 
     # apis urls
     path("/api/broken-links-checker/",brokenlinkschecker_api, name="broken-links-checker-api"),

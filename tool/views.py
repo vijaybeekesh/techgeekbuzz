@@ -33,3 +33,6 @@ def seodescriptiongenerator(request):
 
 def invoicegenerator(request):
     return render(request, 'tool/invoicegenerator.html')
+
+def linkedinpostgenerator(request):
+    return render(request, 'tool/linkedinpostgenerator.html')
