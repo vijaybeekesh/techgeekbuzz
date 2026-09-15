@@ -205,13 +205,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Static / Media
 # ------------------------------------------------------------------------------
 
-GCS_HMAC_ACCESS_KEY_ID = get_env("GCS_HMAC_ACCESS_KEY_ID")
-GCS_HMAC_SECRET_ACCESS_KEY = get_env("GCS_HMAC_SECRET_ACCESS_KEY")
 GCS_BUCKET_NAME = get_env("GCS_BUCKET_NAME")
-GCS_S3_ENDPOINT_URL = get_env(
-    "GCS_S3_ENDPOINT_URL", default="https://storage.googleapis.com"
-)
-GCS_S3_REGION_NAME = get_env("GCS_S3_REGION_NAME", default="auto")
+GS_PROJECT_ID = get_env("GS_PROJECT_ID", default="techatom")
 
 # STORAGES = {
 #     "default": {
