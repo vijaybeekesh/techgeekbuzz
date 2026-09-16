@@ -36,3 +36,6 @@ def invoicegenerator(request):
 
 def linkedinpostgenerator(request):
     return render(request, 'tool/linkedinpostgenerator.html')
+
+def seotitlechecker(request):
+    return render(request, 'tool/seotitlechecker.html')

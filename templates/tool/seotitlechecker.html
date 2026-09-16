@@ -1,0 +1,412 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+    <meta name="description" content="Free SEO Title Checker to check character count, pixel width, title length, and Google search preview. Optimize your SEO titles for better visibility.">
+    <meta name="keywords" content="SEO Title Checker, Title Character Count, Title Length Checker, SERP Preview, Pixel Width Checker, Character Counter">
+
+    <meta property="article:publisher" content="https://www.facebook.com/techgeekbuzz/" />
+
+    <link rel="canonical" href="https://www.techgeekbuzz.com/tools/seo-title-checker">
+
+    <meta property="og:site_name" content="techgeekbuzz.com">
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="SEO Title Checker – Check Title Length & Character Count" />
+    <meta property="og:description" content="Free SEO Title Checker to check character count, pixel width, title length, and Google search preview. Optimize your SEO titles for better visibility." />
+    <meta property="og:url" content="https://www.techgeekbuzz.com/tools/seo-title-checker">
+    <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SEO Title Checker – Check Title Length & Character Count">
+    <meta name="twitter:description" content="Free SEO Title Checker to check character count, pixel width, title length, and Google search preview. Optimize your SEO titles for better visibility.">
+    <meta name="twitter:url" content="https://www.techgeekbuzz.com/tools/seo-title-checker">
+    <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/tools/tool.css'%}">
+    <link rel="stylesheet" href="{% static 'css/tools/seotitlechecker.css'%}">
+{%endblock%}
+
+{%block title%}
+    <title>SEO Title Checker – Check Title Length & Character Count</title>
+{%endblock%}
+
+{%block headjs%}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.techgeekbuzz.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 3, "name": "SEO", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 4, "name": "SEO Title Checker", "item": "https://www.techgeekbuzz.com/tools/seo-title-checker" }
+            ]
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "SEO Title Checker",
+            "url": "https://www.techgeekbuzz.com/tools/seo-title-checker",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Any",
+            "description": "Check SEO title character count, pixel width, and Google search preview instantly, with title length and truncation guidance.",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is an SEO title?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "An SEO title is the clickable headline shown in search engine results and browser tabs. It comes from your page's title tag and is one of the strongest on-page signals for both rankings and click-through rate." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How many characters should an SEO title have?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "A common guideline is around 50-60 characters, since titles much longer than that are more likely to be truncated on desktop search results. This is only a guideline - actual truncation depends on pixel width, not character count." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is the difference between character count and pixel width?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Character count treats every letter the same, but letters render at different widths - a lowercase \"i\" is much narrower than an uppercase \"W\". Pixel width measures the actual rendered width of your title, which is closer to how search engines decide where to truncate it." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can Google rewrite my title?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. Google can and sometimes does rewrite or shorten title tags in search results based on the query and page content. Keeping a clear, well-structured title makes a rewrite less likely and keeps it accurate when it happens." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does title length affect SEO?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Title length itself isn't a direct ranking factor, but a title that gets cut off can hide your keyword or value proposition from searchers, which can lower click-through rate - an indirect but meaningful effect." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Should my target keyword be in the title?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes, when it fits naturally. Including your primary keyword, ideally near the start, helps both search engines and searchers quickly understand what the page is about." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is this SEO Title Checker free?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes, it's completely free with no limits on how many titles you can check." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Do I need to sign up to use the tool?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "No signup or account is required. Type your title and the analysis, character count, and search preview update instantly in your browser." }
+                }
+            ]
+        }
+    ]
+}
+</script>
+{%endblock%}
+
+{%block main%}
+    <!-- Main Section Started -->
+    <main style="margin-top: 2rem;" class="tc-app" id="tcApp">
+
+        <nav aria-label="breadcrumb" class="container pt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{%url 'index'%}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{%url 'tools'%}">Tools</a></li>
+                <li class="breadcrumb-item">SEO</li>
+                <li class="breadcrumb-item active" aria-current="page">SEO Title Checker</li>
+            </ol>
+        </nav>
+
+        <!-- Hero -->
+        <section class="tool-heading tc-tool-heading">
+            <div class="tc-hero-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M4 6h16M4 12h16M4 18h10" stroke-linecap="round"/>
+                    <path d="M17.5 15.5v5M15 18h5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h1>SEO Title Checker</h1>
+            <p>Check your SEO title length, character count, pixel width, and search preview instantly.</p>
+            <p class="tc-hero-note">Enter your page title below to see how it may appear in search results and identify potential truncation.</p>
+            <div class="tc-hero-badges">
+                <span class="tc-badge">⚡ Instant results</span>
+                <span class="tc-badge">🔒 No signup required</span>
+                <span class="tc-badge">Free to use</span>
+            </div>
+        </section>
+
+        <div class="container" style="padding-top: 1rem;">
+
+            <div class="tc-layout">
+                <!-- Left column -->
+                <div class="tc-col-left">
+
+                    <!-- Title input -->
+                    <div class="tc-card">
+                        <div class="tc-card-head"><h2>Enter Your SEO Title</h2></div>
+                        <div class="tc-field">
+                            <label for="tcTitleInput">SEO Title</label>
+                            <textarea id="tcTitleInput" rows="3" placeholder="Enter your page title here..." aria-describedby="tcCharCount"></textarea>
+                            <div class="tc-field-row">
+                                <span class="tc-field-hint">e.g. "Free Invoice Generator – Create Professional Invoices Online"</span>
+                                <span class="tc-char-count" id="tcCharCount"><strong id="tcCharCountValue">0</strong> / 60 characters</span>
+                            </div>
+                        </div>
+
+                        <div class="tc-status" id="tcStatus">
+                            <span class="tc-status-icon" id="tcStatusIcon" aria-hidden="true">ℹ️</span>
+                            <span>
+                                <span id="tcStatusText">Enter a title to see your SEO analysis.</span>
+                                <small id="tcStatusSubtext"></small>
+                            </span>
+                        </div>
+
+                        <div class="tc-actions">
+                            <button type="button" class="tc-btn tc-btn-primary" id="btnCopyTitle">Copy Title</button>
+                            <button type="button" class="tc-btn tc-btn-danger" id="btnClearTitle">Clear</button>
+                        </div>
+
+                        <button type="button" class="tc-optional-toggle" id="btnToggleOptional" aria-expanded="false" aria-controls="tcOptionalFields">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>
+                            Add website name, URL &amp; description (optional)
+                        </button>
+                        <div class="tc-optional-fields" id="tcOptionalFields" hidden>
+                            <div class="tc-field">
+                                <label for="tcSiteName">Website Name</label>
+                                <input type="text" id="tcSiteName" placeholder="e.g. Invoice Generator">
+                            </div>
+                            <div class="tc-field">
+                                <label for="tcSiteUrl">URL</label>
+                                <input type="text" id="tcSiteUrl" placeholder="e.g. www.invoice-generator.in">
+                            </div>
+                            <div class="tc-field tc-field-full" style="grid-column: 1 / -1;">
+                                <label for="tcSiteDesc">Description</label>
+                                <input type="text" id="tcSiteDesc" placeholder="e.g. Create professional invoices online for free.">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live metrics -->
+                    <div class="tc-card">
+                        <div class="tc-card-head"><h2>Title Statistics</h2></div>
+                        <div class="tc-stats-grid">
+                            <div class="tc-stat"><span>Characters</span><strong id="tcStatChars">0</strong></div>
+                            <div class="tc-stat"><span>No Spaces</span><strong id="tcStatCharsNoSpaces">0</strong></div>
+                            <div class="tc-stat"><span>Words</span><strong id="tcStatWords">0</strong></div>
+                            <div class="tc-stat"><span>Pixel Width</span><strong id="tcStatPixel">0 px</strong></div>
+                        </div>
+
+                        <div class="tc-meter-wrap">
+                            <div class="tc-meter-label">
+                                <span>Pixel Width</span>
+                                <span id="tcPixelStatus">Approximate desktop guideline: ~600px</span>
+                            </div>
+                            <div class="tc-meter">
+                                <div class="tc-meter-fill" id="tcMeterFill" style="width: 0%;"></div>
+                                <div class="tc-meter-marker" id="tcMeterMarker" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Target keyword -->
+                    <div class="tc-card">
+                        <div class="tc-card-head"><h2>Target Keyword <span style="font-weight:500;font-size:1.3rem;color:var(--tc-muted);">(optional)</span></h2></div>
+                        <div class="tc-field">
+                            <label for="tcKeyword">Target Keyword</label>
+                            <input type="text" id="tcKeyword" placeholder="e.g. invoice generator" style="font-size:1.5rem;font-weight:500;padding:1.1rem 1.3rem;border:1.5px solid var(--tc-border);border-radius:var(--tc-radius-sm);width:100%;">
+                        </div>
+                        <div class="tc-kw-result" id="tcKeywordResult" hidden></div>
+                    </div>
+
+                </div>
+
+                <!-- Right column -->
+                <div class="tc-col-right">
+
+                    <!-- Search preview -->
+                    <div class="tc-card" id="tcSerpCard">
+                        <div class="tc-card-head"><h2>Search Preview</h2></div>
+                        <div class="tc-serp">
+                            <div class="tc-serp-site">
+                                <span class="tc-serp-favicon" aria-hidden="true">🌐</span>
+                                <div>
+                                    <div class="tc-serp-sitename" id="tcSerpSitename">Example Website</div>
+                                    <div class="tc-serp-url" id="tcSerpUrl">www.example.com</div>
+                                </div>
+                            </div>
+                            <div class="tc-serp-title" id="tcSerpTitle"><span class="tc-serp-placeholder">Your SEO title will appear here</span></div>
+                            <div class="tc-serp-desc" id="tcSerpDesc">Enter a description above, or it will show a generic placeholder here.</div>
+                        </div>
+                        <p class="tc-serp-note">Approximate search preview - actual rendering in Google search results can vary by device, query, and font.</p>
+                    </div>
+
+                    <!-- Title analysis -->
+                    <div class="tc-card">
+                        <div class="tc-card-head"><h2>SEO Title Analysis</h2></div>
+                        <div id="tcAnalysisEmpty" class="tc-empty-note">Enter a title to see your SEO analysis.</div>
+                        <ul class="tc-analysis-list" id="tcAnalysisList" hidden></ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SEO Tips -->
+            <div class="tc-card" id="seoTipsCard">
+                <div class="tc-card-head"><h2>SEO Title Best Practices</h2></div>
+                <ul class="tc-tips-list">
+                    <li><strong>Keep titles concise and descriptive</strong> - aim for around 50-60 characters as a starting guideline.</li>
+                    <li><strong>Put your main keyword where it naturally fits</strong> - usually earlier in the title, without forcing it.</li>
+                    <li><strong>Make every page title unique</strong> - duplicate titles make it harder for search engines and users to tell pages apart.</li>
+                    <li><strong>Avoid unnecessary keyword repetition</strong> - one natural mention is usually enough.</li>
+                    <li><strong>Write titles for users first</strong> - a title that reads naturally will always outperform one stuffed with keywords.</li>
+                    <li><strong>Check both character count and pixel width</strong> - wide letters like "W" and "M" take up more space than narrow ones like "i" and "l".</li>
+                    <li><strong>Preview how your title may appear in search results</strong> - and adjust if it looks like it will be cut off.</li>
+                    <li><strong>Remember length limits are guidelines, not rules</strong> - search engines can rewrite or truncate titles regardless of length.</li>
+                </ul>
+            </div>
+
+            <div class="tc-toast" id="tcToast" role="status" aria-live="polite"></div>
+        </div>
+
+        <section class="container">
+            <div class="faqs my-5">
+                <div class="accordion" id="tcfaqaccordion">
+                    <h2 class="faq-headline">FAQs</h2>
+                    <hr class="horizontal-row mb-5">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="tcheading1">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#tccollapse1" aria-expanded="false" aria-controls="tccollapse1">
+                           1. What is an SEO title?
+                          </button>
+                        </h4>
+                        <div id="tccollapse1" class="accordion-collapse collapse" aria-labelledby="tcheading1" data-bs-parent="#tcfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">An SEO title is the clickable headline shown in search engine results and browser tabs. It comes from your page's title tag and is one of the strongest on-page signals for both rankings and click-through rate.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="tcheading2">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#tccollapse2" aria-expanded="false" aria-controls="tccollapse2">
+                           2. How many characters should an SEO title have?
+                          </button>
+                        </h4>
+                        <div id="tccollapse2" class="accordion-collapse collapse" aria-labelledby="tcheading2" data-bs-parent="#tcfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">A common guideline is around 50-60 characters, since titles much longer than that are more likely to be truncated on desktop search results. This is only a guideline - actual truncation depends on pixel width, not character count.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="tcheading3">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#tccollapse3" aria-expanded="false" aria-controls="tccollapse3">
+                           3. What is the difference between character count and pixel width?
+                          </button>
+                        </h4>
+                        <div id="tccollapse3" class="accordion-collapse collapse" aria-labelledby="tcheading3" data-bs-parent="#tcfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Character count treats every letter the same, but letters render at different widths - a lowercase "i" is much narrower than an uppercase "W". Pixel width measures the actual rendered width of your title, which is closer to how search engines decide where to truncate it.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="tcheading4">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#tccollapse4" aria-expanded="false" aria-controls="tccollapse4">
+                           4. Can Google rewrite my title?
+                          </button>
+                        </h4>
+                        <div id="tccollapse4" class="accordion-collapse collapse" aria-labelledby="tcheading4" data-bs-parent="#tcfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes. Google can and sometimes does rewrite or shorten title tags in search results based on the query and page content. Keeping a clear, well-structured title makes a rewrite less likely and keeps it accurate when it happens.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="tcheading5">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#tccollapse5" aria-expanded="false" aria-controls="tccollapse5">
+                           5. Does title length affect SEO?
+                          </button>
+                        </h4>
+                        <div id="tccollapse5" class="accordion-collapse collapse" aria-labelledby="tcheading5" data-bs-parent="#tcfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Title length itself isn't a direct ranking factor, but a title that gets cut off can hide your keyword or value proposition from searchers, which can lower click-through rate - an indirect but meaningful effect.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="tcheading6">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#tccollapse6" aria-expanded="false" aria-controls="tccollapse6">
+                           6. Should my target keyword be in the title?
+                          </button>
+                        </h4>
+                        <div id="tccollapse6" class="accordion-collapse collapse" aria-labelledby="tcheading6" data-bs-parent="#tcfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes, when it fits naturally. Including your primary keyword, ideally near the start, helps both search engines and searchers quickly understand what the page is about.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="tcheading7">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#tccollapse7" aria-expanded="false" aria-controls="tccollapse7">
+                           7. Is this SEO Title Checker free?
+                          </button>
+                        </h4>
+                        <div id="tccollapse7" class="accordion-collapse collapse" aria-labelledby="tcheading7" data-bs-parent="#tcfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes, it's completely free with no limits on how many titles you can check.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="tcheading8">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#tccollapse8" aria-expanded="false" aria-controls="tccollapse8">
+                           8. Do I need to sign up to use the tool?
+                          </button>
+                        </h4>
+                        <div id="tccollapse8" class="accordion-collapse collapse" aria-labelledby="tcheading8" data-bs-parent="#tcfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">No signup or account is required. Type your title and the analysis, character count, and search preview update instantly in your browser.</p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related tools -->
+        <section class="tc-related">
+            <div class="container">
+                <h2>Related Tools</h2>
+                <div class="tc-related-grid">
+                    <a class="tc-related-card" href="{%url 'seo-title-generator'%}">
+                        <h3>SEO Title Generator</h3>
+                        <p>Generate click-worthy, SEO-scored titles for blogs, products, and videos with a live Google preview.</p>
+                    </a>
+                    <a class="tc-related-card" href="{%url 'seo-description-generator'%}">
+                        <h3>SEO Description Generator</h3>
+                        <p>Generate keyword-focused, click-worthy meta descriptions scored for length and SEO quality.</p>
+                    </a>
+                    <a class="tc-related-card" href="{%url 'broken-links-checker'%}">
+                        <h3>Broken Links Checker</h3>
+                        <p>Test and check if your web page contains any internal or external dead links.</p>
+                    </a>
+                    <a class="tc-related-card" href="{%url 'tools'%}">
+                        <h3>All Free Tools</h3>
+                        <p>Browse every free calculator and converter TechGeekBuzz has to offer.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- Main section ended -->
+{%endblock%}
+
+{%block js%}
+<script src="{%static 'js/tools/js/seotitlechecker.js'%}"></script>
+{%endblock%}

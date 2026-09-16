@@ -1,0 +1,234 @@
+/* ===== SEO Title Checker - scoped design tokens ===== */
+.tc-app {
+    --tc-bg: #f6f7fb;
+    --tc-card-bg: #ffffff;
+    --tc-soft: #f2f4f8;
+    --tc-text: #14181f;
+    --tc-muted: #6b7280;
+    --tc-border: #e3e7ee;
+    --tc-primary: #003d93;
+    --tc-accent: #0d6efd;
+    --tc-success: #17803d;
+    --tc-success-bg: #e8f6ee;
+    --tc-danger: #d92d20;
+    --tc-danger-bg: #fdeceb;
+    --tc-warn: #b54708;
+    --tc-warn-bg: #fff4e5;
+    --tc-shadow: 0 10px 30px rgba(16, 24, 40, .06);
+    --tc-shadow-lg: 0 20px 50px rgba(16, 24, 40, .10);
+    --tc-radius: 1.8rem;
+    --tc-radius-sm: 1rem;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: var(--tc-text);
+    padding-bottom: 4rem;
+}
+.tc-app :focus-visible { outline: 3px solid var(--tc-accent); outline-offset: 2px; border-radius: .4rem; }
+.tc-app h1, .tc-app h2, .tc-app h3, .tc-app h4 { font-family: inherit; }
+
+/* ===== Hero (shares the site-wide .tool-heading band/type scale used by every tool page) ===== */
+.tc-tool-heading { padding: 3rem 2rem 4rem; }
+.tc-hero-icon {
+    width: 6.4rem; height: 6.4rem; margin: 0 auto 1.6rem; border-radius: 1.6rem;
+    background: #fff; color: var(--tc-primary);
+    display: flex; align-items: center; justify-content: center;
+}
+.tc-hero-icon svg { width: 3.2rem; height: 3.2rem; }
+.tc-hero-note { font-size: 1.4rem !important; color: var(--tc-muted) !important; margin-top: -1.6rem !important; }
+.tc-hero-badges { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; margin-top: 1.6rem; }
+.tc-badge {
+    font-size: 1.2rem; font-weight: 700; padding: .6rem 1.4rem; border-radius: 99px;
+    background: #fff; color: var(--tc-primary); border: 1px solid var(--tc-border);
+}
+
+/* ===== Buttons ===== */
+.tc-btn {
+    display: inline-flex; align-items: center; gap: .6rem;
+    border: 1.5px solid var(--tc-border); background: #fff; color: var(--tc-text);
+    font-family: inherit; font-size: 1.4rem; font-weight: 600;
+    padding: 1.1rem 2rem; border-radius: 1.1rem; cursor: pointer;
+    white-space: nowrap; transition: transform .12s ease, border-color .15s ease, color .15s ease, box-shadow .15s ease;
+}
+.tc-btn:hover { border-color: var(--tc-primary); color: var(--tc-primary); box-shadow: var(--tc-shadow); }
+.tc-btn:active { transform: translateY(1px); }
+.tc-btn-primary { background: var(--tc-primary); border-color: var(--tc-primary); color: #fff; }
+.tc-btn-primary:hover { color: #fff; opacity: .92; box-shadow: var(--tc-shadow-lg); }
+.tc-btn-danger { color: var(--tc-danger); }
+.tc-btn-danger:hover { border-color: var(--tc-danger); color: var(--tc-danger); }
+.tc-btn-sm { font-size: 1.2rem; padding: .7rem 1.3rem; border-radius: .8rem; }
+
+/* ===== Layout ===== */
+.tc-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 2.4rem; align-items: start; }
+.tc-col-left, .tc-col-right { min-width: 0; }
+
+/* ===== Cards ===== */
+.tc-card {
+    background: var(--tc-card-bg); border: 1px solid var(--tc-border); border-radius: var(--tc-radius);
+    box-shadow: var(--tc-shadow); padding: 2.6rem; margin-bottom: 2.4rem;
+}
+.tc-card-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.8rem; flex-wrap: wrap; }
+.tc-card-head h2 { font-size: 1.9rem; font-weight: 700; color: var(--tc-primary); margin: 0; }
+
+/* ===== Input field ===== */
+.tc-field label { display: block; font-size: 1.4rem; font-weight: 600; margin-bottom: .8rem; }
+.tc-field textarea {
+    width: 100%; border: 1.5px solid var(--tc-border); border-radius: var(--tc-radius-sm);
+    background: #fff; color: var(--tc-text); font-family: inherit; font-size: 1.8rem; font-weight: 600;
+    padding: 1.6rem 1.8rem; resize: vertical; min-height: 8rem; line-height: 1.4;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+.tc-field textarea:hover { border-color: #c7cee0; }
+.tc-field textarea:focus {
+    outline: none; border-color: var(--tc-accent); box-shadow: 0 0 0 4px rgba(13, 110, 253, .12);
+}
+.tc-field-row { display: flex; justify-content: space-between; align-items: baseline; margin-top: .8rem; flex-wrap: wrap; gap: .6rem; }
+.tc-field-hint { font-size: 1.25rem; color: var(--tc-muted); }
+.tc-char-count { font-size: 1.3rem; font-weight: 700; color: var(--tc-muted); }
+.tc-char-count.good strong { color: var(--tc-success); }
+.tc-char-count.warn strong { color: var(--tc-warn); }
+.tc-char-count.bad strong { color: var(--tc-danger); }
+
+.tc-actions { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 2rem; }
+
+/* Optional fields */
+.tc-optional-toggle {
+    background: none; border: none; color: var(--tc-primary); font-weight: 700; font-size: 1.3rem;
+    cursor: pointer; padding: 0; margin-top: 2rem; display: inline-flex; align-items: center; gap: .5rem;
+}
+.tc-optional-toggle svg { width: 1.2rem; height: 1.2rem; transition: transform .15s ease; }
+.tc-optional-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.tc-optional-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 1.6rem; margin-top: 1.6rem; }
+.tc-optional-fields .tc-field label { font-size: 1.3rem; }
+.tc-optional-fields .tc-field input {
+    width: 100%; border: 1.5px solid var(--tc-border); border-radius: var(--tc-radius-sm);
+    background: #fff; color: var(--tc-text); font-family: inherit; font-size: 1.4rem; padding: 1rem 1.2rem;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+.tc-optional-fields .tc-field input:focus {
+    outline: none; border-color: var(--tc-accent); box-shadow: 0 0 0 4px rgba(13, 110, 253, .12);
+}
+
+/* ===== Status banner ===== */
+.tc-status {
+    display: flex; align-items: center; gap: 1.2rem; border-radius: var(--tc-radius-sm);
+    padding: 1.6rem 1.8rem; margin-top: 2rem; font-size: 1.5rem; font-weight: 700;
+    background: var(--tc-soft); color: var(--tc-muted);
+}
+.tc-status .tc-status-icon { font-size: 2rem; line-height: 1; flex-shrink: 0; }
+.tc-status.good { background: var(--tc-success-bg); color: var(--tc-success); }
+.tc-status.warn { background: var(--tc-warn-bg); color: var(--tc-warn); }
+.tc-status.bad { background: var(--tc-danger-bg); color: var(--tc-danger); }
+.tc-status small { display: block; font-size: 1.2rem; font-weight: 500; margin-top: .2rem; color: inherit; opacity: .85; }
+
+/* ===== Stats grid ===== */
+.tc-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 1.2rem; }
+.tc-stat { text-align: center; background: var(--tc-soft); border-radius: var(--tc-radius-sm); padding: 1.4rem .8rem; }
+.tc-stat span { display: block; font-size: 1.05rem; color: var(--tc-muted); text-transform: uppercase; letter-spacing: .04em; margin-bottom: .4rem; }
+.tc-stat strong { font-size: 2.1rem; font-weight: 800; color: var(--tc-primary); }
+
+/* ===== Pixel width meter ===== */
+.tc-meter-wrap { margin-top: 1.8rem; }
+.tc-meter-label { display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: 600; margin-bottom: .6rem; }
+.tc-meter-label span:last-child { color: var(--tc-muted); font-weight: 500; }
+.tc-meter { height: 1rem; background: var(--tc-soft); border-radius: 99px; overflow: hidden; position: relative; }
+.tc-meter-fill { height: 100%; border-radius: 99px; background: var(--tc-success); transition: width .2s ease, background-color .2s ease; }
+.tc-meter-fill.warn { background: var(--tc-warn); }
+.tc-meter-fill.bad { background: var(--tc-danger); }
+.tc-meter-marker {
+    position: absolute; top: -.3rem; bottom: -.3rem; width: 2px; background: var(--tc-text); opacity: .35;
+}
+
+/* ===== Search preview ===== */
+.tc-serp { background: #fff; border: 1px solid var(--tc-border); border-radius: .8rem; padding: 1.8rem 2rem; }
+.tc-serp-site { display: flex; align-items: center; gap: 1rem; margin-bottom: .6rem; }
+.tc-serp-favicon {
+    width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--tc-soft);
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
+}
+.tc-serp-sitename { font-family: Arial, sans-serif; font-size: 1.4rem; color: #202124; line-height: 1.2; }
+.tc-serp-url { font-family: Arial, sans-serif; font-size: 1.25rem; color: #4d5156; line-height: 1.2; }
+.tc-serp-title {
+    font-family: Arial, sans-serif; color: #1a0dab; font-size: 1.9rem; margin: .4rem 0 .5rem;
+    line-height: 1.3; overflow-wrap: anywhere;
+}
+.tc-serp-title .tc-truncated-part { color: #7a1fa2; text-decoration: underline; text-decoration-style: dotted; }
+.tc-serp-desc { font-family: Arial, sans-serif; color: #4d5156; font-size: 1.35rem; line-height: 1.4; }
+.tc-serp-placeholder { color: var(--tc-muted); font-style: italic; }
+.tc-serp-note { font-size: 1.2rem; color: var(--tc-muted); margin-top: 1.2rem; }
+
+/* ===== Empty state ===== */
+.tc-empty-note {
+    background: var(--tc-soft); border-radius: var(--tc-radius-sm); padding: 1.6rem 1.8rem;
+    font-size: 1.35rem; color: var(--tc-muted); text-align: center;
+}
+
+/* ===== Analysis list ===== */
+.tc-analysis-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+.tc-analysis-item {
+    display: flex; align-items: flex-start; gap: 1rem; font-size: 1.35rem; line-height: 1.5;
+    background: var(--tc-soft); border-radius: var(--tc-radius-sm); padding: 1.2rem 1.5rem;
+}
+.tc-analysis-icon { flex-shrink: 0; font-size: 1.5rem; line-height: 1.4; }
+.tc-analysis-item.good .tc-analysis-icon { color: var(--tc-success); }
+.tc-analysis-item.warn .tc-analysis-icon { color: var(--tc-warn); }
+.tc-analysis-item.bad .tc-analysis-icon { color: var(--tc-danger); }
+
+/* ===== Keyword result chip ===== */
+.tc-kw-result { margin-top: 1.2rem; font-size: 1.3rem; font-weight: 700; padding: 1rem 1.4rem; border-radius: var(--tc-radius-sm); }
+.tc-kw-result.good { background: var(--tc-success-bg); color: var(--tc-success); }
+.tc-kw-result.warn { background: var(--tc-warn-bg); color: var(--tc-warn); }
+
+/* ===== Tips list ===== */
+.tc-tips-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr)); gap: 1.4rem; }
+.tc-tips-list li { font-size: 1.35rem; line-height: 1.5; color: #444; background: var(--tc-soft); border-radius: var(--tc-radius-sm); padding: 1.4rem 1.6rem; }
+.tc-tips-list strong { color: var(--tc-primary); }
+
+/* ===== Toast ===== */
+.tc-toast {
+    position: fixed; left: 50%; bottom: 2.4rem; transform: translate(-50%, 2rem);
+    background: #14181f; color: #fff; font-size: 1.3rem; font-weight: 600;
+    padding: 1.2rem 2rem; border-radius: 1rem; box-shadow: var(--tc-shadow-lg);
+    opacity: 0; pointer-events: none; transition: opacity .25s ease, transform .25s ease; z-index: 200;
+}
+.tc-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ===== FAQ accordion (matches the styling used on every other tool page) ===== */
+.faq-headline {
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+}
+.faqbutton {
+    background-color: var(--tc-card-bg) !important;
+    color: var(--tc-text) !important;
+}
+.faqanswer {
+    font-size: 1.8rem;
+    line-height: 1.4;
+    color: var(--tc-muted);
+    letter-spacing: 0.6px;
+}
+.accordion-header button {
+    font-size: 2.1rem;
+    margin-top: 0;
+}
+
+/* ===== Related tools ===== */
+.tc-related { max-width: 132rem; margin: 4rem auto 0; padding: 0 1.6rem 2rem; }
+.tc-related h2 { font-size: 2.4rem; font-weight: 800; color: var(--tc-primary); margin-bottom: 1.8rem; }
+.tc-related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr)); gap: 1.6rem; }
+.tc-related-card {
+    display: block; background: #fff; border: 1px solid var(--tc-border); border-radius: var(--tc-radius);
+    padding: 2rem; text-decoration: none; color: inherit; box-shadow: var(--tc-shadow); transition: transform .15s ease, box-shadow .15s ease;
+}
+.tc-related-card:hover { transform: translateY(-3px); box-shadow: var(--tc-shadow-lg); }
+.tc-related-card h3 { font-size: 1.6rem; color: var(--tc-primary); margin-bottom: .5rem; }
+.tc-related-card p { font-size: 1.25rem; color: var(--tc-muted); margin: 0; }
+
+/* ===== Responsive ===== */
+@media (max-width: 980px) {
+    .tc-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+    .tc-card { padding: 1.8rem; }
+    .tc-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
