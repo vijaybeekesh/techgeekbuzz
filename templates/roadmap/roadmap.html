@@ -31,6 +31,7 @@
 {%block css%}
     <link rel="stylesheet" href="{% static 'css/homepage.css'%}"/>
     <link rel="stylesheet" href="{% static 'css/roadmap.css'%}"/>
+    <link rel="stylesheet" href="{% static 'css/roadmap-stepper.css'%}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 {%endblock%}
 
@@ -120,66 +121,80 @@
         </section>
     
         <!-- Road Map Section -->
-        <section class="roadmap-section">
+        <section class="rms-section" id="rmsSection" data-roadmap-slug="{{roadmap.roadmap_url}}">
           <div class="container">
-            <div class="top-section">
-              <h1 class="roadmap-title">{{roadmap.name}} Roadmap</h1>
-              <p class="roadmap-description">
-                {{roadmap.description}}
-              </p>
+
+            <div class="rms-progress-head">
+              <h2 class="rms-progress-title">{{roadmap.name}} Roadmap</h2>
+              <div class="rms-progress-row">
+                <span class="rms-progress-label"><strong id="rmsProgressPct">0%</strong> Complete</span>
+                <div class="rms-progress-bar-track" id="rmsProgressBarWrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="{{roadmap.name}} roadmap completion">
+                  <div class="rms-progress-bar-fill" id="rmsProgressBarFill"></div>
+                </div>
+              </div>
+              <p class="rms-progress-hint">Click a step below to see its details. Mark steps complete to track your progress - saved in this browser.</p>
             </div>
-    
-            <div class="roadline">
-              <div class="road"></div>
-              
+
+            <div class="rms-stepper" id="rmsStepper" role="list" aria-label="{{roadmap.name}} roadmap steps">
               {%for roadmaplist in roadmap.roadmaplist.all%}
-                  <div class="road-section">
-                    <div class="milestone"></div>
-                    <div class="content">
-
-                      <h2 class="btn milestone-heading shadow" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{roadmaplist.title|slugify}}{{roadmaplist.number}}" aria-controls="{{roadmaplist.title|slugify}}{{roadmaplist.number}}">
-                        {{roadmaplist.title}} </span>
-                      </h2>
-                          {%if roadmaplist.description%}
-                            <!-- canvas for the milestone start -->
-                            <div class="offcanvas roadmap-canvas offcanvas-end" tabindex="-1" id="{{roadmaplist.title|slugify}}{{roadmaplist.number}}" aria-labelledby="{{roadmaplist.title|slugify}}{{roadmaplist.number}}Label">
-                                <div class="offcanvas-header">
-                                    <h5 class="offcanvas-heading-title">{{roadmaplist.title}}</h5>
-                                    <button type="button" class="btn-close text-reset side-opener-close-btn" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                </div>
-                                <div class="offcanvas-body roadmap-canvas-body">
-                                    {{roadmaplist.description|safe}}
-                                </div>
-                            </div>
-                            <!-- canvas for the milestone ends -->
-                          {%endif%}
-
-                      <ul>
-                        {%for roadmaptopic in roadmaplist.roadmaptopic.all %}
-                        <!-- items start -->
-                        <li class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{roadmaptopic.topic|slugify}}{{roadmaptopic.number}}" aria-controls="{{roadmaptopic.topic|slugify}}{{roadmaptopic.number}}">
-                            {{roadmaptopic.topic}}
-                        </li>
-                        <!-- item ends -->
-                        {%if roadmaptopic.description%}
-                              <!-- canvas for the list start -->
-                            <div class="offcanvas roadmap-canvas offcanvas-end" tabindex="-1" id="{{roadmaptopic.topic|slugify}}{{roadmaptopic.number}}" aria-labelledby="{{roadmaptopic.topic|slugify}}{{roadmaptopic.number}}Label">
-                                <div class="offcanvas-header">
-                                    <h5 class="offcanvas-heading-title">{{roadmaptopic.topic}}</h5>
-                                    <button type="button" class="btn-close text-reset side-opener-close-btn" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                </div>
-                                <div class="offcanvas-body roadmap-canvas-body">
-                                  {{roadmaptopic.description|safe}}
-                                </div>
-                            </div>
-                            <!-- canvas for the list ends -->
-                            {%endif%}
-                        {%endfor%}
-                      </ul>
-                    </div>
+                <div class="rms-step" role="listitem"
+                     data-step-id="{{roadmaplist.pk}}"
+                     data-step-index="{{forloop.counter}}"
+                     data-step-total="{{roadmap.roadmaplist.count}}"
+                     data-step-title="{{roadmaplist.title}}">
+                  <div class="rms-step-connector" aria-hidden="true"></div>
+                  <button type="button" class="rms-step-node" aria-expanded="false" aria-controls="rmsDetail" aria-label="{{roadmaplist.title}} - step {{forloop.counter}} of {{roadmap.roadmaplist.count}}">
+                    <svg class="rms-icon-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                      <path d="M13.485 1.929a1 1 0 0 1 0 1.414l-7.07 7.071a1 1 0 0 1-1.415 0L1.515 6.929a1 1 0 1 1 1.414-1.414L5.7 8.286l6.37-6.357a1 1 0 0 1 1.415 0z"/>
+                    </svg>
+                    <span class="rms-step-number">{{forloop.counter}}</span>
+                  </button>
+                  <div class="rms-step-label">
+                    <span class="rms-step-title">{{roadmaplist.title}}</span>
+                    <span class="rms-step-percent">{% widthratio forloop.counter roadmap.roadmaplist.count 100 %}%</span>
                   </div>
+
+                  <template class="rms-step-data">
+                    {%if roadmaplist.description%}<div class="rms-detail-description">{{roadmaplist.description|safe}}</div>{%endif%}
+                    {%if roadmaplist.roadmaptopic.all%}
+                    <ul class="rms-detail-topics-source">
+                      {%for roadmaptopic in roadmaplist.roadmaptopic.all%}
+                      <li>
+                        <button type="button" class="rms-topic-btn">
+                          <span class="rms-topic-dot" aria-hidden="true"></span>
+                          <span class="rms-topic-label">{{roadmaptopic.topic}}</span>
+                          {%if roadmaptopic.description%}<span class="rms-topic-info-icon" aria-hidden="true">i</span>{%endif%}
+                        </button>
+                        {%if roadmaptopic.description%}<template class="rms-topic-data">{{roadmaptopic.description|safe}}</template>{%endif%}
+                      </li>
+                      {%endfor%}
+                    </ul>
+                    {%endif%}
+                  </template>
+                </div>
               {%endfor%}
             </div>
+
+            <!-- Step detail panel - always in the flow, directly below the stepper -->
+            <div class="rms-detail" id="rmsDetail" role="region" aria-live="polite" aria-label="Step details">
+              <div class="rms-detail-content" id="rmsDetailContent">
+                <span class="rms-detail-eyebrow" id="rmsDetailEyebrow"></span>
+                <h3 class="rms-detail-title" id="rmsDetailTitle"></h3>
+                <div class="rms-detail-meta" id="rmsDetailMeta"></div>
+                <div class="rms-detail-body" id="rmsDetailBody"></div>
+                <div class="rms-detail-topics-wrap" id="rmsDetailTopicsWrap" hidden>
+                  <h4>Topics Covered</h4>
+                  <p class="rms-detail-hint" id="rmsTopicsHint" hidden>Hover or tap a topic for more details.</p>
+                  <ul class="rms-detail-topics" id="rmsDetailTopics"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reusable floating popup for an individual topic's details -->
+          <div class="rms-topic-popup" id="rmsTopicPopup" role="tooltip" hidden>
+            <div class="rms-topic-popup-arrow" id="rmsTopicPopupArrow" aria-hidden="true"></div>
+            <div class="rms-topic-popup-inner" id="rmsTopicPopupInner"></div>
           </div>
         </section>
         <!-- Road Map Section Ends -->
@@ -188,7 +203,7 @@
 
 <!-- prism -->
 {%block js%}
-  <script src="{%static 'js/roadmap.js'%}"></script>
+  <script src="{%static 'js/roadmap-stepper.js'%}"></script>
   <script>
     
     let likeButton = document.querySelector(".mark-button");
