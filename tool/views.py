@@ -39,3 +39,6 @@ def linkedinpostgenerator(request):
 
 def seotitlechecker(request):
     return render(request, 'tool/seotitlechecker.html')
+
+def seodescriptionchecker(request):
+    return render(request, 'tool/seodescriptionchecker.html')

@@ -1,0 +1,428 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+    <meta name="description" content="Check your SEO meta description length, character count, pixel width, keyword usage, and search preview with our free SEO Description Checker.">
+    <meta name="keywords" content="SEO Description Checker, Meta Description Checker, Meta Description Length, Pixel Width Checker, SERP Preview, Character Counter">
+
+    <meta property="article:publisher" content="https://www.facebook.com/techgeekbuzz/" />
+
+    <link rel="canonical" href="https://www.techgeekbuzz.com/tools/seo-description-checker">
+
+    <meta property="og:site_name" content="techgeekbuzz.com">
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="SEO Description Checker – Optimize Meta Descriptions" />
+    <meta property="og:description" content="Check your SEO meta description length, character count, pixel width, keyword usage, and search preview with our free SEO Description Checker." />
+    <meta property="og:url" content="https://www.techgeekbuzz.com/tools/seo-description-checker">
+    <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SEO Description Checker – Optimize Meta Descriptions">
+    <meta name="twitter:description" content="Check your SEO meta description length, character count, pixel width, keyword usage, and search preview with our free SEO Description Checker.">
+    <meta name="twitter:url" content="https://www.techgeekbuzz.com/tools/seo-description-checker">
+    <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/tools/tool.css'%}">
+    <link rel="stylesheet" href="{% static 'css/tools/seodescriptionchecker.css'%}">
+{%endblock%}
+
+{%block title%}
+    <title>SEO Description Checker – Optimize Meta Descriptions</title>
+{%endblock%}
+
+{%block headjs%}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.techgeekbuzz.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 3, "name": "SEO", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 4, "name": "SEO Description Checker", "item": "https://www.techgeekbuzz.com/tools/seo-description-checker" }
+            ]
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "SEO Description Checker",
+            "url": "https://www.techgeekbuzz.com/tools/seo-description-checker",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Any",
+            "description": "Check meta description character count, pixel width, keyword usage, readability, and Google search preview instantly, with a transparent SEO score.",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is a meta description?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "A meta description is the short summary shown under your page title in search results. It doesn't directly affect rankings, but a clear, relevant description improves click-through rate." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How long should a meta description be?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "A common guideline is around 120-160 characters, since Google typically truncates longer descriptions on desktop. This is only a guideline - actual truncation depends on pixel width, device, and the search query." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is the difference between character count and pixel width?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Character count treats every letter the same, but letters render at different widths - a lowercase \"i\" is much narrower than an uppercase \"W\". Pixel width measures the estimated rendered width of your description, which is closer to how search engines decide where to truncate it." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Should my primary keyword be in the meta description?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes, when it fits naturally. Including your primary keyword, ideally near the start, helps searchers quickly see the description matches what they searched for - Google also often bolds matching terms." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does the meta description affect SEO rankings?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Not directly - it isn't a confirmed ranking factor. But a compelling, keyword-relevant description can improve click-through rate from search results, which is a positive engagement signal." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Do I need a call to action in my description?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Not always. A clear call to action like \"Learn more\" or \"Get started\" can help on commercial pages, but it isn't necessary for every type of page - clarity and relevance matter more." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is the SEO score a Google ranking score?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "No. The score is a tool-based optimization guideline calculated from length, pixel width, keyword usage, readability, and CTA presence - it does not represent Google's actual ranking algorithm." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is this SEO Description Checker free?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes, it's completely free with no signup required, and everything runs instantly in your browser." }
+                }
+            ]
+        }
+    ]
+}
+</script>
+{%endblock%}
+
+{%block main%}
+    <!-- Main Section Started -->
+    <main style="margin-top: 2rem;" class="dc-app" id="dcApp">
+
+        <nav aria-label="breadcrumb" class="container pt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{%url 'index'%}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{%url 'tools'%}">Tools</a></li>
+                <li class="breadcrumb-item">SEO</li>
+                <li class="breadcrumb-item active" aria-current="page">SEO Description Checker</li>
+            </ol>
+        </nav>
+
+        <!-- Hero -->
+        <section class="tool-heading dc-tool-heading">
+            <div class="dc-hero-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M4 5.5h16M4 10.5h16M4 15.5h11" stroke-linecap="round"/>
+                    <path d="M4 20.5h7" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h1>SEO Description Checker</h1>
+            <p>Check and optimize your meta description for better search visibility.</p>
+            <p class="dc-hero-note">Write a compelling meta description, check its length, and preview how it may appear in search results.</p>
+            <div class="dc-hero-badges">
+                <span class="dc-badge">⚡ Instant results</span>
+                <span class="dc-badge">🔒 No signup required</span>
+                <span class="dc-badge">Free to use</span>
+            </div>
+        </section>
+
+        <div class="container" style="padding-top: 1rem;">
+
+            <div class="dc-layout">
+                <!-- Left column -->
+                <div class="dc-col-left">
+
+                    <!-- Description input -->
+                    <div class="dc-card">
+                        <div class="dc-card-head"><h2>Enter Your Meta Description</h2></div>
+                        <div class="dc-field">
+                            <label for="dcDescInput">Meta Description</label>
+                            <textarea id="dcDescInput" rows="4" placeholder="Enter your SEO meta description here..." aria-describedby="dcCharCount"></textarea>
+                            <div class="dc-field-row">
+                                <span class="dc-field-hint">e.g. "Create professional invoices online for free. Customize your invoice, download it instantly, and manage your billing easily."</span>
+                                <span class="dc-char-count" id="dcCharCount"><strong id="dcCharCountValue">0</strong> / 160 characters</span>
+                            </div>
+                        </div>
+
+                        <div class="dc-status" id="dcStatus">
+                            <span class="dc-status-icon" id="dcStatusIcon" aria-hidden="true">ℹ️</span>
+                            <span>
+                                <span id="dcStatusText">Enter a description to see your SEO analysis.</span>
+                                <small id="dcStatusSubtext"></small>
+                            </span>
+                        </div>
+
+                        <div class="dc-actions">
+                            <button type="button" class="dc-btn dc-btn-primary" id="btnCopyDesc">Copy Description</button>
+                            <button type="button" class="dc-btn dc-btn-danger" id="btnClearDesc">Clear</button>
+                        </div>
+
+                        <button type="button" class="dc-optional-toggle" id="btnToggleOptional" aria-expanded="false" aria-controls="dcOptionalFields">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>
+                            Add page title &amp; website URL (optional)
+                        </button>
+                        <div class="dc-optional-fields" id="dcOptionalFields" hidden>
+                            <div class="dc-field">
+                                <label for="dcPageTitle">Page Title</label>
+                                <input type="text" id="dcPageTitle" placeholder="e.g. Free Invoice Generator – Create Professional Invoices Online">
+                            </div>
+                            <div class="dc-field">
+                                <label for="dcSiteName">Website Name</label>
+                                <input type="text" id="dcSiteName" placeholder="e.g. Invoice Generator">
+                            </div>
+                            <div class="dc-field dc-field-full" style="grid-column: 1 / -1;">
+                                <label for="dcSiteUrl">URL / Breadcrumb Path</label>
+                                <input type="text" id="dcSiteUrl" placeholder="e.g. www.invoice-generator.in › products › invoice-generator">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live metrics -->
+                    <div class="dc-card">
+                        <div class="dc-card-head"><h2>Description Statistics</h2></div>
+                        <div class="dc-stats-grid">
+                            <div class="dc-stat"><span>Characters</span><strong id="dcStatChars">0</strong></div>
+                            <div class="dc-stat"><span>No Spaces</span><strong id="dcStatCharsNoSpaces">0</strong></div>
+                            <div class="dc-stat"><span>Words</span><strong id="dcStatWords">0</strong></div>
+                            <div class="dc-stat"><span>Pixel Width</span><strong id="dcStatPixel">0 px</strong></div>
+                        </div>
+
+                        <div class="dc-meter-wrap">
+                            <div class="dc-meter-label">
+                                <span>Pixel Width</span>
+                                <span id="dcPixelStatus">Approximate desktop guideline: ~920px</span>
+                            </div>
+                            <div class="dc-meter">
+                                <div class="dc-meter-fill" id="dcMeterFill" style="width: 0%;"></div>
+                                <div class="dc-meter-marker" id="dcMeterMarker" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Primary keyword -->
+                    <div class="dc-card">
+                        <div class="dc-card-head"><h2>Primary Keyword <span class="dc-optional-label">(optional)</span></h2></div>
+                        <div class="dc-field">
+                            <label for="dcKeyword">Primary Keyword</label>
+                            <input type="text" id="dcKeyword" placeholder="e.g. invoice generator" class="dc-keyword-input">
+                        </div>
+                        <div class="dc-kw-result" id="dcKeywordResult" hidden>
+                            <div class="dc-kw-result-row"><span>Keyword Status</span><strong id="dcKwStatus"></strong></div>
+                            <div class="dc-kw-result-row"><span>Occurrences</span><strong id="dcKwOccurrences"></strong></div>
+                            <div class="dc-kw-result-row"><span>Position</span><strong id="dcKwPosition"></strong></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right column -->
+                <div class="dc-col-right">
+
+                    <!-- Search preview -->
+                    <div class="dc-card" id="dcSerpCard">
+                        <div class="dc-card-head"><h2>Search Preview</h2></div>
+                        <div class="dc-serp">
+                            <div class="dc-serp-site">
+                                <span class="dc-serp-favicon" aria-hidden="true">🌐</span>
+                                <div>
+                                    <div class="dc-serp-sitename" id="dcSerpSitename">Example Website</div>
+                                    <div class="dc-serp-url" id="dcSerpUrl">example.com › products › invoice-generator</div>
+                                </div>
+                            </div>
+                            <div class="dc-serp-title" id="dcSerpTitle">Your page title will appear here</div>
+                            <div class="dc-serp-desc" id="dcSerpDesc"><span class="dc-serp-placeholder">Your meta description will appear here</span></div>
+                        </div>
+                        <p class="dc-serp-note">Approximate search preview - actual rendering in Google search results can vary by device, query, and font.</p>
+                    </div>
+
+                    <!-- SEO score -->
+                    <div class="dc-card" id="dcScoreCard">
+                        <div class="dc-card-head"><h2>SEO Description Score</h2></div>
+                        <div class="dc-score-row">
+                            <div class="dc-score-ring" id="dcScoreRing">
+                                <strong id="dcScoreValue">0</strong><span>/ 100</span>
+                            </div>
+                            <ul class="dc-score-breakdown" id="dcScoreBreakdown"></ul>
+                        </div>
+                        <p class="dc-score-disclaimer">Tool-based optimization score - not a Google ranking score.</p>
+                    </div>
+
+                    <!-- Analysis -->
+                    <div class="dc-card">
+                        <div class="dc-card-head"><h2>SEO Analysis</h2></div>
+                        <div id="dcAnalysisEmpty" class="dc-empty-note">Enter a description to see your SEO analysis.</div>
+                        <ul class="dc-analysis-list" id="dcAnalysisList" hidden></ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Best practices -->
+            <div class="dc-card" id="seoTipsCard">
+                <div class="dc-card-head"><h2>Meta Description Best Practices</h2></div>
+                <ul class="dc-tips-list">
+                    <li><strong>Aim for 120-160 characters</strong> - Google typically truncates longer descriptions in search results.</li>
+                    <li><strong>Include your primary keyword naturally</strong> - ideally near the start, so it's clear the page matches the search.</li>
+                    <li><strong>Avoid keyword stuffing</strong> - one or two natural mentions of your keyword is enough.</li>
+                    <li><strong>Lead with the benefit</strong> - tell searchers what they'll get, not just what the page is.</li>
+                    <li><strong>Add a call to action where it fits</strong> - words like "Learn more" or "Get started" can encourage clicks.</li>
+                    <li><strong>Make every description unique</strong> - duplicate descriptions across pages confuse both users and search engines.</li>
+                    <li><strong>Check both character count and pixel width</strong> - wide letters take up more space than narrow ones.</li>
+                    <li><strong>Write for people first</strong> - a description that reads naturally will always outperform one stuffed with keywords.</li>
+                </ul>
+            </div>
+
+            <div class="dc-toast" id="dcToast" role="status" aria-live="polite"></div>
+        </div>
+
+        <section class="container">
+            <div class="faqs my-5">
+                <div class="accordion" id="dcfaqaccordion">
+                    <h2 class="faq-headline">FAQs</h2>
+                    <hr class="horizontal-row mb-5">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="dcheading1">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#dccollapse1" aria-expanded="false" aria-controls="dccollapse1">
+                           1. What is a meta description?
+                          </button>
+                        </h4>
+                        <div id="dccollapse1" class="accordion-collapse collapse" aria-labelledby="dcheading1" data-bs-parent="#dcfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">A meta description is the short summary shown under your page title in search results. It doesn't directly affect rankings, but a clear, relevant description improves click-through rate.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="dcheading2">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#dccollapse2" aria-expanded="false" aria-controls="dccollapse2">
+                           2. How long should a meta description be?
+                          </button>
+                        </h4>
+                        <div id="dccollapse2" class="accordion-collapse collapse" aria-labelledby="dcheading2" data-bs-parent="#dcfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">A common guideline is around 120-160 characters, since Google typically truncates longer descriptions on desktop. This is only a guideline - actual truncation depends on pixel width, device, and the search query.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="dcheading3">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#dccollapse3" aria-expanded="false" aria-controls="dccollapse3">
+                           3. What is the difference between character count and pixel width?
+                          </button>
+                        </h4>
+                        <div id="dccollapse3" class="accordion-collapse collapse" aria-labelledby="dcheading3" data-bs-parent="#dcfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Character count treats every letter the same, but letters render at different widths - a lowercase "i" is much narrower than an uppercase "W". Pixel width measures the estimated rendered width of your description, which is closer to how search engines decide where to truncate it.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="dcheading4">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#dccollapse4" aria-expanded="false" aria-controls="dccollapse4">
+                           4. Should my primary keyword be in the meta description?
+                          </button>
+                        </h4>
+                        <div id="dccollapse4" class="accordion-collapse collapse" aria-labelledby="dcheading4" data-bs-parent="#dcfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes, when it fits naturally. Including your primary keyword, ideally near the start, helps searchers quickly see the description matches what they searched for - Google also often bolds matching terms.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="dcheading5">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#dccollapse5" aria-expanded="false" aria-controls="dccollapse5">
+                           5. Does the meta description affect SEO rankings?
+                          </button>
+                        </h4>
+                        <div id="dccollapse5" class="accordion-collapse collapse" aria-labelledby="dcheading5" data-bs-parent="#dcfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Not directly - it isn't a confirmed ranking factor. But a compelling, keyword-relevant description can improve click-through rate from search results, which is a positive engagement signal.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="dcheading6">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#dccollapse6" aria-expanded="false" aria-controls="dccollapse6">
+                           6. Do I need a call to action in my description?
+                          </button>
+                        </h4>
+                        <div id="dccollapse6" class="accordion-collapse collapse" aria-labelledby="dcheading6" data-bs-parent="#dcfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Not always. A clear call to action like "Learn more" or "Get started" can help on commercial pages, but it isn't necessary for every type of page - clarity and relevance matter more.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="dcheading7">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#dccollapse7" aria-expanded="false" aria-controls="dccollapse7">
+                           7. Is the SEO score a Google ranking score?
+                          </button>
+                        </h4>
+                        <div id="dccollapse7" class="accordion-collapse collapse" aria-labelledby="dcheading7" data-bs-parent="#dcfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">No. The score is a tool-based optimization guideline calculated from length, pixel width, keyword usage, readability, and CTA presence - it does not represent Google's actual ranking algorithm.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="dcheading8">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#dccollapse8" aria-expanded="false" aria-controls="dccollapse8">
+                           8. Is this SEO Description Checker free?
+                          </button>
+                        </h4>
+                        <div id="dccollapse8" class="accordion-collapse collapse" aria-labelledby="dcheading8" data-bs-parent="#dcfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes, it's completely free with no signup required, and everything runs instantly in your browser.</p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related tools -->
+        <section class="dc-related">
+            <div class="container">
+                <h2>Related Tools</h2>
+                <div class="dc-related-grid">
+                    <a class="dc-related-card" href="{%url 'seo-description-generator'%}">
+                        <h3>SEO Description Generator</h3>
+                        <p>Generate keyword-focused, click-worthy meta descriptions scored for length and SEO quality.</p>
+                    </a>
+                    <a class="dc-related-card" href="{%url 'seo-title-checker'%}">
+                        <h3>SEO Title Checker</h3>
+                        <p>Check SEO title character count, pixel width, and search preview instantly.</p>
+                    </a>
+                    <a class="dc-related-card" href="{%url 'seo-title-generator'%}">
+                        <h3>SEO Title Generator</h3>
+                        <p>Generate click-worthy, SEO-scored titles for blogs, products, and videos with a live Google preview.</p>
+                    </a>
+                    <a class="dc-related-card" href="{%url 'tools'%}">
+                        <h3>All Free Tools</h3>
+                        <p>Browse every free calculator and converter TechGeekBuzz has to offer.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- Main section ended -->
+{%endblock%}
+
+{%block js%}
+<script src="{%static 'js/tools/js/seodescriptionchecker.js'%}"></script>
+{%endblock%}
