@@ -325,6 +325,17 @@
                         {%endif%}
                         {%endwith%}
                     </div>
+                    <div class="blog-listing-card-avatar-wrap">
+                        {%if blog.author.profile.profile_picture%}
+                        <img src="{{blog.author.profile.profile_picture.url}}" class="blog-listing-card-avatar" alt="{{blog.author.username}}"/>
+                        {%else%}
+                        <span class="blog-listing-card-avatar blog-listing-card-avatar-fallback">{{blog.author.first_name|slice:":1"|upper}}</span>
+                        {%endif%}
+                        <div class="blog-listing-card-author">
+                            <a href="{%url 'byuser' blog.author%}">{{blog.author.first_name}} {{blog.author.last_name}}</a>
+                            <date>{{blog.post_updated|date:"j F, Y"}}</date>
+                        </div>
+                    </div>
                     <div class="blog-listing-card-body d-flex flex-column flex-grow-1">
                         <h2 class="blog-listing-card-title"><a href="{%url 'postdetail' blog.slug%}">{{blog.title|truncatechars:70}}</a></h2>
                         <p class="blog-listing-card-desc">
@@ -332,17 +343,6 @@
                             {{blog.content|striptags|truncatechars:100}}
                             {% endautoescape %}
                         </p>
-                        <div class="blog-listing-card-footer d-flex align-items-center mt-auto">
-                            {%if blog.author.profile.profile_picture%}
-                            <img src="{{blog.author.profile.profile_picture.url}}" class="blog-listing-card-avatar" alt="{{blog.author.username}}"/>
-                            {%else%}
-                            <span class="blog-listing-card-avatar blog-listing-card-avatar-fallback">{{blog.author.first_name|slice:":1"|upper}}</span>
-                            {%endif%}
-                            <div class="blog-listing-card-author">
-                                <a href="{%url 'byuser' blog.author%}">{{blog.author.first_name}} {{blog.author.last_name}}</a>
-                                <date>{{blog.post_updated|date:"j F, Y"}}</date>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
