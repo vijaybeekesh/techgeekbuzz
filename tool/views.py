@@ -42,3 +42,6 @@ def seotitlechecker(request):
 
 def seodescriptionchecker(request):
     return render(request, 'tool/seodescriptionchecker.html')
+
+def outlinegenerator(request):
+    return render(request, 'tool/outlinegenerator.html')

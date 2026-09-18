@@ -68,7 +68,7 @@ class RoadmapSitemap(Sitemap):
 class StaticToolsSitemap(Sitemap):
     protocol = "https"
     def items(self):
-        return ['broken-links-checker','password-generator','xmltojson','gst-calculator','markdown-to-html','ppf-calculator','seo-title-generator','invoice-generator','seo-description-generator','linkedin-post-generator','seo-title-checker','seo-description-checker']
+        return ['broken-links-checker','password-generator','xmltojson','gst-calculator','markdown-to-html','ppf-calculator','seo-title-generator','invoice-generator','seo-description-generator','linkedin-post-generator','seo-title-checker','seo-description-checker','outline-generator']
     def location(self, item):
         return reverse(item)
 

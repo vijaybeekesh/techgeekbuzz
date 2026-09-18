@@ -1,0 +1,387 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+    <meta name="description" content="Generate detailed content outlines for blogs, articles, guides, and essays. Create structured, SEO-friendly outlines in seconds - free, no signup.">
+    <meta name="keywords" content="Outline Generator, Content Outline, Blog Outline Generator, Article Outline, SEO Content Structure, Content Planning Tool">
+
+    <meta property="article:publisher" content="https://www.facebook.com/techgeekbuzz/" />
+
+    <link rel="canonical" href="https://www.techgeekbuzz.com/tools/outline-generator">
+
+    <meta property="og:site_name" content="techgeekbuzz.com">
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Free Outline Generator – Create SEO-Friendly Content Outlines" />
+    <meta property="og:description" content="Generate detailed content outlines for blogs, articles, guides, and essays. Create structured, SEO-friendly outlines with AI in seconds." />
+    <meta property="og:url" content="https://www.techgeekbuzz.com/tools/outline-generator">
+    <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Free Outline Generator – Create SEO-Friendly Content Outlines">
+    <meta name="twitter:description" content="Generate detailed content outlines for blogs, articles, guides, and essays. Create structured, SEO-friendly outlines with AI in seconds.">
+    <meta name="twitter:url" content="https://www.techgeekbuzz.com/tools/outline-generator">
+    <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/tools/tool.css'%}">
+    <link rel="stylesheet" href="{% static 'css/tools/outlinegenerator.css'%}">
+{%endblock%}
+
+{%block title%}
+    <title>Free Outline Generator – Create SEO-Friendly Content Outlines</title>
+{%endblock%}
+
+{%block headjs%}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.techgeekbuzz.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 3, "name": "SEO", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 4, "name": "Outline Generator", "item": "https://www.techgeekbuzz.com/tools/outline-generator" }
+            ]
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "Outline Generator",
+            "url": "https://www.techgeekbuzz.com/tools/outline-generator",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Any",
+            "description": "Generate structured, editable, SEO-friendly content outlines for blogs, articles, guides, and essays, with search intent, suggested questions, and SEO insights.",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is a content outline?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "A content outline is a structured plan for a piece of content - typically a heading hierarchy (H1, H2, H3) with key points under each section - that acts as a blueprint before you start writing." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does this tool write the full article for me?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "No. It generates a structured outline - headings, subheadings, key points, and suggested questions - that you can edit and use as a blueprint. You still write the final content." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I edit the generated outline?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every heading and bullet point is editable, you can add or delete sections at any level, and you can drag and drop sections to reorder them - child sections move with their parent." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does adding a primary keyword guarantee better rankings?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "No tool can guarantee rankings. The keyword field helps the outline suggest natural placement and check coverage, but ranking depends on many additional factors beyond an outline's structure." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What does \"search intent\" mean here?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Search intent is an estimate of what a reader searching for your topic is likely looking for - informational, commercial, or transactional - based on your content type and topic. It's a guideline, not a certainty." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I download the outline?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can copy the outline to your clipboard, or download it as a plain text (.txt) or Markdown (.md) file." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is this Outline Generator free?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes, it's completely free with no signup required, and everything runs instantly in your browser." }
+                }
+            ]
+        }
+    ]
+}
+</script>
+{%endblock%}
+
+{%block main%}
+    <!-- Main Section Started -->
+    <main style="margin-top: 2rem;" class="og-app" id="ogApp">
+
+        <nav aria-label="breadcrumb" class="container pt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{%url 'index'%}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{%url 'tools'%}">Tools</a></li>
+                <li class="breadcrumb-item">SEO</li>
+                <li class="breadcrumb-item active" aria-current="page">Outline Generator</li>
+            </ol>
+        </nav>
+
+        <!-- Hero -->
+        <section class="tool-heading og-tool-heading">
+            <div class="og-hero-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M5 5h14M5 5v14M5 5l5 5M10 10h9M10 10v9M10 10l5 5M15 15h4M15 15v4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h1>Outline Generator</h1>
+            <p>Generate structured, SEO-friendly content outlines in seconds.</p>
+            <p class="og-hero-note">Create detailed outlines for blogs, articles, guides, essays, and other content using your topic and audience.</p>
+            <div class="og-hero-badges">
+                <span class="og-badge">⚡ Instant results</span>
+                <span class="og-badge">🔒 No signup required</span>
+                <span class="og-badge">Free to use</span>
+            </div>
+        </section>
+
+        <div class="container" style="padding-top: 1rem;">
+
+            <div class="og-layout">
+                <!-- Left column: input configuration -->
+                <div class="og-col-left">
+                    <form class="og-card og-form-card" id="ogForm" novalidate>
+                        <div class="og-card-head"><h2>Content Configuration</h2></div>
+                        <div class="og-field">
+                            <label for="ogTopic">What do you want to write about? <span class="og-req">*</span></label>
+                            <textarea id="ogTopic" rows="2" placeholder="Enter your topic..." aria-describedby="errTopic" required></textarea>
+                            <span class="og-error" id="errTopic" role="alert"></span>
+                        </div>
+                        <div class="og-field">
+                            <label for="ogKeyword">Primary Keyword <span class="og-optional-label">(optional)</span></label>
+                            <input type="text" id="ogKeyword" placeholder="Enter your primary keyword...">
+                        </div>
+                        <div class="og-field">
+                            <label for="ogContentType">Content Type</label>
+                            <select id="ogContentType"></select>
+                        </div>
+                        <div class="og-field">
+                            <label for="ogAudience">Target Audience</label>
+                            <input type="text" id="ogAudience" placeholder="Who is this content for?">
+                        </div>
+                        <div class="og-field">
+                            <label for="ogLength">Desired Length</label>
+                            <select id="ogLength">
+                                <option value="short">Short — 500–800 words</option>
+                                <option value="medium" selected>Medium — 800–1,500 words</option>
+                                <option value="long">Long — 1,500–2,500 words</option>
+                                <option value="comprehensive">Comprehensive — 2,500–4,000+ words</option>
+                            </select>
+                        </div>
+                        <div class="og-field">
+                            <label for="ogTone">Tone</label>
+                            <select id="ogTone"></select>
+                        </div>
+
+                        <button type="submit" class="og-btn og-btn-primary og-btn-lg og-btn-generate" id="btnGenerate">
+                            <span class="og-btn-label">Generate Outline</span>
+                            <span class="og-btn-spinner" aria-hidden="true"></span>
+                        </button>
+                        <p class="og-loading-text" id="ogLoadingText" hidden>Creating your outline...</p>
+                        <p class="og-error-banner" id="ogErrorBanner" role="alert" hidden></p>
+                    </form>
+
+                    <!-- Improve / regenerate options -->
+                    <div class="og-card" id="ogImproveCard" hidden>
+                        <div class="og-card-head"><h2>Improve the Outline By</h2></div>
+                        <div class="og-improve-grid" id="ogImproveGrid"></div>
+                        <button type="button" class="og-btn og-btn-primary" id="btnRegenerate">↻ Regenerate</button>
+                    </div>
+                </div>
+
+                <!-- Right column: generated outline -->
+                <div class="og-col-right">
+
+                    <div class="og-empty-note" id="ogEmptyState">
+                        Fill in your topic on the left and click <strong>Generate Outline</strong> to see your structured content outline here.
+                    </div>
+
+                    <div id="ogResultsSection" hidden>
+
+                        <!-- Statistics -->
+                        <div class="og-card">
+                            <div class="og-card-head"><h2>Outline Statistics</h2></div>
+                            <div class="og-stats-grid">
+                                <div class="og-stat"><span>Sections</span><strong id="ogStatSections">0</strong></div>
+                                <div class="og-stat"><span>Subsections</span><strong id="ogStatSubsections">0</strong></div>
+                                <div class="og-stat"><span>Questions</span><strong id="ogStatQuestions">0</strong></div>
+                                <div class="og-stat"><span>Est. Words</span><strong id="ogStatWords">0</strong></div>
+                                <div class="og-stat"><span>Depth</span><strong id="ogStatDepth">-</strong></div>
+                            </div>
+                        </div>
+
+                        <!-- Outline editor -->
+                        <div class="og-card">
+                            <div class="og-card-head">
+                                <h2>Generated Outline</h2>
+                                <div class="og-bulk-actions">
+                                    <button type="button" class="og-btn og-btn-sm" id="btnCopyOutline">Copy Outline</button>
+                                    <button type="button" class="og-btn og-btn-sm" id="btnDownloadTxt">Download TXT</button>
+                                    <button type="button" class="og-btn og-btn-sm" id="btnDownloadMd">Download Markdown</button>
+                                    <button type="button" class="og-btn og-btn-sm og-btn-danger" id="btnClearOutline">Clear</button>
+                                </div>
+                            </div>
+                            <p class="og-outline-hint">Drag <span class="og-drag-hint-icon">⠿</span> to reorder sections. Click a heading to edit it, or use the + / × buttons to add or remove sections.</p>
+                            <div class="og-h1-row">
+                                <span class="og-level-badge og-level-h1">H1</span>
+                                <input type="text" class="og-h1-input" id="ogH1Input" aria-label="Main title (H1)">
+                            </div>
+                            <div class="og-tree" id="ogTree" role="tree" aria-label="Content outline"></div>
+                            <button type="button" class="og-btn og-add-h2-btn" id="btnAddH2">+ Add H2 Section</button>
+                        </div>
+
+                        <!-- Search intent -->
+                        <div class="og-card">
+                            <div class="og-card-head"><h2>Search Intent</h2></div>
+                            <div class="og-intent-box">
+                                <span class="og-intent-badge" id="ogIntentBadge">Informational</span>
+                                <p id="ogIntentText"></p>
+                                <small id="ogIntentEstimateNote">This is an estimate based on your content type and topic.</small>
+                            </div>
+                        </div>
+
+                        <!-- SEO insights -->
+                        <div class="og-card">
+                            <div class="og-card-head"><h2>SEO Insights</h2></div>
+                            <ul class="og-analysis-list" id="ogSeoList"></ul>
+                            <p class="og-seo-disclaimer">These are structural suggestions, not a ranking guarantee.</p>
+                        </div>
+
+                        <!-- Suggested questions -->
+                        <div class="og-card">
+                            <div class="og-card-head"><h2>Questions to Answer</h2></div>
+                            <ul class="og-questions-list" id="ogQuestionsList"></ul>
+                            <button type="button" class="og-btn og-btn-sm" id="btnAddFaqSection">+ Add These as an FAQ Section</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="og-toast" id="ogToast" role="status" aria-live="polite"></div>
+        </div>
+
+        <section class="container">
+            <div class="faqs my-5">
+                <div class="accordion" id="ogfaqaccordion">
+                    <h2 class="faq-headline">FAQs</h2>
+                    <hr class="horizontal-row mb-5">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ogheading1">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ogcollapse1" aria-expanded="false" aria-controls="ogcollapse1">
+                           1. What is a content outline?
+                          </button>
+                        </h4>
+                        <div id="ogcollapse1" class="accordion-collapse collapse" aria-labelledby="ogheading1" data-bs-parent="#ogfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">A content outline is a structured plan for a piece of content - typically a heading hierarchy (H1, H2, H3) with key points under each section - that acts as a blueprint before you start writing.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ogheading2">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ogcollapse2" aria-expanded="false" aria-controls="ogcollapse2">
+                           2. Does this tool write the full article for me?
+                          </button>
+                        </h4>
+                        <div id="ogcollapse2" class="accordion-collapse collapse" aria-labelledby="ogheading2" data-bs-parent="#ogfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">No. It generates a structured outline - headings, subheadings, key points, and suggested questions - that you can edit and use as a blueprint. You still write the final content.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ogheading3">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ogcollapse3" aria-expanded="false" aria-controls="ogcollapse3">
+                           3. Can I edit the generated outline?
+                          </button>
+                        </h4>
+                        <div id="ogcollapse3" class="accordion-collapse collapse" aria-labelledby="ogheading3" data-bs-parent="#ogfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes. Every heading and bullet point is editable, you can add or delete sections at any level, and you can drag and drop sections to reorder them - child sections move with their parent.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ogheading4">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ogcollapse4" aria-expanded="false" aria-controls="ogcollapse4">
+                           4. Does adding a primary keyword guarantee better rankings?
+                          </button>
+                        </h4>
+                        <div id="ogcollapse4" class="accordion-collapse collapse" aria-labelledby="ogheading4" data-bs-parent="#ogfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">No tool can guarantee rankings. The keyword field helps the outline suggest natural placement and check coverage, but ranking depends on many additional factors beyond an outline's structure.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ogheading5">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ogcollapse5" aria-expanded="false" aria-controls="ogcollapse5">
+                           5. What does "search intent" mean here?
+                          </button>
+                        </h4>
+                        <div id="ogcollapse5" class="accordion-collapse collapse" aria-labelledby="ogheading5" data-bs-parent="#ogfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Search intent is an estimate of what a reader searching for your topic is likely looking for - informational, commercial, or transactional - based on your content type and topic. It's a guideline, not a certainty.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ogheading6">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ogcollapse6" aria-expanded="false" aria-controls="ogcollapse6">
+                           6. Can I download the outline?
+                          </button>
+                        </h4>
+                        <div id="ogcollapse6" class="accordion-collapse collapse" aria-labelledby="ogheading6" data-bs-parent="#ogfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes. You can copy the outline to your clipboard, or download it as a plain text (.txt) or Markdown (.md) file.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ogheading7">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ogcollapse7" aria-expanded="false" aria-controls="ogcollapse7">
+                           7. Is this Outline Generator free?
+                          </button>
+                        </h4>
+                        <div id="ogcollapse7" class="accordion-collapse collapse" aria-labelledby="ogheading7" data-bs-parent="#ogfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes, it's completely free with no signup required, and everything runs instantly in your browser.</p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related tools -->
+        <section class="og-related">
+            <div class="container">
+                <h2>Related Tools</h2>
+                <div class="og-related-grid">
+                    <a class="og-related-card" href="{%url 'seo-title-generator'%}">
+                        <h3>SEO Title Generator</h3>
+                        <p>Generate click-worthy, SEO-scored titles for blogs, products, and videos with a live Google preview.</p>
+                    </a>
+                    <a class="og-related-card" href="{%url 'seo-description-generator'%}">
+                        <h3>SEO Description Generator</h3>
+                        <p>Generate keyword-focused, click-worthy meta descriptions scored for length and SEO quality.</p>
+                    </a>
+                    <a class="og-related-card" href="{%url 'seo-description-checker'%}">
+                        <h3>SEO Description Checker</h3>
+                        <p>Check meta description length, pixel width, keyword usage, and search preview instantly.</p>
+                    </a>
+                    <a class="og-related-card" href="{%url 'tools'%}">
+                        <h3>All Free Tools</h3>
+                        <p>Browse every free calculator and converter TechGeekBuzz has to offer.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- Main section ended -->
+{%endblock%}
+
+{%block js%}
+<script src="{%static 'js/tools/js/outlinegenerator.js'%}"></script>
+{%endblock%}
