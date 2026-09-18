@@ -13,11 +13,16 @@ from adsmanager.models import *
 def posts(request):
     all_posts = Post.objects.filter(status="publish").order_by("-date_posted")
     featured_post = all_posts.first()
+    trending_posts = Post.objects.filter(status="publish") \
+        .exclude(pk=featured_post.pk if featured_post else None) \
+        .select_related("stats") \
+        .order_by("-stats__views", "-date_posted")[:5]
     paginator = Paginator(all_posts[1:], 12)  # Show 12 posts per page.
     page_number = request.GET.get('page', 1)
     page_obj = paginator.get_page(page_number)
     context = dict()
     context['featured_post'] = featured_post
+    context['trending_posts'] = trending_posts
     context['page_obj'] = page_obj
     context['title']= "Check out our latest blogs category wise"
     context['description']= "Techgeekbuzz be up-to-date with the latest computer science terrms and logics"

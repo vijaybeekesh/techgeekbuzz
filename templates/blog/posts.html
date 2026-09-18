@@ -253,32 +253,58 @@
     {%if page_obj.number == 1 and featured_post%}
     <section class="featured-blog-section">
         <div class="container">
-            <a href="{%url 'postdetail' featured_post.slug%}" class="featured-blog-link">
-                <div class="featured-blog-banner">
-                    {%if featured_post.featured_image%}
-                    <img src="{{featured_post.featured_image.url}}" class="featured-blog-img" alt="{{featured_post.title}}">
-                    {%endif%}
-                    <div class="featured-blog-overlay">
-                        <div class="d-flex flex-wrap mb-2">
-                            {%for category in featured_post.category.all%}
-                            <span class="post-category featured-category"><span>{{category.category_name|upper}}</span></span>
-                            {%if not forloop.last%}
-                            &nbsp;/&nbsp;
+            <div class="row g-4">
+                <div class="col-lg-8 col-12">
+                    <a href="{%url 'postdetail' featured_post.slug%}" class="featured-blog-link">
+                        <div class="featured-blog-banner">
+                            {%if featured_post.featured_image%}
+                            <img src="{{featured_post.featured_image.url}}" class="featured-blog-img" alt="{{featured_post.title}}">
                             {%endif%}
+                            <div class="featured-blog-overlay">
+                                <div class="d-flex flex-wrap mb-2">
+                                    {%for category in featured_post.category.all%}
+                                    <span class="post-category featured-category"><span>{{category.category_name|upper}}</span></span>
+                                    {%if not forloop.last%}
+                                    &nbsp;/&nbsp;
+                                    {%endif%}
+                                    {%endfor%}
+                                </div>
+                                <h1 class="featured-blog-title">{{featured_post.title|truncatechars:90}}</h1>
+                                <p class="featured-blog-desc d-none d-md-block">
+                                    {% autoescape off %}
+                                    {{featured_post.content|striptags|truncatechars:160}}
+                                    {% endautoescape %}
+                                </p>
+                                <div class="featured-blog-meta">
+                                    BY {{featured_post.author.first_name}} {{featured_post.author.last_name}} &#x2022 <date>{{featured_post.post_updated|date:"j F, Y"}}</date>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {%if trending_posts%}
+                <div class="col-lg-4 col-12">
+                    <div class="trending-blog-rail">
+                        <h2 class="trending-blog-heading">Trending Now</h2>
+                        <ol class="trending-blog-list">
+                            {%for blog in trending_posts%}
+                            <li class="trending-blog-item">
+                                <a href="{%url 'postdetail' blog.slug%}" class="trending-blog-link">
+                                    {%if blog.featured_image%}
+                                    <img src="{{blog.featured_image.url}}" class="trending-blog-img" alt="{{blog.title}}"/>
+                                    {%endif%}
+                                    <span class="trending-blog-body">
+                                        <span class="trending-blog-title">{{blog.title|truncatechars:65}}</span>
+                                        <span class="trending-blog-meta">{{blog.author.first_name}} {{blog.author.last_name}} &#x2022 <date>{{blog.post_updated|date:"j M, Y"}}</date></span>
+                                    </span>
+                                </a>
+                            </li>
                             {%endfor%}
-                        </div>
-                        <h1 class="featured-blog-title">{{featured_post.title|truncatechars:90}}</h1>
-                        <p class="featured-blog-desc d-none d-md-block">
-                            {% autoescape off %}
-                            {{featured_post.content|striptags|truncatechars:160}}
-                            {% endautoescape %}
-                        </p>
-                        <div class="featured-blog-meta">
-                            BY {{featured_post.author.first_name}} {{featured_post.author.last_name}} &#x2022 <date>{{featured_post.post_updated|date:"j F, Y"}}</date>
-                        </div>
+                        </ol>
                     </div>
                 </div>
-            </a>
+                {%endif%}
+            </div>
         </div>
     </section>
     {%endif%}
