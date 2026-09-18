@@ -63,93 +63,177 @@
 	</script> {% endcomment %}
 
 <script type="application/ld+json">
+        {%with post_url="https://www.techgeekbuzz.com/blog/"|add:post.slug%}
         {
-            "@context": "https://schema.org/",
-            "@graph":[{
-                        "@type": "blog",
-                        "name": "{{post.title}}",
-                        {% if post.featured_image %}
-                        "image": {
-                            "@type": "ImageObject",
-                            "url": "{{post.featured_image.url}}",
-                            "width": 800,
-                            "height": 400
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "Article",
+                    "@id": "{{post_url}}#article",
+                    "headline": "{{post.title}}",
+                    "description": "{%if post.seoDescription and post.seoDescription != 'Unknown'%}{{post.seoDescription}}{%else%}{{post.content|striptags|truncatechars:160}}{%endif%}",
+                    "image": { "@id": "{{post_url}}#primaryimage" },
+                    "url": "{{post_url}}",
+                    "datePublished": "{{post.date_posted|date:'c'}}",
+                    "dateModified": "{{post.post_updated|date:'c'}}",
+                    "author": { "@id": "https://www.techgeekbuzz.com/author/{{post.author.username}}#person" },
+                    "publisher": { "@id": "https://www.techgeekbuzz.com/#organization" },
+                    "mainEntityOfPage": { "@id": "{{post_url}}#webpage" },
+                    "isPartOf": { "@id": "https://www.techgeekbuzz.com/#website" }
+                    {%with post.category.first as first_category%}
+                    {%if first_category%},
+                    "articleSection": "{{first_category.category_name}}"
+                    {%endif%}
+                    {%endwith%}
+                    {%if post.seoKeywords and post.seoKeywords != 'Unknown'%},
+                    "keywords": "{{post.seoKeywords}}"
+                    {%endif%}
+                },
+                {
+                    "@type": "WebPage",
+                    "@id": "{{post_url}}#webpage",
+                    "url": "{{post_url}}",
+                    "name": "{%if post.seoTitle and post.seoTitle != 'Unknown'%}{{post.seoTitle}}{%else%}{{post.title}}{%endif%}",
+                    "description": "{%if post.seoDescription and post.seoDescription != 'Unknown'%}{{post.seoDescription}}{%else%}{{post.content|striptags|truncatechars:160}}{%endif%}",
+                    "inLanguage": "en-GB",
+                    "isPartOf": { "@id": "https://www.techgeekbuzz.com/#website" },
+                    "about": { "@id": "{{post_url}}#article" },
+                    "primaryImageOfPage": { "@id": "{{post_url}}#primaryimage" },
+                    "image": { "@id": "{{post_url}}#primaryimage" },
+                    "breadcrumb": { "@id": "{{post_url}}#breadcrumb" },
+                    "datePublished": "{{post.date_posted|date:'c'}}",
+                    "dateModified": "{{post.post_updated|date:'c'}}"
+                },
+                {
+                    "@type": "WebSite",
+                    "@id": "https://www.techgeekbuzz.com/#website",
+                    "url": "https://www.techgeekbuzz.com/",
+                    "name": "TechGeekBuzz",
+                    "inLanguage": "en-GB",
+                    "publisher": { "@id": "https://www.techgeekbuzz.com/#organization" },
+                    "potentialAction": {
+                        "@type": "SearchAction",
+                        "target": {
+                            "@type": "EntryPoint",
+                            "urlTemplate": "https://www.techgeekbuzz.com/query/?search={search_term_string}"
                         },
-                        {% endif %}
-                        "url": "https://www.techgeekbuzz.com/blog/{{post.slug}}",
-                        "author": {
-                                    "@type": "Person",
-                                    "name": "{{post.author.username}}"
-                                },
-                        "datePublished": "{{post.date_posted}}",
-                        "dateModified":"{{post.post_updated}}",
-                        "description": "{{post.seoDescription}}"
-                        {% if post.seoKeywords != 'Unknown' %},
-                        "keywords":"{{post.seoKeywords}}"
-                        {% endif %}
+                        "query-input": "required name=search_term_string"
                     }
-                    ,{
-                        "@type": "BreadcrumbList",
-                        "itemListElement": [
+                },
+                {
+                    "@type": "Organization",
+                    "@id": "https://www.techgeekbuzz.com/#organization",
+                    "name": "TechGeekBuzz",
+                    "url": "https://www.techgeekbuzz.com/",
+                    "logo": { "@id": "https://www.techgeekbuzz.com/#logo" },
+                    "image": { "@id": "https://www.techgeekbuzz.com/#logo" },
+                    "sameAs": [
+                        "https://www.facebook.com/techgeekbuzz",
+                        "https://www.instagram.com/techgeek.buzz/",
+                        "https://twitter.com/techgeekbuzz"
+                    ]
+                },
+                {
+                    "@type": "ImageObject",
+                    "@id": "{{post_url}}#primaryimage",
+                    {%if post.featured_image%}
+                    "url": "{{post.featured_image.url}}",
+                    "contentUrl": "{{post.featured_image.url}}",
+                    {%else%}
+                    "url": "https://www.techgeekbuzz.com{% static 'images/hero.png'%}",
+                    "contentUrl": "https://www.techgeekbuzz.com{% static 'images/hero.png'%}",
+                    {%endif%}
+                    "width": 800,
+                    "height": 400,
+                    "caption": "{{post.title}}"
+                },
+                {
+                    "@type": "BreadcrumbList",
+                    "@id": "{{post_url}}#breadcrumb",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://www.techgeekbuzz.com/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "Blog",
+                            "item": "https://www.techgeekbuzz.com/blog"
+                        }
+                        {%with post.category.first as first_category%}
+                        {%if first_category%}
+                        ,{
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": "{{first_category.category_name}}",
+                            "item": "https://www.techgeekbuzz.com{%url 'postbycategory' first_category|slugify%}"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 4,
+                            "name": "{{post.title}}",
+                            "item": "{{post_url}}"
+                        }
+                        {%else%}
+                        ,{
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": "{{post.title}}",
+                            "item": "{{post_url}}"
+                        }
+                        {%endif%}
+                        {%endwith%}
+                    ]
+                },
+                {
+                    "@type": "Person",
+                    "@id": "https://www.techgeekbuzz.com/author/{{post.author.username}}#person",
+                    "name": "{%if post.author.first_name%}{{post.author.first_name}} {{post.author.last_name}}{%else%}{{post.author.username}}{%endif%}",
+                    "url": "https://www.techgeekbuzz.com{%url 'byuser' post.author%}"
+                    {%if post.author.profile.profile_picture%},
+                    "image": "{{post.author.profile.profile_picture.url}}"
+                    {%endif%}
+                    {%if post.author.profile.bio%},
+                    "description": "{{post.author.profile.bio}}"
+                    {%endif%}
+                    {%with fb=post.author.profile.facebook tw=post.author.profile.twitter li=post.author.profile.linkedin ig=post.author.profile.instagram%}
+                    {%if fb or tw or li or ig%},
+                    "sameAs": [
+                        {%if fb%}"{{fb}}"{%endif%}
+                        {%if tw%}{%if fb%},{%endif%}"{{tw}}"{%endif%}
+                        {%if li%}{%if fb or tw%},{%endif%}"{{li}}"{%endif%}
+                        {%if ig%}{%if fb or tw or li%},{%endif%}"{{ig}}"{%endif%}
+                    ]
+                    {%endif%}
+                    {%endwith%}
+                }
+                {%if post.faqs.all%}
+                ,{
+                    "@type": "FAQPage",
+                    "@id": "{{post_url}}#faq",
+                    "mainEntity": [
+                            {%for faq in post.faqs.all%}
                             {
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "Home",
-                                "item": "https://www.techgeekbuzz.com/"
-                            },
-                            {
-                                "@type": "ListItem",
-                                "position": 2,
-                                "name": "Blog",
-                                "item": "https://www.techgeekbuzz.com/blog"
-                            }
-                            {%with post.category.first as first_category%}
-                            {%if first_category%}
-                            ,{
-                                "@type": "ListItem",
-                                "position": 3,
-                                "name": "{{first_category.category_name}}",
-                                "item": "https://www.techgeekbuzz.com{%url 'postbycategory' first_category|slugify%}"
-                            },
-                            {
-                                "@type": "ListItem",
-                                "position": 4,
-                                "name": "{{post.title}}",
-                                "item": "https://www.techgeekbuzz.com/blog/{{post.slug}}"
-                            }
-                            {%else%}
-                            ,{
-                                "@type": "ListItem",
-                                "position": 3,
-                                "name": "{{post.title}}",
-                                "item": "https://www.techgeekbuzz.com/blog/{{post.slug}}"
-                            }
-                            {%endif%}
-                            {%endwith%}
-                        ]
-                    }
-                    {%if post.faqs.all%}
-                    ,{
-                        "@type": "FAQPage",
-                        "mainEntity": [
-                                {%for faq in post.faqs.all%}
-                                {
-                                    "@type": "Question",
-                                    "name": "{{faq.question}}",
-                                    "acceptedAnswer": {
-                                        "@type": "Answer",
-                                        "text": "{{ faq.answer }}"
-                                    }
+                                "@type": "Question",
+                                "name": "{{faq.question}}",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "{{ faq.answer }}"
                                 }
-                                {%if not forloop.last%}
-                                ,
-                                {%endif%}
-                                {%endfor%}
-                        ]
-                    }
-                  {%endif%}        
+                            }
+                            {%if not forloop.last%}
+                            ,
+                            {%endif%}
+                            {%endfor%}
+                    ]
+                }
+              {%endif%}
             ]
         }
+        {%endwith%}
 </script>
 {%endblock%}
 {%block main%}
