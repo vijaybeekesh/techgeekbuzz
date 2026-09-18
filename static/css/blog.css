@@ -422,3 +422,17 @@ a.pag-list:hover ,.pagactive {
         height: 18rem;
     }
 }
+
+/* Bootstrap's default breadcrumb text (12px) and line-height (1) are too small
+   and cramped for this site's larger type scale. font-size is set explicitly
+   on .breadcrumb-item (not just inherited from .breadcrumb) because a global
+   ".footer-down p, li" rule elsewhere targets every <li> on the site and
+   otherwise wins over inheritance. */
+.breadcrumb {
+    padding: 1.4rem 0 1rem;
+    margin-bottom: .8rem;
+}
+.breadcrumb-item {
+    font-size: 1.4rem;
+    line-height: 1.6;
+}
