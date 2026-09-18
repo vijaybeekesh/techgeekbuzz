@@ -252,10 +252,10 @@
                 <li class="breadcrumb-item"><a href="{%url 'posts'%}">Blog</a></li>
                 {%with post.category.first as first_category%}
                 {%if first_category%}
-                <li class="breadcrumb-item"><a href="{%url 'postbycategory' first_category|slugify%}">{{first_category.category_name}}</a></li>
+                <li class="breadcrumb-item"><a href="{%url 'postbycategory' first_category|slugify%}">{{first_category.category_name|title}}</a></li>
                 {%endif%}
                 {%endwith%}
-                <li class="breadcrumb-item active" aria-current="page">{{post.title|truncatechars:60}}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{post.title}}</li>
             </ol>
         </nav>
         <section class="container">
