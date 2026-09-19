@@ -44,6 +44,7 @@
  {%endblock%}
 
 {%block css%}
+    <link rel="stylesheet" href="{% static 'css/blog.css'%}" />
     <link rel="stylesheet" href="{% static 'css/blogdetail.css'%}" />
     <link rel="stylesheet" href="{% static 'css/prism.css'%}">
     <link rel="stylesheet" href="{% static 'css/homepage.css'%}">
@@ -436,41 +437,43 @@
             <hr class="horizontal-row" />
             </div>
             <div class="container">
-            <div class="row blogs-list justify-content-between">
+            <div class="row g-4">
                 {%for popular_post in recent_posts%}
                 <!-- Blog {{forloop.counter}} Start -->
-                <div class="col-lg-4 col-12 mx-auto mb-3 popular-blogs-card d-flex flex-column justify-content-between pb-3 shadow">
-                <!-- <div class="shadow container"> -->
-                    <div class="blog-card d-flex flex-column">
-                        {%if popular_post.featured_image%} 
-                         <a href="{%url 'postdetail' popular_post.slug %}">
-                             <img src="{{popular_post.featured_image.url}}" class="img-fluid" alt="{{popular_post.title}}" />
-                         </a>    
-                        {%endif%}
-                    <div class="d-flex">
-                        {%for category in popular_post.category.all%}
-                            <a href="{%url 'postbycategory' category.category_name|slugify%}">
-                                 <span>{{category.category_name|upper}}
-                                    {%if not forloop.last%}
-                                    / &nbsp; 
-                                    {%endif%}
-                                 </span>
+                <div class="col-lg-4 col-md-6 col-12 d-flex">
+                    <div class="blog-listing-card d-flex flex-column w-100">
+                        <div class="blog-listing-card-img-wrap">
+                            {%if popular_post.featured_image%}
+                            <a href="{%url 'postdetail' popular_post.slug%}">
+                                <img src="{{popular_post.featured_image.url}}" class="blog-listing-card-img" alt="{{popular_post.title}}"/>
                             </a>
-                        {%endfor%}
+                            {%endif%}
+                            {%with popular_post.category.first as first_category%}
+                            {%if first_category%}
+                            <a href="{%url 'postbycategory' first_category|slugify%}" class="blog-listing-card-badge">{{first_category.category_name|upper}}</a>
+                            {%endif%}
+                            {%endwith%}
+                        </div>
+                        <div class="blog-listing-card-avatar-wrap">
+                            {%if popular_post.author.profile.profile_picture%}
+                            <img src="{{popular_post.author.profile.profile_picture.url}}" class="blog-listing-card-avatar" alt="{{popular_post.author.username}}"/>
+                            {%else%}
+                            <span class="blog-listing-card-avatar blog-listing-card-avatar-fallback">{{popular_post.author.first_name|slice:":1"|upper}}</span>
+                            {%endif%}
+                            <div class="blog-listing-card-author">
+                                <a href="{%url 'byuser' popular_post.author%}">{{popular_post.author.first_name}} {{popular_post.author.last_name}}</a>
+                                <date>{{popular_post.post_updated|date:"j F, Y"}}</date>
+                            </div>
+                        </div>
+                        <div class="blog-listing-card-body d-flex flex-column flex-grow-1">
+                            <h2 class="blog-listing-card-title"><a href="{%url 'postdetail' popular_post.slug%}">{{popular_post.title|truncatechars:70}}</a></h2>
+                            <p class="blog-listing-card-desc">
+                                {% autoescape off %}
+                                {{popular_post.content|striptags|truncatechars:100}}
+                                {% endautoescape %}
+                            </p>
+                        </div>
                     </div>
-                    <h3><a href="{%url 'postdetail' popular_post.slug %}">{{popular_post.title}}</a></h3>
-                    
-                 
-                    <p>
-                        {% autoescape off %}
-                        {{popular_post.content|striptags|truncatechars:100}}
-                        {% endautoescape %}
-
-                    </p>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between"><date>{{popular_post.post_updated|date:"j F, Y"}}</date>
-                    </div>
-                <!-- </div>      -->
                 </div>
                 <!-- Blog {{forloop.counter}}  ends -->
                 {%endfor%}

@@ -149,10 +149,10 @@
     <section class=" categories-blog" style="margin-top:9rem">
         <div class="container my-5">
             
-            <div class="row justify-content-evenly">
+            <div class="row g-4">
                 {%if bycategory%}
                 <div class="main-blog-heading d-flex align-items-center justify-content-center">
-                    <hr> 
+                    <hr>
                         <h1>{{category_name|upper}}</h1>
                     <hr>
                 </div>
@@ -160,41 +160,38 @@
                 {%if page_obj%}
                     {% for post in page_obj %}
                         <!-- Item {{forloop.counter}}  -->
-                        <div class="col-lg-4 col-12 blog-card-container shadow  py-3 my-3 d-flex flex-column justify-content-between">
-                            <div class="blog-card p-2">
-                                {%if post.featured_image%}
-                                <a  href="{%url 'postdetail' post.slug%}">
-                                    <img src="{{post.featured_image.url}}" class="img-fluid" alt="{{post.title}}"/>
-                                </a>
-                                {%endif%}
-                                <div class="d-flex mt-3 flex-wrap">
-                                    {%for category in post.category.all%}
-                                    <h5>
-                                        <a href="{%url 'postbycategory' category|slugify %}" class="post-category">
-                                             <span>{{category.category_name|upper}}</span>
-                                            </a> 
-                                            {%if not forloop.last%}
-                                            / &nbsp; 
-                                            {%endif%}
-                                        </h5>
-                                    {%endfor%}
-                                </div>
-                                <h2><a href="{%url 'postdetail' post.slug%}">{{post.title}} </a></h2>
-                                <p>
-                                    {% autoescape off %}
-                                    {{post.content|striptags|truncatechars:100}}
-                                    {% endautoescape %}
-
-                                </p>
-                            </div>
-                            <div class="blog-card-footer d-flex align-items-center justify-content-between">
-                                <div class="author-detail-blog d-flex align-items-center ">
-                                    {%if post.author.profile.profile_picture%}
-                                        <img src="{{post.author.profile.profile_picture.url}}" alt="{{post.author.username}}"/>
-                                    {%else%}
-                                        <img src="{%static 'images/default.png'%}" alt="{{post.author.username}}"/>
+                        <div class="col-lg-4 col-md-6 col-12 d-flex">
+                            <div class="blog-listing-card d-flex flex-column w-100">
+                                <div class="blog-listing-card-img-wrap">
+                                    {%if post.featured_image%}
+                                    <a href="{%url 'postdetail' post.slug%}">
+                                        <img src="{{post.featured_image.url}}" class="blog-listing-card-img" alt="{{post.title}}"/>
+                                    </a>
                                     {%endif%}
-                                    <h4><a href="{%url 'byuser' post.author%}">{{post.author.first_name}} {{post.author.last_name}}</a> <br> <date>{{post.post_updated|date:"j F, Y"}}</date></h4>
+                                    {%with post.category.first as first_category%}
+                                    {%if first_category%}
+                                    <a href="{%url 'postbycategory' first_category|slugify%}" class="blog-listing-card-badge">{{first_category.category_name|upper}}</a>
+                                    {%endif%}
+                                    {%endwith%}
+                                </div>
+                                <div class="blog-listing-card-avatar-wrap">
+                                    {%if post.author.profile.profile_picture%}
+                                    <img src="{{post.author.profile.profile_picture.url}}" class="blog-listing-card-avatar" alt="{{post.author.username}}"/>
+                                    {%else%}
+                                    <span class="blog-listing-card-avatar blog-listing-card-avatar-fallback">{{post.author.first_name|slice:":1"|upper}}</span>
+                                    {%endif%}
+                                    <div class="blog-listing-card-author">
+                                        <a href="{%url 'byuser' post.author%}">{{post.author.first_name}} {{post.author.last_name}}</a>
+                                        <date>{{post.post_updated|date:"j F, Y"}}</date>
+                                    </div>
+                                </div>
+                                <div class="blog-listing-card-body d-flex flex-column flex-grow-1">
+                                    <h2 class="blog-listing-card-title"><a href="{%url 'postdetail' post.slug%}">{{post.title|truncatechars:70}}</a></h2>
+                                    <p class="blog-listing-card-desc">
+                                        {% autoescape off %}
+                                        {{post.content|striptags|truncatechars:100}}
+                                        {% endautoescape %}
+                                    </p>
                                 </div>
                             </div>
                         </div>
