@@ -16,6 +16,7 @@ urlpatterns = [
     path('/seo-title-checker', seotitlechecker, name ="seo-title-checker"),
     path('/seo-description-checker', seodescriptionchecker, name ="seo-description-checker"),
     path('/outline-generator', outlinegenerator, name ="outline-generator"),
+    path('/username-generator', usernamegenerator, name ="username-generator"),
 
     # apis urls
     path("/api/broken-links-checker/",brokenlinkschecker_api, name="broken-links-checker-api"),

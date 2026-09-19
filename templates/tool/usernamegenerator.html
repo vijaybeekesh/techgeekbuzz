@@ -1,0 +1,532 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{%block metadata%}
+    <meta name="description" content="Generate creative and unique username ideas for Instagram, YouTube, TikTok, gaming, social media, and more with our free Username Generator.">
+    <meta name="keywords" content="Username Generator, Username Ideas, Instagram Username, Gaming Username, TikTok Username, Nickname Generator">
+
+    <meta property="article:publisher" content="https://www.facebook.com/techgeekbuzz/" />
+
+    <link rel="canonical" href="https://www.techgeekbuzz.com/tools/username-generator">
+
+    <meta property="og:site_name" content="techgeekbuzz.com">
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Username Generator – Generate Unique Username Ideas" />
+    <meta property="og:description" content="Generate creative and unique username ideas for Instagram, YouTube, TikTok, gaming, social media, and more with our free Username Generator." />
+    <meta property="og:url" content="https://www.techgeekbuzz.com/tools/username-generator">
+    <meta property="og:image" content="https://www.techgeekbuzz.com{% static 'images/hero.png'%}" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Username Generator – Generate Unique Username Ideas">
+    <meta name="twitter:description" content="Generate creative and unique username ideas for Instagram, YouTube, TikTok, gaming, social media, and more with our free Username Generator.">
+    <meta name="twitter:url" content="https://www.techgeekbuzz.com/tools/username-generator">
+    <meta name="twitter:image" content="https://techgeekbuzz.com{% static 'images/hero.png'%}">
+{%endblock%}
+
+{%block css%}
+    <link rel="stylesheet" href="{% static 'css/tools/tool.css'%}">
+    <link rel="stylesheet" href="{% static 'css/tools/usernamegenerator.css'%}">
+{%endblock%}
+
+{%block title%}
+    <title>Username Generator – Generate Unique Username Ideas</title>
+{%endblock%}
+
+{%block headjs%}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.techgeekbuzz.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 3, "name": "Marketing", "item": "https://www.techgeekbuzz.com/tools" },
+                { "@type": "ListItem", "position": 4, "name": "Username Generator", "item": "https://www.techgeekbuzz.com/tools/username-generator" }
+            ]
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "Username Generator",
+            "url": "https://www.techgeekbuzz.com/tools/username-generator",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Any",
+            "description": "Generate creative, memorable username ideas for social media, gaming, communities, and personal branding based on your name, interests, and style.",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Is this Username Generator free to use?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes, it's completely free with no signup required, and every suggestion is generated instantly in your browser." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Are the generated usernames guaranteed to be available?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "No. This tool only checks that a username matches your chosen formatting rules - it does not check real-time availability on any platform. Always verify directly on the platform you plan to use before claiming a username." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does the tool store my name or interests?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "No. Generation runs entirely in your browser, nothing you type is sent to or stored on our servers, and favorites are kept only in your current browser session." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How many username ideas can I generate at once?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "You can generate roughly 20-30 suggestions per request, and use \"Generate More\" to keep adding fresh, non-duplicate ideas without losing your favorites." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I control the length and characters used?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can choose a short, medium, long, or custom length range, and toggle numbers, underscores, and periods on or off." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Will the tool use my birthday or personal details in a username?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "No. Numbers added to usernames are generic (random, or a generic year/digit pattern) - the tool never infers or uses sensitive personal information such as birthdays unless you explicitly type them into the name or keyword field yourself." }
+                }
+            ]
+        }
+    ]
+}
+</script>
+{%endblock%}
+
+{%block main%}
+    <!-- Main Section Started -->
+    <main style="margin-top: 2rem;" class="ug-app" id="ugApp">
+
+        <nav aria-label="breadcrumb" class="container pt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{%url 'index'%}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{%url 'tools'%}">Tools</a></li>
+                <li class="breadcrumb-item">Marketing</li>
+                <li class="breadcrumb-item active" aria-current="page">Username Generator</li>
+            </ol>
+        </nav>
+
+        <!-- Hero -->
+        <section class="tool-heading ug-tool-heading">
+            <div class="ug-hero-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <circle cx="12" cy="8" r="3.4"/>
+                    <path d="M5 20c0-3.6 3.1-6.2 7-6.2s7 2.6 7 6.2" stroke-linecap="round"/>
+                    <path d="M17.5 5.5l1.2 1.2M18.7 5.5l-1.2 1.2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h1>Username Generator</h1>
+            <p>Generate creative and memorable username ideas in seconds.</p>
+            <p class="ug-hero-note">Create unique username ideas for social media, gaming, business, personal branding, and more.</p>
+            <div class="ug-hero-badges">
+                <span class="ug-badge">⚡ Instant results</span>
+                <span class="ug-badge">🔒 No signup required</span>
+                <span class="ug-badge">Free to use</span>
+            </div>
+        </section>
+
+        <div class="container" style="padding-top: 1rem;">
+
+            <div class="ug-layout">
+                <!-- Left column: Generator Settings -->
+                <div class="ug-col-left">
+                    <form id="ugForm" novalidate>
+                        <div class="ug-card ug-settings-card">
+                            <div class="ug-settings-head">
+                                <div class="ug-settings-head-icon" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                                        <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h2>Generator Settings</h2>
+                                    <p class="ug-settings-head-subtitle">Customize how your usernames are generated.</p>
+                                </div>
+                            </div>
+
+                            <div class="ug-field-grid ug-field-grid-2">
+                                <div class="ug-field">
+                                    <label for="ugName"><svg class="ug-label-icon" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/></svg>Name or Keyword</label>
+                                    <input type="text" id="ugName" placeholder="Enter your name, nickname, or keyword..." maxlength="30" autocomplete="off">
+                                    <span class="ug-field-hint">e.g. Rahul</span>
+                                </div>
+
+                                <div class="ug-field">
+                                    <label for="ugInterests"><svg class="ug-label-icon" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2a1 1 0 0 1 1-1h5.5a1 1 0 0 1 .707.293l6.5 6.5a1 1 0 0 1 0 1.414l-5.5 5.5a1 1 0 0 1-1.414 0l-6.5-6.5A1 1 0 0 1 2 7.5V2Zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"/></svg>Interests or Keywords <span class="ug-optional-label">(optional)</span></label>
+                                    <input type="text" id="ugInterests" placeholder="e.g. coding, gaming, travel, photography" autocomplete="off">
+                                    <span class="ug-field-hint">Separate multiple keywords with commas</span>
+                                </div>
+                            </div>
+
+                            <div id="ugFormError" class="ug-form-error" hidden></div>
+
+                            <div class="ug-field-grid ug-field-grid-4">
+                                <div class="ug-field">
+                                    <label for="ugStyle"><svg class="ug-label-icon" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l1.4 4.6L14 7l-4.6 1.4L8 13l-1.4-4.6L2 7l4.6-1.4L8 1z"/></svg>Username Style</label>
+                                    <select id="ugStyle">
+                                        <option value="random">Random</option>
+                                        <option value="creative" selected>Creative</option>
+                                        <option value="cool">Cool</option>
+                                        <option value="professional">Professional</option>
+                                        <option value="minimal">Minimal</option>
+                                        <option value="funny">Funny</option>
+                                        <option value="gaming">Gaming</option>
+                                        <option value="aesthetic">Aesthetic</option>
+                                        <option value="tech">Tech</option>
+                                        <option value="business">Business</option>
+                                        <option value="cute">Cute</option>
+                                        <option value="bold">Bold</option>
+                                    </select>
+                                </div>
+                                <div class="ug-field">
+                                    <label for="ugPlatform"><svg class="ug-label-icon" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor"><path d="M8.235 1.559a.5.5 0 0 0-.47 0l-7.5 4a.5.5 0 0 0 0 .882L3.188 8 .264 9.559a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882L12.813 8l2.922-1.559a.5.5 0 0 0 0-.882l-7.5-4Z"/></svg>Platform</label>
+                                    <select id="ugPlatform">
+                                        <option value="general" selected>General / Any</option>
+                                        <option value="instagram">Instagram</option>
+                                        <option value="youtube">YouTube</option>
+                                        <option value="tiktok">TikTok</option>
+                                        <option value="twitter">X / Twitter</option>
+                                        <option value="facebook">Facebook</option>
+                                        <option value="discord">Discord</option>
+                                        <option value="twitch">Twitch</option>
+                                        <option value="reddit">Reddit</option>
+                                        <option value="gaming">Gaming</option>
+                                        <option value="website">Website / Brand</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="ug-field">
+                                    <label for="ugLength"><svg class="ug-label-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M2 8h12M2 5v2M5 5v3M8 5v2M11 5v3M14 5v2"/></svg>Username Length</label>
+                                    <select id="ugLength">
+                                        <option value="short">Short (3-8 characters)</option>
+                                        <option value="medium" selected>Medium (8-14 characters)</option>
+                                        <option value="long">Long (14-20 characters)</option>
+                                        <option value="custom">Custom</option>
+                                    </select>
+                                </div>
+                                <div class="ug-field">
+                                    <label for="ugCount"><svg class="ug-label-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M5.5 2.5l-2 11M12.5 2.5l-2 11M2 6h12M1.5 10.5h12"/></svg>Number of Suggestions</label>
+                                    <input type="number" id="ugCount" min="10" max="30" value="24">
+                                </div>
+                            </div>
+
+                            <div class="ug-field-grid ug-custom-length" id="ugCustomLengthWrap" hidden>
+                                <div class="ug-field">
+                                    <label for="ugMinLen">Minimum length</label>
+                                    <input type="number" id="ugMinLen" min="3" max="30" value="6">
+                                </div>
+                                <div class="ug-field">
+                                    <label for="ugMaxLen">Maximum length</label>
+                                    <input type="number" id="ugMaxLen" min="3" max="30" value="16">
+                                </div>
+                            </div>
+
+                            <div class="ug-card-head ug-card-subhead">
+                                <h3>
+                                    <svg class="ug-label-icon" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/></svg>
+                                    Username Options
+                                </h3>
+                            </div>
+
+                            <div class="ug-toggles-grid">
+                                <label class="ug-toggle-row">
+                                    <span class="ug-toggle-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M5.5 2.5l-2 11M12.5 2.5l-2 11M2 6h12M1.5 10.5h12"/></svg></span>
+                                    <span class="ug-toggle-text">Include numbers</span>
+                                    <input type="checkbox" id="ugIncludeNumbers" checked>
+                                </label>
+                                <label class="ug-toggle-row">
+                                    <span class="ug-toggle-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 13h10"/></svg></span>
+                                    <span class="ug-toggle-text">Allow underscore</span>
+                                    <input type="checkbox" id="ugAllowUnderscore" checked>
+                                </label>
+                                <label class="ug-toggle-row">
+                                    <span class="ug-toggle-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="13" r="1.6"/></svg></span>
+                                    <span class="ug-toggle-text">Allow period</span>
+                                    <input type="checkbox" id="ugAllowPeriod">
+                                </label>
+                                <label class="ug-toggle-row">
+                                    <span class="ug-toggle-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5l5 2v4c0 4-2.2 6-5 7-2.8-1-5-3-5-7v-4l5-2z"/><path d="M5.7 8l1.6 1.6 3-3.2"/></svg></span>
+                                    <span class="ug-toggle-text">Avoid generic/common patterns</span>
+                                    <input type="checkbox" id="ugAvoidCommon" checked>
+                                </label>
+                            </div>
+
+                            <div class="ug-field-grid">
+                                <div class="ug-field">
+                                    <label for="ugCapitalization"><span class="ug-label-icon ug-label-icon-text" aria-hidden="true">Aa</span>Capitalization</label>
+                                    <select id="ugCapitalization">
+                                        <option value="capitalized" selected>Capitalized</option>
+                                        <option value="lowercase">Lowercase</option>
+                                        <option value="mixed">Mixed Case</option>
+                                        <option value="random">Random</option>
+                                    </select>
+                                </div>
+                                <div class="ug-field" id="ugNumberStyleWrap">
+                                    <label for="ugNumberStyle"><svg class="ug-label-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M5.5 2.5l-2 11M12.5 2.5l-2 11M2 6h12M1.5 10.5h12"/></svg>Number Style</label>
+                                    <select id="ugNumberStyle">
+                                        <option value="random" selected>Random numbers</option>
+                                        <option value="year">Year-style</option>
+                                        <option value="two">Two-digit number</option>
+                                        <option value="three">Three-digit number</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="button" class="ug-optional-toggle" id="ugToggleAdvanced" aria-expanded="false" aria-controls="ugAdvancedFields">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>
+                                Advanced Options
+                            </button>
+                            <div class="ug-advanced-fields ug-field-grid-5" id="ugAdvancedFields" hidden>
+                                <div class="ug-field">
+                                    <label for="ugStartWith"><svg class="ug-label-icon" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/></svg>Start With</label>
+                                    <input type="text" id="ugStartWith" placeholder="e.g. Rahul">
+                                </div>
+                                <div class="ug-field">
+                                    <label for="ugEndWith"><svg class="ug-label-icon ug-label-icon-flip" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/></svg>End With</label>
+                                    <input type="text" id="ugEndWith" placeholder="e.g. Tech">
+                                </div>
+                                <div class="ug-field">
+                                    <label for="ugMustInclude"><svg class="ug-label-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg>Must Include</label>
+                                    <input type="text" id="ugMustInclude" placeholder="e.g. AI">
+                                </div>
+                                <div class="ug-field">
+                                    <label for="ugMustNotInclude"><svg class="ug-label-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2.5 8h11"/></svg>Must Not Include</label>
+                                    <input type="text" id="ugMustNotInclude" placeholder="e.g. 123">
+                                </div>
+                                <div class="ug-field">
+                                    <label for="ugMaxSpecial"><svg class="ug-label-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M8 2v12M3 5l10 6M13 5L3 11"/></svg>Maximum Special Characters</label>
+                                    <input type="number" id="ugMaxSpecial" min="0" max="5" value="2">
+                                </div>
+                            </div>
+
+                            <div class="ug-actions">
+                                <button type="submit" class="ug-btn ug-btn-primary" id="ugGenerateBtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" class="ug-btn-icon">
+                                        <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+                                    </svg>
+                                    <span class="ug-btn-label">Generate Usernames</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" class="ug-btn-icon ug-btn-icon-end">
+                                        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+                                    </svg>
+                                    <span class="ug-btn-spinner" aria-hidden="true"></span>
+                                </button>
+                                <button type="button" class="ug-btn ug-btn-danger" id="ugResetBtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                                    </svg>
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right column: Generated Usernames -->
+                <div class="ug-col-right">
+
+                    <div class="ug-card" id="ugResultsCard">
+                        <div class="ug-card-head">
+                            <h2>Generated Usernames</h2>
+                            <span class="ug-result-count" id="ugResultCount" hidden></span>
+                        </div>
+
+                        <div class="ug-toolbar" id="ugToolbar" hidden>
+                            <div class="ug-search-wrap">
+                                <input type="search" id="ugSearch" placeholder="Search usernames...">
+                            </div>
+                            <select id="ugSort">
+                                <option value="recommended">Recommended</option>
+                                <option value="shortest">Shortest</option>
+                                <option value="longest">Longest</option>
+                                <option value="alphabetical">Alphabetical</option>
+                                <option value="favorites">Favorites</option>
+                            </select>
+                            <button type="button" class="ug-btn" id="ugRegenerateBtn">Regenerate</button>
+                            <button type="button" class="ug-btn" id="ugGenerateMoreBtn">Generate More</button>
+                            <button type="button" class="ug-btn ug-btn-primary" id="ugCopyAllBtn">Copy All</button>
+                        </div>
+
+                        <div class="ug-disclaimer" id="ugDisclaimer" hidden>
+                            <span class="ug-disclaimer-icon" aria-hidden="true">✓</span>
+                            Suggestions are validated against your formatting rules only. Availability is <strong>not checked</strong> - verify directly on your chosen platform before using a username.
+                        </div>
+
+                        <div class="ug-empty" id="ugEmptyState">
+                            Enter a name or keyword and click "Generate Usernames" to see suggestions here.
+                        </div>
+
+                        <div class="ug-loading-note" id="ugLoadingNote" hidden>Generating username ideas...</div>
+
+                        <div id="ugResultsWrap"></div>
+                        <div class="ug-no-match" id="ugNoMatch" hidden>No usernames match your search.</div>
+                    </div>
+
+                    <!-- Favorites -->
+                    <div class="ug-card" id="ugFavoritesCard">
+                        <div class="ug-card-head">
+                            <h2>♥ Favorites</h2>
+                            <button type="button" class="ug-btn ug-btn-sm" id="ugFavoritesCopyAllBtn" hidden>Copy All</button>
+                        </div>
+                        <div class="ug-empty" id="ugFavoritesEmpty">You haven't favorited any usernames yet. Click the ♡ icon on a suggestion to save it here.</div>
+                        <ul class="ug-favorites-list" id="ugFavoritesList" hidden></ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Informational content -->
+            <div class="ug-card">
+                <div class="ug-card-head"><h2>What Is a Username Generator?</h2></div>
+                <p class="ug-info-text">A username generator combines your name, interests, and preferred style into short, readable name ideas you can use for social media, gaming, forums, or a personal brand. Enter a name or keyword, pick a style and any formatting preferences, and generate a batch of ideas to explore, copy, and favorite - it does not check whether a name is actually free to register anywhere.</p>
+            </div>
+
+            <div class="ug-card">
+                <div class="ug-card-head"><h2>How to Create a Good Username</h2></div>
+                <ul class="ug-tips-list">
+                    <li><strong>Keep it easy to remember</strong> - short, simple combinations stick better than long, complex ones.</li>
+                    <li><strong>Keep it easy to spell</strong> - avoid unusual letter swaps that others will mistype.</li>
+                    <li><strong>Avoid unnecessary numbers</strong> - only add digits when they help, not just to fill space.</li>
+                    <li><strong>Keep it relevant to your identity or brand</strong> - it should say something about who you are.</li>
+                    <li><strong>Avoid excessive special characters</strong> - one underscore or period is usually enough.</li>
+                    <li><strong>Consider using the same username across platforms</strong> - it makes you easier to find and recognize.</li>
+                </ul>
+            </div>
+
+            <div class="ug-card">
+                <div class="ug-card-head"><h2>Where Can You Use These Usernames?</h2></div>
+                <div class="ug-platform-badges">
+                    <span class="ug-badge">Instagram</span>
+                    <span class="ug-badge">YouTube</span>
+                    <span class="ug-badge">TikTok</span>
+                    <span class="ug-badge">Discord</span>
+                    <span class="ug-badge">Twitch</span>
+                    <span class="ug-badge">Gaming</span>
+                    <span class="ug-badge">Reddit</span>
+                    <span class="ug-badge">Personal websites</span>
+                    <span class="ug-badge">Online communities</span>
+                </div>
+            </div>
+
+            <div class="ug-toast" id="ugToast" role="status" aria-live="polite"></div>
+        </div>
+
+        <section class="container">
+            <div class="faqs my-5">
+                <div class="accordion" id="ugfaqaccordion">
+                    <h2 class="faq-headline">FAQs</h2>
+                    <hr class="horizontal-row mb-5">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ugheading1">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ugcollapse1" aria-expanded="false" aria-controls="ugcollapse1">
+                           1. Is this Username Generator free to use?
+                          </button>
+                        </h4>
+                        <div id="ugcollapse1" class="accordion-collapse collapse" aria-labelledby="ugheading1" data-bs-parent="#ugfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes, it's completely free with no signup required, and every suggestion is generated instantly in your browser.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ugheading2">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ugcollapse2" aria-expanded="false" aria-controls="ugcollapse2">
+                           2. Are the generated usernames guaranteed to be available?
+                          </button>
+                        </h4>
+                        <div id="ugcollapse2" class="accordion-collapse collapse" aria-labelledby="ugheading2" data-bs-parent="#ugfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">No. This tool only checks that a username matches your chosen formatting rules - it does not check real-time availability on any platform. Always verify directly on the platform you plan to use before claiming a username.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ugheading3">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ugcollapse3" aria-expanded="false" aria-controls="ugcollapse3">
+                           3. Does the tool store my name or interests?
+                          </button>
+                        </h4>
+                        <div id="ugcollapse3" class="accordion-collapse collapse" aria-labelledby="ugheading3" data-bs-parent="#ugfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">No. Generation runs entirely in your browser, nothing you type is sent to or stored on our servers, and favorites are kept only in your current browser session.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ugheading4">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ugcollapse4" aria-expanded="false" aria-controls="ugcollapse4">
+                           4. How many username ideas can I generate at once?
+                          </button>
+                        </h4>
+                        <div id="ugcollapse4" class="accordion-collapse collapse" aria-labelledby="ugheading4" data-bs-parent="#ugfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">You can generate roughly 20-30 suggestions per request, and use "Generate More" to keep adding fresh, non-duplicate ideas without losing your favorites.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ugheading5">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ugcollapse5" aria-expanded="false" aria-controls="ugcollapse5">
+                           5. Can I control the length and characters used?
+                          </button>
+                        </h4>
+                        <div id="ugcollapse5" class="accordion-collapse collapse" aria-labelledby="ugheading5" data-bs-parent="#ugfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">Yes. You can choose a short, medium, long, or custom length range, and toggle numbers, underscores, and periods on or off.</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="ugheading6">
+                          <button class="accordion-button collapsed faqbutton" type="button" data-bs-toggle="collapse" data-bs-target="#ugcollapse6" aria-expanded="false" aria-controls="ugcollapse6">
+                           6. Will the tool use my birthday or personal details in a username?
+                          </button>
+                        </h4>
+                        <div id="ugcollapse6" class="accordion-collapse collapse" aria-labelledby="ugheading6" data-bs-parent="#ugfaqaccordion">
+                          <div class="accordion-body">
+                              <p class="faqanswer">No. Numbers added to usernames are generic (random, or a generic year/digit pattern) - the tool never infers or uses sensitive personal information such as birthdays unless you explicitly type them into the name or keyword field yourself.</p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related tools -->
+        <section class="ug-related">
+            <div class="container">
+                <h2>Related Tools</h2>
+                <div class="ug-related-grid">
+                    <a class="ug-related-card" href="{%url 'seo-title-generator'%}">
+                        <h3>SEO Title Generator</h3>
+                        <p>Generate click-worthy, SEO-scored titles for blogs, products, and videos with a live Google preview.</p>
+                    </a>
+                    <a class="ug-related-card" href="{%url 'seo-description-generator'%}">
+                        <h3>SEO Description Generator</h3>
+                        <p>Generate keyword-focused, click-worthy meta descriptions scored for length and SEO quality.</p>
+                    </a>
+                    <a class="ug-related-card" href="{%url 'password-generator'%}">
+                        <h3>Password Generator</h3>
+                        <p>Create strong, random, and customizable passwords for your accounts.</p>
+                    </a>
+                    <a class="ug-related-card" href="{%url 'tools'%}">
+                        <h3>All Free Tools</h3>
+                        <p>Browse every free calculator and converter TechGeekBuzz has to offer.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- Main section ended -->
+{%endblock%}
+
+{%block js%}
+<script src="{%static 'js/tools/js/usernamegenerator.js'%}"></script>
+{%endblock%}

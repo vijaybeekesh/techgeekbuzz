@@ -45,3 +45,6 @@ def seodescriptionchecker(request):
 
 def outlinegenerator(request):
     return render(request, 'tool/outlinegenerator.html')
+
+def usernamegenerator(request):
+    return render(request, 'tool/usernamegenerator.html')
