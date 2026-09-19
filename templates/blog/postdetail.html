@@ -288,14 +288,14 @@
                             {%if post.featured_image%}
                                 <img src="{{post.featured_image.url}}" class="img-fluid" alt="{{post.title}}"/>
                             {%endif%}
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="author-section d-flex align-items-center">
+                            <div class="blog-header-meta d-flex align-items-center justify-content-between">
+                                <div class="post-byline d-flex align-items-center">
                                     {%if post.author.profile.profile_picture%}
-                                        <img src="{{post.author.profile.profile_picture.url}}" class="img-fluid" alt="{{post.author}}" />
+                                        <img src="{{post.author.profile.profile_picture.url}}" alt="{{post.author}}" />
                                     {%else%}
-                                    <img src="{% static 'images/cropped-Techgeekbuzz-Final-Logo-e1611249305805.png'%}" class="img-fluid" />
+                                    <img src="{% static 'images/cropped-Techgeekbuzz-Final-Logo-e1611249305805.png'%}" alt="{{post.author}}" />
                                     {%endif%}
-                                    <p> <a href="{%url 'byuser' post.author%}">{{post.author.first_name}} {{post.author.last_name}}</a><br><span>Last updated on {{post.post_updated|date:'F j, Y'}}</span> </p>
+                                    <p><a href="{%url 'byuser' post.author%}">{{post.author.first_name}} {{post.author.last_name}}</a><span>Last updated on {{post.post_updated|date:'F j, Y'}}</span></p>
                                 </div>
                                 <div class="share-section d-flex flex-column">
                                     <p>Share on:</p>
